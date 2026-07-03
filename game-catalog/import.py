@@ -54,6 +54,8 @@ def to_year(value):
 
 
 def main():
+    if os.path.exists(DB_PATH):
+        os.remove(DB_PATH)
     conn = sqlite3.connect(DB_PATH)
     conn.executescript(SCHEMA)
 

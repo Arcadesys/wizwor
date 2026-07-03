@@ -142,7 +142,7 @@ function scoreGame(game: Game, profile: UserProfile): Recommendation {
         continue;
       }
       possible += dimension.weight;
-      const haystack = `${game.tags.join(" ")} ${game.pitch}`.toLowerCase();
+      const haystack = `${(game.tags ?? []).join(" ")} ${game.pitch ?? ""}`.toLowerCase();
       const hits = keywords.filter((keyword) => haystack.includes(keyword));
       const match = hits.length / keywords.length;
       earned += dimension.weight * match;
@@ -291,7 +291,7 @@ function dimensionMatchesFocus(game: Game, focus: PreferenceKey, value: UserProf
     if (keywords.length === 0) {
       return false;
     }
-    const haystack = `${game.tags.join(" ")} ${game.pitch}`.toLowerCase();
+    const haystack = `${(game.tags ?? []).join(" ")} ${game.pitch ?? ""}`.toLowerCase();
     return keywords.some((keyword) => haystack.includes(keyword));
   }
 

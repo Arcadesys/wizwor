@@ -930,7 +930,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                       rel="noopener noreferrer"
                       data-recommendation-button="true"
                     >
-                      {recommendation.game.playthroughUrl.includes("youtube.com")
+                      {recommendation.game.playthroughUrl?.includes("youtube.com")
                         ? "Watch Playthrough"
                         : "View Source"}
                     </a>
