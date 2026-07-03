@@ -38,7 +38,7 @@ export function interpretQuestionAnswer(question: WizardQuestion, rawValue: stri
     return null;
   }
 
-  const inferredValue = inferPreferenceValue(question.key, rawValue);
+  const inferredValue = inferPreferenceValue(question.key as PreferenceKey, rawValue);
   return inferredValue ? question.options.find((option) => option.value === inferredValue) ?? null : null;
 }
 
@@ -294,7 +294,7 @@ export function inferDirectAskProfile(rawValue: string, currentProfile: UserProf
 
   return {
     ...currentProfile,
-    name: currentProfile.name.trim() || extractNameFromIntro(rawValue) || "PLAYER",
+    name: currentProfile.name?.trim() || extractNameFromIntro(rawValue) || "PLAYER",
     mood: "weird",
     playStyle: "puzzle",
     difficulty: "fair",

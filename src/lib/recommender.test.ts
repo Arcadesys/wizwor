@@ -1,49 +1,69 @@
 import { describe, expect, it } from "vitest";
 import {
-  minQualifyingRecommendations,
+  maxQualifyingRecommendations,
   qualifyingRecommendations,
+  recommendationGate,
   recommendationThreshold,
   shouldRevealRecommendations,
 } from "@/lib/recommender";
+import { getAllGames } from "@/lib/game-repository";
 import { blankProfile } from "@/lib/wizard/types";
 
 describe("recommendation rubric", () => {
+  it("keeps every curated recommendation wired to a YouTube playthrough", () => {
+    for (const game of getAllGames()) {
+      expect(game.playthroughUrl).toMatch(/^https:\/\/www\.youtube\.com\/watch\?v=[A-Za-z0-9_-]+$/);
+    }
+  });
+
   it("does not reveal on a single answer even if it happens to score perfectly", () => {
     // A lone matched dimension scores 100% (score is relative to what's been answered),
     // so the "enough signal" floor is what actually stops a one-answer instant reveal.
     const profile = { ...blankProfile, name: "Ada", mood: "weird" as const };
-    expect(qualifyingRecommendations(profile).length).toBeGreaterThanOrEqual(minQualifyingRecommendations);
+    expect(qualifyingRecommendations(profile).length).toBeGreaterThan(maxQualifyingRecommendations);
     expect(shouldRevealRecommendations(profile)).toBe(false);
   });
 
-  it("reveals once enough signal is present and the rubric clears the threshold", () => {
+  it("opens the recommendation gate once enough signal narrows to three or fewer high-confidence matches", () => {
     const profile = {
       ...blankProfile,
       name: "Ada",
       mood: "ominous" as const,
-      playStyle: "top-down" as const,
+      playStyle: "side-scroller" as const,
       difficulty: "fair" as const,
       story: "some" as const,
     };
     const qualifying = qualifyingRecommendations(profile);
-    expect(qualifying.length).toBeGreaterThanOrEqual(minQualifyingRecommendations);
+    expect(qualifying.length).toBeGreaterThan(0);
+    expect(qualifying.length).toBeLessThanOrEqual(maxQualifyingRecommendations);
     expect(qualifying.every((rec) => rec.score >= recommendationThreshold)).toBe(true);
     expect(shouldRevealRecommendations(profile)).toBe(true);
+    expect(recommendationGate(profile)).toMatchObject({
+      threshold: recommendationThreshold,
+      maxQualifying: maxQualifyingRecommendations,
+      qualifyingCount: qualifying.length,
+      isOpen: true,
+    });
   });
 
-  it("stops revealing if a refinement narrows the matches back down", () => {
+  it("stays closed while the high-confidence set is still too broad", () => {
     const broad = {
       ...blankProfile,
       name: "Ada",
-      mood: "ominous" as const,
-      playStyle: "top-down" as const,
+      mood: "weird" as const,
+      playStyle: "platformer" as const,
       difficulty: "fair" as const,
-      story: "some" as const,
+      story: "low" as const,
     };
-    expect(shouldRevealRecommendations(broad)).toBe(true);
+    const gate = recommendationGate(broad, { threshold: 0.75, maxQualifying: 3 });
+    expect(gate.qualifyingCount).toBeGreaterThan(gate.maxQualifying);
+    expect(gate.isOpen).toBe(false);
+  });
 
+  it("closes when no match clears the threshold", () => {
     const narrowed = {
-      ...broad,
+      ...blankProfile,
+      name: "Ada",
       mood: "contemplative" as const,
       playStyle: "puzzle" as const,
       difficulty: "difficult" as const,

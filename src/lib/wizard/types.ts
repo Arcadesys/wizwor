@@ -1,4 +1,4 @@
-import type { PreferenceKey, Recommendation, UserProfile } from "@/lib/recommender";
+import type { Recommendation, UserProfile } from "@/lib/recommender";
 
 export type WizardSpeaker = "system" | "wizard" | "user";
 
@@ -15,7 +15,7 @@ export type WizardOption = {
 };
 
 export type WizardQuestion = {
-  key: PreferenceKey;
+  key: string;
   prompt: string;
   options: WizardOption[];
 };
@@ -23,16 +23,53 @@ export type WizardQuestion = {
 export type WizardFocusQuestion = {
   key: "focus";
   prompt: string;
-  options: Array<WizardOption & { value: PreferenceKey }>;
+  options: WizardOption[];
+};
+
+export type AgentData = {
+  thresholdPercent: number;
+  maxQualifyingMatches: number;
+  qualifyingMatchCount: number;
+  recommendationWindowOpen: boolean;
+  gamesAboveThreshold: Array<{
+    id: string;
+    title: string;
+    matchPercent: number;
+    reasons: string[];
+    pitch: string;
+    tags: string[];
+  }>;
+  currentBestMatches: Array<{
+    id: string;
+    title: string;
+    matchPercent: number;
+    clearsThreshold: boolean;
+    reasons: string[];
+    pitch: string;
+    tags: string[];
+  }>;
+  consumed: Record<string, unknown>;
+  generated: Record<string, unknown>;
 };
 
 export type WizardState = {
   started: boolean;
   needsName: boolean;
-  activeQuestionKey: PreferenceKey | null;
+  activeQuestionKey: string | null;
   awaitingFocus: boolean;
   revealed: boolean;
   profile: UserProfile;
+  memoryMarkdown: string;
+  terminalTheme?: WizardTerminalTheme;
+};
+
+export type WizardTerminalTheme = {
+  background?: string;
+  foreground?: string;
+  green?: string;
+  amber?: string;
+  red?: string;
+  blue?: string;
 };
 
 export type WizardTurnRequest = {
@@ -49,12 +86,26 @@ export type WizardTurnResponse = {
   recommendations: Recommendation[];
   accepted: boolean;
   adapter: "chatgpt";
+  agentData?: AgentData;
   notes?: string[];
 };
 
-export const blankProfile: UserProfile = {
-  name: "",
-};
+export const blankProfile: UserProfile = {};
+
+export const defaultMemoryMarkdown = `# MEMORY.md
+
+## Player
+- Name: Unknown
+
+## Preferences
+- Console colors: default
+
+## Games Previously Played
+- None recorded
+
+## Notes
+- No durable notes yet
+`;
 
 export const initialWizardState: WizardState = {
   started: false,
@@ -63,4 +114,5 @@ export const initialWizardState: WizardState = {
   awaitingFocus: false,
   revealed: false,
   profile: blankProfile,
+  memoryMarkdown: defaultMemoryMarkdown,
 };

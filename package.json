@@ -9,6 +9,7 @@
     "lint": "eslint",
     "test": "vitest run",
     "test:e2e": "playwright test",
+    "generate:nes-catalog": "node scripts/generate-nes-catalog.mjs",
     "evals": "tsx evals/run-agent-evals.ts"
   },
   "dependencies": {

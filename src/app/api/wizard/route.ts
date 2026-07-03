@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getWizardAgent } from "@/lib/wizard/runtime";
 import type { WizardTurnRequest } from "@/lib/wizard/types";
-import { initialWizardState } from "@/lib/wizard/types";
+import { defaultMemoryMarkdown, initialWizardState } from "@/lib/wizard/types";
 
 export const runtime = "nodejs";
 
@@ -31,6 +31,10 @@ export async function POST(request: Request) {
       state: {
         ...initialWizardState,
         ...payload.state,
+        memoryMarkdown:
+          typeof payload.state?.memoryMarkdown === "string" && payload.state.memoryMarkdown.trim()
+            ? payload.state.memoryMarkdown
+            : defaultMemoryMarkdown,
         profile: {
           ...initialWizardState.profile,
           ...payload.state?.profile,

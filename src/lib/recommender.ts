@@ -7,17 +7,18 @@ import type {
   RomhackInterest,
   StoryPreference,
 } from "@/data/games";
-import { games } from "@/data/games";
+import { getAllGames } from "@/lib/game-repository";
 
 export type UserProfile = {
-  name: string;
-  mood?: Mood;
-  difficulty?: Difficulty;
-  story?: StoryPreference;
-  playStyle?: PlayStyle;
-  obscurity?: Obscurity;
-  romhack?: RomhackInterest;
+  name?: string;
+  mood?: string;
+  difficulty?: string;
+  story?: string;
+  playStyle?: string;
+  obscurity?: string;
+  romhack?: string;
   focus?: PreferenceKey;
+  [key: string]: unknown;
 };
 
 export type PreferenceKey = "mood" | "difficulty" | "story" | "playStyle" | "obscurity" | "romhack";
@@ -57,11 +58,11 @@ export function answeredPreferenceCount(profile: UserProfile) {
 }
 
 export function hasEnoughSignal(profile: UserProfile) {
-  return Boolean(profile.name.trim()) && answeredPreferenceCount(profile) >= questionCountRequired;
+  return answeredPreferenceCount(profile) >= questionCountRequired;
 }
 
 export function getRecommendations(profile: UserProfile): Recommendation[] {
-  return games
+  return getAllGames()
     .map((game) => scoreGame(game, profile))
     .sort((left, right) => right.score - left.score || left.game.title.localeCompare(right.game.title));
 }
