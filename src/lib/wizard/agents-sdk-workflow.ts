@@ -151,10 +151,26 @@ function gamesAboveThreshold(profile: UserProfile) {
 
 const MAX_OUTPUT_SCHEMA_ATTEMPTS = 2;
 
-// agentData is diagnostic-only and not load-bearing for the recommendation, so a
-// schema-validation failure there shouldn't surface as a hard error to the player.
-// Retry once (the model's nesting mistakes aren't fully deterministic), then fall
-// back to an in-character line rather than propagating a 503.
+// The Agents SDK throws the same ModelBehaviorError class for very different
+// problems: bad tool-call input, no final response, malformed model output
+// items, and (what we're targeting here) the final assistant JSON failing
+// WizardTurnOutputSchema. Its message is always "Invalid output type: ..." and,
+// for Zod failures, embeds the first invalid field's path (see
+// formatFinalOutputTypeError in @openai/agents-core's turnResolution.js). Only
+// treat it as recoverable when that path is under agentData — agentData is
+// diagnostic-only and not load-bearing for the recommendation, but a failure
+// anywhere else (e.g. a malformed `lines` array) is a real problem and must
+// still propagate instead of being silently swallowed.
+export function isAgentDataSchemaError(error: unknown): error is ModelBehaviorError {
+  return (
+    error instanceof ModelBehaviorError &&
+    error.message.startsWith("Invalid output type:") &&
+    /at "agentData(\.[^"]*)?"/.test(error.message)
+  );
+}
+
+// Retry once (the model's nesting mistakes aren't fully deterministic), then
+// fall back to an in-character line rather than propagating a 503.
 async function runAgentTurnResilient(
   runner: Runner,
   agent: typeof liveWizardAgent,
@@ -164,7 +180,7 @@ async function runAgentTurnResilient(
     try {
       return await runner.run(agent, conversationHistory);
     } catch (error) {
-      if (!(error instanceof ModelBehaviorError) || attempt === MAX_OUTPUT_SCHEMA_ATTEMPTS) {
+      if (!isAgentDataSchemaError(error) || attempt === MAX_OUTPUT_SCHEMA_ATTEMPTS) {
         throw error;
       }
     }
@@ -223,7 +239,7 @@ async function runWizardConversationTurn(request: WizardTurnRequest, knownProfil
     try {
       result = await runAgentTurnResilient(runner, liveWizardAgent, conversationHistory);
     } catch (error) {
-      if (error instanceof ModelBehaviorError) {
+      if (isAgentDataSchemaError(error)) {
         return { output: fallbackTurnOutput(), consumed };
       }
       throw error;

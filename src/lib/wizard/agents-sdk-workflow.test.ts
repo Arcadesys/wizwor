@@ -1,5 +1,6 @@
+import { ModelBehaviorError } from "@openai/agents";
 import { describe, expect, it } from "vitest";
-import { WizardTurnOutputSchema } from "@/lib/wizard/agents-sdk-workflow";
+import { isAgentDataSchemaError, WizardTurnOutputSchema } from "@/lib/wizard/agents-sdk-workflow";
 
 function baseOutput(agentData: Record<string, unknown>) {
   return {
@@ -32,5 +33,37 @@ describe("WizardTurnOutputSchema agentData", () => {
       baseOutput({ inferredProfile: { traits: { confidence: 0.8, mood: "heroic" } } }),
     );
     expect(result.success).toBe(true);
+  });
+});
+
+describe("isAgentDataSchemaError", () => {
+  it("matches an output-schema failure whose first invalid path is under agentData", () => {
+    const error = new ModelBehaviorError(
+      'Invalid output type: final assistant output failed schema validation at "agentData.inferredProfile" (Invalid input).',
+    );
+    expect(isAgentDataSchemaError(error)).toBe(true);
+  });
+
+  it("matches when agentData itself is the invalid path (no sub-key)", () => {
+    const error = new ModelBehaviorError(
+      'Invalid output type: final assistant output failed schema validation at "agentData" (Invalid input).',
+    );
+    expect(isAgentDataSchemaError(error)).toBe(true);
+  });
+
+  it("does not match an output-schema failure on an unrelated field like lines", () => {
+    const error = new ModelBehaviorError(
+      'Invalid output type: final assistant output failed schema validation at "lines" (Invalid input).',
+    );
+    expect(isAgentDataSchemaError(error)).toBe(false);
+  });
+
+  it("does not match a ModelBehaviorError unrelated to output schema (e.g. bad tool input)", () => {
+    const error = new ModelBehaviorError("Agent tool called with invalid input");
+    expect(isAgentDataSchemaError(error)).toBe(false);
+  });
+
+  it("does not match a non-ModelBehaviorError", () => {
+    expect(isAgentDataSchemaError(new Error("boom"))).toBe(false);
   });
 });
