@@ -85,6 +85,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
   const [agentData, setAgentData] = useState<AgentData | null>(null);
   const [isStreaming, setIsStreaming] = useState(false);
+  const [agentDataExpanded, setAgentDataExpanded] = useState(false);
   const [soundOn, setSoundOn] = useState(false);
   const [samReady, setSamReady] = useState(false);
   const [feedbackRating, setFeedbackRating] = useState<FeedbackRating | null>(null);
@@ -985,12 +986,28 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
             ) : null}
 
             <section
-              className="agent-data-panel"
+              className={`agent-data-panel ${agentDataExpanded ? "is-expanded" : ""}`}
               aria-label="Agent data"
-              tabIndex={0}
               onKeyDown={(event) => event.stopPropagation()}
               data-recommendation-button="true"
             >
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setAgentDataExpanded((value) => !value);
+                }}
+                className={`magnify-button ${agentDataExpanded ? "is-on" : "is-off"}`}
+                aria-label={agentDataExpanded ? "Collapse agent data" : "Expand agent data"}
+                aria-expanded={agentDataExpanded}
+                title={agentDataExpanded ? "Collapse agent data" : "Expand agent data"}
+              >
+                <span className="magnify-glyph" aria-hidden="true">
+                  <span className="magnify-lens" />
+                  <span className="magnify-handle" />
+                </span>
+                <span className="sr-only">{agentDataExpanded ? "Collapse agent data" : "Expand agent data"}</span>
+              </button>
               <div className="agent-data-summary">
                 <span>AGENT DATA</span>
                 <span>
