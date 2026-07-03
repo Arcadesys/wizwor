@@ -113,6 +113,27 @@ describe("recommendation rubric", () => {
     expect(gate.isOpen).toBe(false);
   });
 
+  it("never includes disabled platforms in qualifying recommendations", () => {
+    const profile = {
+      ...blankProfile,
+      name: "Ada",
+      mood: "heroic" as const,
+      playStyle: "platformer" as const,
+      difficulty: "fair" as const,
+      story: "low" as const,
+    };
+
+    const snesOnly = qualifyingRecommendations(profile, { enabledPlatforms: ["snes"], threshold: 0 });
+    expect(snesOnly.length).toBeGreaterThan(0);
+    expect(snesOnly.every((recommendation) => recommendation.game.platform === "snes")).toBe(true);
+
+    const withoutSnes = qualifyingRecommendations(profile, {
+      enabledPlatforms: ["nes", "romhack"],
+      threshold: 0,
+    });
+    expect(withoutSnes.some((recommendation) => recommendation.game.platform === "snes")).toBe(false);
+  });
+
   it("closes when no match clears the threshold", () => {
     const narrowed = {
       ...blankProfile,

@@ -1,5 +1,6 @@
 import { writeFile } from "node:fs/promises";
 import { JSDOM } from "jsdom";
+import { collectMatchingTags, matchingRules, matchesAny, slugify, stableStringify, unique } from "./catalog-shared/heuristics.mjs";
 
 const cartridgeSourceUrl = "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games";
 const fdsSourceUrl = "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games";
@@ -520,10 +521,8 @@ function deriveGameFields(entry) {
   const haystack = [entry.title, ...entry.publisher, ...entry.developer, entry.sourceCategory].join(" ").toLowerCase();
   const tags = new Set();
 
-  for (const rule of tagRules) {
-    if (rule.patterns.some((pattern) => haystack.includes(pattern))) {
-      tags.add(rule.tag);
-    }
+  for (const tag of collectMatchingTags(haystack, tagRules)) {
+    tags.add(tag);
   }
 
   if (entry.sourceCategory.startsWith("unlicensed") || entry.sourceCategory === "famicom-disk-system-unlicensed") {
@@ -545,14 +544,14 @@ function deriveGameFields(entry) {
     tags.add(`${entry.regions[0]} exclusive`);
   }
 
-  const playStyleRule = playStyleRules.find((rule) => rule.patterns.some((pattern) => haystack.includes(pattern)));
+  const playStyleRule = playStyleRules.find((rule) => matchesAny(haystack, rule.patterns));
   const playStyle = playStyleRule?.playStyle ?? "side-scroller";
   const playStyleSignal = Boolean(playStyleRule);
   for (const tag of playStyleRule?.tags ?? ["action"]) {
     tags.add(tag);
   }
 
-  const matchedMoodRules = moodRules.filter((rule) => rule.patterns.some((pattern) => haystack.includes(pattern)));
+  const matchedMoodRules = matchingRules(haystack, moodRules);
   const moodSignal = matchedMoodRules.length > 0;
   const moods = matchedMoodRules.map((rule) => rule.mood);
   if (!moods.length) {
@@ -562,13 +561,13 @@ function deriveGameFields(entry) {
     moods.push(moods[0] === "arcade" ? "heroic" : "arcade");
   }
 
-  const difficultSignal = difficultSignals.some((signal) => haystack.includes(signal));
-  const casualSignal = casualSignals.some((signal) => haystack.includes(signal));
+  const difficultSignal = matchesAny(haystack, difficultSignals);
+  const casualSignal = matchesAny(haystack, casualSignals);
   const difficulty = difficultSignal ? "difficult" : casualSignal ? "casual" : "fair";
   const difficultySignal = difficultSignal || casualSignal;
 
-  const richStorySignal = richStorySignals.some((signal) => haystack.includes(signal));
-  const someStorySignal = someStorySignals.some((signal) => haystack.includes(signal));
+  const richStorySignal = matchesAny(haystack, richStorySignals);
+  const someStorySignal = matchesAny(haystack, someStorySignals);
   const story = richStorySignal ? "rich" : someStorySignal || playStyle === "action-adventure" ? "some" : "low";
   const storySignal = richStorySignal || someStorySignal;
 
@@ -662,35 +661,6 @@ function cleanTitle(value) {
 function extractYear(value) {
   const match = value.match(/\b(19|20)\d{2}\b/);
   return match?.[0] ?? "Unknown";
-}
-
-function slugify(value) {
-  return value
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/&/g, " and ")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 80);
-}
-
-function unique(values) {
-  return [...new Set(values)];
-}
-
-function stableStringify(value) {
-  return JSON.stringify(sortValue(value), null, 2);
-}
-
-function sortValue(value) {
-  if (Array.isArray(value)) {
-    return value.map(sortValue);
-  }
-  if (value && typeof value === "object") {
-    return Object.fromEntries(Object.entries(value).sort(([left], [right]) => left.localeCompare(right)).map(([key, inner]) => [key, sortValue(inner)]));
-  }
-  return value;
 }
 
 await main();

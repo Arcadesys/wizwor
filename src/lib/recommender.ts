@@ -3,6 +3,7 @@ import type {
   Game,
   Mood,
   Obscurity,
+  Platform,
   PlayStyle,
   RomhackInterest,
   StoryPreference,
@@ -64,6 +65,7 @@ export const maxQualifyingRecommendations = 3;
 type RecommendationGateOptions = {
   threshold?: number;
   maxQualifying?: number;
+  enabledPlatforms?: readonly Platform[];
 };
 
 function normalizeKeywords(value: unknown): string[] {
@@ -86,15 +88,15 @@ export function hasEnoughSignal(profile: UserProfile) {
   return answeredPreferenceCount(profile) >= questionCountRequired;
 }
 
-export function getRecommendations(profile: UserProfile): Recommendation[] {
-  return getAllGames()
+export function getRecommendations(profile: UserProfile, options: RecommendationGateOptions = {}): Recommendation[] {
+  return getAllGames({ enabledPlatforms: options.enabledPlatforms })
     .map((game) => scoreGame(game, profile))
     .sort((left, right) => right.score - left.score || left.game.title.localeCompare(right.game.title));
 }
 
 export function qualifyingRecommendations(profile: UserProfile, options: RecommendationGateOptions = {}) {
   const threshold = options.threshold ?? recommendationThreshold;
-  return getRecommendations(profile).filter((recommendation) => recommendation.score >= threshold);
+  return getRecommendations(profile, options).filter((recommendation) => recommendation.score >= threshold);
 }
 
 /**
@@ -102,19 +104,19 @@ export function qualifyingRecommendations(profile: UserProfile, options: Recomme
  * still decides when to reveal; the UI should only receive recommendations once
  * the catalog has narrowed to a small, high-confidence set.
  */
-export function shouldRevealRecommendations(profile: UserProfile) {
+export function shouldRevealRecommendations(profile: UserProfile, options: RecommendationGateOptions = {}) {
   if (!hasEnoughSignal(profile)) {
     return false;
   }
 
-  const qualifyingCount = qualifyingRecommendations(profile).length;
+  const qualifyingCount = qualifyingRecommendations(profile, options).length;
   return qualifyingCount > 0 && qualifyingCount <= maxQualifyingRecommendations;
 }
 
 export function recommendationGate(profile: UserProfile, options: RecommendationGateOptions = {}) {
   const threshold = options.threshold ?? recommendationThreshold;
   const maxQualifying = options.maxQualifying ?? maxQualifyingRecommendations;
-  const qualifying = qualifyingRecommendations(profile, { threshold });
+  const qualifying = qualifyingRecommendations(profile, { ...options, threshold });
 
   return {
     threshold,
@@ -123,6 +125,76 @@ export function recommendationGate(profile: UserProfile, options: Recommendation
     isOpen: qualifying.length > 0 && qualifying.length <= maxQualifying,
     recommendations: qualifying,
   };
+}
+
+export type NextQuestionSuggestion = {
+  key: PreferenceKey;
+  value: string;
+  matchCount: number;
+  poolSize: number;
+};
+
+const moodValues: Mood[] = ["ominous", "heroic", "weird", "arcade", "contemplative"];
+const playStyleValues: PlayStyle[] = ["side-scroller", "top-down", "action-adventure", "platformer", "puzzle"];
+const difficultyValues: Difficulty[] = ["casual", "fair", "difficult"];
+const storyValues: StoryPreference[] = ["low", "some", "rich"];
+const obscurityValues: Obscurity[] = ["classic", "hidden-gem", "strange"];
+
+/**
+ * When too many games qualify (see qualifyingRecommendations), pick the
+ * unanswered dimension+value whose split of the current candidate pool is
+ * closest to 50/50 — the same principle as a well-played round of 20
+ * Questions or Guess Who: prefer the question that eliminates the most
+ * candidates regardless of which way the player answers, over one that only
+ * shaves off a handful either way.
+ */
+export function suggestNextQuestion(
+  profile: UserProfile,
+  options: RecommendationGateOptions = {},
+): NextQuestionSuggestion | null {
+  const maxQualifying = options.maxQualifying ?? maxQualifyingRecommendations;
+  const pool = qualifyingRecommendations(profile, options).map((recommendation) => recommendation.game);
+  if (pool.length <= maxQualifying) {
+    return null;
+  }
+
+  let best: NextQuestionSuggestion | null = null;
+  let bestImbalance = Infinity;
+
+  function consider(key: PreferenceKey, value: string, matches: (game: Game) => boolean) {
+    if (profile[key]) {
+      return;
+    }
+    const matchCount = pool.filter(matches).length;
+    if (matchCount === 0 || matchCount === pool.length) {
+      // This value doesn't discriminate at all within the current pool.
+      return;
+    }
+    const imbalance = Math.abs(matchCount - (pool.length - matchCount));
+    if (imbalance < bestImbalance) {
+      bestImbalance = imbalance;
+      best = { key, value, matchCount, poolSize: pool.length };
+    }
+  }
+
+  for (const mood of moodValues) {
+    consider("mood", mood, (game) => game.moods.includes(mood));
+  }
+  for (const playStyle of playStyleValues) {
+    consider("playStyle", playStyle, (game) => game.playStyle === playStyle);
+  }
+  for (const difficulty of difficultyValues) {
+    consider("difficulty", difficulty, (game) => game.difficulty === difficulty);
+  }
+  for (const story of storyValues) {
+    consider("story", story, (game) => game.story === story);
+  }
+  for (const obscurity of obscurityValues) {
+    consider("obscurity", obscurity, (game) => game.obscurity === obscurity);
+  }
+  consider("romhack", "yes", (game) => game.isRomhack);
+
+  return best;
 }
 
 export function scoreGame(game: Game, profile: UserProfile): Recommendation {

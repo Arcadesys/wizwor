@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sanitizeEnabledPlatforms } from "@/data/games";
 import { getWizardAgent } from "@/lib/wizard/runtime";
 import type { WizardTurnRequest } from "@/lib/wizard/types";
 import { defaultMemoryMarkdown, initialWizardState } from "@/lib/wizard/types";
@@ -39,6 +40,7 @@ export async function POST(request: Request) {
           ...initialWizardState.profile,
           ...payload.state?.profile,
         },
+        enabledPlatforms: sanitizeEnabledPlatforms(payload.state?.enabledPlatforms),
       },
     });
 

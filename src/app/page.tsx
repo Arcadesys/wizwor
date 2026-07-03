@@ -1,6 +1,7 @@
 "use client";
 
 import { CSSProperties, FormEvent, KeyboardEvent, useEffect, useMemo, useRef, useState } from "react";
+import { catalogPlatforms, platformLabels, sanitizeEnabledPlatforms, type Platform } from "@/data/games";
 import type { Recommendation, UserProfile } from "@/lib/recommender";
 import { answeredPreferenceCount, getRecommendations, recommendationThreshold } from "@/lib/recommender";
 import type { FeedbackRating } from "@/lib/feedback";
@@ -57,6 +58,7 @@ const samSampleRate = 22050;
 const storageKey = "wyrm-terminal-profile";
 const memoryStorageKey = "wyrm-terminal-MEMORY.md";
 const themeStorageKey = "wyrm-terminal-theme";
+const platformStorageKey = "wyrm-terminal-platforms";
 const arrowKeys = new Set(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]);
 const recommendationButtonSelector = "[data-recommendation-button='true']";
 
@@ -73,6 +75,7 @@ type WizardTerminalProps = {
 export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const [profile, setProfile] = useState<UserProfile>(blankProfile);
   const [memoryMarkdown, setMemoryMarkdown] = useState(defaultMemoryMarkdown);
+  const [enabledPlatforms, setEnabledPlatforms] = useState<Platform[]>([...catalogPlatforms]);
   const [terminalTheme, setTerminalTheme] = useState<WizardTerminalTheme | undefined>();
   const [hydrated, setHydrated] = useState(false);
   const [started, setStarted] = useState(false);
@@ -91,9 +94,11 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const [feedbackRating, setFeedbackRating] = useState<FeedbackRating | null>(null);
   const [feedbackNote, setFeedbackNote] = useState("");
   const [feedbackNoteSent, setFeedbackNoteSent] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   const profileRef = useRef(profile);
   const memoryMarkdownRef = useRef(memoryMarkdown);
+  const enabledPlatformsRef = useRef(enabledPlatforms);
   const terminalThemeRef = useRef(terminalTheme);
   const startedRef = useRef(started);
   const needsNameRef = useRef(needsName);
@@ -111,8 +116,11 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const suppressFocusRef = useRef(false);
 
   const answeredCount = answeredPreferenceCount(profile);
-  const topScore = useMemo(() => getRecommendations(profile)[0]?.score ?? 0, [profile]);
-  const visibleAgentData = useMemo(() => buildVisibleAgentData(agentData, profile), [agentData, profile]);
+  const topScore = useMemo(() => getRecommendations(profile, { enabledPlatforms })[0]?.score ?? 0, [profile, enabledPlatforms]);
+  const visibleAgentData = useMemo(
+    () => buildVisibleAgentData(agentData, profile, enabledPlatforms),
+    [agentData, profile, enabledPlatforms],
+  );
   const terminalStyle = useMemo(() => themeToCssVariables(terminalTheme), [terminalTheme]);
 
   useEffect(() => {
@@ -136,9 +144,16 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
           setTerminalTheme(restoredTheme);
           terminalThemeRef.current = restoredTheme;
         }
+        const savedPlatforms = persistentStorage?.getItem(platformStorageKey);
+        if (savedPlatforms) {
+          const restoredPlatforms = sanitizeEnabledPlatforms(JSON.parse(savedPlatforms));
+          setEnabledPlatforms(restoredPlatforms);
+          enabledPlatformsRef.current = restoredPlatforms;
+        }
       } catch {
         sessionStorage.removeItem(storageKey);
         getPersistentStorage()?.removeItem(themeStorageKey);
+        getPersistentStorage()?.removeItem(platformStorageKey);
       } finally {
         setHydrated(true);
       }
@@ -152,6 +167,10 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   useEffect(() => {
     memoryMarkdownRef.current = memoryMarkdown;
   }, [memoryMarkdown]);
+
+  useEffect(() => {
+    enabledPlatformsRef.current = enabledPlatforms;
+  }, [enabledPlatforms]);
 
   useEffect(() => {
     terminalThemeRef.current = terminalTheme;
@@ -223,6 +242,30 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     }
   }
 
+  function persistEnabledPlatforms(nextEnabledPlatforms: Platform[]) {
+    const sanitized = sanitizeEnabledPlatforms(nextEnabledPlatforms);
+    setEnabledPlatforms(sanitized);
+    enabledPlatformsRef.current = sanitized;
+    setRecommendations([]);
+    recommendationsRef.current = [];
+    setAgentData(null);
+    try {
+      getPersistentStorage()?.setItem(platformStorageKey, JSON.stringify(sanitized));
+    } catch (error) {
+      console.warn("Failed to persist enabled platforms:", error);
+    }
+  }
+
+  function togglePlatform(platform: Platform) {
+    const current = new Set(enabledPlatformsRef.current);
+    if (current.has(platform)) {
+      current.delete(platform);
+    } else {
+      current.add(platform);
+    }
+    persistEnabledPlatforms(catalogPlatforms.filter((entry) => current.has(entry)));
+  }
+
   function appendUser(text: string) {
     setMessages((current) => [
       ...current,
@@ -260,6 +303,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       awaitingFocus: false,
       revealed: recommendationsRef.current.length > 0,
       profile: profileRef.current,
+      enabledPlatforms: enabledPlatformsRef.current,
       memoryMarkdown: memoryMarkdownRef.current,
       terminalTheme: terminalThemeRef.current,
     };
@@ -299,6 +343,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   function applyWizardResponse(response: WizardTurnResponse) {
     persistProfile(response.state.profile);
     persistMemory(response.state.memoryMarkdown, response.state.terminalTheme);
+    persistEnabledPlatforms(response.state.enabledPlatforms ?? [...catalogPlatforms]);
     setStarted(response.state.started);
     startedRef.current = response.state.started;
     setNeedsName(response.state.needsName);
@@ -312,6 +357,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     setFeedbackRating(null);
     setFeedbackNote("");
     setFeedbackNoteSent(false);
+    setSettingsOpen(false);
   }
 
   function resetSession() {
@@ -339,6 +385,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     setFeedbackRating(null);
     setFeedbackNote("");
     setFeedbackNoteSent(false);
+    setSettingsOpen(false);
     window.setTimeout(() => inputRef.current?.focus(), 0);
   }
 
@@ -879,17 +926,56 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
           <div className="terminal-window min-h-0 overflow-y-auto">
             <p className="experimental-tag">EXPERIMENTAL &mdash; a hackathon guide, still learning the cartridges.</p>
             {hydrated ? (
-              <button
-                type="button"
-                className="reset-button"
-                onClick={() => {
-                  resetSession();
-                }}
-                aria-label="Start over"
-                title="Start over"
+              <div
+                className="window-controls"
+                onKeyDown={(event) => event.stopPropagation()}
+                onClick={(event) => event.stopPropagation()}
               >
-                X
-              </button>
+                <button
+                  type="button"
+                  className="settings-button"
+                  onClick={() => setSettingsOpen((value) => !value)}
+                  aria-label="Catalog settings"
+                  aria-expanded={settingsOpen}
+                  title="Catalog settings"
+                >
+                  ⚙
+                </button>
+                <button
+                  type="button"
+                  className="reset-button"
+                  onClick={() => {
+                    resetSession();
+                  }}
+                  aria-label="Start over"
+                  title="Start over"
+                >
+                  X
+                </button>
+                {settingsOpen ? (
+                  <section className="platform-menu" aria-label="Catalog platform settings">
+                    <h2>Catalog Shelves</h2>
+                    <p>{enabledPlatforms.length} enabled</p>
+                    <div className="platform-toggle-list">
+                      {catalogPlatforms.map((platform) => {
+                        const enabled = enabledPlatforms.includes(platform);
+                        return (
+                          <button
+                            key={platform}
+                            type="button"
+                            className={`platform-toggle ${enabled ? "is-on" : "is-off"}`}
+                            onClick={() => togglePlatform(platform)}
+                            aria-pressed={enabled}
+                          >
+                            <span aria-hidden="true">{enabled ? "ON" : "OFF"}</span>
+                            <strong>{platformLabels[platform]}</strong>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </section>
+                ) : null}
+              </div>
             ) : null}
             <div className="message-stack">
               {messages.map((message) => (
@@ -1139,12 +1225,12 @@ export default function Home() {
   return <WizardTerminal />;
 }
 
-function buildVisibleAgentData(agentData: AgentData | null, profile: UserProfile) {
+function buildVisibleAgentData(agentData: AgentData | null, profile: UserProfile, enabledPlatforms: Platform[]) {
   if (agentData) {
     return agentData;
   }
 
-  const recommendations = getRecommendations(profile);
+  const recommendations = getRecommendations(profile, { enabledPlatforms });
   const gamesAboveThreshold = recommendations
     .filter((recommendation) => recommendation.score >= recommendationThreshold)
     .map((recommendation) => ({
@@ -1335,11 +1421,7 @@ function waitForSource(source: AudioBufferSourceNode, paddingMs: number) {
 }
 
 function platformLabel(platform: Recommendation["game"]["platform"]) {
-  const labels: Record<Recommendation["game"]["platform"], string> = {
-    nes: "NES",
-    romhack: "ROMHACK",
-  };
-  return labels[platform] ?? platform.toUpperCase();
+  return platformLabels[platform] ?? platform.toUpperCase();
 }
 
 function speakerLabel(speaker: Message["speaker"]) {

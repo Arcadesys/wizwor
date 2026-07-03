@@ -1,12 +1,19 @@
 import { games } from "@/data/games";
-import type { Game } from "@/data/games";
+import type { Game, Platform } from "@/data/games";
 import { generatedNesGames } from "@/data/nes-catalog.generated";
+import { generatedSnesGames } from "@/data/snes-catalog.generated";
+
+type GeneratedCatalogGame = (typeof generatedNesGames)[number] | (typeof generatedSnesGames)[number];
+
+export type GameRepositoryOptions = {
+  enabledPlatforms?: readonly Platform[];
+};
 
 // The generated catalog lacks a curated YouTube playthrough; fall back to its
 // Wikipedia source so every entry still has somewhere to send the player.
 // (page.tsx labels the button "View Source" instead of "Watch Playthrough"
 // when the URL isn't a youtube.com link.)
-function toGame(entry: (typeof generatedNesGames)[number]): Game {
+function toGame(entry: GeneratedCatalogGame): Game {
   return {
     id: entry.id,
     title: entry.title,
@@ -37,7 +44,7 @@ function normalizeTitleKey(title: string) {
 }
 
 function qualityFilterGeneratedCatalog(
-  entries: (typeof generatedNesGames)[number][],
+  entries: GeneratedCatalogGame[],
   seenTitles: Set<string>,
 ): Game[] {
   const kept: Game[] = [];
@@ -57,13 +64,28 @@ function qualityFilterGeneratedCatalog(
 
 let cachedCatalog: Game[] | null = null;
 
-export function getAllGames(): Game[] {
+function buildCatalog(): Game[] {
+  // Hand-curated titles always win over a generated duplicate (e.g. Castlevania III,
+  // Zelda II, and Bubble Bobble exist in both) since their metadata is hand-tuned,
+  // not heuristically inferred.
+  const seenTitles = new Set(games.map((game) => normalizeTitleKey(game.title)));
+  return [
+    ...games,
+    ...qualityFilterGeneratedCatalog(generatedNesGames, seenTitles),
+    ...qualityFilterGeneratedCatalog(generatedSnesGames, seenTitles),
+  ];
+}
+
+export function getAllGames(options: GameRepositoryOptions = {}): Game[] {
   if (!cachedCatalog) {
-    // Hand-curated titles always win over a generated duplicate (e.g. Castlevania III,
-    // Zelda II, and Bubble Bobble exist in both) since their metadata is hand-tuned,
-    // not heuristically inferred.
-    const seenTitles = new Set(games.map((game) => normalizeTitleKey(game.title)));
-    cachedCatalog = [...games, ...qualityFilterGeneratedCatalog(generatedNesGames, seenTitles)];
+    cachedCatalog = buildCatalog();
   }
-  return cachedCatalog;
+  if (!options.enabledPlatforms) {
+    return cachedCatalog;
+  }
+  const enabled = new Set(options.enabledPlatforms);
+  if (enabled.size === 0) {
+    return [];
+  }
+  return cachedCatalog.filter((game) => enabled.has(game.platform));
 }
