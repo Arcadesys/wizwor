@@ -862,7 +862,11 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
             ) : null}
 
             {recommendations.length ? (
-              <div className="feedback-bar">
+              <div
+                className="feedback-bar"
+                onClick={(event) => event.stopPropagation()}
+                onKeyDown={(event) => event.stopPropagation()}
+              >
                 {!feedbackRating ? (
                   <>
                     <p className="feedback-prompt">Was this reading true?</p>

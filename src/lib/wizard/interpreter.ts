@@ -109,7 +109,7 @@ const focusHints: Partial<Record<PreferenceKey, string[]>> = {
 function toBoundaryText(value: string) {
   const words = value
     .toLowerCase()
-    .split(/[^a-z0-9]+/)
+    .split(/[^\p{L}\p{N}]+/u)
     .filter(Boolean);
   return words.length ? ` ${words.join(" ")} ` : "";
 }
@@ -178,7 +178,11 @@ export function inferFocusValue(rawValue: string) {
 }
 
 export function normalize(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, "");
+  return value
+    .normalize("NFD")
+    .replace(new RegExp("[\\u0300-\\u036f]", "g"), "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "");
 }
 
 export function isResetCommand(value: string) {
@@ -199,10 +203,10 @@ export function isResetCommand(value: string) {
 }
 
 const nameIntroPatterns: RegExp[] = [
-  /\bi\s*(?:'|a)?m\s+([a-z][a-z'-]*)/i,
-  /\bcall me\s+([a-z][a-z'-]*)/i,
-  /\bmy name(?:'s| is)\s+([a-z][a-z'-]*)/i,
-  /\bthe name(?:'s| is)\s+([a-z][a-z'-]*)/i,
+  /\bi\s*(?:'|a)?m\s+(\p{L}[\p{L}'-]*)/iu,
+  /\bcall me\s+(\p{L}[\p{L}'-]*)/iu,
+  /\bmy name(?:'s| is)\s+(\p{L}[\p{L}'-]*)/iu,
+  /\bthe name(?:'s| is)\s+(\p{L}[\p{L}'-]*)/iu,
 ];
 
 const nameFillerWords = new Set([
@@ -254,7 +258,7 @@ const nameFillerWords = new Set([
  * they otherwise false-positive on "I'm after/looking for/just here for ...".
  */
 export function extractNameFromIntro(rawValue: string): string | null {
-  const commaMatch = rawValue.match(/^\s*([a-z][a-z'-]*)\s*,/i);
+  const commaMatch = rawValue.match(/^\s*(\p{L}[\p{L}'-]*)\s*,/iu);
   if (commaMatch && !nameFillerWords.has(commaMatch[1].toLowerCase())) {
     return commaMatch[1];
   }

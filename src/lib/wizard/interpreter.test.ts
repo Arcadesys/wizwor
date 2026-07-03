@@ -58,4 +58,10 @@ describe("wizard preference interpretation", () => {
   it("returns null for plain single-word replies, leaving the caller to use the raw command", () => {
     expect(extractNameFromIntro("Ada")).toBeNull();
   });
+
+  it("handles accented and non-Latin names instead of treating them as delimiters", () => {
+    expect(extractNameFromIntro("I'm José and I want something ominous")).toBe("José");
+    expect(extractNameFromIntro("Zoë, give me something weird")).toBe("Zoë");
+    expect(interpretQuestionAnswer(getQuestionByKey("mood")!, "très spooky et haunted")?.value).toBe("ominous");
+  });
 });
