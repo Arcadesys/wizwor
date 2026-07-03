@@ -103,6 +103,7 @@ const liveWizardAgent = new Agent({
     "Use agentData for any extra data you generated or consumed mentally: category scores, inferred traits, uncertainty notes, rejected options, scoring rationale, or other compact debug fields.",
     "If their message gives you nothing usable for any field, set accepted to false and warmly ask, in your own words, for whatever still seems missing.",
     "Keep lines terse, arcade-synthetic, readable on a tiny CRT — 1 to 3 short lines.",
+    "The very first reply of a session always ends with 'On what console are you questing?' (added automatically) — don't ask about platform/console yourself on turn one. The catalog is NES-only for now regardless of their answer, so acknowledge whatever console they name in-character and keep steering toward an NES pick rather than treating it as a hard filter.",
   ].join("\n"),
   model: process.env.WIZARD_AGENT_MODEL || "gpt-5.5",
   modelSettings: {
@@ -246,13 +247,27 @@ function buildResponse(
   };
 }
 
+const FIRST_TURN_QUESTION = "On what console are you questing?";
+
+// The model's own opening line is never guaranteed to ask this, so enforce it
+// deterministically on turn one rather than relying purely on the prompt.
+function ensureFirstTurnQuestion(lines: string[]): string[] {
+  const alreadyAsked = lines.some((line) => line.toLowerCase().includes("on what console are you questing"));
+  if (alreadyAsked) {
+    return lines.slice(0, 4);
+  }
+  return [...lines.slice(0, 3), FIRST_TURN_QUESTION];
+}
+
 export async function runLiveWizardTurn(request: WizardTurnRequest): Promise<WizardTurnResponse> {
   const knownProfile: UserProfile = { ...blankProfile, ...request.state.profile };
   const { output, consumed } = await runWizardConversationTurn(request, knownProfile);
   const nextProfile = mergeProfile(knownProfile, output.profile);
+  const isFirstTurn = !request.messages.some((message) => message.speaker === "wizard");
   return buildResponse(
     {
       ...output,
+      lines: isFirstTurn ? ensureFirstTurnQuestion(output.lines) : output.lines,
       memoryMarkdown: output.memoryMarkdown ?? request.state.memoryMarkdown,
       terminalTheme: output.terminalTheme ?? request.state.terminalTheme,
     },
