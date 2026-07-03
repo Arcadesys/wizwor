@@ -51,7 +51,10 @@ describe("generated NES catalog", () => {
     for (const game of generatedNesGames) {
       expect(game.id).toMatch(/^[a-z0-9-]+$/);
       expect(game.title).not.toHaveLength(0);
-      expect(game.kind).toBe("nes");
+      expect(game.platform).toBe("nes");
+      expect(game.isRomhack).toBe(false);
+      expect(game.signalScore).toBeGreaterThanOrEqual(0);
+      expect(game.signalScore).toBeLessThanOrEqual(4);
       expect(game.pitch).toContain(game.title);
       expect(game.moods.length).toBeGreaterThan(0);
       expect(["casual", "fair", "difficult"]).toContain(game.difficulty);

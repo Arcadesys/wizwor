@@ -125,7 +125,7 @@ export function recommendationGate(profile: UserProfile, options: Recommendation
   };
 }
 
-function scoreGame(game: Game, profile: UserProfile): Recommendation {
+export function scoreGame(game: Game, profile: UserProfile): Recommendation {
   let earned = 0;
   let possible = 0;
   const reasons: string[] = [];
@@ -208,7 +208,7 @@ function scoreGame(game: Game, profile: UserProfile): Recommendation {
 
     if (dimension.key === "romhack") {
       const romhack = preference as RomhackInterest;
-      const match = romhack === "yes" ? game.kind === "romhack" : romhack === "no" ? game.kind === "nes" : true;
+      const match = romhack === "yes" ? game.isRomhack : romhack === "no" ? !game.isRomhack : true;
       if (match) {
         earned += dimension.weight;
         reasons.push(romhack === "yes" ? "leans into romhack territory" : "fits your cartridge appetite");
@@ -283,7 +283,7 @@ function dimensionMatchesFocus(game: Game, focus: PreferenceKey, value: UserProf
 
   if (focus === "romhack") {
     const romhack = value as RomhackInterest;
-    return romhack === "curious" || (romhack === "yes" ? game.kind === "romhack" : game.kind === "nes");
+    return romhack === "curious" || (romhack === "yes" ? game.isRomhack : !game.isRomhack);
   }
 
   if (focus === "keywords") {

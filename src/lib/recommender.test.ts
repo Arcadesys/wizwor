@@ -4,10 +4,11 @@ import {
   qualifyingRecommendations,
   recommendationGate,
   recommendationThreshold,
+  scoreGame,
   shouldRevealRecommendations,
 } from "@/lib/recommender";
 import { getAllGames } from "@/lib/game-repository";
-import { games as curatedGames } from "@/data/games";
+import { games as curatedGames, type Game } from "@/data/games";
 import { blankProfile } from "@/lib/wizard/types";
 
 describe("recommendation rubric", () => {
@@ -23,6 +24,32 @@ describe("recommendation rubric", () => {
     }
   });
 
+  it("scores a non-NES, non-romhack game correctly on the romhack dimension", () => {
+    // Regression test: scoring used to branch on game.kind === "nes"/"romhack", which
+    // silently zeroed out this dimension for any platform value other than those two.
+    const syntheticGame: Game = {
+      id: "synthetic-future-platform-game",
+      title: "Synthetic Future Platform Game",
+      platform: "nes",
+      isRomhack: false,
+      year: "2024",
+      pitch: "A test fixture.",
+      playthroughUrl: "https://example.com/game",
+      moods: ["contemplative"],
+      difficulty: "fair",
+      story: "low",
+      playStyle: "puzzle",
+      obscurity: "hidden-gem",
+      tags: ["test"],
+    };
+
+    const saysNo = scoreGame(syntheticGame, { ...blankProfile, name: "Ada", romhack: "no" });
+    expect(saysNo.score).toBe(1);
+
+    const saysYes = scoreGame(syntheticGame, { ...blankProfile, name: "Ada", romhack: "yes" });
+    expect(saysYes.score).toBe(0);
+  });
+
   it("does not reveal on a single answer even if it happens to score perfectly", () => {
     // A lone matched dimension scores 100% (score is relative to what's been answered),
     // so the "enough signal" floor is what actually stops a one-answer instant reveal.
@@ -31,15 +58,16 @@ describe("recommendation rubric", () => {
     expect(shouldRevealRecommendations(profile)).toBe(false);
   });
 
-  it("keeps the coarse categorical fields alone too broad against the full generated catalog", () => {
-    // Mood/playStyle/difficulty/story are coarse buckets shared by many of the
-    // ~2000 generated catalog titles, so these four alone tie dozens deep.
+  it("keeps the coarse categorical fields alone too broad for some profiles against the full generated catalog", () => {
+    // Mood/playStyle/difficulty/story are coarse buckets, and even after filtering
+    // the generated catalog down to signal-backed entries (see game-repository.ts),
+    // some combinations still tie more than maxQualifyingRecommendations deep.
     const profile = {
       ...blankProfile,
       name: "Ada",
       mood: "ominous" as const,
-      playStyle: "side-scroller" as const,
-      difficulty: "difficult" as const,
+      playStyle: "action-adventure" as const,
+      difficulty: "fair" as const,
       story: "some" as const,
     };
     const qualifying = qualifyingRecommendations(profile);

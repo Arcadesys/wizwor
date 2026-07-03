@@ -919,7 +919,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                     </div>
                     <h2>{recommendation.game.title}</h2>
                     <p className="recommendation-kind">
-                      {recommendation.game.kind === "romhack" ? "ROMHACK" : "NES"} / {recommendation.game.year}
+                      {platformLabel(recommendation.game.platform)} / {recommendation.game.year}
                     </p>
                     <p>{recommendation.game.pitch}</p>
                     <p className="recommendation-reasons">{recommendation.reasons.join(" / ")}</p>
@@ -1332,6 +1332,14 @@ function waitForSource(source: AudioBufferSourceNode, paddingMs: number) {
     source.onended = finish;
     window.setTimeout(finish, paddingMs);
   });
+}
+
+function platformLabel(platform: Recommendation["game"]["platform"]) {
+  const labels: Record<Recommendation["game"]["platform"], string> = {
+    nes: "NES",
+    romhack: "ROMHACK",
+  };
+  return labels[platform] ?? platform.toUpperCase();
 }
 
 function speakerLabel(speaker: Message["speaker"]) {
