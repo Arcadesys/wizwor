@@ -334,7 +334,8 @@ describe("wizard terminal UI", () => {
             game: {
               id: "metroid-mother",
               title: "Metroid: Mother",
-              kind: "romhack",
+              platform: "romhack",
+              isRomhack: true,
               year: "romhack",
               pitch: "A friendlier, map-aware restoration of Metroid that keeps the lonely alien dread intact.",
               playthroughUrl: "https://www.youtube.com/watch?v=S7fwbZjLpXE",
@@ -343,7 +344,6 @@ describe("wizard terminal UI", () => {
               story: "some",
               playStyle: "side-scroller",
               obscurity: "hidden-gem",
-              romhack: "yes",
               tags: ["exploration"],
             },
             score: 0.96,

@@ -132,14 +132,20 @@ function currentBestMatches(profile: UserProfile) {
 }
 
 function gamesAboveThreshold(profile: UserProfile) {
-  return qualifyingRecommendations(profile).map((recommendation) => ({
-    id: recommendation.game.id,
-    title: recommendation.game.title,
-    matchPercent: Math.round(recommendation.score * 100),
-    reasons: recommendation.reasons,
-    pitch: recommendation.game.pitch,
-    tags: recommendation.game.tags,
-  }));
+  // qualifyingRecommendations is unbounded by count (unlike lookup_recommendations'
+  // .slice(0, 8) below), so a broad, single-dimension profile against the ~2000-game
+  // catalog could otherwise serialize hundreds of matches into the agent's context
+  // and the client-facing agentData payload on every turn.
+  return qualifyingRecommendations(profile)
+    .slice(0, 8)
+    .map((recommendation) => ({
+      id: recommendation.game.id,
+      title: recommendation.game.title,
+      matchPercent: Math.round(recommendation.score * 100),
+      reasons: recommendation.reasons,
+      pitch: recommendation.game.pitch,
+      tags: recommendation.game.tags,
+    }));
 }
 
 async function runWizardConversationTurn(request: WizardTurnRequest, knownProfile: UserProfile) {

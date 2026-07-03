@@ -342,6 +342,7 @@ export type NesCatalogGame = GeneratedGameMetadata & {
   firstReleased: string;
   sourceUrl: string;
   generatedAt: string;
+  signalScore: number;
 };
 
 export const regionLabels = ${stableStringify(regionLabels)} as const;
@@ -510,7 +511,7 @@ function normalizeEntry(entry) {
     year: entry.year || "Unknown",
     firstReleased: entry.firstReleased || entry.year || "Unknown",
     regions: unique(entry.regions.filter(Boolean)),
-    kind: "nes",
+    platform: "nes",
     sourceUrl: entry.sourceUrl,
   };
 }
@@ -546,13 +547,14 @@ function deriveGameFields(entry) {
 
   const playStyleRule = playStyleRules.find((rule) => rule.patterns.some((pattern) => haystack.includes(pattern)));
   const playStyle = playStyleRule?.playStyle ?? "side-scroller";
+  const playStyleSignal = Boolean(playStyleRule);
   for (const tag of playStyleRule?.tags ?? ["action"]) {
     tags.add(tag);
   }
 
-  const moods = moodRules
-    .filter((rule) => rule.patterns.some((pattern) => haystack.includes(pattern)))
-    .map((rule) => rule.mood);
+  const matchedMoodRules = moodRules.filter((rule) => rule.patterns.some((pattern) => haystack.includes(pattern)));
+  const moodSignal = matchedMoodRules.length > 0;
+  const moods = matchedMoodRules.map((rule) => rule.mood);
   if (!moods.length) {
     moods.push(playStyle === "puzzle" ? "contemplative" : playStyle === "action-adventure" ? "heroic" : "arcade");
   }
@@ -560,17 +562,15 @@ function deriveGameFields(entry) {
     moods.push(moods[0] === "arcade" ? "heroic" : "arcade");
   }
 
-  const difficulty = difficultSignals.some((signal) => haystack.includes(signal))
-    ? "difficult"
-    : casualSignals.some((signal) => haystack.includes(signal))
-      ? "casual"
-      : "fair";
+  const difficultSignal = difficultSignals.some((signal) => haystack.includes(signal));
+  const casualSignal = casualSignals.some((signal) => haystack.includes(signal));
+  const difficulty = difficultSignal ? "difficult" : casualSignal ? "casual" : "fair";
+  const difficultySignal = difficultSignal || casualSignal;
 
-  const story = richStorySignals.some((signal) => haystack.includes(signal))
-    ? "rich"
-    : someStorySignals.some((signal) => haystack.includes(signal)) || playStyle === "action-adventure"
-      ? "some"
-      : "low";
+  const richStorySignal = richStorySignals.some((signal) => haystack.includes(signal));
+  const someStorySignal = someStorySignals.some((signal) => haystack.includes(signal));
+  const story = richStorySignal ? "rich" : someStorySignal || playStyle === "action-adventure" ? "some" : "low";
+  const storySignal = richStorySignal || someStorySignal;
 
   const obscurity = classicTitles.has(entry.title)
     ? "classic"
@@ -582,6 +582,13 @@ function deriveGameFields(entry) {
       ? "strange"
       : "hidden-gem";
 
+  // How many of the 4 subjective scoring dimensions came from a genuine keyword
+  // match rather than a silent fallback default. Games below the merge-time
+  // quality bar (see src/lib/game-repository.ts) get excluded from the live
+  // recommender even though they still appear in this generated file, since a
+  // low score here means the recommender's rubric has nothing real to go on.
+  const signalScore = [moodSignal, playStyleSignal, difficultySignal, storySignal].filter(Boolean).length;
+
   return {
     pitch: buildPitch(entry, playStyle, difficulty, story),
     moods: unique(moods).slice(0, 2),
@@ -589,7 +596,8 @@ function deriveGameFields(entry) {
     story,
     playStyle,
     obscurity,
-    romhack: "no",
+    isRomhack: false,
+    signalScore,
     tags: [...tags].sort(),
   };
 }

@@ -25,7 +25,8 @@ const recommendationResponse = {
       game: {
         id: "metroid-mother",
         title: "Metroid: Mother",
-        kind: "romhack",
+        platform: "romhack",
+        isRomhack: true,
         year: "romhack",
         pitch: "A friendlier, map-aware restoration of Metroid that keeps the lonely alien dread intact.",
         playthroughUrl: "https://www.youtube.com/watch?v=S7fwbZjLpXE",
@@ -34,7 +35,6 @@ const recommendationResponse = {
         story: "some",
         playStyle: "side-scroller",
         obscurity: "hidden-gem",
-        romhack: "yes",
         tags: ["exploration", "quality of life", "lonely"],
       },
       score: 0.96,
