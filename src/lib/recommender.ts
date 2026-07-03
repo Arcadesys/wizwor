@@ -67,7 +67,7 @@ type RecommendationGateOptions = {
 };
 
 function normalizeKeywords(value: unknown): string[] {
-  const raw = Array.isArray(value) ? value : [value];
+  const raw = value == null ? [] : Array.isArray(value) ? value : [value];
   return raw
     .map((entry) => String(entry).toLowerCase().trim())
     .filter((entry) => entry.length > 0);
