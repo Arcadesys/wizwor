@@ -1,36 +1,21 @@
 "use client";
 
 import { FormEvent, KeyboardEvent, useEffect, useMemo, useRef, useState } from "react";
-import type { PreferenceKey, Recommendation, UserProfile } from "@/lib/recommender";
-import {
-  answeredPreferenceCount,
-  getRecommendations,
-  recommendationThreshold,
-  shouldRevealRecommendations,
-} from "@/lib/recommender";
+import type { Recommendation, UserProfile } from "@/lib/recommender";
+import { answeredPreferenceCount, getRecommendations, recommendationThreshold } from "@/lib/recommender";
+import { isResetCommand } from "@/lib/wizard/interpreter";
+import { focusQuestion, getQuestionByKey } from "@/lib/wizard/questions";
+import type {
+  WizardFocusQuestion,
+  WizardMessage,
+  WizardQuestion,
+  WizardState,
+  WizardTurnResponse,
+} from "@/lib/wizard/types";
+import { blankProfile } from "@/lib/wizard/types";
 
-type Message = {
+type Message = WizardMessage & {
   id: string;
-  speaker: "system" | "wizard" | "user";
-  text: string;
-};
-
-type Option = {
-  value: string;
-  label: string;
-  detail: string;
-};
-
-type Question = {
-  key: PreferenceKey;
-  prompt: string;
-  options: Option[];
-};
-
-type FocusQuestion = {
-  key: "focus";
-  prompt: string;
-  options: Array<Option & { value: PreferenceKey }>;
 };
 
 type AudioRig = {
@@ -60,86 +45,15 @@ type GamepadState = {
 const samSampleRate = 22050;
 const storageKey = "wyrm-terminal-profile";
 
-const blankProfile: UserProfile = {
-  name: "",
+type WizardTerminalProps = {
+  fastMode?: boolean;
 };
 
-const questions: Question[] = [
-  {
-    key: "mood",
-    prompt: "Name the air you want around the cartridge.",
-    options: [
-      { value: "ominous", label: "Ominous", detail: "Dungeons, dread, haunted machinery." },
-      { value: "heroic", label: "Heroic", detail: "A quest with a torch held high." },
-      { value: "weird", label: "Weird", detail: "Odd, cursed, difficult to explain." },
-      { value: "arcade", label: "Arcade", detail: "Fast, bright, score-chasing energy." },
-      { value: "contemplative", label: "Quiet", detail: "Mystery, wandering, and thinking." },
-    ],
-  },
-  {
-    key: "playStyle",
-    prompt: "Choose the shape of the trial.",
-    options: [
-      { value: "side-scroller", label: "Side scroller", detail: "Move left to right through danger." },
-      { value: "top-down", label: "Top down", detail: "Mazes, rooms, maps, corridors." },
-      { value: "action-adventure", label: "Adventure", detail: "Exploration with weapons and secrets." },
-      { value: "platformer", label: "Platformer", detail: "Jumps, timing, strange terrain." },
-      { value: "puzzle", label: "Puzzle", detail: "Rooms that want to be solved." },
-    ],
-  },
-  {
-    key: "difficulty",
-    prompt: "How sharp should the teeth be?",
-    options: [
-      { value: "casual", label: "Casual", detail: "A friendly evening spell." },
-      { value: "fair", label: "Fair", detail: "Push back, but no cruelty." },
-      { value: "difficult", label: "Difficult", detail: "The old ways. The hard ways." },
-    ],
-  },
-  {
-    key: "story",
-    prompt: "How much story should glow in the walls?",
-    options: [
-      { value: "low", label: "Little", detail: "Play first. Lore later, if ever." },
-      { value: "some", label: "Some", detail: "A quest shape and a few secrets." },
-      { value: "rich", label: "Rich", detail: "Myth, place, and a reason to continue." },
-    ],
-  },
-  {
-    key: "obscurity",
-    prompt: "Where on the shelf should I reach?",
-    options: [
-      { value: "classic", label: "Classic", detail: "Known power. Proven cartridge." },
-      { value: "hidden-gem", label: "Hidden gem", detail: "A side passage with good dust." },
-      { value: "strange", label: "Strange", detail: "The off-road, the altered, the muttering." },
-    ],
-  },
-  {
-    key: "romhack",
-    prompt: "Will you cross into altered cartridges?",
-    options: [
-      { value: "no", label: "Original NES", detail: "Unmodified releases only." },
-      { value: "curious", label: "Curious", detail: "Show me one if the omen is strong." },
-      { value: "yes", label: "Romhacks", detail: "Open the forbidden drawer." },
-    ],
-  },
-];
-
-const focusQuestion: FocusQuestion = {
-  key: "focus",
-  prompt: "The omens conflict. Which answer rules all others?",
-  options: [
-    { value: "mood", label: "Mood", detail: "The feeling matters most." },
-    { value: "playStyle", label: "Controls", detail: "The way it plays matters most." },
-    { value: "difficulty", label: "Difficulty", detail: "The bite must be right." },
-    { value: "obscurity", label: "Discovery", detail: "The shelf position matters most." },
-  ],
-};
-
-export default function Home() {
+export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const [profile, setProfile] = useState<UserProfile>(blankProfile);
   const [hydrated, setHydrated] = useState(false);
   const [started, setStarted] = useState(false);
+  const [needsName, setNeedsName] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "cold-screen",
@@ -148,15 +62,23 @@ export default function Home() {
     },
   ]);
   const [command, setCommand] = useState("");
-  const [activeQuestion, setActiveQuestion] = useState<Question | null>(null);
-  const [activeFocusQuestion, setActiveFocusQuestion] = useState<FocusQuestion | null>(null);
+  const [activeQuestion, setActiveQuestion] = useState<WizardQuestion | null>(null);
+  const [activeFocusQuestion, setActiveFocusQuestion] = useState<WizardFocusQuestion | null>(null);
   const [suggestionIndex, setSuggestionIndex] = useState(0);
+  const [isSuggestionBrowsing, setIsSuggestionBrowsing] = useState(false);
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
   const [isStreaming, setIsStreaming] = useState(false);
   const [soundOn, setSoundOn] = useState(false);
   const [samReady, setSamReady] = useState(false);
 
   const profileRef = useRef(profile);
+  const startedRef = useRef(started);
+  const needsNameRef = useRef(needsName);
+  const activeQuestionRef = useRef(activeQuestion);
+  const activeFocusQuestionRef = useRef(activeFocusQuestion);
+  const recommendationsRef = useRef(recommendations);
+  const messagesRef = useRef(messages);
+  const sessionIdRef = useRef(makeId("session"));
   const audioRef = useRef<AudioRig | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -207,6 +129,30 @@ export default function Home() {
   }, [profile]);
 
   useEffect(() => {
+    startedRef.current = started;
+  }, [started]);
+
+  useEffect(() => {
+    needsNameRef.current = needsName;
+  }, [needsName]);
+
+  useEffect(() => {
+    activeQuestionRef.current = activeQuestion;
+  }, [activeQuestion]);
+
+  useEffect(() => {
+    activeFocusQuestionRef.current = activeFocusQuestion;
+  }, [activeFocusQuestion]);
+
+  useEffect(() => {
+    recommendationsRef.current = recommendations;
+  }, [recommendations]);
+
+  useEffect(() => {
+    messagesRef.current = messages;
+  }, [messages]);
+
+  useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [messages, activeQuestion, activeFocusQuestion, recommendations]);
 
@@ -241,25 +187,85 @@ export default function Home() {
     ]);
   }
 
+  function currentWizardState(): WizardState {
+    return {
+      started: startedRef.current,
+      needsName: needsNameRef.current,
+      activeQuestionKey: activeQuestionRef.current?.key ?? null,
+      awaitingFocus: Boolean(activeFocusQuestionRef.current),
+      revealed: recommendationsRef.current.length > 0,
+      profile: profileRef.current,
+    };
+  }
+
+  async function requestWizardTurn(turnCommand: string) {
+    const response = await fetch("/api/wizard", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        sessionId: sessionIdRef.current,
+        command: turnCommand,
+        state: currentWizardState(),
+        messages: messagesRef.current.map(({ speaker, text }) => ({ speaker, text })),
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Wizard turn failed with ${response.status}`);
+    }
+
+    return (await response.json()) as WizardTurnResponse;
+  }
+
+  function applyWizardResponse(response: WizardTurnResponse) {
+    persistProfile(response.state.profile);
+    setStarted(response.state.started);
+    startedRef.current = response.state.started;
+    setNeedsName(response.state.needsName);
+    needsNameRef.current = response.state.needsName;
+    const nextQuestion = getQuestionByKey(response.state.activeQuestionKey);
+    setActiveQuestion(nextQuestion);
+    activeQuestionRef.current = nextQuestion;
+    const nextFocusQuestion = response.state.awaitingFocus ? focusQuestion : null;
+    setActiveFocusQuestion(nextFocusQuestion);
+    activeFocusQuestionRef.current = nextFocusQuestion;
+    setRecommendations(response.recommendations);
+    recommendationsRef.current = response.recommendations;
+    setSuggestionIndex(0);
+    setIsSuggestionBrowsing(false);
+  }
+
   function resetSession() {
     streamTokenRef.current += 1;
     streamChainRef.current = Promise.resolve();
     sessionStorage.removeItem(storageKey);
+    sessionIdRef.current = makeId("session");
     setProfile(blankProfile);
     profileRef.current = blankProfile;
     setStarted(false);
-    setMessages([
+    startedRef.current = false;
+    setNeedsName(false);
+    needsNameRef.current = false;
+    const coldMessages: Message[] = [
       {
         id: makeId("cold-screen"),
         speaker: "system",
         text: "CRT SIGNAL DORMANT. PRESS ENTER TO SUMMON A GUIDE.",
       },
-    ]);
+    ];
+    setMessages(coldMessages);
+    messagesRef.current = coldMessages;
     setCommand("");
     setActiveQuestion(null);
+    activeQuestionRef.current = null;
     setActiveFocusQuestion(null);
+    activeFocusQuestionRef.current = null;
     setSuggestionIndex(0);
+    setIsSuggestionBrowsing(false);
     setRecommendations([]);
+    recommendationsRef.current = [];
     setIsStreaming(false);
     window.setTimeout(() => inputRef.current?.focus(), 0);
   }
@@ -268,6 +274,23 @@ export default function Home() {
     streamChainRef.current = streamChainRef.current.then(async () => {
       const token = streamTokenRef.current;
       setIsStreaming(true);
+
+      if (fastMode) {
+        setMessages((current) => [
+          ...current,
+          ...lines.map((line) => ({
+            id: makeId("wiz"),
+            speaker: "wizard" as const,
+            text: line,
+          })),
+        ]);
+        await wait(0);
+        if (token === streamTokenRef.current) {
+          setIsStreaming(false);
+        }
+        return;
+      }
+
       for (const line of lines) {
         if (token !== streamTokenRef.current) {
           return;
@@ -332,30 +355,23 @@ export default function Home() {
       return;
     }
 
-    setStarted(true);
     setRecommendations([]);
+    recommendationsRef.current = [];
     setActiveQuestion(null);
+    activeQuestionRef.current = null;
     setActiveFocusQuestion(null);
-    await startMusic();
-    await loadSam();
+    activeFocusQuestionRef.current = null;
+    if (!fastMode) {
+      await startMusic();
+      await loadSam();
+    }
 
-    const currentProfile = profileRef.current;
-    const intro = currentProfile.name.trim()
-      ? [
-          "SIGNAL FOUND IN THE GLASS.",
-          `${currentProfile.name.toUpperCase()}, your session sigil still burns.`,
-          "Let us return to the shelf of old thunder.",
-        ]
-      : [
-          "THE CURSOR WAKES.",
-          "I am the Keeper Beneath the Screen, and I will guide you through these ancient tomes.",
-          "Tell me the name I should carve into this session.",
-        ];
-
-    await streamWizard(intro);
-
-    if (currentProfile.name.trim()) {
-      await continueInquiry(currentProfile);
+    try {
+      const response = await requestWizardTurn("");
+      applyWizardResponse(response);
+      await streamWizard(response.lines);
+    } catch {
+      await streamWizard(["The signal cracked before the guide could enter. Try the summoning again."]);
     }
   }
 
@@ -376,115 +392,24 @@ export default function Home() {
       return;
     }
 
-    if (!profileRef.current.name.trim()) {
-      if (!value) {
-        playKeyTone("deny");
-        return;
-      }
-
-      setCommand("");
-      appendUser(value);
-      const nextProfile = { ...profileRef.current, name: value };
-      persistProfile(nextProfile);
-      await streamWizard([
-        `${value.toUpperCase()} is written in green fire.`,
-        "Now answer plainly. The cartridge hears hesitation.",
-      ]);
-      await continueInquiry(nextProfile);
-      return;
-    }
-
-    if (activeQuestion) {
-      const option = interpretQuestionAnswer(activeQuestion, value);
-      if (!option) {
-        playKeyTone("deny");
-        if (value) {
-          setCommand("");
-          appendUser(value);
-          await streamWizard(["That answer will not bind. Type it another way, or press TAB to copy the lit rune."]);
-        }
-        return;
-      }
-
-      setCommand("");
-      await chooseOption(activeQuestion, option, value);
-      return;
-    }
-
-    if (activeFocusQuestion) {
-      const option = interpretFocusAnswer(activeFocusQuestion, value);
-      if (!option) {
-        playKeyTone("deny");
-        if (value) {
-          setCommand("");
-          appendUser(value);
-          await streamWizard(["Name the ruling omen another way, or press TAB to copy the lit rune."]);
-        }
-        return;
-      }
-
-      setCommand("");
-      await chooseFocus(option, value);
-      return;
-    }
-
     setCommand("");
-    if (value) {
-      appendUser(value);
-      await streamWizard(["The shelf is already open. Read the three tomes below."]);
-    }
-  }
-
-  async function chooseOption(question: Question, option: Option, rawAnswer = option.label) {
-    setActiveQuestion(null);
-    appendUser(rawAnswer);
-    const nextProfile = {
-      ...profileRef.current,
-      [question.key]: option.value,
-    } as UserProfile;
-
-    persistProfile(nextProfile);
-    await streamWizard([`I read that as ${option.label}.`]);
-    await continueInquiry(nextProfile);
-  }
-
-  async function chooseFocus(option: FocusQuestion["options"][number], rawAnswer = option.label) {
-    setActiveFocusQuestion(null);
-    appendUser(rawAnswer);
-    const nextProfile = {
-      ...profileRef.current,
-      focus: option.value,
-    };
-
-    persistProfile(nextProfile);
-    await streamWizard(["The ruling omen locks into place.", "The shelf yields."]);
-    reveal(nextProfile);
-  }
-
-  async function continueInquiry(nextProfile: UserProfile) {
-    if (shouldRevealRecommendations(nextProfile)) {
-      reveal(nextProfile);
+    if (!value) {
+      playKeyTone("deny");
       return;
     }
 
-    const nextQuestion = questions.find((question) => !nextProfile[question.key]);
-    if (nextQuestion) {
-      await streamWizard([nextQuestion.prompt]);
-      setActiveQuestion(nextQuestion);
-      return;
+    appendUser(value);
+
+    try {
+      const response = await requestWizardTurn(value);
+      applyWizardResponse(response);
+      if (!response.accepted) {
+        playKeyTone("deny");
+      }
+      await streamWizard(response.lines);
+    } catch {
+      await streamWizard(["The agent wire hums, but no answer returns. Try again."]);
     }
-
-    await streamWizard([focusQuestion.prompt]);
-    setActiveFocusQuestion(focusQuestion);
-  }
-
-  async function reveal(nextProfile: UserProfile) {
-    const topThree = getRecommendations(nextProfile).slice(0, 3);
-    setRecommendations(topThree);
-    await streamWizard([
-      "The reading reaches ninety percent resonance.",
-      "Three cartridges rise from the dark.",
-    ]);
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -493,16 +418,40 @@ export default function Home() {
   }
 
   function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
-    if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+    if (event.key === "ArrowUp") {
       event.preventDefault();
-      moveSuggestion(-1);
+      startSuggestionBrowsing();
       playKeyTone("move");
       return;
     }
 
-    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+    if (event.key === "ArrowDown") {
       event.preventDefault();
-      moveSuggestion(1);
+      setIsSuggestionBrowsing(false);
+      playKeyTone("move");
+      return;
+    }
+
+    if (event.key === "ArrowLeft") {
+      if (isSuggestionBrowsing) {
+        event.preventDefault();
+        moveSuggestion(-1);
+        playKeyTone("move");
+      }
+      return;
+    }
+
+    if (event.key === "ArrowRight") {
+      if (isSuggestionBrowsing) {
+        event.preventDefault();
+        moveSuggestion(1);
+        playKeyTone("move");
+      }
+      return;
+    }
+
+    if (event.key === "Escape") {
+      setIsSuggestionBrowsing(false);
       playKeyTone("move");
       return;
     }
@@ -518,6 +467,10 @@ export default function Home() {
     }
 
     if (event.key === "Enter") {
+      if (isSuggestionBrowsing && !command.trim() && suggestions.length) {
+        event.preventDefault();
+        submitFocusedSuggestion();
+      }
       playKeyTone("enter");
       return;
     }
@@ -543,11 +496,21 @@ export default function Home() {
     submitCommand(option.label);
   }
 
+  function startSuggestionBrowsing() {
+    if (!suggestions.length) {
+      return;
+    }
+
+    setIsSuggestionBrowsing(true);
+    setSuggestionIndex((current) => getSafeSuggestionIndex(suggestions.length, current));
+  }
+
   function moveSuggestion(direction: 1 | -1) {
     if (!suggestions.length) {
       return;
     }
 
+    setIsSuggestionBrowsing(true);
     setSuggestionIndex((current) => (current + direction + suggestions.length) % suggestions.length);
   }
 
@@ -712,7 +675,7 @@ export default function Home() {
     const output = buffer.getChannelData(0);
     for (const [index] of output.entries()) {
       const envelope = 1 - index / output.length;
-      output[index] = (Math.random() * 2 - 1) * envelope * envelope;
+      output[index] = pseudoNoise(index, character) * envelope * envelope;
     }
 
     const source = rig.context.createBufferSource();
@@ -769,7 +732,16 @@ export default function Home() {
   });
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#050505] text-[#f7f7f7]" onClick={() => inputRef.current?.focus()}>
+    <main
+      className="min-h-screen overflow-hidden bg-[#050505] text-[#f7f7f7]"
+      onClick={() => inputRef.current?.focus()}
+      onKeyDown={(event) => {
+        if (event.target === event.currentTarget) {
+          inputRef.current?.focus();
+        }
+      }}
+      tabIndex={-1}
+    >
       <div className="crt-shell relative flex min-h-screen w-screen flex-col p-2 sm:p-3">
         <section className="terminal-stage z-10">
           <div className="terminal-window min-h-0 overflow-y-auto">
@@ -838,11 +810,22 @@ export default function Home() {
                     key={option.value}
                     type="button"
                     className={`suggestion-chip ${
-                      index === getSafeSuggestionIndex(suggestions.length, suggestionIndex) ? "is-active" : ""
+                      isSuggestionBrowsing && index === getSafeSuggestionIndex(suggestions.length, suggestionIndex)
+                        ? "is-active"
+                        : ""
                     }`}
-                    onMouseEnter={() => setSuggestionIndex(index)}
+                    aria-current={
+                      isSuggestionBrowsing && index === getSafeSuggestionIndex(suggestions.length, suggestionIndex)
+                        ? "true"
+                        : undefined
+                    }
+                    onMouseEnter={() => {
+                      setIsSuggestionBrowsing(true);
+                      setSuggestionIndex(index);
+                    }}
                     onClick={(event) => {
                       event.stopPropagation();
+                      setIsSuggestionBrowsing(true);
                       setCommand(option.label);
                       submitCommand(option.label);
                     }}
@@ -902,108 +885,8 @@ export default function Home() {
   );
 }
 
-function matchOption<T extends Option>(options: T[], rawValue: string) {
-  const normalized = normalize(rawValue);
-  if (!normalized) {
-    return null;
-  }
-
-  return (
-    options.find((option) => normalize(option.label) === normalized || normalize(option.value) === normalized) ??
-    options.find((option) => normalize(option.label).startsWith(normalized) || normalize(option.value).startsWith(normalized)) ??
-    options.find((option) => normalize(option.label).includes(normalized))
-  );
-}
-
-function interpretQuestionAnswer(question: Question, rawValue: string) {
-  const matched = matchOption(question.options, rawValue);
-  if (matched) {
-    return matched;
-  }
-
-  const normalized = normalize(rawValue);
-  if (!normalized) {
-    return null;
-  }
-
-  const inferredValue = inferPreferenceValue(question.key, normalized);
-  return inferredValue ? question.options.find((option) => option.value === inferredValue) ?? null : null;
-}
-
-function interpretFocusAnswer(question: FocusQuestion, rawValue: string) {
-  const matched = matchOption(question.options, rawValue);
-  if (matched) {
-    return matched;
-  }
-
-  const normalized = normalize(rawValue);
-  if (!normalized) {
-    return null;
-  }
-
-  const inferredValue = inferFocusValue(normalized);
-  return inferredValue ? question.options.find((option) => option.value === inferredValue) ?? null : null;
-}
-
-function inferPreferenceValue(key: PreferenceKey, normalized: string) {
-  const hints: Record<PreferenceKey, Record<string, string[]>> = {
-    mood: {
-      ominous: ["ominous", "dark", "spooky", "scary", "horror", "haunted", "creepy", "gothic", "grim", "dread"],
-      heroic: ["hero", "heroic", "quest", "epic", "brave", "fantasy", "save", "adventure"],
-      weird: ["weird", "strange", "odd", "bizarre", "surreal", "experimental", "wild", "mutant"],
-      arcade: ["arcade", "fast", "score", "action", "twitch", "quick", "bright", "simple"],
-      contemplative: ["quiet", "slow", "mystery", "mysterious", "explore", "moody", "atmosphere", "thoughtful"],
-    },
-    playStyle: {
-      "side-scroller": ["sidescroller", "sidescrolling", "lefttoright", "scrolling", "runandgun"],
-      "top-down": ["topdown", "overhead", "maze", "mazes", "rooms", "dungeon"],
-      "action-adventure": ["adventure", "exploration", "explore", "zelda", "quest", "secrets"],
-      platformer: ["platform", "platformer", "jump", "jumping", "mario", "precision"],
-      puzzle: ["puzzle", "puzzles", "brain", "logic", "solve", "thinking"],
-    },
-    difficulty: {
-      casual: ["casual", "easy", "chill", "relaxed", "forgiving", "simple", "cozy", "nottoohard", "notbrutal"],
-      fair: ["fair", "medium", "balanced", "normal", "moderate", "somechallenge", "challenge"],
-      difficult: ["difficult", "hard", "brutal", "punishing", "tough", "nasty", "mean", "teeth", "challenge"],
-    },
-    story: {
-      low: ["low", "little", "none", "nostory", "gameplay", "arcade", "minimal"],
-      some: ["some", "bit", "littlelore", "lightstory", "quest", "context"],
-      rich: ["rich", "story", "lore", "myth", "narrative", "world", "plot", "deep"],
-    },
-    obscurity: {
-      classic: ["classic", "known", "famous", "popular", "essential", "canon", "mainstream"],
-      "hidden-gem": ["hidden", "gem", "underrated", "overlooked", "lesserknown", "deepcut"],
-      strange: ["strange", "obscure", "weird", "offbeat", "offthebeatenpath", "odd", "rare"],
-    },
-    romhack: {
-      no: ["no", "original", "official", "vanilla", "nesonly", "nothacks", "unmodified"],
-      curious: ["curious", "maybe", "open", "fine", "ifgood", "possibly"],
-      yes: ["yes", "romhack", "romhacks", "hack", "hacks", "mod", "mods", "altered", "forbidden"],
-    },
-  };
-
-  const scores = Object.entries(hints[key]).map(([value, words]) => ({
-    value,
-    score: words.reduce((sum, word) => sum + (normalized.includes(word) ? word.length : 0), 0),
-  }));
-  const best = scores.sort((left, right) => right.score - left.score)[0];
-  return best && best.score > 0 ? best.value : null;
-}
-
-function inferFocusValue(normalized: string): FocusQuestion["options"][number]["value"] | null {
-  const focusHints: Partial<Record<PreferenceKey, string[]>> = {
-    mood: ["mood", "vibe", "feel", "feeling", "tone", "atmosphere"],
-    playStyle: ["controls", "play", "plays", "style", "genre", "movement"],
-    difficulty: ["difficulty", "hard", "easy", "challenge", "bite"],
-    obscurity: ["discovery", "obscure", "hidden", "weird", "shelf", "unknown"],
-  };
-  const scores = Object.entries(focusHints).map(([value, words]) => ({
-    value: value as PreferenceKey,
-    score: (words ?? []).reduce((sum, word) => sum + (normalized.includes(word) ? word.length : 0), 0),
-  }));
-  const best = scores.sort((left, right) => right.score - left.score)[0];
-  return best && best.score > 0 ? best.value : null;
+export default function Home() {
+  return <WizardTerminal />;
 }
 
 function getSafeSuggestionIndex(length: number, index: number) {
@@ -1012,27 +895,6 @@ function getSafeSuggestionIndex(length: number, index: number) {
   }
 
   return ((index % length) + length) % length;
-}
-
-function normalize(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, "");
-}
-
-function isResetCommand(value: string) {
-  const normalized = normalize(value);
-  if (!normalized) {
-    return false;
-  }
-
-  return [
-    "clearcontext",
-    "clearyourcontext",
-    "startover",
-    "restart",
-    "reset",
-    "newsession",
-    "newgame",
-  ].some((command) => normalized === command || normalized.includes(command));
 }
 
 function sanitizeForSam(value: string) {
@@ -1089,7 +951,7 @@ function playNoise(context: AudioContext, destination: AudioNode, start: number)
   const buffer = context.createBuffer(1, context.sampleRate * 0.08, context.sampleRate);
   const output = buffer.getChannelData(0);
   for (let index = 0; index < output.length; index += 1) {
-    output[index] = (Math.random() * 2 - 1) * (1 - index / output.length);
+    output[index] = pseudoNoise(index, "n") * (1 - index / output.length);
   }
 
   const source = context.createBufferSource();
@@ -1100,6 +962,11 @@ function playNoise(context: AudioContext, destination: AudioNode, start: number)
   source.connect(gain);
   gain.connect(destination);
   source.start(start);
+}
+
+function pseudoNoise(index: number, seed: string) {
+  const value = Math.sin((index + 1) * 12.9898 + seed.charCodeAt(0) * 78.233) * 43758.5453;
+  return (value - Math.floor(value)) * 2 - 1;
 }
 
 function waitForSource(source: AudioBufferSourceNode, paddingMs: number) {
