@@ -1,4 +1,9 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page, type TestInfo } from "@playwright/test";
+
+async function attachScreenshot(page: Page, testInfo: TestInfo, name: string) {
+  const body = await page.screenshot({ fullPage: true });
+  await testInfo.attach(name, { body, contentType: "image/png" });
+}
 
 const noRecommendationsResponse = {
   adapter: "chatgpt",
@@ -68,7 +73,7 @@ test("starts blank without canned mock responses", async ({ page }, testInfo) =>
   await expect(page.getByRole("heading", { name: "Choose Console Context" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Select NES" })).toBeVisible();
 
-  await page.screenshot({ path: testInfo.outputPath("blank-start.png"), fullPage: true });
+  await attachScreenshot(page, testInfo, "blank-start");
 });
 
 test("clicking the window focuses chat except recommendation buttons", async ({ page }, testInfo) => {
@@ -105,7 +110,7 @@ test("clicking the window focuses chat except recommendation buttons", async ({ 
   await expect(prompt).not.toBeFocused();
   expect(commands).toEqual(["Ada wants an ominous side-scroller with fair difficulty and some story."]);
 
-  await page.screenshot({ path: testInfo.outputPath("focus-exception.png"), fullPage: true });
+  await attachScreenshot(page, testInfo, "focus-exception");
 });
 
 test("the agent controls when recommendations appear at the narrowed threshold", async ({ page }, testInfo) => {
@@ -138,10 +143,10 @@ test("the agent controls when recommendations appear at the narrowed threshold",
   await expect(page.getByRole("link", { name: "Watch Playthrough" })).toBeVisible();
 
   expect(commands).toEqual(["Ada wants an ominous side-scroller.", "Fair difficulty, some story."]);
-  await page.screenshot({ path: testInfo.outputPath("agent-recommendation.png"), fullPage: true });
+  await attachScreenshot(page, testInfo, "agent-recommendation");
 });
 
-test("start over returns the terminal to a blank ready state", async ({ page }) => {
+test("start over returns the terminal to a blank ready state", async ({ page }, testInfo) => {
   await page.route("**/api/wizard", async (route) => {
     await route.fulfill({
       contentType: "application/json",
@@ -168,6 +173,45 @@ test("start over returns the terminal to a blank ready state", async ({ page }) 
   await expect(page.getByRole("heading", { name: "Metroid: Mother" })).toHaveCount(0);
   await expect(page.getByText("Was this reading true?")).toHaveCount(0);
   await expect(page.locator(".status-line")).toContainText("ANS 0/6");
+  await attachScreenshot(page, testInfo, "start-over-reset");
+});
+
+test("console context gates the prompt until a platform is chosen", async ({ page }, testInfo) => {
+  await page.goto("/test");
+  const prompt = page.getByLabel("Terminal command prompt");
+  await expect(prompt).toBeEnabled();
+  await expect(page.getByRole("heading", { name: "Choose Console Context" })).toBeVisible();
+  await attachScreenshot(page, testInfo, "console-context-initial");
+
+  await prompt.fill("Ada wants an ominous side-scroller.");
+  await prompt.press("Enter");
+  await expect(page.getByText(/Choose a console first/i)).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Choose Console Context" })).toBeVisible();
+  await attachScreenshot(page, testInfo, "console-context-rejected-freetext");
+
+  await page.getByRole("button", { name: "Select SNES" }).click();
+  await expect(page.getByRole("heading", { name: "Choose Console Context" })).toHaveCount(0);
+  await expect(page.getByText("SNES", { exact: true })).toBeVisible();
+  await expect(prompt).toBeFocused();
+  await attachScreenshot(page, testInfo, "console-context-selected-snes");
+
+  await page.getByRole("button", { name: "Catalog settings" }).click();
+  const snesToggle = page.locator('[data-platform="snes"]');
+  await expect(snesToggle).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator('[data-platform="nes"]')).toHaveAttribute("aria-pressed", "false");
+  await attachScreenshot(page, testInfo, "console-context-settings-snes-only");
+});
+
+test("typing a console name selects that console context", async ({ page }, testInfo) => {
+  await page.goto("/test");
+  const prompt = page.getByLabel("Terminal command prompt");
+  await expect(prompt).toBeEnabled();
+
+  await prompt.fill("genesis");
+  await prompt.press("Enter");
+  await expect(page.getByRole("heading", { name: "Choose Console Context" })).toHaveCount(0);
+  await expect(page.getByText("Genesis / Mega Drive", { exact: true })).toBeVisible();
+  await attachScreenshot(page, testInfo, "console-context-typed-genesis");
 });
 
 test("desktop and mobile keep the terminal prompt visible", async ({ page }) => {
