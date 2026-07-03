@@ -22,6 +22,15 @@ describe("wizard preference interpretation", () => {
     expect(isResetCommand("clear your context and start over")).toBe(true);
   });
 
+  it("does not treat an ordinary game request as a reset command", () => {
+    // "new game" is common phrasing in a game-recommendation app and must not
+    // be read as a request to wipe the session.
+    expect(isResetCommand("I want a new game")).toBe(false);
+    expect(isResetCommand("any new game ideas?")).toBe(false);
+    expect(isResetCommand("reset")).toBe(true);
+    expect(isResetCommand("restart")).toBe(true);
+  });
+
   it("does not let short hint words match inside unrelated words", () => {
     // "no" is a romhack hint; it must not fire just because it's a substring of "know".
     expect(interpretQuestionAnswer(getQuestionByKey("romhack")!, "you know, I'm not sure")?.value).toBeUndefined();

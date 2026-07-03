@@ -191,6 +191,10 @@ export function isResetCommand(value: string) {
     return false;
   }
 
+  // "new game" is deliberately excluded: in an app whose whole purpose is
+  // recommending games, that phrase shows up constantly in ordinary requests
+  // ("I want a new game", "any new game ideas?") and would wipe the session
+  // on a ton of legitimate turns if it were treated as a reset trigger.
   return [
     "clearcontext",
     "clearyourcontext",
@@ -198,7 +202,6 @@ export function isResetCommand(value: string) {
     "restart",
     "reset",
     "newsession",
-    "newgame",
   ].some((command) => normalized === command || normalized.includes(command));
 }
 
