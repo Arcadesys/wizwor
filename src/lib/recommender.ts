@@ -43,7 +43,14 @@ const rubric: RubricDimension[] = [
 ];
 
 const questionCountRequired = 4;
-export const recommendationThreshold = 0.9;
+
+export const recommendationThreshold = 0.96;
+export const maxQualifyingRecommendations = 3;
+
+type RecommendationGateOptions = {
+  threshold?: number;
+  maxQualifying?: number;
+};
 
 export function answeredPreferenceCount(profile: UserProfile) {
   return rubric.filter((dimension) => profile[dimension.key]).length;
@@ -59,13 +66,37 @@ export function getRecommendations(profile: UserProfile): Recommendation[] {
     .sort((left, right) => right.score - left.score || left.game.title.localeCompare(right.game.title));
 }
 
+export function qualifyingRecommendations(profile: UserProfile, options: RecommendationGateOptions = {}) {
+  const threshold = options.threshold ?? recommendationThreshold;
+  return getRecommendations(profile).filter((recommendation) => recommendation.score >= threshold);
+}
+
+/**
+ * This is a guardrail for the live agent, not a deterministic trigger. The agent
+ * still decides when to reveal; the UI should only receive recommendations once
+ * the catalog has narrowed to a small, high-confidence set.
+ */
 export function shouldRevealRecommendations(profile: UserProfile) {
   if (!hasEnoughSignal(profile)) {
     return false;
   }
 
-  const [top] = getRecommendations(profile);
-  return Boolean(top && top.score >= recommendationThreshold);
+  const qualifyingCount = qualifyingRecommendations(profile).length;
+  return qualifyingCount > 0 && qualifyingCount <= maxQualifyingRecommendations;
+}
+
+export function recommendationGate(profile: UserProfile, options: RecommendationGateOptions = {}) {
+  const threshold = options.threshold ?? recommendationThreshold;
+  const maxQualifying = options.maxQualifying ?? maxQualifyingRecommendations;
+  const qualifying = qualifyingRecommendations(profile, { threshold });
+
+  return {
+    threshold,
+    maxQualifying,
+    qualifyingCount: qualifying.length,
+    isOpen: qualifying.length > 0 && qualifying.length <= maxQualifying,
+    recommendations: qualifying,
+  };
 }
 
 function scoreGame(game: Game, profile: UserProfile): Recommendation {

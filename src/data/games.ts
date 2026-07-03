@@ -167,6 +167,21 @@ export const games: Game[] = [
     tags: ["single-screen", "secrets", "cozy"],
   },
   {
+    id: "mule",
+    title: "M.U.L.E.",
+    kind: "nes",
+    year: "1990",
+    pitch:
+      "Danielle Bunten Berry's resource-trading classic, remembered as a multiplayer design landmark and an important part of trans game-history memory.",
+    moods: ["arcade", "weird"],
+    difficulty: "fair",
+    story: "low",
+    playStyle: "puzzle",
+    obscurity: "classic",
+    romhack: "no",
+    tags: ["multiplayer", "board game", "economy", "trading", "Danielle Bunten Berry"],
+  },
+  {
     id: "metroid-mother",
     title: "Metroid: Mother",
     kind: "romhack",
