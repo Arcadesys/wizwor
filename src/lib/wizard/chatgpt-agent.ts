@@ -12,9 +12,9 @@ export function getChatGptAgentReadiness() {
 export const chatGptAgentAdapter: WizardAgent = {
   async runTurn(request) {
     const readiness = getChatGptAgentReadiness();
-    const fallback = await mockWizardAgent.runTurn(request);
 
     if (!readiness.hasApiKey) {
+      const fallback = await mockWizardAgent.runTurn(request);
       return {
         ...fallback,
         adapter: "chatgpt",
@@ -26,15 +26,9 @@ export const chatGptAgentAdapter: WizardAgent = {
     }
 
     try {
-      const liveTurn = await runLiveWizardTurn(request, fallback);
-      return {
-        ...fallback,
-        adapter: "chatgpt",
-        accepted: liveTurn.accepted ?? fallback.accepted,
-        lines: liveTurn.lines?.length ? liveTurn.lines : fallback.lines,
-        notes: [...(fallback.notes ?? []), "Live Agents SDK turn completed; deterministic state/recommendations preserved."],
-      };
+      return await runLiveWizardTurn(request);
     } catch (error) {
+      const fallback = await mockWizardAgent.runTurn(request);
       return {
         ...fallback,
         adapter: "chatgpt",

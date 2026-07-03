@@ -504,6 +504,85 @@ input:disabled {
   color: var(--terminal-amber);
 }
 
+.experimental-tag {
+  margin: 0 0 0.6rem;
+  color: #7a7a7a;
+  font-size: clamp(9px, 1.5vw, 11px);
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.feedback-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.1rem 0.2rem 0.3rem;
+}
+
+.feedback-prompt {
+  color: var(--terminal-amber);
+  font-size: clamp(10px, 1.5vw, 13px);
+  letter-spacing: -0.05em;
+}
+
+.feedback-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.feedback-chip {
+  padding: 0.3rem 0.55rem;
+  color: var(--terminal-green);
+  font-size: clamp(10px, 1.5vw, 13px);
+  background: #111;
+  border: 3px solid #777;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.feedback-chip:hover {
+  color: #050505;
+  background: var(--terminal-green);
+  border-color: #f7f7f7;
+}
+
+.feedback-note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.feedback-note-row {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.feedback-note-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0.35rem 0.5rem;
+  color: var(--terminal-green);
+  font-size: clamp(10px, 1.5vw, 13px);
+  background: #070707;
+  border: 3px solid #555;
+}
+
+.feedback-note-submit {
+  padding: 0.3rem 0.6rem;
+  color: var(--terminal-green);
+  font-size: clamp(10px, 1.5vw, 13px);
+  background: #111;
+  border: 3px solid #777;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.feedback-note-submit:disabled {
+  color: #555;
+  border-color: #333;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
 @keyframes cursor-blink {
   0%,
   48% {

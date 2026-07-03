@@ -142,4 +142,115 @@ describe("wizard terminal UI", () => {
     const body = JSON.parse(String(fetchMock.mock.calls[1][1]?.body));
     expect(body.command).toBe("Heroic");
   });
+
+  it("sends what the user actually typed as the first turn, instead of a blank summon", async () => {
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockImplementationOnce(() =>
+      response({
+        adapter: "chatgpt",
+        accepted: true,
+        lines: ["JOANNE, the board unfolds."],
+        recommendations: [],
+        suggestions: [],
+        state: {
+          started: true,
+          needsName: false,
+          activeQuestionKey: null,
+          awaitingFocus: false,
+          revealed: false,
+          profile: { name: "Joanne", playStyle: "puzzle" },
+        },
+      }),
+    );
+
+    render(<Home />);
+    const input = await screen.findByLabelText("Terminal command prompt");
+    await waitFor(() => expect(input).toBeEnabled());
+
+    fireEvent.change(input, { target: { value: "I'm Joanne and I want a board game experience." } });
+    fireEvent.submit(input.closest("form")!);
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+    const body = JSON.parse(String(fetchMock.mock.calls[0][1]?.body));
+    expect(body.command).toBe("I'm Joanne and I want a board game experience.");
+    await screen.findByText("I'm Joanne and I want a board game experience.");
+  });
+
+  it("shows a loading indicator immediately after submitting, before the reply arrives", async () => {
+    let resolveFetch!: (value: Response) => void;
+    const pending = new Promise<Response>((resolve) => {
+      resolveFetch = resolve;
+    });
+    vi.spyOn(globalThis, "fetch").mockImplementationOnce(() => pending);
+
+    const { container } = render(<Home />);
+    const input = await screen.findByLabelText("Terminal command prompt");
+    await waitFor(() => expect(input).toBeEnabled());
+
+    fireEvent.change(input, { target: { value: "hello there" } });
+    fireEvent.submit(input.closest("form")!);
+
+    await waitFor(() => expect(input).toBeDisabled());
+    expect(container.querySelector(".terminal-cursor")).not.toBeNull();
+
+    resolveFetch(
+      new Response(
+        JSON.stringify({
+          adapter: "chatgpt",
+          accepted: true,
+          lines: ["Hello indeed."],
+          recommendations: [],
+          suggestions: [],
+          state: {
+            started: true,
+            needsName: false,
+            activeQuestionKey: null,
+            awaitingFocus: false,
+            revealed: false,
+            profile: { name: "" },
+          },
+        }),
+        { status: 200 },
+      ),
+    );
+
+    await screen.findByText("Hello indeed.");
+    await waitFor(() => expect(input).toBeEnabled());
+  });
+
+  it("returns focus to the input on any keydown except arrow keys", async () => {
+    vi.spyOn(globalThis, "fetch").mockImplementationOnce(() =>
+      response({
+        adapter: "mock",
+        accepted: true,
+        lines: [],
+        recommendations: [],
+        suggestions: [{ value: "ominous", label: "Ominous", detail: "Dungeons, dread, haunted machinery." }],
+        state: {
+          started: true,
+          needsName: false,
+          activeQuestionKey: "mood",
+          awaitingFocus: false,
+          revealed: false,
+          profile: { name: "Ada" },
+        },
+      }),
+    );
+
+    render(<Home />);
+    const input = await screen.findByLabelText("Terminal command prompt");
+    await waitFor(() => expect(input).toBeEnabled());
+
+    fireEvent.submit(input.closest("form")!);
+    const ominous = await screen.findByText("Ominous");
+    const chip = ominous.closest("button")!;
+
+    chip.focus();
+    expect(chip).toHaveFocus();
+
+    fireEvent.keyDown(chip, { key: "ArrowLeft" });
+    expect(chip).toHaveFocus();
+
+    fireEvent.keyDown(chip, { key: "a" });
+    expect(input).toHaveFocus();
+  });
 });

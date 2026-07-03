@@ -16,6 +16,7 @@ type EvalCase = {
     lastAccepted?: boolean;
     minRecommendations?: number;
     topScoreAtLeast?: number;
+    topTitle?: string;
     lineIncludes?: string[];
   };
   xfail?: boolean;
@@ -187,6 +188,10 @@ function checkExpectations(
 
   if (expected.topScoreAtLeast !== undefined && (recommendations[0]?.score ?? 0) < expected.topScoreAtLeast) {
     failures.push(`Expected top score >= ${expected.topScoreAtLeast}, saw ${recommendations[0]?.score ?? 0}.`);
+  }
+
+  if (expected.topTitle !== undefined && recommendations[0]?.game.title !== expected.topTitle) {
+    failures.push(`Expected top recommendation "${expected.topTitle}", saw "${recommendations[0]?.game.title ?? "none"}".`);
   }
 
   if (options.checkExactLineText) {

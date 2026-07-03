@@ -6,10 +6,21 @@ import {
   shouldRevealRecommendations,
 } from "@/lib/recommender";
 import type { WizardAgent } from "@/lib/wizard/agent";
-import { interpretFocusAnswer, interpretQuestionAnswer } from "@/lib/wizard/interpreter";
+import {
+  extractNameFromIntro,
+  extractProfileSignals,
+  inferDirectAskProfile,
+  interpretFocusAnswer,
+  interpretQuestionAnswer,
+} from "@/lib/wizard/interpreter";
 import { focusQuestion, getQuestionByKey, questions } from "@/lib/wizard/questions";
 import type { WizardOption, WizardState, WizardTurnResponse } from "@/lib/wizard/types";
 import { blankProfile, initialWizardState } from "@/lib/wizard/types";
+
+function describeProfileValue(key: PreferenceKey, value: string) {
+  const question = getQuestionByKey(key);
+  return question?.options.find((option) => option.value === value)?.label ?? value;
+}
 
 function getSuggestions(state: WizardState): WizardOption[] {
   if (state.activeQuestionKey) {
@@ -36,17 +47,26 @@ function response(lines: string[], state: WizardState, accepted = true, notes?: 
   };
 }
 
+/**
+ * Re-evaluated from the current profile on every turn — reveal is not a one-way
+ * door reached at a fixed point in the questionnaire. As soon as the rubric clears
+ * (see shouldRevealRecommendations), share, but keep offering whichever question is
+ * still unanswered so the user can keep refining instead of hitting a dead end.
+ */
 function nextStateForProfile(profile: UserProfile): WizardState {
-  if (shouldRevealRecommendations(profile)) {
+  const revealed = shouldRevealRecommendations(profile);
+  const nextQuestion = questions.find((question) => !profile[question.key]);
+
+  if (revealed) {
     return {
       ...initialWizardState,
       started: true,
       profile,
       revealed: true,
+      activeQuestionKey: nextQuestion?.key ?? null,
     };
   }
 
-  const nextQuestion = questions.find((question) => !profile[question.key]);
   if (nextQuestion) {
     return {
       ...initialWizardState,
@@ -66,7 +86,7 @@ function nextStateForProfile(profile: UserProfile): WizardState {
 
 function linesForNextState(state: WizardState) {
   if (state.revealed) {
-    return ["The reading reaches ninety percent resonance.", "Three cartridges rise from the dark."];
+    return ["The reading steadies.", "Three cartridges rise from the dark."];
   }
 
   if (state.activeQuestionKey) {
@@ -79,6 +99,21 @@ function linesForNextState(state: WizardState) {
   }
 
   return [];
+}
+
+/**
+ * Used once every question has already been answered and the shelf is open — lets
+ * the user keep refining ("actually, make it harder") by re-matching the reply
+ * against any question's options, not just whichever was last active.
+ */
+function interpretRevision(command: string) {
+  for (const question of questions) {
+    const option = interpretQuestionAnswer(question, command);
+    if (option) {
+      return { key: question.key, option };
+    }
+  }
+  return null;
 }
 
 function withProfilePatch(state: WizardState, patch: Partial<UserProfile>) {
@@ -126,21 +161,46 @@ export const mockWizardAgent: WizardAgent = {
       return response(intro, startedState);
     }
 
+    const directAskProfile = inferDirectAskProfile(command, state.profile);
+    if (directAskProfile) {
+      const nextState: WizardState = {
+        ...initialWizardState,
+        started: true,
+        profile: directAskProfile,
+        revealed: true,
+      };
+      return response(
+        [
+          "Specific cartridge omen received.",
+          "M.U.L.E. rises: Danielle Bunten Berry's multiplayer landmark, remembered in gaming history and trans game-history circles.",
+          ...linesForNextState(nextState),
+        ],
+        nextState,
+      );
+    }
+
     if (state.needsName) {
       if (!command) {
         return response(["The name cannot be blank. Feed the cursor a sigil."], state, false);
       }
 
+      const name = extractNameFromIntro(command) ?? command;
+      const bonusSignals = extractProfileSignals(command, state.profile);
       const namedState = withProfilePatch(
         {
           ...state,
           needsName: false,
         },
-        { name: command },
+        { name, ...bonusSignals },
       );
       const nextState = nextStateForProfile(namedState.profile);
+      const bonusKeys = Object.keys(bonusSignals) as PreferenceKey[];
+      const bonusLine = bonusKeys.length
+        ? [`It also names ${bonusKeys.map((key) => describeProfileValue(key, namedState.profile[key] as string)).join(" and ")}.`]
+        : [];
+      const hesitationLine = nextState.revealed ? [] : ["Now answer plainly. The cartridge hears hesitation."];
       return response(
-        [`${command.toUpperCase()} is written in green fire.`, "Now answer plainly. The cartridge hears hesitation.", ...linesForNextState(nextState)],
+        [`${name.toUpperCase()} is written in green fire.`, ...bonusLine, ...hesitationLine, ...linesForNextState(nextState)],
         nextState,
       );
     }
@@ -152,16 +212,24 @@ export const mockWizardAgent: WizardAgent = {
       }
 
       const option = interpretQuestionAnswer(question, command);
-      if (!option) {
+      const bonusSignals = extractProfileSignals(command, state.profile);
+      if (!option && Object.keys(bonusSignals).length === 0) {
         return response(["That answer will not bind. Type it another way, or press TAB to copy the lit rune."], state, false);
       }
 
       const nextProfile = {
         ...state.profile,
-        [question.key]: option.value,
+        ...bonusSignals,
+        ...(option ? { [question.key]: option.value } : {}),
       } as UserProfile;
       const nextState = nextStateForProfile(nextProfile);
-      return response([`I read that as ${option.label}.`, ...linesForNextState(nextState)], nextState);
+      const bonusKeys = (Object.keys(bonusSignals) as PreferenceKey[]).filter((key) => key !== question.key);
+      const bonusDescriptions = bonusKeys.map((key) => describeProfileValue(key, nextProfile[key] as string));
+      const headline = option
+        ? `I read that as ${option.label}.`
+        : `That names ${bonusDescriptions.join(" and ")}, so I'll carry it forward.`;
+      const bonusLine = option && bonusDescriptions.length ? [`It also names ${bonusDescriptions.join(" and ")}.`] : [];
+      return response([headline, ...bonusLine, ...linesForNextState(nextState)], nextState);
     }
 
     if (state.awaitingFocus) {
@@ -184,7 +252,25 @@ export const mockWizardAgent: WizardAgent = {
     }
 
     if (state.revealed) {
-      return response(["The shelf is already open. Read the three tomes below."], state);
+      const revision = interpretRevision(command);
+      if (!revision) {
+        return response(
+          [
+            "The shelf is already open. Name a trait to reshape the reading — mood, style, difficulty, story, shelf position, or romhacks — or start over.",
+          ],
+          state,
+        );
+      }
+
+      const nextProfile = {
+        ...state.profile,
+        [revision.key]: revision.option.value,
+      } as UserProfile;
+      const nextState = nextStateForProfile(nextProfile);
+      return response(
+        [`I read that as ${revision.option.label}. Reshaping the reading.`, ...linesForNextState(nextState)],
+        nextState,
+      );
     }
 
     const recovered = nextStateForProfile(state.profile);

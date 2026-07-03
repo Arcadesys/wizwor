@@ -3,6 +3,7 @@
 import { FormEvent, KeyboardEvent, useEffect, useMemo, useRef, useState } from "react";
 import type { Recommendation, UserProfile } from "@/lib/recommender";
 import { answeredPreferenceCount, getRecommendations, recommendationThreshold } from "@/lib/recommender";
+import type { FeedbackRating } from "@/lib/feedback";
 import { isResetCommand } from "@/lib/wizard/interpreter";
 import { focusQuestion, getQuestionByKey } from "@/lib/wizard/questions";
 import type {
@@ -44,6 +45,13 @@ type GamepadState = {
 
 const samSampleRate = 22050;
 const storageKey = "wyrm-terminal-profile";
+const arrowKeys = new Set(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]);
+
+const feedbackOptions: Array<{ rating: FeedbackRating; label: string }> = [
+  { rating: "nailed", label: "\u{1F44D} Nailed it" },
+  { rating: "sort_of", label: "\u{1F914} Sort of" },
+  { rating: "not_even_haunted", label: "\u{1F44E} Not even haunted" },
+];
 
 type WizardTerminalProps = {
   fastMode?: boolean;
@@ -70,6 +78,9 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const [isStreaming, setIsStreaming] = useState(false);
   const [soundOn, setSoundOn] = useState(false);
   const [samReady, setSamReady] = useState(false);
+  const [feedbackRating, setFeedbackRating] = useState<FeedbackRating | null>(null);
+  const [feedbackNote, setFeedbackNote] = useState("");
+  const [feedbackNoteSent, setFeedbackNoteSent] = useState(false);
 
   const profileRef = useRef(profile);
   const startedRef = useRef(started);
@@ -235,6 +246,9 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     recommendationsRef.current = response.recommendations;
     setSuggestionIndex(0);
     setIsSuggestionBrowsing(false);
+    setFeedbackRating(null);
+    setFeedbackNote("");
+    setFeedbackNoteSent(false);
   }
 
   function resetSession() {
@@ -267,6 +281,9 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     setRecommendations([]);
     recommendationsRef.current = [];
     setIsStreaming(false);
+    setFeedbackRating(null);
+    setFeedbackNote("");
+    setFeedbackNoteSent(false);
     window.setTimeout(() => inputRef.current?.focus(), 0);
   }
 
@@ -350,24 +367,28 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     }
   }
 
-  async function beginSummoning() {
+  async function beginSummoning(initialCommand = "") {
     if (started || isStreaming) {
       return;
     }
 
+    setIsStreaming(true);
     setRecommendations([]);
     recommendationsRef.current = [];
     setActiveQuestion(null);
     activeQuestionRef.current = null;
     setActiveFocusQuestion(null);
     activeFocusQuestionRef.current = null;
+    setFeedbackRating(null);
+    setFeedbackNote("");
+    setFeedbackNoteSent(false);
     if (!fastMode) {
       await startMusic();
       await loadSam();
     }
 
     try {
-      const response = await requestWizardTurn("");
+      const response = await requestWizardTurn(initialCommand);
       applyWizardResponse(response);
       await streamWizard(response.lines);
     } catch {
@@ -388,7 +409,10 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
 
     if (!started) {
       setCommand("");
-      await beginSummoning();
+      if (value) {
+        appendUser(value);
+      }
+      await beginSummoning(value);
       return;
     }
 
@@ -399,6 +423,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     }
 
     appendUser(value);
+    setIsStreaming(true);
 
     try {
       const response = await requestWizardTurn(value);
@@ -415,6 +440,45 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     submitCommand();
+  }
+
+  async function sendFeedback(rating: FeedbackRating, note?: string) {
+    try {
+      await fetch("/api/feedback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          sessionId: sessionIdRef.current,
+          rating,
+          profile: profileRef.current,
+          recommendations: recommendationsRef.current.map((recommendation) => ({
+            id: recommendation.game.id,
+            title: recommendation.game.title,
+            score: recommendation.score,
+          })),
+          note,
+        }),
+      });
+    } catch {
+      // Feedback is best-effort telemetry; a dropped request shouldn't disturb the reading.
+    }
+  }
+
+  function rateRecommendations(rating: FeedbackRating) {
+    setFeedbackRating(rating);
+    void sendFeedback(rating);
+  }
+
+  function sendFeedbackNote(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!feedbackRating || !feedbackNote.trim()) {
+      return;
+    }
+
+    setFeedbackNoteSent(true);
+    void sendFeedback(feedbackRating, feedbackNote.trim());
   }
 
   function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
@@ -736,7 +800,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       className="min-h-screen overflow-hidden bg-[#050505] text-[#f7f7f7]"
       onClick={() => inputRef.current?.focus()}
       onKeyDown={(event) => {
-        if (event.target === event.currentTarget) {
+        if (event.target !== inputRef.current && !arrowKeys.has(event.key)) {
           inputRef.current?.focus();
         }
       }}
@@ -745,6 +809,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       <div className="crt-shell relative flex min-h-screen w-screen flex-col p-2 sm:p-3">
         <section className="terminal-stage z-10">
           <div className="terminal-window min-h-0 overflow-y-auto">
+            <p className="experimental-tag">EXPERIMENTAL &mdash; a hackathon guide, still learning the cartridges.</p>
             {hydrated ? (
               <button
                 type="button"
@@ -794,14 +859,62 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                   </article>
                 ))}
               </div>
-            ) : (
+            ) : null}
+
+            {recommendations.length ? (
+              <div className="feedback-bar">
+                {!feedbackRating ? (
+                  <>
+                    <p className="feedback-prompt">Was this reading true?</p>
+                    <div className="feedback-options">
+                      {feedbackOptions.map((option) => (
+                        <button
+                          key={option.rating}
+                          type="button"
+                          className="feedback-chip"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            rateRecommendations(option.rating);
+                          }}
+                        >
+                          {option.label}
+                        </button>
+                      ))}
+                    </div>
+                  </>
+                ) : feedbackNoteSent ? (
+                  <p className="feedback-prompt">The ledger remembers. Thank you.</p>
+                ) : (
+                  <form className="feedback-note-form" onSubmit={sendFeedbackNote}>
+                    <label className="feedback-prompt" htmlFor="feedback-note">
+                      What did it miss? (optional)
+                    </label>
+                    <div className="feedback-note-row">
+                      <input
+                        id="feedback-note"
+                        value={feedbackNote}
+                        onChange={(event) => setFeedbackNote(event.target.value)}
+                        maxLength={500}
+                        placeholder="Too easy, wrong mood, wanted more romhacks..."
+                        className="feedback-note-input"
+                      />
+                      <button type="submit" className="feedback-note-submit" disabled={!feedbackNote.trim()}>
+                        Send
+                      </button>
+                    </div>
+                  </form>
+                )}
+              </div>
+            ) : null}
+
+            {!recommendations.length ? (
               <div className="chat-hud">
                 <div className="status-line">
                   ANS {answeredCount}/6 TOP {Math.round(topScore * 100)} NEED{" "}
                   {Math.round(recommendationThreshold * 100)} SAM {samReady ? "OK" : "--"}
                 </div>
               </div>
-            )}
+            ) : null}
 
             {suggestions.length ? (
               <div className="suggestion-row" aria-label="Suggestions">

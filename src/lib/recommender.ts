@@ -43,7 +43,15 @@ const rubric: RubricDimension[] = [
 ];
 
 const questionCountRequired = 4;
-export const recommendationThreshold = 0.9;
+/**
+ * With only 14 titles in the catalog, score is relative to how many questions have
+ * been answered, so 95% is only reachable by 3+ games at once for a handful of
+ * densely-tagged combos (and usually only after the focus tie-breaker boosts them).
+ * 75% is the highest bar that still lets the common 4-6 answer paths qualify without
+ * forcing every user through the full questionnaire plus the tie-breaker.
+ */
+export const recommendationThreshold = 0.75;
+export const minQualifyingRecommendations = 3;
 
 export function answeredPreferenceCount(profile: UserProfile) {
   return rubric.filter((dimension) => profile[dimension.key]).length;
@@ -59,13 +67,23 @@ export function getRecommendations(profile: UserProfile): Recommendation[] {
     .sort((left, right) => right.score - left.score || left.game.title.localeCompare(right.game.title));
 }
 
+export function qualifyingRecommendations(profile: UserProfile) {
+  return getRecommendations(profile).filter((recommendation) => recommendation.score >= recommendationThreshold);
+}
+
+/**
+ * Re-checked against the current profile on every turn (not just once, at a fixed
+ * point in the questionnaire) — as soon as the rubric surfaces at least
+ * `minQualifyingRecommendations` games at `recommendationThreshold` or above, share
+ * them. This can fire before every question is answered, and can also stop holding
+ * once a refinement narrows the matches back down.
+ */
 export function shouldRevealRecommendations(profile: UserProfile) {
   if (!hasEnoughSignal(profile)) {
     return false;
   }
 
-  const [top] = getRecommendations(profile);
-  return Boolean(top && top.score >= recommendationThreshold);
+  return qualifyingRecommendations(profile).length >= minQualifyingRecommendations;
 }
 
 function scoreGame(game: Game, profile: UserProfile): Recommendation {
