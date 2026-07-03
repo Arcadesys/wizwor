@@ -1,4 +1,12 @@
-import { Agent, type AgentInputItem, type RunContext, Runner, tool, withTrace } from "@openai/agents";
+import {
+  Agent,
+  type AgentInputItem,
+  ModelBehaviorError,
+  type RunContext,
+  Runner,
+  tool,
+  withTrace,
+} from "@openai/agents";
 import { z } from "zod";
 import { catalogPlatforms, type Platform } from "@/data/games";
 import type { Recommendation, UserProfile } from "@/lib/recommender";
@@ -15,13 +23,20 @@ import { blankProfile, initialWizardState } from "@/lib/wizard/types";
 
 const FlexibleScalarSchema = z.union([z.string(), z.number(), z.boolean()]);
 
-// One level of nesting only (no z.lazy) — the agent occasionally mirrors flat
-// objects like recommendationGate into agentData, but a truly recursive schema
-// makes the SDK's JSON-schema serializer choke on the cyclic Zod reference.
-const FlexibleValueSchema = z.union([
+// Two levels of nesting, manually unrolled (no z.lazy) — the agent occasionally
+// mirrors nested objects like { inferredProfile: { traits: { confidence: 0.8 } } }
+// into agentData, but a truly recursive schema makes the SDK's JSON-schema
+// serializer choke on the cyclic Zod reference.
+const FlexibleLeafSchema = z.union([
   FlexibleScalarSchema,
   z.array(FlexibleScalarSchema),
   z.record(z.string(), FlexibleScalarSchema),
+]);
+
+const FlexibleValueSchema = z.union([
+  FlexibleLeafSchema,
+  z.array(FlexibleLeafSchema),
+  z.record(z.string(), FlexibleLeafSchema),
 ]);
 
 const ProfileUpdateSchema = z.object({
@@ -72,7 +87,7 @@ const lookupRecommendationsTool = tool({
 
 const AgentGeneratedDataSchema = z.record(z.string(), FlexibleValueSchema).default({});
 
-const WizardTurnOutputSchema = z.object({
+export const WizardTurnOutputSchema = z.object({
   lines: z.array(z.string()).min(1).max(4),
   accepted: z.boolean(),
   profile: ProfileUpdateSchema.default({}),
@@ -111,7 +126,7 @@ const liveWizardAgent = new Agent<WizardRunContext, typeof WizardTurnOutputSchem
     "When too many games qualify, every message includes suggestedNextQuestion: computed like a well-played round of 20 Questions or Guess Who — the unanswered field+value that splits the current candidate pool closest to 50/50, so whichever way the player answers eliminates the most ground. When it's present, build your next question around that exact field (e.g. if it's {key: \"playStyle\", value: \"puzzle\"}, ask something like whether they want a puzzle game or something else) — phrase it naturally, don't recite the field name. When it's null (pool is already small, or nothing left discriminates), fall back to your own judgment from currentBestMatches.",
     "Commit when it's time — do not stall. Two situations require revealed: true this turn, using your best current pick, even with fields still unknown or the match imperfect: (1) the player explicitly hands you the decision — 'I don't care', 'you choose', 'whatever's best', 'just pick one', 'are you going to choose?' or similar — reveal immediately, do not ask yet another clarifying question first; (2) the conversation has already gone several exchanges without revealing and currentBestMatches already has a reasonably strong option — stop circling and commit rather than asking for one more detail.",
     "If a request names something very specific — a genre, a designer, a historical or cultural detail — check pitch/tags for a strong, specific match worth calling out by name and inference (e.g. a request for a notable multiplayer board-game-style NES title should lead you to feature what you find, tags and pitch included, if it's a clear fit).",
-    "Use agentData for any extra data you generated or consumed mentally: category scores, inferred traits, uncertainty notes, rejected options, scoring rationale, or other compact debug fields.",
+    "Use agentData for any extra data you generated or consumed mentally: category scores, inferred traits, uncertainty notes, rejected options, scoring rationale, or other compact debug fields. Keep every agentData value shallow: strings, numbers, booleans, arrays of those, or at most one nested object of those (e.g. inferredProfile: { mood: \"heroic\", confidence: 0.8 }). Never nest an object inside another object or inside an array entry.",
     "If their message gives you nothing usable for any field, set accepted to false and warmly ask, in your own words, for whatever still seems missing.",
     "Keep lines terse, arcade-synthetic, readable on a tiny CRT — 1 to 3 short lines.",
     "The very first reply of a session always ends with 'On what console are you questing?' (added automatically) — don't ask about platform/console yourself on turn one. The catalog now spans NES, SNES, Genesis, PC Engine, Neo Geo, Atari 7800/5200, SMS, and romhacks — currentBestMatches and gamesAboveThreshold are already filtered to whichever platforms the player has enabled in Catalog Shelves, so acknowledge whatever console they name in-character and let those filtered lists guide your pick rather than assuming NES.",
@@ -163,6 +178,59 @@ function gamesAboveThreshold(profile: UserProfile, enabledPlatforms: readonly Pl
     }));
 }
 
+const MAX_OUTPUT_SCHEMA_ATTEMPTS = 2;
+
+// The Agents SDK throws the same ModelBehaviorError class for very different
+// problems: bad tool-call input, no final response, malformed model output
+// items, and (what we're targeting here) the final assistant JSON failing
+// WizardTurnOutputSchema. Its message is always "Invalid output type: ..." and,
+// for Zod failures, embeds the first invalid field's path (see
+// formatFinalOutputTypeError in @openai/agents-core's turnResolution.js). Only
+// treat it as recoverable when that path is under agentData — agentData is
+// diagnostic-only and not load-bearing for the recommendation, but a failure
+// anywhere else (e.g. a malformed `lines` array) is a real problem and must
+// still propagate instead of being silently swallowed.
+export function isAgentDataSchemaError(error: unknown): error is ModelBehaviorError {
+  return (
+    error instanceof ModelBehaviorError &&
+    error.message.startsWith("Invalid output type:") &&
+    /at "agentData(\.[^"]*)?"/.test(error.message)
+  );
+}
+
+// Retry once (the model's nesting mistakes aren't fully deterministic), then
+// fall back to an in-character line rather than propagating a 503.
+async function runAgentTurnResilient(
+  runner: Runner,
+  agent: typeof liveWizardAgent,
+  conversationHistory: AgentInputItem[],
+  enabledPlatforms: readonly Platform[],
+) {
+  for (let attempt = 1; attempt <= MAX_OUTPUT_SCHEMA_ATTEMPTS; attempt++) {
+    try {
+      return await runner.run(agent, conversationHistory, {
+        context: { enabledPlatforms },
+      });
+    } catch (error) {
+      if (!isAgentDataSchemaError(error) || attempt === MAX_OUTPUT_SCHEMA_ATTEMPTS) {
+        throw error;
+      }
+    }
+  }
+  throw new Error("unreachable");
+}
+
+function fallbackTurnOutput(): WizardTurnOutput {
+  return {
+    lines: ["The signal broke up in the deep circuitry. Say that again?"],
+    accepted: false,
+    profile: {},
+    revealed: false,
+    recommendedGameIds: [],
+    agentData: {},
+  };
+}
+
 async function runWizardConversationTurn(request: WizardTurnRequest, knownProfile: UserProfile) {
   return withTrace("Wizard live turn", async () => {
     const enabledPlatforms = request.state.enabledPlatforms ?? [...catalogPlatforms];
@@ -203,9 +271,15 @@ async function runWizardConversationTurn(request: WizardTurnRequest, knownProfil
         app: "wizwor",
       },
     });
-    const result = await runner.run(liveWizardAgent, conversationHistory, {
-      context: { enabledPlatforms },
-    });
+    let result;
+    try {
+      result = await runAgentTurnResilient(runner, liveWizardAgent, conversationHistory, enabledPlatforms);
+    } catch (error) {
+      if (isAgentDataSchemaError(error)) {
+        return { output: fallbackTurnOutput(), consumed };
+      }
+      throw error;
+    }
 
     if (!result.finalOutput) {
       throw new Error("Agent result is undefined");
