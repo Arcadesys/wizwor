@@ -1,0 +1,3 @@
+# Derived/large data — reproducible via `python3 import.py` after cloning source/
+games.db
+source/
