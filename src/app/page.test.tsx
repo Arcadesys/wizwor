@@ -114,6 +114,7 @@ describe("wizard terminal UI", () => {
     await waitFor(() => expect(input).toBeEnabled());
     await chooseConsole();
 
+    fireEvent.change(input, { target: { value: "start" } });
     fireEvent.submit(input.closest("form")!);
     await screen.findByText("Ominous");
 
@@ -175,6 +176,7 @@ describe("wizard terminal UI", () => {
     fireEvent.click(document.querySelector(".terminal-window")!);
     expect(input).toHaveFocus();
 
+    fireEvent.change(input, { target: { value: "start" } });
     fireEvent.submit(input.closest("form")!);
     const ominous = await screen.findByText("Ominous");
     const heroic = await screen.findByText("Heroic");
@@ -241,6 +243,7 @@ describe("wizard terminal UI", () => {
     await waitFor(() => expect(input).toBeEnabled());
     await chooseConsole();
 
+    fireEvent.change(input, { target: { value: "start" } });
     fireEvent.submit(input.closest("form")!);
     const ominousChip = (await screen.findByText("Ominous")).closest("button");
     const heroicChip = screen.getByText("Heroic").closest("button");
@@ -410,6 +413,7 @@ describe("wizard terminal UI", () => {
       "https://www.youtube.com/watch?v=S7fwbZjLpXE",
     );
     const feedbackButton = screen.getByRole("button", { name: /Sort of/i });
+    feedbackButton.focus();
     fireEvent.click(feedbackButton);
 
     const note = await screen.findByLabelText("What did it miss? (optional)");
@@ -536,6 +540,7 @@ describe("wizard terminal UI", () => {
     await waitFor(() => expect(input).toBeEnabled());
     await chooseConsole();
 
+    fireEvent.change(input, { target: { value: "start" } });
     fireEvent.submit(input.closest("form")!);
     const ominous = await screen.findByText("Ominous");
     const chip = ominous.closest("button")!;
