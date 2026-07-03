@@ -311,7 +311,10 @@ describe("wizard terminal UI", () => {
     fireEvent.change(input, { target: { value: "make the console blue" } });
     fireEvent.submit(input.closest("form")!);
 
-    await screen.findByText(/The screen turns/i);
+    // The typewriter-streamed line takes ~1s in real time (not mocked here via
+    // fastMode), right at the default findBy* timeout — give it headroom so a
+    // slower CI runner doesn't catch it mid-stream.
+    await screen.findByText(/The screen turns/i, {}, { timeout: 3000 });
     expect(localStorage.getItem("wyrm-terminal-MEMORY.md")).toContain("Console colors: blue");
     expect(localStorage.getItem("wyrm-terminal-theme")).toContain("#001122");
   });

@@ -11,11 +11,15 @@ import {
 import type { WizardTurnRequest, WizardTurnResponse } from "@/lib/wizard/types";
 import { blankProfile, initialWizardState } from "@/lib/wizard/types";
 
+const FlexibleScalarSchema = z.union([z.string(), z.number(), z.boolean()]);
+
+// One level of nesting only (no z.lazy) — the agent occasionally mirrors flat
+// objects like recommendationGate into agentData, but a truly recursive schema
+// makes the SDK's JSON-schema serializer choke on the cyclic Zod reference.
 const FlexibleValueSchema = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.union([z.string(), z.number(), z.boolean()])),
+  FlexibleScalarSchema,
+  z.array(FlexibleScalarSchema),
+  z.record(z.string(), FlexibleScalarSchema),
 ]);
 
 const ProfileUpdateSchema = z.object({
@@ -60,7 +64,7 @@ const AgentGeneratedDataSchema = z.record(z.string(), FlexibleValueSchema).defau
 const WizardTurnOutputSchema = z.object({
   lines: z.array(z.string()).min(1).max(4),
   accepted: z.boolean(),
-  profile: ProfileUpdateSchema,
+  profile: ProfileUpdateSchema.default({}),
   memoryMarkdown: z.string().optional(),
   terminalTheme: z
     .object({
@@ -87,16 +91,19 @@ const liveWizardAgent = new Agent({
     "Have a natural, unscripted conversation. There is no fixed question order and no single 'current question' — never reject a reply just because it named something other than whatever you last asked about.",
     "The player profile is flexible. From their message and recent conversation, return any fields or generated dimensions you believe are useful. Prefer concise string or number values. Do not force the player into canned choices.",
     "When you want the built-in catalog scorer to help, you may use these compatible catalog fields with these values: mood=ominous|heroic|weird|arcade|contemplative; playStyle=side-scroller|top-down|action-adventure|platformer|puzzle; difficulty=casual|fair|difficult; story=low|some|rich; obscurity=classic|hidden-gem|strange; romhack=no|curious|yes. These are compatibility handles for scoring, not UI choices the player must see.",
+    "The catalog is now the full NES/Famicom library (~2000 titles), so those six coarse fields alone can leave dozens of games tied. Also return profile.keywords: an array of lowercase free-text descriptor words pulled from what the player actually said — named games, genres, designers, specific mechanics or vibes (e.g. ['gothic', 'branching paths'] for a Castlevania III-like request). These are matched against each game's tags and pitch to break ties the coarse fields can't.",
     "Do not require the player's name for anything. If they offer a name, remember it in memoryMarkdown and optionally include it in profile.name; otherwise omit profile.name.",
     "You maintain the player's durable MEMORY.md. Every turn receives the current Markdown memory. Return memoryMarkdown only when you learned something durable: name, preferences, terminal color wishes, games previously played, games rejected, accessibility/audio/style preferences, or useful notes. Keep the Markdown compact, preserving the headings: Player, Preferences, Games Previously Played, Notes.",
     "If the player asks to change terminal colors, update memoryMarkdown and return terminalTheme with CSS hex colors for the requested palette. Use background, foreground, green, amber, red, and blue keys when relevant.",
     `You decide when there's enough to recommend and when to keep talking instead. Every message includes recommendationGate: the real catalog scored against the profile as currently known. Reveal only when recommendationGate.recommendationWindowOpen is true, meaning 1 to ${maxQualifyingRecommendations} games score at least ${Math.round(recommendationThreshold * 100)}%. Call the lookup_recommendations tool only when you want to test a hypothetical profile different from the known one (e.g. 'what if difficulty were X'); you don't need it just to see the current picture.`,
     "Only ever recommend real games from currentBestMatches or a tool result — copy their exact id into recommendedGameIds (at most 3, ranked by how well they fit). Never invent, describe, or score a game yourself. If revealed is false, leave recommendedGameIds empty.",
+    "When picking your next question, look at currentBestMatches and ask about whatever would split that field roughly in half rather than a generic question. E.g. if the leading candidates are a side-scroller and a puzzle game (say, Contra and Batman vs. Tetris), ask about playStyle — side-scroller or puzzle — since that's the axis actually separating them, not something both share.",
     "Commit when it's time — do not stall. Two situations require revealed: true this turn, using your best current pick, even with fields still unknown or the match imperfect: (1) the player explicitly hands you the decision — 'I don't care', 'you choose', 'whatever's best', 'just pick one', 'are you going to choose?' or similar — reveal immediately, do not ask yet another clarifying question first; (2) the conversation has already gone several exchanges without revealing and currentBestMatches already has a reasonably strong option — stop circling and commit rather than asking for one more detail.",
     "If a request names something very specific — a genre, a designer, a historical or cultural detail — check pitch/tags for a strong, specific match worth calling out by name and inference (e.g. a request for a notable multiplayer board-game-style NES title should lead you to feature what you find, tags and pitch included, if it's a clear fit).",
     "Use agentData for any extra data you generated or consumed mentally: category scores, inferred traits, uncertainty notes, rejected options, scoring rationale, or other compact debug fields.",
     "If their message gives you nothing usable for any field, set accepted to false and warmly ask, in your own words, for whatever still seems missing.",
     "Keep lines terse, arcade-synthetic, readable on a tiny CRT — 1 to 3 short lines.",
+    "The very first reply of a session always ends with 'On what console are you questing?' (added automatically) — don't ask about platform/console yourself on turn one. The catalog is NES-only for now regardless of their answer, so acknowledge whatever console they name in-character and keep steering toward an NES pick rather than treating it as a hard filter.",
   ].join("\n"),
   model: process.env.WIZARD_AGENT_MODEL || "gpt-5.5",
   modelSettings: {
@@ -240,13 +247,27 @@ function buildResponse(
   };
 }
 
+const FIRST_TURN_QUESTION = "On what console are you questing?";
+
+// The model's own opening line is never guaranteed to ask this, so enforce it
+// deterministically on turn one rather than relying purely on the prompt.
+function ensureFirstTurnQuestion(lines: string[]): string[] {
+  const alreadyAsked = lines.some((line) => line.toLowerCase().includes("on what console are you questing"));
+  if (alreadyAsked) {
+    return lines.slice(0, 4);
+  }
+  return [...lines.slice(0, 3), FIRST_TURN_QUESTION];
+}
+
 export async function runLiveWizardTurn(request: WizardTurnRequest): Promise<WizardTurnResponse> {
   const knownProfile: UserProfile = { ...blankProfile, ...request.state.profile };
   const { output, consumed } = await runWizardConversationTurn(request, knownProfile);
   const nextProfile = mergeProfile(knownProfile, output.profile);
+  const isFirstTurn = !request.messages.some((message) => message.speaker === "wizard");
   return buildResponse(
     {
       ...output,
+      lines: isFirstTurn ? ensureFirstTurnQuestion(output.lines) : output.lines,
       memoryMarkdown: output.memoryMarkdown ?? request.state.memoryMarkdown,
       terminalTheme: output.terminalTheme ?? request.state.terminalTheme,
     },
