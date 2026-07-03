@@ -280,11 +280,18 @@ input:disabled {
   background: #4bbfff;
 }
 
-.reset-button:active:not(:disabled),
-.settings-button:active:not(:disabled) {
+.reset-button:active:not(:disabled) {
   transform: translate(2px, 2px);
   box-shadow:
     3px 3px 0 #5c1111,
+    inset -4px -4px 0 rgba(0, 0, 0, 0.32),
+    inset 4px 4px 0 rgba(255, 255, 255, 0.24);
+}
+
+.settings-button:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow:
+    3px 3px 0 #103a52,
     inset -4px -4px 0 rgba(0, 0, 0, 0.32),
     inset 4px 4px 0 rgba(255, 255, 255, 0.24);
 }

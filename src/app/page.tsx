@@ -1,7 +1,7 @@
 "use client";
 
 import { CSSProperties, FormEvent, KeyboardEvent, useEffect, useMemo, useRef, useState } from "react";
-import { catalogPlatforms, platformLabels, type Platform } from "@/data/games";
+import { catalogPlatforms, platformLabels, sanitizeEnabledPlatforms, type Platform } from "@/data/games";
 import type { Recommendation, UserProfile } from "@/lib/recommender";
 import { answeredPreferenceCount, getRecommendations, recommendationThreshold } from "@/lib/recommender";
 import type { FeedbackRating } from "@/lib/feedback";
@@ -926,14 +926,15 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
           <div className="terminal-window min-h-0 overflow-y-auto">
             <p className="experimental-tag">EXPERIMENTAL &mdash; a hackathon guide, still learning the cartridges.</p>
             {hydrated ? (
-              <div className="window-controls" onKeyDown={(event) => event.stopPropagation()}>
+              <div
+                className="window-controls"
+                onKeyDown={(event) => event.stopPropagation()}
+                onClick={(event) => event.stopPropagation()}
+              >
                 <button
                   type="button"
                   className="settings-button"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    setSettingsOpen((value) => !value);
-                  }}
+                  onClick={() => setSettingsOpen((value) => !value)}
                   aria-label="Catalog settings"
                   aria-expanded={settingsOpen}
                   title="Catalog settings"
@@ -963,10 +964,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                             key={platform}
                             type="button"
                             className={`platform-toggle ${enabled ? "is-on" : "is-off"}`}
-                            onClick={(event) => {
-                              event.stopPropagation();
-                              togglePlatform(platform);
-                            }}
+                            onClick={() => togglePlatform(platform)}
                             aria-pressed={enabled}
                           >
                             <span aria-hidden="true">{enabled ? "ON" : "OFF"}</span>
@@ -1315,15 +1313,6 @@ function sanitizeTheme(theme: unknown): WizardTerminalTheme | undefined {
   }
 
   return Object.keys(output).length ? output : undefined;
-}
-
-function sanitizeEnabledPlatforms(value: unknown): Platform[] {
-  if (!Array.isArray(value)) {
-    return [...catalogPlatforms];
-  }
-
-  const allowed = new Set<Platform>(catalogPlatforms);
-  return catalogPlatforms.filter((platform) => value.includes(platform) && allowed.has(platform));
 }
 
 function themeToCssVariables(theme: WizardTerminalTheme | undefined): CSSProperties | undefined {

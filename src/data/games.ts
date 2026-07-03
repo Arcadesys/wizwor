@@ -50,6 +50,16 @@ export const platformLabels: Record<Platform, string> = {
   "neo-geo": "Neo Geo AES",
 };
 
+export function sanitizeEnabledPlatforms(value: unknown): Platform[] {
+  if (!Array.isArray(value)) {
+    return [...catalogPlatforms];
+  }
+
+  const allowed = new Set<Platform>(catalogPlatforms);
+  const enabled = catalogPlatforms.filter((platform) => value.includes(platform) && allowed.has(platform));
+  return enabled.length > 0 ? enabled : [...catalogPlatforms];
+}
+
 export type Game = {
   id: string;
   title: string;
