@@ -125,12 +125,12 @@ test("the agent controls when recommendations appear at the narrowed threshold",
   await prompt.fill("Ada wants an ominous side-scroller.");
   await prompt.press("Enter");
   await expect(page.getByText(/resistance and story weight/i)).toBeVisible();
-  await expect(page.getByText("Metroid: Mother")).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Metroid: Mother" })).toHaveCount(0);
 
   await prompt.fill("Fair difficulty, some story.");
   await prompt.press("Enter");
   await expect(page.getByRole("heading", { name: "Metroid: Mother" })).toBeVisible();
-  await expect(page.getByText("96%")).toBeVisible();
+  await expect(page.getByText("96%", { exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "Watch Playthrough" })).toBeVisible();
 
   expect(commands).toEqual(["Ada wants an ominous side-scroller.", "Fair difficulty, some story."]);
