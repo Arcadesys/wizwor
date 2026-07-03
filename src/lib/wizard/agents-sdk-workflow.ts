@@ -11,11 +11,15 @@ import {
 import type { WizardTurnRequest, WizardTurnResponse } from "@/lib/wizard/types";
 import { blankProfile, initialWizardState } from "@/lib/wizard/types";
 
+const FlexibleScalarSchema = z.union([z.string(), z.number(), z.boolean()]);
+
+// One level of nesting only (no z.lazy) — the agent occasionally mirrors flat
+// objects like recommendationGate into agentData, but a truly recursive schema
+// makes the SDK's JSON-schema serializer choke on the cyclic Zod reference.
 const FlexibleValueSchema = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.union([z.string(), z.number(), z.boolean()])),
+  FlexibleScalarSchema,
+  z.array(FlexibleScalarSchema),
+  z.record(z.string(), FlexibleScalarSchema),
 ]);
 
 const ProfileUpdateSchema = z.object({
@@ -60,7 +64,7 @@ const AgentGeneratedDataSchema = z.record(z.string(), FlexibleValueSchema).defau
 const WizardTurnOutputSchema = z.object({
   lines: z.array(z.string()).min(1).max(4),
   accepted: z.boolean(),
-  profile: ProfileUpdateSchema,
+  profile: ProfileUpdateSchema.default({}),
   memoryMarkdown: z.string().optional(),
   terminalTheme: z
     .object({

@@ -7,13 +7,6 @@
       "runtimeArgs": ["run", "dev"],
       "port": 3000,
       "autoPort": true
-    },
-    {
-      "name": "dev:live",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev:live"],
-      "port": 3000,
-      "autoPort": true
     }
   ]
 }
