@@ -1,4 +1,4 @@
-import { Agent, type AgentInputItem, Runner, tool, withTrace } from "@openai/agents";
+import { Agent, type AgentInputItem, type RunContext, Runner, tool, withTrace } from "@openai/agents";
 import { z } from "zod";
 import { catalogPlatforms, type Platform } from "@/data/games";
 import type { Recommendation, UserProfile } from "@/lib/recommender";
@@ -30,23 +30,32 @@ const ProfileUpdateSchema = z.object({
 
 const CandidateProfileSchema = ProfileUpdateSchema.omit({ name: true });
 
+type WizardRunContext = {
+  enabledPlatforms: readonly Platform[];
+};
+
 // This tool is a capability the agent chooses to call. The fixed workflow is
 // gone; scoring is exposed so the agent can decide whether the recommendation
-// window is open and which real catalog entries to name.
+// window is open and which real catalog entries to name. It must score against
+// the same enabledPlatforms as the rest of the turn — otherwise a hypothetical
+// lookup can surface ids from shelves the player has disabled, which
+// resolveRecommendations then silently drops, leaving revealed: true with no cards.
 const lookupRecommendationsTool = tool({
   name: "lookup_recommendations",
   description:
-    "Score the real NES catalog against a candidate profile (any subset of fields). Returns each game's id, title, match percent, whether it clears the reveal threshold, why it matched, its pitch, and its tags. Reveal only when 1 to 3 games clear the configured threshold.",
+    "Score the real catalog (whichever platforms the player currently has enabled) against a candidate profile (any subset of fields). Returns each game's id, title, match percent, whether it clears the reveal threshold, why it matched, its pitch, and its tags. Reveal only when 1 to 3 games clear the configured threshold.",
   parameters: CandidateProfileSchema,
-  execute: async (input) => {
+  execute: async (input, runContext?: RunContext<WizardRunContext>) => {
     const profile = { name: "", ...input } as UserProfile;
-    const gate = recommendationGate(profile);
+    const enabledPlatforms = runContext?.context.enabledPlatforms ?? [...catalogPlatforms];
+    const options = scoringOptions(enabledPlatforms);
+    const gate = recommendationGate(profile, options);
     return {
       thresholdPercent: Math.round(gate.threshold * 100),
       maxQualifyingMatches: gate.maxQualifying,
       qualifyingMatchCount: gate.qualifyingCount,
       recommendationWindowOpen: gate.isOpen,
-      matches: getRecommendations(profile)
+      matches: getRecommendations(profile, options)
         .slice(0, 8)
         .map((recommendation) => ({
           id: recommendation.game.id,
@@ -85,7 +94,7 @@ const WizardTurnOutputSchema = z.object({
 
 type WizardTurnOutput = z.infer<typeof WizardTurnOutputSchema>;
 
-const liveWizardAgent = new Agent({
+const liveWizardAgent = new Agent<WizardRunContext, typeof WizardTurnOutputSchema>({
   name: "Wyrmwood terminal guide",
   instructions: [
     "You are the Keeper Beneath the Screen, an ominous 1980s arcade terminal guide helping a player find a classic-console game.",
@@ -194,7 +203,9 @@ async function runWizardConversationTurn(request: WizardTurnRequest, knownProfil
         app: "wizwor",
       },
     });
-    const result = await runner.run(liveWizardAgent, conversationHistory);
+    const result = await runner.run(liveWizardAgent, conversationHistory, {
+      context: { enabledPlatforms },
+    });
 
     if (!result.finalOutput) {
       throw new Error("Agent result is undefined");
