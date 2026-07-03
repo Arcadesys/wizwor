@@ -46,6 +46,7 @@ type GamepadState = {
 const samSampleRate = 22050;
 const storageKey = "wyrm-terminal-profile";
 const arrowKeys = new Set(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]);
+const recommendationButtonSelector = "[data-recommendation-button='true']";
 
 const feedbackOptions: Array<{ rating: FeedbackRating; label: string }> = [
   { rating: "nailed", label: "\u{1F44D} Nailed it" },
@@ -62,13 +63,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const [hydrated, setHydrated] = useState(false);
   const [started, setStarted] = useState(false);
   const [needsName, setNeedsName] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: "cold-screen",
-      speaker: "system",
-      text: "CRT SIGNAL DORMANT. PRESS ENTER TO SUMMON A GUIDE.",
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [command, setCommand] = useState("");
   const [activeQuestion, setActiveQuestion] = useState<WizardQuestion | null>(null);
   const [activeFocusQuestion, setActiveFocusQuestion] = useState<WizardFocusQuestion | null>(null);
@@ -262,13 +257,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     startedRef.current = false;
     setNeedsName(false);
     needsNameRef.current = false;
-    const coldMessages: Message[] = [
-      {
-        id: makeId("cold-screen"),
-        speaker: "system",
-        text: "CRT SIGNAL DORMANT. PRESS ENTER TO SUMMON A GUIDE.",
-      },
-    ];
+    const coldMessages: Message[] = [];
     setMessages(coldMessages);
     messagesRef.current = coldMessages;
     setCommand("");
@@ -798,7 +787,12 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   return (
     <main
       className="min-h-screen overflow-hidden bg-[#050505] text-[#f7f7f7]"
-      onClick={() => inputRef.current?.focus()}
+      onClick={(event) => {
+        if (event.target instanceof Element && event.target.closest(recommendationButtonSelector)) {
+          return;
+        }
+        inputRef.current?.focus();
+      }}
       onKeyDown={(event) => {
         if (event.target !== inputRef.current && !arrowKeys.has(event.key)) {
           inputRef.current?.focus();

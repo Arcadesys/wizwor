@@ -21,8 +21,7 @@ This folder is for learning how to generate evals, not just running a fixed suit
 
 ## Commands
 
-- `npm run evals` runs portable JSONL cases against the deterministic mock adapter.
-- `npm run evals:live` runs the same cases through the live Agents SDK line-generation adapter when `OPENAI_API_KEY` is present.
-- `npm run dev:live` starts the Next.js app with `WIZARD_AGENT_MODE=chatgpt`, so `/api/wizard` uses live SDK-generated wizard lines while deterministic state and recommendations stay guarded in code.
+- `npm run evals` runs portable JSONL cases through the live Agents SDK adapter. `OPENAI_API_KEY` is required.
+- `npm run dev` starts the Next.js app; `/api/wizard` always uses the live Agents SDK path.
 
 Some starter cases are marked `xfail` on purpose. They are there to teach interpretation: an expected failure should trigger trace review, not panic.

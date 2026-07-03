@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import { chatGptAgentAdapter, getChatGptAgentReadiness } from "../src/lib/wizard/chatgpt-agent";
-import { mockWizardAgent } from "../src/lib/wizard/mock-agent";
 import { initialWizardState, type WizardMessage, type WizardState } from "../src/lib/wizard/types";
 
 type EvalCase = {
@@ -31,9 +30,8 @@ type CaseResult = {
 
 loadEnvLocal();
 
-const useLive = process.env.WIZARD_AGENT_MODE === "chatgpt";
 const readiness = getChatGptAgentReadiness();
-const agent = useLive ? chatGptAgentAdapter : mockWizardAgent;
+const agent = chatGptAgentAdapter;
 
 main().catch((error) => {
   console.error(error);
@@ -41,9 +39,9 @@ main().catch((error) => {
 });
 
 async function main() {
-  if (useLive && !readiness.hasApiKey) {
-    console.log("Skipping live evals: OPENAI_API_KEY is required.");
-    return;
+  if (!readiness.hasApiKey) {
+    console.error("OPENAI_API_KEY is required to run agent evals.");
+    process.exit(1);
   }
 
   const cases = readCases(path.join(process.cwd(), "evals", "cases"));
@@ -134,7 +132,7 @@ async function runCase(testCase: EvalCase): Promise<CaseResult> {
   }
 
   const failures = checkExpectations(testCase, state, lastAccepted, lastLines, lastRecommendations, {
-    checkExactLineText: !useLive,
+    checkExactLineText: false,
   });
   if (testCase.xfail) {
     return {

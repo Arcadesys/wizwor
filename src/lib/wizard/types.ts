@@ -48,7 +48,7 @@ export type WizardTurnResponse = {
   suggestions: WizardOption[];
   recommendations: Recommendation[];
   accepted: boolean;
-  adapter: "mock" | "chatgpt";
+  adapter: "chatgpt";
   notes?: string[];
 };
 

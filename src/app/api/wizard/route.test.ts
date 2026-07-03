@@ -1,6 +1,22 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { POST } from "@/app/api/wizard/route";
 import { initialWizardState } from "@/lib/wizard/types";
+
+vi.mock("@/lib/wizard/runtime", () => ({
+  getWizardAgent: () => ({
+    runTurn: vi.fn(async () => ({
+      adapter: "chatgpt",
+      accepted: true,
+      lines: ["The live agent answers."],
+      recommendations: [],
+      suggestions: [],
+      state: {
+        ...initialWizardState,
+        started: true,
+      },
+    })),
+  }),
+}));
 
 describe("POST /api/wizard", () => {
   it("validates the contract", async () => {
@@ -23,8 +39,8 @@ describe("POST /api/wizard", () => {
     const body = await response.json();
 
     expect(response.status).toBe(200);
-    expect(body.adapter).toBe("mock");
-    expect(body.state.needsName).toBe(true);
-    expect(body.lines.join(" ")).toContain("Tell me the name");
+    expect(body.adapter).toBe("chatgpt");
+    expect(body.state.started).toBe(true);
+    expect(body.lines.join(" ")).toContain("live agent");
   });
 });

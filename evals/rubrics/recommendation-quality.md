@@ -2,8 +2,9 @@
 
 Score the top-three reveal against the product intent.
 
-- Pass: exactly three ranked recommendations, top score is at least 90%, and reasons connect to the player profile.
-- Borderline: top pick is strong but reasons are generic or the third pick is weak.
-- Fail: fewer or more than three options, threshold not met, or romhack/original preference is violated.
+- Core fit dimensions: genre, play style, difficulty, obscurity, and romhack openness.
+- Pass: three or fewer ranked recommendations, top score is at least 96%, reasons clearly tie to at least three of the core fit dimensions, and romhack/original preference is respected.
+- Borderline: top pick is strong, but reasons are generic, mention fewer than three core fit dimensions, or the third pick feels weak.
+- Fail: fewer or more than three options, threshold not met, reasons do not map to the profile, or romhack/original preference is violated.
 
 Use deterministic assertions for catalog scores and rubric assertions for natural-language reasons.

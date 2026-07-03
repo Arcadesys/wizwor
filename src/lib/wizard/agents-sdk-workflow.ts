@@ -1,7 +1,12 @@
 import { Agent, type AgentInputItem, Runner, tool, withTrace } from "@openai/agents";
 import { z } from "zod";
 import type { Recommendation, UserProfile } from "@/lib/recommender";
-import { getRecommendations } from "@/lib/recommender";
+import {
+  getRecommendations,
+  recommendationGate,
+  recommendationThreshold,
+  maxQualifyingRecommendations,
+} from "@/lib/recommender";
 import { questions } from "@/lib/wizard/questions";
 import type { WizardTurnRequest, WizardTurnResponse } from "@/lib/wizard/types";
 import { blankProfile, initialWizardState } from "@/lib/wizard/types";
@@ -23,28 +28,34 @@ const ProfileUpdateSchema = z.object({
 
 const CandidateProfileSchema = ProfileUpdateSchema.omit({ name: true });
 
-// This tool is the only place scoring math still runs — it's a capability the
-// agent chooses to call, with no fixed threshold enforced on it. Whether the
-// results are "good enough" to reveal, and which of them to actually recommend,
-// is entirely the agent's judgment call (see `revealed` / `recommendedGameIds`
-// in WizardTurnOutputSchema below).
+// This tool is a capability the agent chooses to call. The fixed workflow is
+// gone; scoring is exposed so the agent can decide whether the recommendation
+// window is open and which real catalog entries to name.
 const lookupRecommendationsTool = tool({
   name: "lookup_recommendations",
   description:
-    "Score the real NES catalog against a candidate profile (any subset of fields). Returns each game's id, title, match percent, why it matched, its pitch, and its tags. Call this whenever you want a read on the catalog — early to see what's out there, or again any time the known profile changes. There is no required score or count to hit before you can recommend; that judgment is yours.",
+    "Score the real NES catalog against a candidate profile (any subset of fields). Returns each game's id, title, match percent, whether it clears the reveal threshold, why it matched, its pitch, and its tags. Reveal only when 1 to 3 games clear the configured threshold.",
   parameters: CandidateProfileSchema,
   execute: async (input) => {
     const profile = { name: "", ...input } as UserProfile;
-    return getRecommendations(profile)
-      .slice(0, 8)
-      .map((recommendation) => ({
-        id: recommendation.game.id,
-        title: recommendation.game.title,
-        matchPercent: Math.round(recommendation.score * 100),
-        reasons: recommendation.reasons,
-        pitch: recommendation.game.pitch,
-        tags: recommendation.game.tags,
-      }));
+    const gate = recommendationGate(profile);
+    return {
+      thresholdPercent: Math.round(gate.threshold * 100),
+      maxQualifyingMatches: gate.maxQualifying,
+      qualifyingMatchCount: gate.qualifyingCount,
+      recommendationWindowOpen: gate.isOpen,
+      matches: getRecommendations(profile)
+        .slice(0, 8)
+        .map((recommendation) => ({
+          id: recommendation.game.id,
+          title: recommendation.game.title,
+          matchPercent: Math.round(recommendation.score * 100),
+          clearsThreshold: recommendation.score >= gate.threshold,
+          reasons: recommendation.reasons,
+          pitch: recommendation.game.pitch,
+          tags: recommendation.game.tags,
+        })),
+    };
   },
 });
 
@@ -76,7 +87,7 @@ const liveWizardAgent = new Agent({
     "The player has a profile with the fields below. From their message (and the recent conversation), fill in any field it clearly supports, in any order, across one or more messages. Only ever set a field to one of its exact listed values — never invent a new value. Leave a field out entirely if you're not confident.",
     buildFieldLegend(),
     "Also capture their name whenever they state or imply it, in their own words.",
-    "You decide when there's enough to recommend and when to keep talking instead — there is no required number of answers or fixed score. Every message includes currentBestMatches: the real catalog scored against the profile as currently known, so you always have a live read without needing to call anything. Call the lookup_recommendations tool only when you want to test a hypothetical profile different from the known one (e.g. 'what if difficulty were X'); you don't need it just to see the current picture.",
+    `You decide when there's enough to recommend and when to keep talking instead. Every message includes recommendationGate: the real catalog scored against the profile as currently known. Reveal only when recommendationGate.recommendationWindowOpen is true, meaning 1 to ${maxQualifyingRecommendations} games score at least ${Math.round(recommendationThreshold * 100)}%. Call the lookup_recommendations tool only when you want to test a hypothetical profile different from the known one (e.g. 'what if difficulty were X'); you don't need it just to see the current picture.`,
     "Only ever recommend real games from currentBestMatches or a tool result — copy their exact id into recommendedGameIds (at most 3, ranked by how well they fit). Never invent, describe, or score a game yourself. If revealed is false, leave recommendedGameIds empty.",
     "Commit when it's time — do not stall. Two situations require revealed: true this turn, using your best current pick, even with fields still unknown or the match imperfect: (1) the player explicitly hands you the decision — 'I don't care', 'you choose', 'whatever's best', 'just pick one', 'are you going to choose?' or similar — reveal immediately, do not ask yet another clarifying question first; (2) the conversation has already gone several exchanges without revealing and currentBestMatches already has a reasonably strong option — stop circling and commit rather than asking for one more detail.",
     "If a request names something very specific — a genre, a designer, a historical or cultural detail — check pitch/tags for a strong, specific match worth calling out by name and inference (e.g. a request for a notable multiplayer board-game-style NES title should lead you to feature what you find, tags and pitch included, if it's a clear fit).",
@@ -102,6 +113,7 @@ function currentBestMatches(profile: UserProfile) {
       id: recommendation.game.id,
       title: recommendation.game.title,
       matchPercent: Math.round(recommendation.score * 100),
+      clearsThreshold: recommendation.score >= recommendationThreshold,
       reasons: recommendation.reasons,
       pitch: recommendation.game.pitch,
       tags: recommendation.game.tags,
@@ -120,6 +132,12 @@ async function runWizardConversationTurn(request: WizardTurnRequest, knownProfil
               {
                 command: request.command,
                 knownProfile,
+                recommendationGate: {
+                  thresholdPercent: Math.round(recommendationThreshold * 100),
+                  maxQualifyingMatches: maxQualifyingRecommendations,
+                  qualifyingMatchCount: recommendationGate(knownProfile).qualifyingCount,
+                  recommendationWindowOpen: recommendationGate(knownProfile).isOpen,
+                },
                 currentBestMatches: currentBestMatches(knownProfile),
                 exchangesSoFar: request.messages.length,
                 recentMessages: request.messages.slice(-8),
@@ -164,7 +182,12 @@ function mergeProfile(current: UserProfile, update: WizardTurnOutput["profile"])
 // This just looks up real score/reasons for whichever ids it picked, so the UI never
 // displays a hallucinated number — the decision stays the agent's, the arithmetic is ours.
 function resolveRecommendations(profile: UserProfile, ids: string[]): Recommendation[] {
-  const scoredById = new Map(getRecommendations(profile).map((recommendation) => [recommendation.game.id, recommendation]));
+  const gate = recommendationGate(profile);
+  if (!gate.isOpen) {
+    return [];
+  }
+
+  const scoredById = new Map(gate.recommendations.map((recommendation) => [recommendation.game.id, recommendation]));
   return ids
     .map((id) => scoredById.get(id))
     .filter((recommendation): recommendation is Recommendation => Boolean(recommendation));
@@ -172,6 +195,7 @@ function resolveRecommendations(profile: UserProfile, ids: string[]): Recommenda
 
 function buildResponse(output: WizardTurnOutput, profile: UserProfile): WizardTurnResponse {
   const recommendations = output.revealed ? resolveRecommendations(profile, output.recommendedGameIds) : [];
+  const revealed = output.revealed && recommendations.length > 0;
 
   return {
     lines: output.lines,
@@ -179,7 +203,7 @@ function buildResponse(output: WizardTurnOutput, profile: UserProfile): WizardTu
       ...initialWizardState,
       started: true,
       profile,
-      revealed: output.revealed,
+      revealed,
     },
     suggestions: [],
     recommendations,

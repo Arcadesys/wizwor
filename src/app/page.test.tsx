@@ -26,7 +26,7 @@ describe("wizard terminal UI", () => {
       .spyOn(globalThis, "fetch")
       .mockImplementationOnce(() =>
         response({
-          adapter: "mock",
+          adapter: "chatgpt",
           accepted: true,
           lines: [],
           recommendations: [],
@@ -43,7 +43,7 @@ describe("wizard terminal UI", () => {
       )
       .mockImplementationOnce(() =>
         response({
-          adapter: "mock",
+          adapter: "chatgpt",
           accepted: true,
           lines: [],
           recommendations: [],
@@ -80,7 +80,7 @@ describe("wizard terminal UI", () => {
       .spyOn(globalThis, "fetch")
       .mockImplementationOnce(() =>
         response({
-          adapter: "mock",
+          adapter: "chatgpt",
           accepted: true,
           lines: [],
           recommendations: [],
@@ -100,7 +100,7 @@ describe("wizard terminal UI", () => {
       )
       .mockImplementationOnce(() =>
         response({
-          adapter: "mock",
+          adapter: "chatgpt",
           accepted: true,
           lines: [],
           recommendations: [],
@@ -220,7 +220,7 @@ describe("wizard terminal UI", () => {
   it("returns focus to the input on any keydown except arrow keys", async () => {
     vi.spyOn(globalThis, "fetch").mockImplementationOnce(() =>
       response({
-        adapter: "mock",
+        adapter: "chatgpt",
         accepted: true,
         lines: [],
         recommendations: [],

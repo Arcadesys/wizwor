@@ -4,14 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev:live": "WIZARD_AGENT_MODE=chatgpt next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "evals": "tsx evals/run-agent-evals.ts",
-    "evals:live": "WIZARD_AGENT_MODE=chatgpt tsx evals/run-agent-evals.ts"
+    "evals": "tsx evals/run-agent-evals.ts"
   },
   "dependencies": {
     "@openai/agents": "^0.12.0",

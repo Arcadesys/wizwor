@@ -23,19 +23,28 @@ export async function POST(request: Request) {
   }
 
   const agent = getWizardAgent();
-  const response = await agent.runTurn({
-    sessionId: payload.sessionId,
-    command: payload.command,
-    messages: Array.isArray(payload.messages) ? payload.messages : [],
-    state: {
-      ...initialWizardState,
-      ...payload.state,
-      profile: {
-        ...initialWizardState.profile,
-        ...payload.state?.profile,
+  try {
+    const response = await agent.runTurn({
+      sessionId: payload.sessionId,
+      command: payload.command,
+      messages: Array.isArray(payload.messages) ? payload.messages : [],
+      state: {
+        ...initialWizardState,
+        ...payload.state,
+        profile: {
+          ...initialWizardState.profile,
+          ...payload.state?.profile,
+        },
       },
-    },
-  });
+    });
 
-  return NextResponse.json(response);
+    return NextResponse.json(response);
+  } catch (error) {
+    return NextResponse.json(
+      {
+        error: error instanceof Error ? error.message : "Wizard agent failed.",
+      },
+      { status: 503 },
+    );
+  }
 }
