@@ -1,9 +1,19 @@
 import { NextResponse } from "next/server";
+import { catalogPlatforms, type Platform } from "@/data/games";
 import { getWizardAgent } from "@/lib/wizard/runtime";
 import type { WizardTurnRequest } from "@/lib/wizard/types";
 import { defaultMemoryMarkdown, initialWizardState } from "@/lib/wizard/types";
 
 export const runtime = "nodejs";
+
+function sanitizeEnabledPlatforms(value: unknown): Platform[] {
+  if (!Array.isArray(value)) {
+    return [...catalogPlatforms];
+  }
+  const allowed = new Set<Platform>(catalogPlatforms);
+  const enabled = value.filter((platform): platform is Platform => allowed.has(platform as Platform));
+  return [...new Set(enabled)];
+}
 
 export async function POST(request: Request) {
   let payload: Partial<WizardTurnRequest>;
@@ -39,6 +49,7 @@ export async function POST(request: Request) {
           ...initialWizardState.profile,
           ...payload.state?.profile,
         },
+        enabledPlatforms: sanitizeEnabledPlatforms(payload.state?.enabledPlatforms),
       },
     });
 

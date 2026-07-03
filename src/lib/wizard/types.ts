@@ -1,4 +1,5 @@
 import type { Recommendation, UserProfile } from "@/lib/recommender";
+import { catalogPlatforms, type Platform } from "@/data/games";
 
 export type WizardSpeaker = "system" | "wizard" | "user";
 
@@ -59,6 +60,7 @@ export type WizardState = {
   awaitingFocus: boolean;
   revealed: boolean;
   profile: UserProfile;
+  enabledPlatforms?: Platform[];
   memoryMarkdown: string;
   terminalTheme?: WizardTerminalTheme;
 };
@@ -114,5 +116,6 @@ export const initialWizardState: WizardState = {
   awaitingFocus: false,
   revealed: false,
   profile: blankProfile,
+  enabledPlatforms: [...catalogPlatforms],
   memoryMarkdown: defaultMemoryMarkdown,
 };

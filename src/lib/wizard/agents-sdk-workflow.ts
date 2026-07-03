@@ -1,5 +1,6 @@
 import { Agent, type AgentInputItem, Runner, tool, withTrace } from "@openai/agents";
 import { z } from "zod";
+import { catalogPlatforms, type Platform } from "@/data/games";
 import type { Recommendation, UserProfile } from "@/lib/recommender";
 import {
   getRecommendations,
@@ -7,6 +8,7 @@ import {
   recommendationGate,
   recommendationThreshold,
   maxQualifyingRecommendations,
+  suggestNextQuestion,
 } from "@/lib/recommender";
 import type { WizardTurnRequest, WizardTurnResponse } from "@/lib/wizard/types";
 import { blankProfile, initialWizardState } from "@/lib/wizard/types";
@@ -97,7 +99,7 @@ const liveWizardAgent = new Agent({
     "If the player asks to change terminal colors, update memoryMarkdown and return terminalTheme with CSS hex colors for the requested palette. Use background, foreground, green, amber, red, and blue keys when relevant.",
     `You decide when there's enough to recommend and when to keep talking instead. Every message includes recommendationGate: the real catalog scored against the profile as currently known. Reveal only when recommendationGate.recommendationWindowOpen is true, meaning 1 to ${maxQualifyingRecommendations} games score at least ${Math.round(recommendationThreshold * 100)}%. Call the lookup_recommendations tool only when you want to test a hypothetical profile different from the known one (e.g. 'what if difficulty were X'); you don't need it just to see the current picture.`,
     "Only ever recommend real games from currentBestMatches or a tool result — copy their exact id into recommendedGameIds (at most 3, ranked by how well they fit). Never invent, describe, or score a game yourself. If revealed is false, leave recommendedGameIds empty.",
-    "When picking your next question, look at currentBestMatches and ask about whatever would split that field roughly in half rather than a generic question. E.g. if the leading candidates are a side-scroller and a puzzle game (say, Contra and Batman vs. Tetris), ask about playStyle — side-scroller or puzzle — since that's the axis actually separating them, not something both share.",
+    "When too many games qualify, every message includes suggestedNextQuestion: computed like a well-played round of 20 Questions or Guess Who — the unanswered field+value that splits the current candidate pool closest to 50/50, so whichever way the player answers eliminates the most ground. When it's present, build your next question around that exact field (e.g. if it's {key: \"playStyle\", value: \"puzzle\"}, ask something like whether they want a puzzle game or something else) — phrase it naturally, don't recite the field name. When it's null (pool is already small, or nothing left discriminates), fall back to your own judgment from currentBestMatches.",
     "Commit when it's time — do not stall. Two situations require revealed: true this turn, using your best current pick, even with fields still unknown or the match imperfect: (1) the player explicitly hands you the decision — 'I don't care', 'you choose', 'whatever's best', 'just pick one', 'are you going to choose?' or similar — reveal immediately, do not ask yet another clarifying question first; (2) the conversation has already gone several exchanges without revealing and currentBestMatches already has a reasonably strong option — stop circling and commit rather than asking for one more detail.",
     "If a request names something very specific — a genre, a designer, a historical or cultural detail — check pitch/tags for a strong, specific match worth calling out by name and inference (e.g. a request for a notable multiplayer board-game-style NES title should lead you to feature what you find, tags and pitch included, if it's a clear fit).",
     "Use agentData for any extra data you generated or consumed mentally: category scores, inferred traits, uncertainty notes, rejected options, scoring rationale, or other compact debug fields.",
@@ -117,8 +119,12 @@ const liveWizardAgent = new Agent({
   outputType: WizardTurnOutputSchema,
 });
 
-function currentBestMatches(profile: UserProfile) {
-  return getRecommendations(profile)
+function scoringOptions(enabledPlatforms: readonly Platform[]) {
+  return { enabledPlatforms };
+}
+
+function currentBestMatches(profile: UserProfile, enabledPlatforms: readonly Platform[]) {
+  return getRecommendations(profile, scoringOptions(enabledPlatforms))
     .slice(0, 5)
     .map((recommendation) => ({
       id: recommendation.game.id,
@@ -127,16 +133,16 @@ function currentBestMatches(profile: UserProfile) {
       clearsThreshold: recommendation.score >= recommendationThreshold,
       reasons: recommendation.reasons,
       pitch: recommendation.game.pitch,
-        tags: recommendation.game.tags,
-      }));
+      tags: recommendation.game.tags,
+    }));
 }
 
-function gamesAboveThreshold(profile: UserProfile) {
+function gamesAboveThreshold(profile: UserProfile, enabledPlatforms: readonly Platform[]) {
   // qualifyingRecommendations is unbounded by count (unlike lookup_recommendations'
   // .slice(0, 8) below), so a broad, single-dimension profile against the ~2000-game
   // catalog could otherwise serialize hundreds of matches into the agent's context
   // and the client-facing agentData payload on every turn.
-  return qualifyingRecommendations(profile)
+  return qualifyingRecommendations(profile, scoringOptions(enabledPlatforms))
     .slice(0, 8)
     .map((recommendation) => ({
       id: recommendation.game.id,
@@ -150,10 +156,13 @@ function gamesAboveThreshold(profile: UserProfile) {
 
 async function runWizardConversationTurn(request: WizardTurnRequest, knownProfile: UserProfile) {
   return withTrace("Wizard live turn", async () => {
-    const gate = recommendationGate(knownProfile);
+    const enabledPlatforms = request.state.enabledPlatforms ?? [...catalogPlatforms];
+    const options = scoringOptions(enabledPlatforms);
+    const gate = recommendationGate(knownProfile, options);
     const consumed = {
       command: request.command,
       knownProfile,
+      enabledPlatforms,
       memoryMarkdown: request.state.memoryMarkdown,
       terminalTheme: request.state.terminalTheme,
       recommendationGate: {
@@ -162,8 +171,9 @@ async function runWizardConversationTurn(request: WizardTurnRequest, knownProfil
         qualifyingMatchCount: gate.qualifyingCount,
         recommendationWindowOpen: gate.isOpen,
       },
-      gamesAboveThreshold: gamesAboveThreshold(knownProfile),
-      currentBestMatches: currentBestMatches(knownProfile),
+      gamesAboveThreshold: gamesAboveThreshold(knownProfile, enabledPlatforms),
+      currentBestMatches: currentBestMatches(knownProfile, enabledPlatforms),
+      suggestedNextQuestion: suggestNextQuestion(knownProfile, options),
       exchangesSoFar: request.messages.length,
       recentMessages: request.messages.slice(-8),
     };
@@ -205,8 +215,8 @@ function mergeProfile(current: UserProfile, update: WizardTurnOutput["profile"])
 // The agent decides *whether* to reveal and *which* games to name (recommendedGameIds).
 // This just looks up real score/reasons for whichever ids it picked, so the UI never
 // displays a hallucinated number — the decision stays the agent's, the arithmetic is ours.
-function resolveRecommendations(profile: UserProfile, ids: string[]): Recommendation[] {
-  const gate = recommendationGate(profile);
+function resolveRecommendations(profile: UserProfile, ids: string[], enabledPlatforms: readonly Platform[]): Recommendation[] {
+  const gate = recommendationGate(profile, scoringOptions(enabledPlatforms));
   if (!gate.isOpen) {
     return [];
   }
@@ -220,11 +230,14 @@ function resolveRecommendations(profile: UserProfile, ids: string[]): Recommenda
 function buildResponse(
   output: WizardTurnOutput,
   profile: UserProfile,
+  enabledPlatforms: Platform[],
   consumed: Record<string, unknown>,
 ): WizardTurnResponse {
-  const recommendations = output.revealed ? resolveRecommendations(profile, output.recommendedGameIds) : [];
+  const recommendations = output.revealed
+    ? resolveRecommendations(profile, output.recommendedGameIds, enabledPlatforms)
+    : [];
   const revealed = output.revealed && recommendations.length > 0;
-  const gate = recommendationGate(profile);
+  const gate = recommendationGate(profile, scoringOptions(enabledPlatforms));
 
   return {
     lines: output.lines,
@@ -232,6 +245,7 @@ function buildResponse(
       ...initialWizardState,
       started: true,
       profile,
+      enabledPlatforms,
       revealed,
       memoryMarkdown: output.memoryMarkdown?.trim() || initialWizardState.memoryMarkdown,
       terminalTheme: output.terminalTheme,
@@ -245,8 +259,8 @@ function buildResponse(
       maxQualifyingMatches: maxQualifyingRecommendations,
       qualifyingMatchCount: gate.qualifyingCount,
       recommendationWindowOpen: gate.isOpen,
-      gamesAboveThreshold: gamesAboveThreshold(profile),
-      currentBestMatches: currentBestMatches(profile),
+      gamesAboveThreshold: gamesAboveThreshold(profile, enabledPlatforms),
+      currentBestMatches: currentBestMatches(profile, enabledPlatforms),
       consumed,
       generated: output.agentData ?? {},
     },
@@ -278,6 +292,7 @@ export async function runLiveWizardTurn(request: WizardTurnRequest): Promise<Wiz
       terminalTheme: output.terminalTheme ?? request.state.terminalTheme,
     },
     nextProfile,
+    request.state.enabledPlatforms ?? [...catalogPlatforms],
     consumed,
   );
 }

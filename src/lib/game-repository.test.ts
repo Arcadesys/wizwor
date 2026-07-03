@@ -2,12 +2,13 @@ import { describe, expect, it } from "vitest";
 import { getAllGames } from "@/lib/game-repository";
 import { games } from "@/data/games";
 import { generatedNesGames } from "@/data/nes-catalog.generated";
+import { generatedSnesGames } from "@/data/snes-catalog.generated";
 
 describe("game repository", () => {
   it("filters out low-signal generated entries instead of merging the whole catalog wholesale", () => {
     const merged = getAllGames();
     expect(merged.length).toBeGreaterThan(games.length);
-    expect(merged.length).toBeLessThan(games.length + generatedNesGames.length);
+    expect(merged.length).toBeLessThan(games.length + generatedNesGames.length + generatedSnesGames.length);
   });
 
   it("never surfaces two games with the same normalized title", () => {
@@ -18,5 +19,11 @@ describe("game repository", () => {
       expect(seen.has(key)).toBe(false);
       seen.add(key);
     }
+  });
+
+  it("filters the scored catalog to enabled platforms before callers rank games", () => {
+    expect(getAllGames({ enabledPlatforms: ["snes"] }).every((game) => game.platform === "snes")).toBe(true);
+    expect(getAllGames({ enabledPlatforms: ["nes", "romhack"] }).some((game) => game.platform === "snes")).toBe(false);
+    expect(getAllGames({ enabledPlatforms: [] })).toEqual([]);
   });
 });
