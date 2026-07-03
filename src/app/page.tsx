@@ -808,8 +808,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
               <button
                 type="button"
                 className="reset-button"
-                onClick={(event) => {
-                  event.stopPropagation();
+                onClick={() => {
                   resetSession();
                 }}
                 aria-label="Start over"
@@ -856,11 +855,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
             ) : null}
 
             {recommendations.length ? (
-              <div
-                className="feedback-bar"
-                onClick={(event) => event.stopPropagation()}
-                onKeyDown={(event) => event.stopPropagation()}
-              >
+              <div className="feedback-bar" onKeyDown={(event) => event.stopPropagation()}>
                 {!feedbackRating ? (
                   <>
                     <p className="feedback-prompt">Was this reading true?</p>
@@ -870,8 +865,8 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                           key={option.rating}
                           type="button"
                           className="feedback-chip"
-                          onClick={(event) => {
-                            event.stopPropagation();
+                          data-recommendation-button="true"
+                          onClick={() => {
                             rateRecommendations(option.rating);
                           }}
                         >
@@ -896,7 +891,12 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                         placeholder="Too easy, wrong mood, wanted more romhacks..."
                         className="feedback-note-input"
                       />
-                      <button type="submit" className="feedback-note-submit" disabled={!feedbackNote.trim()}>
+                      <button
+                        type="submit"
+                        className="feedback-note-submit"
+                        data-recommendation-button="true"
+                        disabled={!feedbackNote.trim()}
+                      >
                         Send
                       </button>
                     </div>
@@ -935,11 +935,11 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                       setSuggestionIndex(index);
                     }}
                     onClick={(event) => {
-                      event.stopPropagation();
                       setIsSuggestionBrowsing(true);
                       setCommand(option.label);
                       submitCommand(option.label);
                     }}
+                    data-recommendation-button="true"
                   >
                     <span>{option.label}</span>
                     <small>{option.detail}</small>
