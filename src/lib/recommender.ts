@@ -17,11 +17,23 @@ export type UserProfile = {
   playStyle?: string;
   obscurity?: string;
   romhack?: string;
+  // Free-text descriptor words (genres, designers, specific details) pulled from
+  // conversation. Scored against each game's tags/pitch — a finer-grained tiebreaker
+  // than the coarse categorical fields above, which the full generated catalog
+  // (~2000 titles) can otherwise tie dozens-deep on.
+  keywords?: string[];
   focus?: PreferenceKey;
   [key: string]: unknown;
 };
 
-export type PreferenceKey = "mood" | "difficulty" | "story" | "playStyle" | "obscurity" | "romhack";
+export type PreferenceKey =
+  | "mood"
+  | "difficulty"
+  | "story"
+  | "playStyle"
+  | "obscurity"
+  | "romhack"
+  | "keywords";
 
 export type Recommendation = {
   game: Game;
@@ -41,6 +53,7 @@ const rubric: RubricDimension[] = [
   { key: "story", weight: 12 },
   { key: "obscurity", weight: 12 },
   { key: "romhack", weight: 10 },
+  { key: "keywords", weight: 20 },
 ];
 
 const questionCountRequired = 4;
@@ -53,8 +66,20 @@ type RecommendationGateOptions = {
   maxQualifying?: number;
 };
 
+function normalizeKeywords(value: unknown): string[] {
+  const raw = Array.isArray(value) ? value : [value];
+  return raw
+    .map((entry) => String(entry).toLowerCase().trim())
+    .filter((entry) => entry.length > 0);
+}
+
 export function answeredPreferenceCount(profile: UserProfile) {
-  return rubric.filter((dimension) => profile[dimension.key]).length;
+  return rubric.filter((dimension) => {
+    if (dimension.key === "keywords") {
+      return normalizeKeywords(profile.keywords).length > 0;
+    }
+    return Boolean(profile[dimension.key]);
+  }).length;
 }
 
 export function hasEnoughSignal(profile: UserProfile) {
@@ -111,6 +136,22 @@ function scoreGame(game: Game, profile: UserProfile): Recommendation {
       continue;
     }
 
+    if (dimension.key === "keywords") {
+      const keywords = normalizeKeywords(preference);
+      if (keywords.length === 0) {
+        continue;
+      }
+      possible += dimension.weight;
+      const haystack = `${game.tags.join(" ")} ${game.pitch}`.toLowerCase();
+      const hits = keywords.filter((keyword) => haystack.includes(keyword));
+      const match = hits.length / keywords.length;
+      earned += dimension.weight * match;
+      if (hits.length > 0) {
+        reasons.push(`echoes ${hits.slice(0, 2).join(", ")}`);
+      }
+      continue;
+    }
+
     possible += dimension.weight;
 
     if (dimension.key === "mood") {
@@ -140,7 +181,7 @@ function scoreGame(game: Game, profile: UserProfile): Recommendation {
       const match = playStyleMatch(game.playStyle, playStyle);
       earned += dimension.weight * match;
       if (match === 1) {
-        reasons.push(labelReason(dimension.key, preference));
+        reasons.push(labelReason(dimension.key, preference as string));
       }
       continue;
     }
@@ -150,7 +191,7 @@ function scoreGame(game: Game, profile: UserProfile): Recommendation {
       const match = orderedMatch(["low", "some", "rich"], game.story, story);
       earned += dimension.weight * match;
       if (match === 1) {
-        reasons.push(labelReason(dimension.key, preference));
+        reasons.push(labelReason(dimension.key, preference as string));
       }
       continue;
     }
@@ -160,7 +201,7 @@ function scoreGame(game: Game, profile: UserProfile): Recommendation {
       const match = orderedMatch(["classic", "hidden-gem", "strange"], game.obscurity, obscurity);
       earned += dimension.weight * match;
       if (match === 1) {
-        reasons.push(labelReason(dimension.key, preference));
+        reasons.push(labelReason(dimension.key, preference as string));
       }
       continue;
     }
@@ -177,7 +218,7 @@ function scoreGame(game: Game, profile: UserProfile): Recommendation {
 
     if (game[dimension.key] === preference) {
       earned += dimension.weight;
-      reasons.push(labelReason(dimension.key, preference));
+      reasons.push(labelReason(dimension.key, preference as string));
     }
   }
 
@@ -243,6 +284,15 @@ function dimensionMatchesFocus(game: Game, focus: PreferenceKey, value: UserProf
   if (focus === "romhack") {
     const romhack = value as RomhackInterest;
     return romhack === "curious" || (romhack === "yes" ? game.kind === "romhack" : game.kind === "nes");
+  }
+
+  if (focus === "keywords") {
+    const keywords = normalizeKeywords(value);
+    if (keywords.length === 0) {
+      return false;
+    }
+    const haystack = `${game.tags.join(" ")} ${game.pitch}`.toLowerCase();
+    return keywords.some((keyword) => haystack.includes(keyword));
   }
 
   return game[focus] === value;

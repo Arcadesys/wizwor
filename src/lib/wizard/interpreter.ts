@@ -92,6 +92,9 @@ const preferenceHints: Record<PreferenceKey, Record<string, string[]>> = {
     curious: ["curious", "maybe", "open to it", "fine with it", "if good", "possibly"],
     yes: ["romhack", "romhacks", "hack", "hacks", "mod", "mods", "altered", "forbidden"],
   },
+  // No fixed WizardQuestion asks about keywords directly — only the live LLM
+  // agent populates this free-text field, so there are no hint phrases to match.
+  keywords: {},
 };
 
 const focusHints: Partial<Record<PreferenceKey, string[]>> = {
