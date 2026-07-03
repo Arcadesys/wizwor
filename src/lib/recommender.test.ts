@@ -8,7 +8,7 @@ import {
   shouldRevealRecommendations,
 } from "@/lib/recommender";
 import { getAllGames } from "@/lib/game-repository";
-import { games as curatedGames, type Game } from "@/data/games";
+import { catalogPlatforms, games as curatedGames, type Game } from "@/data/games";
 import { blankProfile } from "@/lib/wizard/types";
 
 describe("recommendation rubric", () => {
@@ -123,15 +123,34 @@ describe("recommendation rubric", () => {
       story: "low" as const,
     };
 
-    const snesOnly = qualifyingRecommendations(profile, { enabledPlatforms: ["snes"], threshold: 0 });
-    expect(snesOnly.length).toBeGreaterThan(0);
-    expect(snesOnly.every((recommendation) => recommendation.game.platform === "snes")).toBe(true);
+    for (const platform of catalogPlatforms) {
+      const platformOnly = qualifyingRecommendations(profile, { enabledPlatforms: [platform], threshold: 0 });
+      expect(platformOnly.every((recommendation) => recommendation.game.platform === platform)).toBe(true);
+    }
 
     const withoutSnes = qualifyingRecommendations(profile, {
       enabledPlatforms: ["nes", "romhack"],
       threshold: 0,
     });
     expect(withoutSnes.some((recommendation) => recommendation.game.platform === "snes")).toBe(false);
+  });
+
+  it("handles an empty enabled-platform set as an empty recommendation pool", () => {
+    const profile = {
+      ...blankProfile,
+      name: "Ada",
+      mood: "heroic" as const,
+      playStyle: "platformer" as const,
+      difficulty: "fair" as const,
+      story: "low" as const,
+    };
+
+    expect(qualifyingRecommendations(profile, { enabledPlatforms: [] })).toEqual([]);
+    expect(recommendationGate(profile, { enabledPlatforms: [] })).toMatchObject({
+      qualifyingCount: 0,
+      isOpen: false,
+      recommendations: [],
+    });
   });
 
   it("closes when no match clears the threshold", () => {

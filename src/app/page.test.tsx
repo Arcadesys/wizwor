@@ -27,6 +27,12 @@ function response(body: MockWizardTurnResponse) {
   return Promise.resolve(new Response(JSON.stringify(normalized), { status: 200 }));
 }
 
+async function chooseConsole(label = "NES") {
+  const button = await screen.findByRole("button", { name: new RegExp(`^Select ${escapeRegExp(label)}$`, "i") });
+  fireEvent.click(button);
+  await waitFor(() => expect(screen.queryByRole("heading", { name: /Choose Console Context/i })).not.toBeInTheDocument());
+}
+
 describe("wizard terminal UI", () => {
   beforeEach(() => {
     const storage = makeStorage();
@@ -44,6 +50,25 @@ describe("wizard terminal UI", () => {
     vi.restoreAllMocks();
     sessionStorage.clear();
     localStorage.clear();
+  });
+
+  it("starts with an empty agent data panel before recommendation context exists", async () => {
+    const { container } = render(<Home />);
+    const input = await screen.findByLabelText("Terminal command prompt");
+    await waitFor(() => expect(input).toBeEnabled());
+
+    expect(screen.getByText("Greetings Gamer! What console are you questing on today?")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Choose Console Context/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /^Select NES$/i })).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: /Expand agent data/i }));
+
+    const debugText = container.querySelector(".agent-data-body pre")?.textContent ?? "";
+    expect(debugText).toContain('"qualifyingMatchCount": 0');
+    expect(debugText).toContain('"recommendationWindowOpen": false');
+    expect(debugText).toContain('"gamesAboveThreshold": []');
+    expect(debugText).toContain('"currentBestMatches": []');
+    expect(debugText).not.toContain("2-in-1 Super Mario Bros./Duck Hunt");
   });
 
   it("submits custom typed text on Enter instead of the highlighted suggestion", async () => {
@@ -87,6 +112,7 @@ describe("wizard terminal UI", () => {
     render(<Home />);
     const input = await screen.findByLabelText("Terminal command prompt");
     await waitFor(() => expect(input).toBeEnabled());
+    await chooseConsole();
 
     fireEvent.submit(input.closest("form")!);
     await screen.findByText("Ominous");
@@ -144,6 +170,7 @@ describe("wizard terminal UI", () => {
     render(<Home />);
     const input = await screen.findByLabelText("Terminal command prompt");
     await waitFor(() => expect(input).toBeEnabled());
+    await chooseConsole();
 
     fireEvent.click(document.querySelector(".terminal-window")!);
     expect(input).toHaveFocus();
@@ -212,6 +239,7 @@ describe("wizard terminal UI", () => {
     render(<Home />);
     const input = await screen.findByLabelText("Terminal command prompt");
     await waitFor(() => expect(input).toBeEnabled());
+    await chooseConsole();
 
     fireEvent.submit(input.closest("form")!);
     const ominousChip = (await screen.findByText("Ominous")).closest("button");
@@ -243,7 +271,10 @@ describe("wizard terminal UI", () => {
 
     expect(screen.queryByText(/CRT SIGNAL DORMANT/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/PRESS ENTER TO SUMMON/i)).not.toBeInTheDocument();
-    expect(document.querySelector(".message-stack")?.textContent).toBe("");
+    expect(document.querySelector(".message-stack")?.textContent).toContain(
+      "Greetings Gamer! What console are you questing on today?",
+    );
+    expect(screen.getByRole("heading", { name: /Choose Console Context/i })).toBeInTheDocument();
   });
 
   it("sends what the user actually typed as the first turn, instead of a blank summon", async () => {
@@ -268,6 +299,7 @@ describe("wizard terminal UI", () => {
     render(<Home />);
     const input = await screen.findByLabelText("Terminal command prompt");
     await waitFor(() => expect(input).toBeEnabled());
+    await chooseConsole();
 
     fireEvent.change(input, { target: { value: "I'm Joanne and I want a board game experience." } });
     fireEvent.submit(input.closest("form")!);
@@ -275,6 +307,7 @@ describe("wizard terminal UI", () => {
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
     const body = JSON.parse(String(fetchMock.mock.calls[0][1]?.body));
     expect(body.command).toBe("I'm Joanne and I want a board game experience.");
+    expect(body.state.enabledPlatforms).toEqual(["nes"]);
     expect(body.state.memoryMarkdown).toContain("# MEMORY.md");
     await screen.findByText("I'm Joanne and I want a board game experience.");
   });
@@ -307,6 +340,7 @@ describe("wizard terminal UI", () => {
     render(<Home />);
     const input = await screen.findByLabelText("Terminal command prompt");
     await waitFor(() => expect(input).toBeEnabled());
+    await chooseConsole();
 
     fireEvent.change(input, { target: { value: "make the console blue" } });
     fireEvent.submit(input.closest("form")!);
@@ -365,6 +399,7 @@ describe("wizard terminal UI", () => {
     render(<Home />);
     const input = await screen.findByLabelText("Terminal command prompt");
     await waitFor(() => expect(input).toBeEnabled());
+    await chooseConsole("Romhacks");
 
     fireEvent.change(input, { target: { value: "Ada wants an ominous side-scroller." } });
     fireEvent.submit(input.closest("form")!);
@@ -410,6 +445,7 @@ describe("wizard terminal UI", () => {
     const { container } = render(<Home />);
     const input = await screen.findByLabelText("Terminal command prompt");
     await waitFor(() => expect(input).toBeEnabled());
+    await chooseConsole();
 
     fireEvent.change(input, { target: { value: "hello there" } });
     fireEvent.submit(input.closest("form")!);
@@ -462,6 +498,7 @@ describe("wizard terminal UI", () => {
     render(<Home />);
     const input = await screen.findByLabelText("Terminal command prompt");
     await waitFor(() => expect(input).toBeEnabled());
+    await chooseConsole();
 
     fireEvent.change(input, { target: { value: "arcade" } });
     fireEvent.submit(input.closest("form")!);
@@ -497,6 +534,7 @@ describe("wizard terminal UI", () => {
     render(<Home />);
     const input = await screen.findByLabelText("Terminal command prompt");
     await waitFor(() => expect(input).toBeEnabled());
+    await chooseConsole();
 
     fireEvent.submit(input.closest("form")!);
     const ominous = await screen.findByText("Ominous");
@@ -529,4 +567,8 @@ function makeStorage(): Storage {
       entries.set(key, String(value));
     },
   };
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }

@@ -18,6 +18,7 @@ import {
   maxQualifyingRecommendations,
   suggestNextQuestion,
 } from "@/lib/recommender";
+import { emptyAgentData } from "@/lib/wizard/agent-data";
 import type { WizardTurnRequest, WizardTurnResponse } from "@/lib/wizard/types";
 import { blankProfile, initialWizardState } from "@/lib/wizard/types";
 
@@ -121,7 +122,7 @@ const liveWizardAgent = new Agent<WizardRunContext, typeof WizardTurnOutputSchem
     "Do not require the player's name for anything. If they offer a name, remember it in memoryMarkdown and optionally include it in profile.name; otherwise omit profile.name.",
     "You maintain the player's durable MEMORY.md. Every turn receives the current Markdown memory. Return memoryMarkdown only when you learned something durable: name, preferences, terminal color wishes, games previously played, games rejected, accessibility/audio/style preferences, or useful notes. Keep the Markdown compact, preserving the headings: Player, Preferences, Games Previously Played, Notes.",
     "If the player asks to change terminal colors, update memoryMarkdown and return terminalTheme with CSS hex colors for the requested palette. Use background, foreground, green, amber, red, and blue keys when relevant.",
-    `You decide when there's enough to recommend and when to keep talking instead. Every message includes recommendationGate: the real catalog scored against the profile as currently known. Reveal only when recommendationGate.recommendationWindowOpen is true, meaning 1 to ${maxQualifyingRecommendations} games score at least ${Math.round(recommendationThreshold * 100)}%. Call the lookup_recommendations tool only when you want to test a hypothetical profile different from the known one (e.g. 'what if difficulty were X'); you don't need it just to see the current picture.`,
+    `After the player answers what system they are questing on, messages include recommendationGate: the real catalog scored against the profile as currently known. Reveal only when recommendationGate.recommendationWindowOpen is true, meaning 1 to ${maxQualifyingRecommendations} games score at least ${Math.round(recommendationThreshold * 100)}%. Call the lookup_recommendations tool only when you want to test a hypothetical profile different from the known one (e.g. 'what if difficulty were X'); you don't need it just to see the current picture.`,
     "Only ever recommend real games from currentBestMatches or a tool result — copy their exact id into recommendedGameIds (at most 3, ranked by how well they fit). Never invent, describe, or score a game yourself. If revealed is false, leave recommendedGameIds empty.",
     "When too many games qualify, every message includes suggestedNextQuestion: computed like a well-played round of 20 Questions or Guess Who — the unanswered field+value that splits the current candidate pool closest to 50/50, so whichever way the player answers eliminates the most ground. When it's present, build your next question around that exact field (e.g. if it's {key: \"playStyle\", value: \"puzzle\"}, ask something like whether they want a puzzle game or something else) — phrase it naturally, don't recite the field name. When it's null (pool is already small, or nothing left discriminates), fall back to your own judgment from currentBestMatches.",
     "Commit when it's time — do not stall. Two situations require revealed: true this turn, using your best current pick, even with fields still unknown or the match imperfect: (1) the player explicitly hands you the decision — 'I don't care', 'you choose', 'whatever's best', 'just pick one', 'are you going to choose?' or similar — reveal immediately, do not ask yet another clarifying question first; (2) the conversation has already gone several exchanges without revealing and currentBestMatches already has a reasonably strong option — stop circling and commit rather than asking for one more detail.",
@@ -129,7 +130,7 @@ const liveWizardAgent = new Agent<WizardRunContext, typeof WizardTurnOutputSchem
     "Use agentData for any extra data you generated or consumed mentally: category scores, inferred traits, uncertainty notes, rejected options, scoring rationale, or other compact debug fields. Keep every agentData value shallow: strings, numbers, booleans, arrays of those, or at most one nested object of those (e.g. inferredProfile: { mood: \"heroic\", confidence: 0.8 }). Never nest an object inside another object or inside an array entry.",
     "If their message gives you nothing usable for any field, set accepted to false and warmly ask, in your own words, for whatever still seems missing.",
     "Keep lines terse, arcade-synthetic, readable on a tiny CRT — 1 to 3 short lines.",
-    "The very first reply of a session always ends with 'On what console are you questing?' (added automatically) — don't ask about platform/console yourself on turn one. The catalog now spans NES, SNES, Genesis, PC Engine, Neo Geo, Atari 7800/5200, SMS, and romhacks — currentBestMatches and gamesAboveThreshold are already filtered to whichever platforms the player has enabled in Catalog Shelves, so acknowledge whatever console they name in-character and let those filtered lists guide your pick rather than assuming NES.",
+    "The very first reply of a session always ends with 'Greetings Gamer! What console are you questing on today?' (added automatically) — don't ask about platform/system yourself on turn one. The catalog now spans NES, SNES, Genesis, PC Engine, Neo Geo, Atari 7800/5200, SMS, and romhacks — after the player names a system, currentBestMatches and gamesAboveThreshold are filtered to whichever platforms the player has enabled in Catalog Shelves, so acknowledge whatever system they name in-character and let those filtered lists guide your pick rather than assuming NES.",
   ].join("\n"),
   model: process.env.WIZARD_AGENT_MODEL || "gpt-5.5",
   modelSettings: {
@@ -231,29 +232,46 @@ function fallbackTurnOutput(): WizardTurnOutput {
   };
 }
 
+export function isFirstWizardTurn(request: WizardTurnRequest) {
+  return !request.messages.some((message) => message.speaker === "wizard");
+}
+
+export function buildConsumedTurnContext(request: WizardTurnRequest, knownProfile: UserProfile) {
+  const enabledPlatforms = request.state.enabledPlatforms ?? [...catalogPlatforms];
+  const consumed: Record<string, unknown> = {
+    command: request.command,
+    knownProfile,
+    enabledPlatforms,
+    memoryMarkdown: request.state.memoryMarkdown,
+    terminalTheme: request.state.terminalTheme,
+    exchangesSoFar: request.messages.length,
+    recentMessages: request.messages.slice(-8),
+  };
+
+  if (isFirstWizardTurn(request)) {
+    return consumed;
+  }
+
+  const options = scoringOptions(enabledPlatforms);
+  const gate = recommendationGate(knownProfile, options);
+  return {
+    ...consumed,
+    recommendationGate: {
+      thresholdPercent: Math.round(recommendationThreshold * 100),
+      maxQualifyingMatches: maxQualifyingRecommendations,
+      qualifyingMatchCount: gate.qualifyingCount,
+      recommendationWindowOpen: gate.isOpen,
+    },
+    gamesAboveThreshold: gamesAboveThreshold(knownProfile, enabledPlatforms),
+    currentBestMatches: currentBestMatches(knownProfile, enabledPlatforms),
+    suggestedNextQuestion: suggestNextQuestion(knownProfile, options),
+  };
+}
+
 async function runWizardConversationTurn(request: WizardTurnRequest, knownProfile: UserProfile) {
   return withTrace("Wizard live turn", async () => {
     const enabledPlatforms = request.state.enabledPlatforms ?? [...catalogPlatforms];
-    const options = scoringOptions(enabledPlatforms);
-    const gate = recommendationGate(knownProfile, options);
-    const consumed = {
-      command: request.command,
-      knownProfile,
-      enabledPlatforms,
-      memoryMarkdown: request.state.memoryMarkdown,
-      terminalTheme: request.state.terminalTheme,
-      recommendationGate: {
-        thresholdPercent: Math.round(recommendationThreshold * 100),
-        maxQualifyingMatches: maxQualifyingRecommendations,
-        qualifyingMatchCount: gate.qualifyingCount,
-        recommendationWindowOpen: gate.isOpen,
-      },
-      gamesAboveThreshold: gamesAboveThreshold(knownProfile, enabledPlatforms),
-      currentBestMatches: currentBestMatches(knownProfile, enabledPlatforms),
-      suggestedNextQuestion: suggestNextQuestion(knownProfile, options),
-      exchangesSoFar: request.messages.length,
-      recentMessages: request.messages.slice(-8),
-    };
+    const consumed = buildConsumedTurnContext(request, knownProfile);
     const conversationHistory: AgentInputItem[] = [
       {
         role: "user",
@@ -317,12 +335,13 @@ function buildResponse(
   profile: UserProfile,
   enabledPlatforms: Platform[],
   consumed: Record<string, unknown>,
+  includeRecommendationContext = true,
 ): WizardTurnResponse {
-  const recommendations = output.revealed
+  const recommendations = includeRecommendationContext && output.revealed
     ? resolveRecommendations(profile, output.recommendedGameIds, enabledPlatforms)
     : [];
   const revealed = output.revealed && recommendations.length > 0;
-  const gate = recommendationGate(profile, scoringOptions(enabledPlatforms));
+  const gate = includeRecommendationContext ? recommendationGate(profile, scoringOptions(enabledPlatforms)) : null;
 
   return {
     lines: output.lines,
@@ -339,25 +358,29 @@ function buildResponse(
     recommendations,
     accepted: output.accepted,
     adapter: "chatgpt",
-    agentData: {
-      thresholdPercent: Math.round(recommendationThreshold * 100),
-      maxQualifyingMatches: maxQualifyingRecommendations,
-      qualifyingMatchCount: gate.qualifyingCount,
-      recommendationWindowOpen: gate.isOpen,
-      gamesAboveThreshold: gamesAboveThreshold(profile, enabledPlatforms),
-      currentBestMatches: currentBestMatches(profile, enabledPlatforms),
-      consumed,
-      generated: output.agentData ?? {},
-    },
+    agentData: gate
+      ? {
+          thresholdPercent: Math.round(recommendationThreshold * 100),
+          maxQualifyingMatches: maxQualifyingRecommendations,
+          qualifyingMatchCount: gate.qualifyingCount,
+          recommendationWindowOpen: gate.isOpen,
+          gamesAboveThreshold: gamesAboveThreshold(profile, enabledPlatforms),
+          currentBestMatches: currentBestMatches(profile, enabledPlatforms),
+          consumed,
+          generated: output.agentData ?? {},
+        }
+      : emptyAgentData(consumed, output.agentData ?? {}),
   };
 }
 
-const FIRST_TURN_QUESTION = "On what console are you questing?";
+const FIRST_TURN_QUESTION = "Greetings Gamer! What console are you questing on today?";
 
 // The model's own opening line is never guaranteed to ask this, so enforce it
 // deterministically on turn one rather than relying purely on the prompt.
-function ensureFirstTurnQuestion(lines: string[]): string[] {
-  const alreadyAsked = lines.some((line) => line.toLowerCase().includes("on what console are you questing"));
+export function ensureFirstTurnQuestion(lines: string[]): string[] {
+  const alreadyAsked = lines.some((line) =>
+    line.toLowerCase().includes("what console are you questing on today"),
+  );
   if (alreadyAsked) {
     return lines.slice(0, 4);
   }
@@ -368,7 +391,7 @@ export async function runLiveWizardTurn(request: WizardTurnRequest): Promise<Wiz
   const knownProfile: UserProfile = { ...blankProfile, ...request.state.profile };
   const { output, consumed } = await runWizardConversationTurn(request, knownProfile);
   const nextProfile = mergeProfile(knownProfile, output.profile);
-  const isFirstTurn = !request.messages.some((message) => message.speaker === "wizard");
+  const isFirstTurn = isFirstWizardTurn(request);
   return buildResponse(
     {
       ...output,
@@ -379,5 +402,6 @@ export async function runLiveWizardTurn(request: WizardTurnRequest): Promise<Wiz
     nextProfile,
     request.state.enabledPlatforms ?? [...catalogPlatforms],
     consumed,
+    !isFirstTurn,
   );
 }

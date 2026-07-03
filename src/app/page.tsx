@@ -5,6 +5,7 @@ import { catalogPlatforms, platformLabels, sanitizeEnabledPlatforms, type Platfo
 import type { Recommendation, UserProfile } from "@/lib/recommender";
 import { answeredPreferenceCount, getRecommendations, recommendationThreshold } from "@/lib/recommender";
 import type { FeedbackRating } from "@/lib/feedback";
+import { emptyAgentData } from "@/lib/wizard/agent-data";
 import { isResetCommand } from "@/lib/wizard/interpreter";
 import type {
   AgentData,
@@ -68,9 +69,21 @@ const feedbackOptions: Array<{ rating: FeedbackRating; label: string }> = [
   { rating: "not_even_haunted", label: "\u{1F44E} Not even haunted" },
 ];
 
+const consoleGreeting = "Greetings Gamer! What console are you questing on today?";
+
 type WizardTerminalProps = {
   fastMode?: boolean;
 };
+
+function initialConsoleMessages(): Message[] {
+  return [
+    {
+      id: makeId("wiz"),
+      speaker: "wizard",
+      text: consoleGreeting,
+    },
+  ];
+}
 
 export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const [profile, setProfile] = useState<UserProfile>(blankProfile);
@@ -80,7 +93,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const [hydrated, setHydrated] = useState(false);
   const [started, setStarted] = useState(false);
   const [needsName, setNeedsName] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>(() => initialConsoleMessages());
   const [command, setCommand] = useState("");
   const [suggestions, setSuggestions] = useState<WizardOption[]>([]);
   const [suggestionIndex, setSuggestionIndex] = useState(0);
@@ -118,8 +131,8 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const answeredCount = answeredPreferenceCount(profile);
   const topScore = useMemo(() => getRecommendations(profile, { enabledPlatforms })[0]?.score ?? 0, [profile, enabledPlatforms]);
   const visibleAgentData = useMemo(
-    () => buildVisibleAgentData(agentData, profile, enabledPlatforms),
-    [agentData, profile, enabledPlatforms],
+    () => buildVisibleAgentData(agentData),
+    [agentData],
   );
   const terminalStyle = useMemo(() => themeToCssVariables(terminalTheme), [terminalTheme]);
 
@@ -266,6 +279,35 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     persistEnabledPlatforms(catalogPlatforms.filter((entry) => current.has(entry)));
   }
 
+  function selectConsoleContext(platform: Platform) {
+    const nextMessages: Message[] = [
+      ...messagesRef.current,
+      {
+        id: makeId("user"),
+        speaker: "user",
+        text: platformLabels[platform],
+      },
+    ];
+    persistEnabledPlatforms([platform]);
+    setMessages(nextMessages);
+    messagesRef.current = nextMessages;
+    setStarted(true);
+    startedRef.current = true;
+    setCommand("");
+    setSuggestions([]);
+    setSuggestionIndex(0);
+    setIsSuggestionBrowsing(false);
+    setSettingsOpen(false);
+    window.setTimeout(() => inputRef.current?.focus(), 0);
+  }
+
+  function platformFromCommand(value: string) {
+    const normalized = value.trim().toLowerCase();
+    return catalogPlatforms.find(
+      (platform) => platform === normalized || platformLabels[platform].toLowerCase() === normalized,
+    );
+  }
+
   function appendUser(text: string) {
     setMessages((current) => [
       ...current,
@@ -371,7 +413,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     startedRef.current = false;
     setNeedsName(false);
     needsNameRef.current = false;
-    const coldMessages: Message[] = [];
+    const coldMessages = initialConsoleMessages();
     setMessages(coldMessages);
     messagesRef.current = coldMessages;
     setCommand("");
@@ -469,34 +511,6 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     }
   }
 
-  async function beginSummoning(initialCommand = "") {
-    if (started || isStreaming) {
-      return;
-    }
-
-    setIsStreaming(true);
-    setRecommendations([]);
-    recommendationsRef.current = [];
-    setSuggestions([]);
-    setAgentData(null);
-    setFeedbackRating(null);
-    setFeedbackNote("");
-    setFeedbackNoteSent(false);
-    if (!fastMode) {
-      await startMusic();
-      await loadSam();
-    }
-
-    try {
-      const response = await requestWizardTurn(initialCommand);
-      applyWizardResponse(response);
-      await streamWizard(response.lines);
-    } catch (error) {
-      appendSystem(formatWizardError(error));
-      setIsStreaming(false);
-    }
-  }
-
   async function submitCommand(rawCommand = command) {
     const value = rawCommand.trim();
     if (isStreaming) {
@@ -510,10 +524,13 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
 
     if (!started) {
       setCommand("");
-      if (value) {
-        appendUser(value);
+      const requestedPlatform = platformFromCommand(value);
+      if (requestedPlatform) {
+        selectConsoleContext(requestedPlatform);
+        return;
       }
-      await beginSummoning(value);
+      appendSystem("Choose a console first. The catalog gates are the buttons below.");
+      playKeyTone("deny");
       return;
     }
 
@@ -964,6 +981,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                             key={platform}
                             type="button"
                             className={`platform-toggle ${enabled ? "is-on" : "is-off"}`}
+                            data-platform={platform}
                             onClick={() => togglePlatform(platform)}
                             aria-pressed={enabled}
                           >
@@ -1173,6 +1191,27 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
               </div>
             ) : null}
 
+            {!started ? (
+              <section className="console-context-panel" aria-label="Choose console context">
+                <h2>Choose Console Context</h2>
+                <div className="console-context-grid">
+                  {catalogPlatforms.map((platform) => (
+                    <button
+                      key={platform}
+                      type="button"
+                      className="console-context-button"
+                      aria-label={`Select ${platformLabels[platform]}`}
+                      onClick={() => selectConsoleContext(platform)}
+                      data-recommendation-button="true"
+                    >
+                      <span>ON</span>
+                      <strong>{platformLabels[platform]}</strong>
+                    </button>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
             <form className="prompt-line" onSubmit={handleSubmit}>
               <label className="prompt-label" htmlFor="wizard-command">
                 &gt;
@@ -1225,44 +1264,14 @@ export default function Home() {
   return <WizardTerminal />;
 }
 
-function buildVisibleAgentData(agentData: AgentData | null, profile: UserProfile, enabledPlatforms: Platform[]) {
+function buildVisibleAgentData(agentData: AgentData | null) {
   if (agentData) {
     return agentData;
   }
 
-  const recommendations = getRecommendations(profile, { enabledPlatforms });
-  const gamesAboveThreshold = recommendations
-    .filter((recommendation) => recommendation.score >= recommendationThreshold)
-    .map((recommendation) => ({
-      id: recommendation.game.id,
-      title: recommendation.game.title,
-      matchPercent: Math.round(recommendation.score * 100),
-      reasons: recommendation.reasons,
-      pitch: recommendation.game.pitch,
-      tags: recommendation.game.tags,
-    }));
-
-  return {
-    thresholdPercent: Math.round(recommendationThreshold * 100),
-    maxQualifyingMatches: 3,
-    qualifyingMatchCount: gamesAboveThreshold.length,
-    recommendationWindowOpen: gamesAboveThreshold.length > 0 && gamesAboveThreshold.length <= 3,
-    gamesAboveThreshold,
-    currentBestMatches: recommendations.slice(0, 5).map((recommendation) => ({
-      id: recommendation.game.id,
-      title: recommendation.game.title,
-      matchPercent: Math.round(recommendation.score * 100),
-      clearsThreshold: recommendation.score >= recommendationThreshold,
-      reasons: recommendation.reasons,
-      pitch: recommendation.game.pitch,
-      tags: recommendation.game.tags,
-    })),
-    consumed: {
-      profile,
-      note: "Local preview before the agent returns live turn data.",
-    },
-    generated: {},
-  } satisfies AgentData;
+  return emptyAgentData({
+    note: "No recommendation context has been generated for this conversation yet.",
+  });
 }
 
 function getSafeSuggestionIndex(length: number, index: number) {

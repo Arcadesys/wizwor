@@ -10,7 +10,13 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "generate:nes-catalog": "node scripts/generate-nes-catalog.mjs",
+    "generate:sms-catalog": "node scripts/generate-sms-catalog.mjs",
+    "generate:atari-7800-catalog": "node scripts/generate-atari-7800-catalog.mjs",
+    "generate:atari-5200-catalog": "node scripts/generate-atari-5200-catalog.mjs",
     "generate:snes-catalog": "node scripts/generate-snes-catalog.mjs",
+    "generate:genesis-catalog": "node scripts/generate-genesis-catalog.mjs",
+    "generate:pc-engine-catalog": "node scripts/generate-pc-engine-catalog.mjs",
+    "generate:neo-geo-catalog": "node scripts/generate-neo-geo-catalog.mjs",
     "evals": "tsx evals/run-agent-evals.ts"
   },
   "dependencies": {

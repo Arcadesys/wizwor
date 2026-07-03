@@ -64,7 +64,9 @@ test("starts blank without canned mock responses", async ({ page }, testInfo) =>
   await expect(page.getByLabel("Terminal command prompt")).toBeEnabled();
   await expect(page.getByText(/CRT SIGNAL DORMANT/i)).toHaveCount(0);
   await expect(page.getByText(/PRESS ENTER TO SUMMON/i)).toHaveCount(0);
-  await expect(page.locator(".message-stack")).toHaveText("");
+  await expect(page.getByText("Greetings Gamer! What console are you questing on today?")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Choose Console Context" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Select NES" })).toBeVisible();
 
   await page.screenshot({ path: testInfo.outputPath("blank-start.png"), fullPage: true });
 });
@@ -84,6 +86,7 @@ test("clicking the window focuses chat except recommendation buttons", async ({ 
   await page.goto("/test");
   const prompt = page.getByLabel("Terminal command prompt");
   await expect(prompt).toBeEnabled();
+  await page.getByRole("button", { name: "Select Romhacks" }).click();
 
   await page.locator(".terminal-window").click();
   await expect(prompt).toBeFocused();
@@ -121,6 +124,7 @@ test("the agent controls when recommendations appear at the narrowed threshold",
   await page.goto("/test");
   const prompt = page.getByLabel("Terminal command prompt");
   await expect(prompt).toBeEnabled();
+  await page.getByRole("button", { name: "Select Romhacks" }).click();
 
   await prompt.fill("Ada wants an ominous side-scroller.");
   await prompt.press("Enter");
@@ -148,6 +152,7 @@ test("start over returns the terminal to a blank ready state", async ({ page }) 
   await page.goto("/test");
   const prompt = page.getByLabel("Terminal command prompt");
   await expect(prompt).toBeEnabled();
+  await page.getByRole("button", { name: "Select Romhacks" }).click();
 
   await prompt.fill("Ada wants an ominous side-scroller with fair difficulty and some story.");
   await prompt.press("Enter");
@@ -158,7 +163,8 @@ test("start over returns the terminal to a blank ready state", async ({ page }) 
 
   await expect(prompt).toBeFocused();
   await expect(prompt).toHaveValue("");
-  await expect(page.locator(".message-stack")).toHaveText("");
+  await expect(page.getByText("Greetings Gamer! What console are you questing on today?")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Choose Console Context" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Metroid: Mother" })).toHaveCount(0);
   await expect(page.getByText("Was this reading true?")).toHaveCount(0);
   await expect(page.locator(".status-line")).toContainText("ANS 0/6");
