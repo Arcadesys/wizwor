@@ -1,19 +1,19 @@
 "use client";
 
-import { FormEvent, KeyboardEvent, useEffect, useMemo, useRef, useState } from "react";
+import { CSSProperties, FormEvent, KeyboardEvent, useEffect, useMemo, useRef, useState } from "react";
 import type { Recommendation, UserProfile } from "@/lib/recommender";
 import { answeredPreferenceCount, getRecommendations, recommendationThreshold } from "@/lib/recommender";
 import type { FeedbackRating } from "@/lib/feedback";
 import { isResetCommand } from "@/lib/wizard/interpreter";
-import { focusQuestion, getQuestionByKey } from "@/lib/wizard/questions";
 import type {
-  WizardFocusQuestion,
+  AgentData,
   WizardMessage,
-  WizardQuestion,
+  WizardOption,
   WizardState,
   WizardTurnResponse,
 } from "@/lib/wizard/types";
-import { blankProfile } from "@/lib/wizard/types";
+import { blankProfile, defaultMemoryMarkdown } from "@/lib/wizard/types";
+import type { WizardTerminalTheme } from "@/lib/wizard/types";
 
 type Message = WizardMessage & {
   id: string;
@@ -43,8 +43,20 @@ type GamepadState = {
   submit: boolean;
 };
 
+class WizardTurnError extends Error {
+  constructor(
+    message: string,
+    readonly status?: number,
+  ) {
+    super(message);
+    this.name = "WizardTurnError";
+  }
+}
+
 const samSampleRate = 22050;
 const storageKey = "wyrm-terminal-profile";
+const memoryStorageKey = "wyrm-terminal-MEMORY.md";
+const themeStorageKey = "wyrm-terminal-theme";
 const arrowKeys = new Set(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]);
 const recommendationButtonSelector = "[data-recommendation-button='true']";
 
@@ -60,17 +72,20 @@ type WizardTerminalProps = {
 
 export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const [profile, setProfile] = useState<UserProfile>(blankProfile);
+  const [memoryMarkdown, setMemoryMarkdown] = useState(defaultMemoryMarkdown);
+  const [terminalTheme, setTerminalTheme] = useState<WizardTerminalTheme | undefined>();
   const [hydrated, setHydrated] = useState(false);
   const [started, setStarted] = useState(false);
   const [needsName, setNeedsName] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [command, setCommand] = useState("");
-  const [activeQuestion, setActiveQuestion] = useState<WizardQuestion | null>(null);
-  const [activeFocusQuestion, setActiveFocusQuestion] = useState<WizardFocusQuestion | null>(null);
+  const [suggestions, setSuggestions] = useState<WizardOption[]>([]);
   const [suggestionIndex, setSuggestionIndex] = useState(0);
   const [isSuggestionBrowsing, setIsSuggestionBrowsing] = useState(false);
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
+  const [agentData, setAgentData] = useState<AgentData | null>(null);
   const [isStreaming, setIsStreaming] = useState(false);
+  const [agentDataExpanded, setAgentDataExpanded] = useState(false);
   const [soundOn, setSoundOn] = useState(false);
   const [samReady, setSamReady] = useState(false);
   const [feedbackRating, setFeedbackRating] = useState<FeedbackRating | null>(null);
@@ -78,10 +93,10 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const [feedbackNoteSent, setFeedbackNoteSent] = useState(false);
 
   const profileRef = useRef(profile);
+  const memoryMarkdownRef = useRef(memoryMarkdown);
+  const terminalThemeRef = useRef(terminalTheme);
   const startedRef = useRef(started);
   const needsNameRef = useRef(needsName);
-  const activeQuestionRef = useRef(activeQuestion);
-  const activeFocusQuestionRef = useRef(activeFocusQuestion);
   const recommendationsRef = useRef(recommendations);
   const messagesRef = useRef(messages);
   const sessionIdRef = useRef(makeId("session"));
@@ -93,25 +108,12 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const samRef = useRef<InstanceType<SamConstructor> | null>(null);
   const gamepadFrameRef = useRef<number | null>(null);
   const lastGamepadRef = useRef<GamepadState>({ left: false, right: false, submit: false });
-
-  const suggestions = useMemo(() => {
-    if (!started) {
-      return [];
-    }
-
-    if (activeQuestion) {
-      return activeQuestion.options;
-    }
-
-    if (activeFocusQuestion) {
-      return activeFocusQuestion.options;
-    }
-
-    return [];
-  }, [activeFocusQuestion, activeQuestion, started]);
+  const suppressFocusRef = useRef(false);
 
   const answeredCount = answeredPreferenceCount(profile);
   const topScore = useMemo(() => getRecommendations(profile)[0]?.score ?? 0, [profile]);
+  const visibleAgentData = useMemo(() => buildVisibleAgentData(agentData, profile), [agentData, profile]);
+  const terminalStyle = useMemo(() => themeToCssVariables(terminalTheme), [terminalTheme]);
 
   useEffect(() => {
     queueMicrotask(() => {
@@ -122,8 +124,21 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
           setProfile(restored);
           profileRef.current = restored;
         }
+        const persistentStorage = getPersistentStorage();
+        const savedMemory = persistentStorage?.getItem(memoryStorageKey);
+        if (savedMemory?.trim()) {
+          setMemoryMarkdown(savedMemory);
+          memoryMarkdownRef.current = savedMemory;
+        }
+        const savedTheme = persistentStorage?.getItem(themeStorageKey);
+        if (savedTheme) {
+          const restoredTheme = sanitizeTheme(JSON.parse(savedTheme));
+          setTerminalTheme(restoredTheme);
+          terminalThemeRef.current = restoredTheme;
+        }
       } catch {
         sessionStorage.removeItem(storageKey);
+        getPersistentStorage()?.removeItem(themeStorageKey);
       } finally {
         setHydrated(true);
       }
@@ -135,20 +150,20 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   }, [profile]);
 
   useEffect(() => {
+    memoryMarkdownRef.current = memoryMarkdown;
+  }, [memoryMarkdown]);
+
+  useEffect(() => {
+    terminalThemeRef.current = terminalTheme;
+  }, [terminalTheme]);
+
+  useEffect(() => {
     startedRef.current = started;
   }, [started]);
 
   useEffect(() => {
     needsNameRef.current = needsName;
   }, [needsName]);
-
-  useEffect(() => {
-    activeQuestionRef.current = activeQuestion;
-  }, [activeQuestion]);
-
-  useEffect(() => {
-    activeFocusQuestionRef.current = activeFocusQuestion;
-  }, [activeFocusQuestion]);
 
   useEffect(() => {
     recommendationsRef.current = recommendations;
@@ -160,11 +175,13 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-  }, [messages, activeQuestion, activeFocusQuestion, recommendations]);
+  }, [messages, recommendations]);
 
   useEffect(() => {
-    inputRef.current?.focus();
-  }, [started, activeQuestion, activeFocusQuestion, isStreaming]);
+    if (!suppressFocusRef.current) {
+      inputRef.current?.focus();
+    }
+  }, [started, isStreaming]);
 
   useEffect(() => {
     return () => {
@@ -179,7 +196,31 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   function persistProfile(nextProfile: UserProfile) {
     setProfile(nextProfile);
     profileRef.current = nextProfile;
-    sessionStorage.setItem(storageKey, JSON.stringify(nextProfile));
+    try {
+      sessionStorage.setItem(storageKey, JSON.stringify(nextProfile));
+    } catch (error) {
+      console.warn("Failed to persist wizard profile:", error);
+    }
+  }
+
+  function persistMemory(nextMemoryMarkdown?: string, nextTerminalTheme?: WizardTerminalTheme) {
+    const safeMemory = nextMemoryMarkdown?.trim() ? nextMemoryMarkdown : memoryMarkdownRef.current || defaultMemoryMarkdown;
+    const safeTheme = sanitizeTheme(nextTerminalTheme);
+    setMemoryMarkdown(safeMemory);
+    memoryMarkdownRef.current = safeMemory;
+    setTerminalTheme(safeTheme);
+    terminalThemeRef.current = safeTheme;
+    try {
+      const persistentStorage = getPersistentStorage();
+      persistentStorage?.setItem(memoryStorageKey, safeMemory);
+      if (safeTheme) {
+        persistentStorage?.setItem(themeStorageKey, JSON.stringify(safeTheme));
+      } else {
+        persistentStorage?.removeItem(themeStorageKey);
+      }
+    } catch (error) {
+      console.warn("Failed to persist wizard memory or theme:", error);
+    }
   }
 
   function appendUser(text: string) {
@@ -193,14 +234,34 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     ]);
   }
 
+  function appendSystem(text: string) {
+    setMessages((current) => {
+      const last = current.at(-1);
+      if (last?.speaker === "system" && last.text === text) {
+        return current;
+      }
+
+      return [
+        ...current,
+        {
+          id: makeId("system"),
+          speaker: "system",
+          text,
+        },
+      ];
+    });
+  }
+
   function currentWizardState(): WizardState {
     return {
       started: startedRef.current,
       needsName: needsNameRef.current,
-      activeQuestionKey: activeQuestionRef.current?.key ?? null,
-      awaitingFocus: Boolean(activeFocusQuestionRef.current),
+      activeQuestionKey: null,
+      awaitingFocus: false,
       revealed: recommendationsRef.current.length > 0,
       profile: profileRef.current,
+      memoryMarkdown: memoryMarkdownRef.current,
+      terminalTheme: terminalThemeRef.current,
     };
   }
 
@@ -219,7 +280,17 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     });
 
     if (!response.ok) {
-      throw new Error(`Wizard turn failed with ${response.status}`);
+      let message = `Wizard API returned ${response.status}.`;
+      try {
+        const body = (await response.json()) as { error?: unknown };
+        if (typeof body.error === "string" && body.error.trim()) {
+          message = body.error;
+        }
+      } catch {
+        // Keep the status-only message if the response body is not JSON.
+      }
+
+      throw new WizardTurnError(message, response.status);
     }
 
     return (await response.json()) as WizardTurnResponse;
@@ -227,18 +298,15 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
 
   function applyWizardResponse(response: WizardTurnResponse) {
     persistProfile(response.state.profile);
+    persistMemory(response.state.memoryMarkdown, response.state.terminalTheme);
     setStarted(response.state.started);
     startedRef.current = response.state.started;
     setNeedsName(response.state.needsName);
     needsNameRef.current = response.state.needsName;
-    const nextQuestion = getQuestionByKey(response.state.activeQuestionKey);
-    setActiveQuestion(nextQuestion);
-    activeQuestionRef.current = nextQuestion;
-    const nextFocusQuestion = response.state.awaitingFocus ? focusQuestion : null;
-    setActiveFocusQuestion(nextFocusQuestion);
-    activeFocusQuestionRef.current = nextFocusQuestion;
+    setSuggestions(response.suggestions);
     setRecommendations(response.recommendations);
     recommendationsRef.current = response.recommendations;
+    setAgentData(response.agentData ?? null);
     setSuggestionIndex(0);
     setIsSuggestionBrowsing(false);
     setFeedbackRating(null);
@@ -261,14 +329,12 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     setMessages(coldMessages);
     messagesRef.current = coldMessages;
     setCommand("");
-    setActiveQuestion(null);
-    activeQuestionRef.current = null;
-    setActiveFocusQuestion(null);
-    activeFocusQuestionRef.current = null;
+    setSuggestions([]);
     setSuggestionIndex(0);
     setIsSuggestionBrowsing(false);
     setRecommendations([]);
     recommendationsRef.current = [];
+    setAgentData(null);
     setIsStreaming(false);
     setFeedbackRating(null);
     setFeedbackNote("");
@@ -364,10 +430,8 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     setIsStreaming(true);
     setRecommendations([]);
     recommendationsRef.current = [];
-    setActiveQuestion(null);
-    activeQuestionRef.current = null;
-    setActiveFocusQuestion(null);
-    activeFocusQuestionRef.current = null;
+    setSuggestions([]);
+    setAgentData(null);
     setFeedbackRating(null);
     setFeedbackNote("");
     setFeedbackNoteSent(false);
@@ -380,8 +444,9 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       const response = await requestWizardTurn(initialCommand);
       applyWizardResponse(response);
       await streamWizard(response.lines);
-    } catch {
-      await streamWizard(["The signal cracked before the guide could enter. Try the summoning again."]);
+    } catch (error) {
+      appendSystem(formatWizardError(error));
+      setIsStreaming(false);
     }
   }
 
@@ -421,8 +486,9 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
         playKeyTone("deny");
       }
       await streamWizard(response.lines);
-    } catch {
-      await streamWizard(["The agent wire hums, but no answer returns. Try again."]);
+    } catch (error) {
+      appendSystem(formatWizardError(error));
+      setIsStreaming(false);
     }
   }
 
@@ -787,14 +853,22 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   return (
     <main
       className="min-h-screen overflow-hidden bg-[#050505] text-[#f7f7f7]"
+      style={terminalStyle}
       onClick={(event) => {
         if (event.target instanceof Element && event.target.closest(recommendationButtonSelector)) {
+          suppressFocusRef.current = true;
           return;
         }
+        const selection = window.getSelection();
+        if (selection && selection.toString().trim() !== "") {
+          return;
+        }
+        suppressFocusRef.current = false;
         inputRef.current?.focus();
       }}
       onKeyDown={(event) => {
         if (event.target !== inputRef.current && !arrowKeys.has(event.key)) {
+          suppressFocusRef.current = false;
           inputRef.current?.focus();
         }
       }}
@@ -808,8 +882,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
               <button
                 type="button"
                 className="reset-button"
-                onClick={(event) => {
-                  event.stopPropagation();
+                onClick={() => {
                   resetSession();
                 }}
                 aria-label="Start over"
@@ -850,17 +923,22 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                     </p>
                     <p>{recommendation.game.pitch}</p>
                     <p className="recommendation-reasons">{recommendation.reasons.join(" / ")}</p>
+                    <a
+                      className="playthrough-link"
+                      href={recommendation.game.playthroughUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-recommendation-button="true"
+                    >
+                      Watch Playthrough
+                    </a>
                   </article>
                 ))}
               </div>
             ) : null}
 
             {recommendations.length ? (
-              <div
-                className="feedback-bar"
-                onClick={(event) => event.stopPropagation()}
-                onKeyDown={(event) => event.stopPropagation()}
-              >
+              <div className="feedback-bar" onKeyDown={(event) => event.stopPropagation()}>
                 {!feedbackRating ? (
                   <>
                     <p className="feedback-prompt">Was this reading true?</p>
@@ -870,8 +948,8 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                           key={option.rating}
                           type="button"
                           className="feedback-chip"
-                          onClick={(event) => {
-                            event.stopPropagation();
+                          data-recommendation-button="true"
+                          onClick={() => {
                             rateRecommendations(option.rating);
                           }}
                         >
@@ -895,8 +973,14 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                         maxLength={500}
                         placeholder="Too easy, wrong mood, wanted more romhacks..."
                         className="feedback-note-input"
+                        data-recommendation-button="true"
                       />
-                      <button type="submit" className="feedback-note-submit" disabled={!feedbackNote.trim()}>
+                      <button
+                        type="submit"
+                        className="feedback-note-submit"
+                        data-recommendation-button="true"
+                        disabled={!feedbackNote.trim()}
+                      >
                         Send
                       </button>
                     </div>
@@ -913,6 +997,59 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                 </div>
               </div>
             ) : null}
+
+            <section
+              className={`agent-data-panel ${agentDataExpanded ? "is-expanded" : ""}`}
+              aria-label="Agent data"
+              onKeyDown={(event) => event.stopPropagation()}
+              data-recommendation-button="true"
+            >
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setAgentDataExpanded((value) => !value);
+                }}
+                className={`magnify-button ${agentDataExpanded ? "is-on" : "is-off"}`}
+                aria-label={agentDataExpanded ? "Collapse agent data" : "Expand agent data"}
+                aria-expanded={agentDataExpanded}
+                title={agentDataExpanded ? "Collapse agent data" : "Expand agent data"}
+              >
+                <span className="magnify-glyph" aria-hidden="true">
+                  <span className="magnify-lens" />
+                  <span className="magnify-handle" />
+                </span>
+                <span className="sr-only">{agentDataExpanded ? "Collapse agent data" : "Expand agent data"}</span>
+              </button>
+              <div className="agent-data-summary">
+                <span>AGENT DATA</span>
+                <span>
+                  ABOVE {visibleAgentData.gamesAboveThreshold.length} / THRESHOLD{" "}
+                  {visibleAgentData.thresholdPercent}%
+                </span>
+              </div>
+              <div className="agent-data-body">
+                <div>
+                  <h2>Games Above Threshold</h2>
+                  {visibleAgentData.gamesAboveThreshold.length ? (
+                    <ol className="agent-game-list">
+                      {visibleAgentData.gamesAboveThreshold.map((game) => (
+                        <li key={game.id}>
+                          <strong>{game.title}</strong> {game.matchPercent}%
+                          {game.reasons.length ? <span> / {game.reasons.join(" / ")}</span> : null}
+                        </li>
+                      ))}
+                    </ol>
+                  ) : (
+                    <p>No games clear the threshold yet.</p>
+                  )}
+                </div>
+                <div>
+                  <h2>Data Consumed And Generated</h2>
+                  <pre>{JSON.stringify(visibleAgentData, null, 2)}</pre>
+                </div>
+              </div>
+            </section>
 
             {suggestions.length ? (
               <div className="suggestion-row" aria-label="Suggestions">
@@ -934,12 +1071,12 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                       setIsSuggestionBrowsing(true);
                       setSuggestionIndex(index);
                     }}
-                    onClick={(event) => {
-                      event.stopPropagation();
+                    onClick={() => {
                       setIsSuggestionBrowsing(true);
                       setCommand(option.label);
                       submitCommand(option.label);
                     }}
+                    data-recommendation-button="true"
                   >
                     <span>{option.label}</span>
                     <small>{option.detail}</small>
@@ -1000,6 +1137,46 @@ export default function Home() {
   return <WizardTerminal />;
 }
 
+function buildVisibleAgentData(agentData: AgentData | null, profile: UserProfile) {
+  if (agentData) {
+    return agentData;
+  }
+
+  const recommendations = getRecommendations(profile);
+  const gamesAboveThreshold = recommendations
+    .filter((recommendation) => recommendation.score >= recommendationThreshold)
+    .map((recommendation) => ({
+      id: recommendation.game.id,
+      title: recommendation.game.title,
+      matchPercent: Math.round(recommendation.score * 100),
+      reasons: recommendation.reasons,
+      pitch: recommendation.game.pitch,
+      tags: recommendation.game.tags,
+    }));
+
+  return {
+    thresholdPercent: Math.round(recommendationThreshold * 100),
+    maxQualifyingMatches: 3,
+    qualifyingMatchCount: gamesAboveThreshold.length,
+    recommendationWindowOpen: gamesAboveThreshold.length > 0 && gamesAboveThreshold.length <= 3,
+    gamesAboveThreshold,
+    currentBestMatches: recommendations.slice(0, 5).map((recommendation) => ({
+      id: recommendation.game.id,
+      title: recommendation.game.title,
+      matchPercent: Math.round(recommendation.score * 100),
+      clearsThreshold: recommendation.score >= recommendationThreshold,
+      reasons: recommendation.reasons,
+      pitch: recommendation.game.pitch,
+      tags: recommendation.game.tags,
+    })),
+    consumed: {
+      profile,
+      note: "Local preview before the agent returns live turn data.",
+    },
+    generated: {},
+  } satisfies AgentData;
+}
+
 function getSafeSuggestionIndex(length: number, index: number) {
   if (length <= 0) {
     return 0;
@@ -1018,6 +1195,66 @@ function sanitizeForSam(value: string) {
 
 function fallbackDuration(line: string) {
   return Math.max(700, line.length * 72);
+}
+
+function formatWizardError(error: unknown) {
+  const detail = error instanceof Error ? error.message : "Unknown error";
+  return `SYSTEM: Wizard request failed (${detail}). Try again.`;
+}
+
+function getPersistentStorage() {
+  try {
+    return typeof window !== "undefined" ? window.localStorage : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+function sanitizeTheme(theme: unknown): WizardTerminalTheme | undefined {
+  if (!theme || typeof theme !== "object") {
+    return undefined;
+  }
+
+  const input = theme as Record<string, unknown>;
+  const output: WizardTerminalTheme = {};
+  for (const key of ["background", "foreground", "green", "amber", "red", "blue"] as const) {
+    const value = input[key];
+    if (typeof value === "string" && /^#[0-9a-fA-F]{6}$/.test(value)) {
+      output[key] = value;
+    }
+  }
+
+  return Object.keys(output).length ? output : undefined;
+}
+
+function themeToCssVariables(theme: WizardTerminalTheme | undefined): CSSProperties | undefined {
+  if (!theme) {
+    return undefined;
+  }
+
+  const style: CSSProperties & Record<`--${string}`, string> = {};
+  if (theme.background) {
+    style["--background"] = theme.background;
+    style.backgroundColor = theme.background;
+  }
+  if (theme.foreground) {
+    style["--foreground"] = theme.foreground;
+    style.color = theme.foreground;
+  }
+  if (theme.green) {
+    style["--terminal-green"] = theme.green;
+  }
+  if (theme.amber) {
+    style["--terminal-amber"] = theme.amber;
+  }
+  if (theme.red) {
+    style["--terminal-red"] = theme.red;
+  }
+  if (theme.blue) {
+    style["--terminal-blue"] = theme.blue;
+  }
+
+  return style;
 }
 
 function characterDelayWeight(character: string) {

@@ -51,7 +51,7 @@ input:disabled {
   height: 100vh;
   min-height: 0 !important;
   max-height: 100vh;
-  background: #050505;
+  background: var(--background);
 }
 
 .crt-shell::before {
@@ -91,7 +91,7 @@ input:disabled {
   height: clamp(2.8rem, 6vw, 4rem);
   place-items: center;
   padding: 0;
-  background: #050505;
+  background: var(--background);
   border: 5px solid #777;
   border-radius: 0;
   box-shadow:
@@ -205,9 +205,9 @@ input:disabled {
 }
 
 .pixel-button {
-  color: #050505;
+  color: var(--background);
   background: var(--terminal-amber);
-  border: 4px solid #f7f7f7;
+  border: 4px solid var(--foreground);
   border-radius: 0;
   box-shadow:
     4px 4px 0 #7a5a00,
@@ -328,8 +328,8 @@ input:disabled {
   display: grid;
   gap: 0.55rem;
   padding: clamp(0.68rem, 1.8vw, 1rem) clamp(1rem, 3vw, 1.7rem) clamp(0.85rem, 2.2vw, 1.25rem);
-  background: #070707;
-  border: 6px solid #f7f7f7;
+  background: var(--background);
+  border: 6px solid var(--foreground);
   border-radius: 8px;
   box-shadow:
     6px 6px 0 #111,
@@ -353,6 +353,180 @@ input:disabled {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: clip;
+}
+
+.agent-data-panel {
+  position: relative;
+  z-index: 5;
+  max-height: 5.4rem;
+  padding: 0.55rem 0.65rem;
+  color: var(--terminal-green);
+  background: #000;
+  border: 5px solid var(--terminal-amber);
+  border-radius: 6px;
+  box-shadow:
+    4px 4px 0 #111,
+    inset 0 0 0 3px #241f08;
+  overflow: hidden;
+  outline: 0;
+  transition:
+    max-height 120ms steps(3, end),
+    border-color 120ms steps(3, end);
+}
+
+.agent-data-panel.is-expanded {
+  position: fixed;
+  inset: clamp(0.8rem, 2vw, 1.4rem);
+  z-index: 50;
+  max-height: none;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border-color: var(--foreground);
+  overflow-y: auto;
+}
+
+.agent-data-summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.45rem 1rem;
+  padding-right: clamp(1.9rem, 5vw, 2.4rem);
+  color: var(--terminal-amber);
+  font-size: clamp(12px, 1.8vw, 18px);
+  letter-spacing: -0.08em;
+  line-height: 1.45;
+}
+
+.magnify-button {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  z-index: 6;
+  display: grid;
+  width: clamp(1.7rem, 4vw, 2.15rem);
+  height: clamp(1.7rem, 4vw, 2.15rem);
+  place-items: center;
+  padding: 0;
+  background: var(--background);
+  border: 4px solid #777;
+  border-radius: 0;
+  box-shadow:
+    3px 3px 0 #000,
+    inset -2px -2px 0 rgba(0, 0, 0, 0.35),
+    inset 2px 2px 0 rgba(255, 255, 255, 0.16);
+  image-rendering: pixelated;
+  transition:
+    border-color 80ms steps(2, end),
+    box-shadow 80ms steps(2, end),
+    transform 80ms steps(2, end);
+}
+
+.magnify-button:hover:not(:disabled) {
+  border-color: #f7f7f7;
+}
+
+.magnify-button:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow:
+    1px 1px 0 #000,
+    inset -2px -2px 0 rgba(0, 0, 0, 0.4),
+    inset 2px 2px 0 rgba(255, 255, 255, 0.12);
+}
+
+.magnify-button.is-on {
+  border-color: var(--terminal-green);
+}
+
+.magnify-glyph {
+  position: relative;
+  display: block;
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.magnify-lens,
+.magnify-handle {
+  position: absolute;
+  display: block;
+  content: "";
+  image-rendering: pixelated;
+}
+
+.magnify-lens {
+  top: 0.02rem;
+  left: 0.02rem;
+  width: 0.72rem;
+  height: 0.72rem;
+  background: var(--terminal-amber);
+  clip-path: polygon(35% 0, 65% 0, 100% 35%, 100% 65%, 65% 100%, 35% 100%, 0 65%, 0 35%);
+  box-shadow: 0 0 0 2px #000;
+}
+
+.magnify-lens::after {
+  position: absolute;
+  top: 0.14rem;
+  left: 0.14rem;
+  width: 0.44rem;
+  height: 0.44rem;
+  content: "";
+  background: var(--background);
+  clip-path: polygon(35% 0, 65% 0, 100% 35%, 100% 65%, 65% 100%, 35% 100%, 0 65%, 0 35%);
+}
+
+.magnify-handle {
+  bottom: -0.02rem;
+  right: -0.02rem;
+  width: 0.22rem;
+  height: 0.62rem;
+  background: var(--terminal-amber);
+  box-shadow: 0 0 0 2px #000;
+  transform: rotate(45deg);
+  transform-origin: bottom right;
+}
+
+.magnify-button.is-on .magnify-lens,
+.magnify-button.is-on .magnify-handle {
+  background: var(--terminal-green);
+}
+
+.agent-data-body {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 0.55rem;
+  font-size: clamp(12px, 1.75vw, 18px);
+  letter-spacing: -0.055em;
+  line-height: 1.65;
+}
+
+.agent-data-body h2 {
+  margin: 0 0 0.45rem;
+  color: var(--foreground);
+  font-size: clamp(13px, 1.9vw, 20px);
+  letter-spacing: -0.065em;
+}
+
+.agent-game-list {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.agent-game-list strong {
+  color: var(--foreground);
+}
+
+.agent-data-body pre {
+  max-height: 52vh;
+  margin: 0;
+  padding: 0.75rem;
+  color: var(--foreground);
+  white-space: pre-wrap;
+  overflow: auto;
+  overflow-wrap: anywhere;
+  background: #111;
+  border: 3px solid #555;
+  font-size: clamp(11px, 1.45vw, 16px);
+  line-height: 1.65;
 }
 
 .suggestion-row {
@@ -391,9 +565,9 @@ input:disabled {
 }
 
 .suggestion-chip.is-active {
-  color: #050505;
+  color: var(--background);
   background: var(--terminal-green);
-  border-color: #f7f7f7;
+  border-color: var(--foreground);
 }
 
 .suggestion-chip.is-active small {
@@ -409,7 +583,7 @@ input:disabled {
   min-height: clamp(4.25rem, 10vw, 5.9rem);
   padding: clamp(0.78rem, 2.1vw, 1.1rem) clamp(4.25rem, 9vw, 6.2rem) clamp(0.78rem, 2.1vw, 1.1rem)
     clamp(0.9rem, 2.8vw, 1.45rem);
-  color: #f7f7f7;
+  color: var(--foreground);
   background: #000;
   border: 6px solid #777;
   border-radius: 7px;
@@ -468,9 +642,9 @@ input:disabled {
 
 .recommendation-card {
   padding: 0.75rem !important;
-  background: #070707 !important;
+  background: var(--background) !important;
   color: var(--terminal-green) !important;
-  border-color: #f7f7f7 !important;
+  border-color: var(--foreground) !important;
   box-shadow: 4px 4px 0 #111;
 }
 
@@ -486,7 +660,7 @@ input:disabled {
 
 .recommendation-card h2 {
   margin-top: 0.55rem;
-  color: #f7f7f7;
+  color: var(--foreground);
   font-size: clamp(12px, 1.65vw, 16px);
   letter-spacing: -0.065em;
   line-height: 1.55;
@@ -502,6 +676,30 @@ input:disabled {
 .recommendation-kind,
 .recommendation-reasons {
   color: var(--terminal-amber);
+}
+
+.playthrough-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.6rem;
+  margin-top: 0.65rem;
+  padding: 0.55rem 0.75rem;
+  color: var(--background);
+  background: var(--foreground);
+  border: 2px solid var(--terminal-amber);
+  font-size: clamp(12px, 1.6vw, 16px);
+  line-height: 1.35;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.playthrough-link:focus-visible,
+.playthrough-link:hover {
+  color: var(--foreground);
+  background: var(--background);
+  outline: 3px solid var(--terminal-amber);
+  outline-offset: 2px;
 }
 
 .experimental-tag {
@@ -541,9 +739,9 @@ input:disabled {
 }
 
 .feedback-chip:hover {
-  color: #050505;
+  color: var(--background);
   background: var(--terminal-green);
-  border-color: #f7f7f7;
+  border-color: var(--foreground);
 }
 
 .feedback-note-form {
@@ -563,7 +761,7 @@ input:disabled {
   padding: 0.35rem 0.5rem;
   color: var(--terminal-green);
   font-size: clamp(10px, 1.5vw, 13px);
-  background: #070707;
+  background: var(--background);
   border: 3px solid #555;
 }
 

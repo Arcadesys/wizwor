@@ -21,6 +21,7 @@ export type Game = {
   kind: "nes" | "romhack";
   year: string;
   pitch: string;
+  playthroughUrl: string;
   moods: Mood[];
   difficulty: Difficulty;
   story: StoryPreference;
@@ -38,6 +39,7 @@ export const games: Game[] = [
     year: "1989",
     pitch:
       "A grim side-scrolling pilgrimage with branching routes, gothic pressure, and just enough cruelty to feel cursed.",
+    playthroughUrl: "https://www.youtube.com/watch?v=hFFKAl2A898",
     moods: ["ominous", "heroic"],
     difficulty: "difficult",
     story: "some",
@@ -53,6 +55,7 @@ export const games: Game[] = [
     year: "1987",
     pitch:
       "A strange, demanding quest that folds overworld wandering into tense side-view duels.",
+    playthroughUrl: "https://www.youtube.com/watch?v=gmMjS_OwAHM",
     moods: ["heroic", "weird"],
     difficulty: "difficult",
     story: "some",
@@ -68,6 +71,7 @@ export const games: Game[] = [
     year: "1990",
     pitch:
       "A bright action RPG about waking into a ruined future, with real momentum and a mythic little heart.",
+    playthroughUrl: "https://www.youtube.com/watch?v=LF9HeIsELLs",
     moods: ["heroic", "contemplative"],
     difficulty: "fair",
     story: "rich",
@@ -83,6 +87,7 @@ export const games: Game[] = [
     year: "1988",
     pitch:
       "Part corridor mystery, part vertical shooter, all glowing alien machinery under the floorboards.",
+    playthroughUrl: "https://www.youtube.com/watch?v=ImwZBSo8Rvo",
     moods: ["ominous", "weird"],
     difficulty: "fair",
     story: "some",
@@ -98,6 +103,7 @@ export const games: Game[] = [
     year: "1990",
     pitch:
       "An isometric puzzle dungeon full of eerie rooms, trap logic, and quiet menace.",
+    playthroughUrl: "https://www.youtube.com/watch?v=3bKoCo08pxU",
     moods: ["ominous", "contemplative"],
     difficulty: "difficult",
     story: "low",
@@ -113,6 +119,7 @@ export const games: Game[] = [
     year: "1992",
     pitch:
       "A late-era side-scroller where martial arts, spell pickups, and oddball fantasy collide.",
+    playthroughUrl: "https://www.youtube.com/watch?v=-Ihf-9FrRyU",
     moods: ["heroic", "weird"],
     difficulty: "fair",
     story: "low",
@@ -128,6 +135,7 @@ export const games: Game[] = [
     year: "1989",
     pitch:
       "A deeply strange horror-comedy platformer where every screen seems to be lying to you.",
+    playthroughUrl: "https://www.youtube.com/watch?v=DliXp-haso4",
     moods: ["weird", "ominous"],
     difficulty: "fair",
     story: "low",
@@ -143,6 +151,7 @@ export const games: Game[] = [
     year: "1993",
     pitch:
       "A compact, charming brawler with arcade snap and enough personality to carry an evening.",
+    playthroughUrl: "https://www.youtube.com/watch?v=hoUPvwCcUo8",
     moods: ["arcade", "heroic"],
     difficulty: "casual",
     story: "low",
@@ -158,6 +167,7 @@ export const games: Game[] = [
     year: "1988",
     pitch:
       "A playful arcade maze of bubbles, patterns, secrets, and deceptively sharp survival.",
+    playthroughUrl: "https://www.youtube.com/watch?v=ij3f4_APEow",
     moods: ["arcade", "contemplative"],
     difficulty: "casual",
     story: "low",
@@ -173,6 +183,7 @@ export const games: Game[] = [
     year: "1990",
     pitch:
       "Danielle Bunten Berry's resource-trading classic, remembered as a multiplayer design landmark and an important part of trans game-history memory.",
+    playthroughUrl: "https://www.youtube.com/watch?v=O7TDXJmS0hE",
     moods: ["arcade", "weird"],
     difficulty: "fair",
     story: "low",
@@ -188,6 +199,7 @@ export const games: Game[] = [
     year: "romhack",
     pitch:
       "A friendlier, map-aware restoration of Metroid that keeps the lonely alien dread intact.",
+    playthroughUrl: "https://www.youtube.com/watch?v=S7fwbZjLpXE",
     moods: ["ominous", "contemplative"],
     difficulty: "fair",
     story: "some",
@@ -203,6 +215,7 @@ export const games: Game[] = [
     year: "romhack",
     pitch:
       "A large alternate Zelda quest that feels like finding a forbidden cartridge in the woods.",
+    playthroughUrl: "https://www.youtube.com/watch?v=38V9UXcTqHs",
     moods: ["heroic", "weird"],
     difficulty: "difficult",
     story: "some",
@@ -218,6 +231,7 @@ export const games: Game[] = [
     year: "romhack",
     pitch:
       "A legendary SMB3 remix with new systems, high challenge, and the feeling of a familiar dream turning sideways.",
+    playthroughUrl: "https://www.youtube.com/watch?v=Qck3gJ2EDUU",
     moods: ["arcade", "weird"],
     difficulty: "difficult",
     story: "low",
@@ -233,6 +247,7 @@ export const games: Game[] = [
     year: "romhack",
     pitch:
       "A breezy seasonal platformer hack for when you want spooky flavor without punishment.",
+    playthroughUrl: "https://www.youtube.com/watch?v=zwpVlfh-Vfk",
     moods: ["arcade", "weird"],
     difficulty: "casual",
     story: "low",
