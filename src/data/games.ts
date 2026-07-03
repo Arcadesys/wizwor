@@ -56,8 +56,7 @@ export function sanitizeEnabledPlatforms(value: unknown): Platform[] {
   }
 
   const allowed = new Set<Platform>(catalogPlatforms);
-  const enabled = catalogPlatforms.filter((platform) => value.includes(platform) && allowed.has(platform));
-  return enabled.length > 0 ? enabled : [...catalogPlatforms];
+  return catalogPlatforms.filter((platform) => value.includes(platform) && allowed.has(platform));
 }
 
 export type Game = {

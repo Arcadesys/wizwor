@@ -1,6 +1,12 @@
 import { ModelBehaviorError } from "@openai/agents";
 import { describe, expect, it } from "vitest";
-import { isAgentDataSchemaError, WizardTurnOutputSchema } from "@/lib/wizard/agents-sdk-workflow";
+import {
+  buildConsumedTurnContext,
+  ensureFirstTurnQuestion,
+  isAgentDataSchemaError,
+  WizardTurnOutputSchema,
+} from "@/lib/wizard/agents-sdk-workflow";
+import { initialWizardState, type WizardTurnRequest } from "@/lib/wizard/types";
 
 function baseOutput(agentData: Record<string, unknown>) {
   return {
@@ -65,5 +71,46 @@ describe("isAgentDataSchemaError", () => {
 
   it("does not match a non-ModelBehaviorError", () => {
     expect(isAgentDataSchemaError(new Error("boom"))).toBe(false);
+  });
+});
+
+describe("first-turn recommendation context", () => {
+  function request(overrides: Partial<WizardTurnRequest> = {}): WizardTurnRequest {
+    return {
+      sessionId: "test-session",
+      command: "hello",
+      state: initialWizardState,
+      messages: [],
+      ...overrides,
+    };
+  }
+
+  it("does not serialize recommendation context before the first system question is answered", () => {
+    const consumed = buildConsumedTurnContext(request(), {});
+
+    expect(consumed).not.toHaveProperty("recommendationGate");
+    expect(consumed).not.toHaveProperty("gamesAboveThreshold");
+    expect(consumed).not.toHaveProperty("currentBestMatches");
+    expect(consumed).not.toHaveProperty("suggestedNextQuestion");
+  });
+
+  it("serializes recommendation context after the first wizard question", () => {
+    const consumed = buildConsumedTurnContext(
+      request({
+        messages: [{ speaker: "wizard", text: "Greetings Gamer! What console are you questing on today?" }],
+      }),
+      {},
+    );
+
+    expect(consumed).toHaveProperty("recommendationGate");
+    expect(consumed).toHaveProperty("gamesAboveThreshold");
+    expect(consumed).toHaveProperty("currentBestMatches");
+    expect(consumed).toHaveProperty("suggestedNextQuestion");
+  });
+
+  it("enforces the exact first-turn system question", () => {
+    expect(ensureFirstTurnQuestion(["The screen warms."]).at(-1)).toBe(
+      "Greetings Gamer! What console are you questing on today?",
+    );
   });
 });

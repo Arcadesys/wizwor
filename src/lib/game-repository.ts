@@ -1,9 +1,23 @@
 import { games } from "@/data/games";
 import type { Game, Platform } from "@/data/games";
+import { generatedAtari5200Games } from "@/data/atari-5200-catalog.generated";
+import { generatedAtari7800Games } from "@/data/atari-7800-catalog.generated";
+import { generatedGenesisGames } from "@/data/genesis-catalog.generated";
+import { generatedNeoGeoGames } from "@/data/neo-geo-catalog.generated";
 import { generatedNesGames } from "@/data/nes-catalog.generated";
+import { generatedPcEngineGames } from "@/data/pc-engine-catalog.generated";
+import { generatedSmsGames } from "@/data/sms-catalog.generated";
 import { generatedSnesGames } from "@/data/snes-catalog.generated";
 
-type GeneratedCatalogGame = (typeof generatedNesGames)[number] | (typeof generatedSnesGames)[number];
+type GeneratedCatalogGame =
+  | (typeof generatedNesGames)[number]
+  | (typeof generatedSmsGames)[number]
+  | (typeof generatedAtari7800Games)[number]
+  | (typeof generatedAtari5200Games)[number]
+  | (typeof generatedSnesGames)[number]
+  | (typeof generatedGenesisGames)[number]
+  | (typeof generatedPcEngineGames)[number]
+  | (typeof generatedNeoGeoGames)[number];
 
 export type GameRepositoryOptions = {
   enabledPlatforms?: readonly Platform[];
@@ -72,7 +86,13 @@ function buildCatalog(): Game[] {
   return [
     ...games,
     ...qualityFilterGeneratedCatalog(generatedNesGames, seenTitles),
+    ...qualityFilterGeneratedCatalog(generatedSmsGames, seenTitles),
+    ...qualityFilterGeneratedCatalog(generatedAtari7800Games, seenTitles),
+    ...qualityFilterGeneratedCatalog(generatedAtari5200Games, seenTitles),
     ...qualityFilterGeneratedCatalog(generatedSnesGames, seenTitles),
+    ...qualityFilterGeneratedCatalog(generatedGenesisGames, seenTitles),
+    ...qualityFilterGeneratedCatalog(generatedPcEngineGames, seenTitles),
+    ...qualityFilterGeneratedCatalog(generatedNeoGeoGames, seenTitles),
   ];
 }
 
