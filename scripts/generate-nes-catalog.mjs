@@ -294,7 +294,13 @@ async function main() {
 
       let id = slugify(entry.title);
       if (byId.has(id)) {
-        id = slugify(`${entry.title}-${entry.sourceCategory}-${entry.publisher.join("-") || entry.year}`);
+        const baseId = slugify(`${entry.title}-${entry.sourceCategory}-${entry.publisher.join("-") || entry.year}`);
+        id = baseId;
+        let counter = 2;
+        while (byId.has(id)) {
+          id = `${baseId}-${counter}`;
+          counter++;
+        }
       }
       byId.set(id, { id, ...deriveGameFields(entry), ...entry, generatedAt });
     }

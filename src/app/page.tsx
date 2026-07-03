@@ -196,7 +196,11 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   function persistProfile(nextProfile: UserProfile) {
     setProfile(nextProfile);
     profileRef.current = nextProfile;
-    sessionStorage.setItem(storageKey, JSON.stringify(nextProfile));
+    try {
+      sessionStorage.setItem(storageKey, JSON.stringify(nextProfile));
+    } catch (error) {
+      console.warn("Failed to persist wizard profile:", error);
+    }
   }
 
   function persistMemory(nextMemoryMarkdown?: string, nextTerminalTheme?: WizardTerminalTheme) {
@@ -204,14 +208,18 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     const safeTheme = sanitizeTheme(nextTerminalTheme);
     setMemoryMarkdown(safeMemory);
     memoryMarkdownRef.current = safeMemory;
-    const persistentStorage = getPersistentStorage();
-    persistentStorage?.setItem(memoryStorageKey, safeMemory);
     setTerminalTheme(safeTheme);
     terminalThemeRef.current = safeTheme;
-    if (safeTheme) {
-      persistentStorage?.setItem(themeStorageKey, JSON.stringify(safeTheme));
-    } else {
-      persistentStorage?.removeItem(themeStorageKey);
+    try {
+      const persistentStorage = getPersistentStorage();
+      persistentStorage?.setItem(memoryStorageKey, safeMemory);
+      if (safeTheme) {
+        persistentStorage?.setItem(themeStorageKey, JSON.stringify(safeTheme));
+      } else {
+        persistentStorage?.removeItem(themeStorageKey);
+      }
+    } catch (error) {
+      console.warn("Failed to persist wizard memory or theme:", error);
     }
   }
 
@@ -851,6 +859,10 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
           suppressFocusRef.current = true;
           return;
         }
+        const selection = window.getSelection();
+        if (selection && selection.toString().trim() !== "") {
+          return;
+        }
         suppressFocusRef.current = false;
         inputRef.current?.focus();
       }}
@@ -961,6 +973,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                         maxLength={500}
                         placeholder="Too easy, wrong mood, wanted more romhacks..."
                         className="feedback-note-input"
+                        data-recommendation-button="true"
                       />
                       <button
                         type="submit"
