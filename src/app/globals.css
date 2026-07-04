@@ -92,6 +92,16 @@ input:disabled {
   transform: translateY(-50%);
 }
 
+.music-status {
+  max-width: min(34vw, 20rem);
+  color: var(--foreground);
+  font-size: clamp(0.55rem, 1.35vw, 0.82rem);
+  line-height: 1.6;
+  text-align: right;
+  text-shadow: 0 0 8px rgba(146, 249, 76, 0.55);
+  white-space: normal;
+}
+
 .prompt-icon-button {
   display: grid;
   width: clamp(2.8rem, 6vw, 4rem);
@@ -227,6 +237,12 @@ input:disabled {
 
 .sound-button.is-on .audio-slash {
   opacity: 0;
+}
+
+@media (max-width: 760px) {
+  .music-status {
+    display: none;
+  }
 }
 
 .pixel-button {
