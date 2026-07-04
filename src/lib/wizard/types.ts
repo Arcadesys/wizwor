@@ -81,6 +81,10 @@ export type WizardTurnRequest = {
   messages: WizardMessage[];
 };
 
+export type Showcase = {
+  games: Recommendation[];
+};
+
 export type WizardTurnResponse = {
   lines: string[];
   state: WizardState;
@@ -90,6 +94,7 @@ export type WizardTurnResponse = {
   adapter: "chatgpt";
   agentData?: AgentData;
   notes?: string[];
+  showcase?: Showcase | null;
 };
 
 export const blankProfile: UserProfile = {};

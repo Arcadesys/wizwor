@@ -3,12 +3,9 @@
 import { CSSProperties, FormEvent, KeyboardEvent, useEffect, useMemo, useRef, useState } from "react";
 import { catalogPlatforms, platformLabels, sanitizeEnabledPlatforms, type Platform } from "@/data/games";
 import type { Recommendation, UserProfile } from "@/lib/recommender";
-import { answeredPreferenceCount, getRecommendations, recommendationThreshold } from "@/lib/recommender";
 import type { FeedbackRating } from "@/lib/feedback";
-import { emptyAgentData } from "@/lib/wizard/agent-data";
 import { isResetCommand } from "@/lib/wizard/interpreter";
 import type {
-  AgentData,
   WizardMessage,
   WizardOption,
   WizardState,
@@ -44,6 +41,8 @@ type GamepadState = {
   right: boolean;
   submit: boolean;
 };
+
+type ControlNavGroup = "topbar" | "platform-toggles" | "console-context" | "feedback";
 
 class WizardTurnError extends Error {
   constructor(
@@ -92,6 +91,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const [terminalTheme, setTerminalTheme] = useState<WizardTerminalTheme | undefined>();
   const [hydrated, setHydrated] = useState(false);
   const [started, setStarted] = useState(false);
+  const [selectedConsoles, setSelectedConsoles] = useState<Platform[]>([]);
   const [needsName, setNeedsName] = useState(false);
   const [messages, setMessages] = useState<Message[]>(() => initialConsoleMessages());
   const [command, setCommand] = useState("");
@@ -99,15 +99,16 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const [suggestionIndex, setSuggestionIndex] = useState(0);
   const [isSuggestionBrowsing, setIsSuggestionBrowsing] = useState(false);
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
-  const [agentData, setAgentData] = useState<AgentData | null>(null);
+  const [showcase, setShowcase] = useState<Recommendation[] | null>(null);
+  const [showcaseIndex, setShowcaseIndex] = useState(0);
   const [isStreaming, setIsStreaming] = useState(false);
-  const [agentDataExpanded, setAgentDataExpanded] = useState(false);
   const [soundOn, setSoundOn] = useState(false);
-  const [samReady, setSamReady] = useState(false);
   const [feedbackRating, setFeedbackRating] = useState<FeedbackRating | null>(null);
   const [feedbackNote, setFeedbackNote] = useState("");
   const [feedbackNoteSent, setFeedbackNoteSent] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [controlNavGroup, setControlNavGroup] = useState<ControlNavGroup | null>(null);
+  const [controlNavIndex, setControlNavIndex] = useState(0);
 
   const profileRef = useRef(profile);
   const memoryMarkdownRef = useRef(memoryMarkdown);
@@ -124,16 +125,11 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const streamChainRef = useRef(Promise.resolve());
   const streamTokenRef = useRef(0);
   const samRef = useRef<InstanceType<SamConstructor> | null>(null);
+  const greetingSpokenRef = useRef(false);
   const gamepadFrameRef = useRef<number | null>(null);
   const lastGamepadRef = useRef<GamepadState>({ left: false, right: false, submit: false });
   const suppressFocusRef = useRef(false);
 
-  const answeredCount = answeredPreferenceCount(profile);
-  const topScore = useMemo(() => getRecommendations(profile, { enabledPlatforms })[0]?.score ?? 0, [profile, enabledPlatforms]);
-  const visibleAgentData = useMemo(
-    () => buildVisibleAgentData(agentData),
-    [agentData],
-  );
   const terminalStyle = useMemo(() => themeToCssVariables(terminalTheme), [terminalTheme]);
 
   useEffect(() => {
@@ -261,7 +257,6 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     enabledPlatformsRef.current = sanitized;
     setRecommendations([]);
     recommendationsRef.current = [];
-    setAgentData(null);
     try {
       getPersistentStorage()?.setItem(platformStorageKey, JSON.stringify(sanitized));
     } catch (error) {
@@ -277,28 +272,46 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       current.add(platform);
     }
     persistEnabledPlatforms(catalogPlatforms.filter((entry) => current.has(entry)));
+    inputRef.current?.focus();
   }
 
-  function selectConsoleContext(platform: Platform) {
+  function toggleConsoleSelection(platform: Platform) {
+    setSelectedConsoles((current) =>
+      current.includes(platform) ? current.filter((entry) => entry !== platform) : [...current, platform],
+    );
+    inputRef.current?.focus();
+  }
+
+  function beginQuestWithConsoles(platforms: Platform[]) {
+    if (!platforms.length) {
+      return;
+    }
+
     const nextMessages: Message[] = [
       ...messagesRef.current,
       {
         id: makeId("user"),
         speaker: "user",
-        text: platformLabels[platform],
+        text: platforms.map((platform) => platformLabels[platform]).join(", "),
       },
     ];
-    persistEnabledPlatforms([platform]);
+    persistEnabledPlatforms(platforms);
     setMessages(nextMessages);
     messagesRef.current = nextMessages;
     setStarted(true);
     startedRef.current = true;
+    setSelectedConsoles([]);
     setCommand("");
     setSuggestions([]);
     setSuggestionIndex(0);
     setIsSuggestionBrowsing(false);
     setSettingsOpen(false);
+    setControlNavGroup(null);
     window.setTimeout(() => inputRef.current?.focus(), 0);
+  }
+
+  function selectConsoleContext(platform: Platform) {
+    beginQuestWithConsoles([platform]);
   }
 
   function platformFromCommand(value: string) {
@@ -393,13 +406,37 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     setSuggestions(response.suggestions);
     setRecommendations(response.recommendations);
     recommendationsRef.current = response.recommendations;
-    setAgentData(response.agentData ?? null);
+    setShowcase(response.showcase?.games ?? null);
+    setShowcaseIndex(0);
     setSuggestionIndex(0);
     setIsSuggestionBrowsing(false);
     setFeedbackRating(null);
     setFeedbackNote("");
     setFeedbackNoteSent(false);
     setSettingsOpen(false);
+    setControlNavGroup(null);
+  }
+
+  function closeShowcase() {
+    setShowcase(null);
+    setShowcaseIndex(0);
+  }
+
+  function saveSession() {
+    try {
+      const filename = downloadSessionSnapshot({
+        profile: profileRef.current,
+        memoryMarkdown: memoryMarkdownRef.current,
+        enabledPlatforms: enabledPlatformsRef.current,
+        terminalTheme: terminalThemeRef.current,
+        messages: messagesRef.current.map(({ speaker, text }) => ({ speaker, text })),
+        recommendations: recommendationsRef.current,
+      });
+      appendSystem(`Session downloaded as ${filename}. Reload it later, or just keep questing.`);
+    } catch (error) {
+      console.warn("Failed to save session:", error);
+      appendSystem("Couldn't save the session. Try again.");
+    }
   }
 
   function resetSession() {
@@ -411,6 +448,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     profileRef.current = blankProfile;
     setStarted(false);
     startedRef.current = false;
+    setSelectedConsoles([]);
     setNeedsName(false);
     needsNameRef.current = false;
     const coldMessages = initialConsoleMessages();
@@ -422,12 +460,15 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     setIsSuggestionBrowsing(false);
     setRecommendations([]);
     recommendationsRef.current = [];
-    setAgentData(null);
+    setShowcase(null);
+    setShowcaseIndex(0);
     setIsStreaming(false);
     setFeedbackRating(null);
     setFeedbackNote("");
     setFeedbackNoteSent(false);
     setSettingsOpen(false);
+    setControlNavGroup(null);
+    greetingSpokenRef.current = false;
     window.setTimeout(() => inputRef.current?.focus(), 0);
   }
 
@@ -587,6 +628,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
 
   function rateRecommendations(rating: FeedbackRating) {
     setFeedbackRating(rating);
+    setControlNavGroup(null);
     void sendFeedback(rating);
   }
 
@@ -603,14 +645,22 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
     if (event.key === "ArrowUp") {
       event.preventDefault();
-      startSuggestionBrowsing();
+      if (suggestions.length) {
+        startSuggestionBrowsing();
+      } else {
+        startControlNavigation();
+      }
       playKeyTone("move");
       return;
     }
 
     if (event.key === "ArrowDown") {
       event.preventDefault();
-      setIsSuggestionBrowsing(false);
+      if (suggestions.length) {
+        setIsSuggestionBrowsing(false);
+      } else {
+        setControlNavGroup(null);
+      }
       playKeyTone("move");
       return;
     }
@@ -619,6 +669,10 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       if (isSuggestionBrowsing) {
         event.preventDefault();
         moveSuggestion(-1);
+        playKeyTone("move");
+      } else if (controlNavGroup) {
+        event.preventDefault();
+        moveControlNav(-1);
         playKeyTone("move");
       }
       return;
@@ -629,12 +683,17 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
         event.preventDefault();
         moveSuggestion(1);
         playKeyTone("move");
+      } else if (controlNavGroup) {
+        event.preventDefault();
+        moveControlNav(1);
+        playKeyTone("move");
       }
       return;
     }
 
     if (event.key === "Escape") {
       setIsSuggestionBrowsing(false);
+      setControlNavGroup(null);
       playKeyTone("move");
       return;
     }
@@ -653,6 +712,9 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       if (isSuggestionBrowsing && !command.trim() && suggestions.length) {
         event.preventDefault();
         submitFocusedSuggestion();
+      } else if (controlNavGroup && !command.trim()) {
+        event.preventDefault();
+        activateControlNav();
       }
       playKeyTone("enter");
       return;
@@ -695,6 +757,133 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
 
     setIsSuggestionBrowsing(true);
     setSuggestionIndex((current) => (current + direction + suggestions.length) % suggestions.length);
+  }
+
+  function getControlNavIds(group: ControlNavGroup): string[] {
+    if (group === "platform-toggles") {
+      return [...catalogPlatforms];
+    }
+
+    if (group === "console-context") {
+      return selectedConsoles.length ? [...catalogPlatforms, "confirm"] : [...catalogPlatforms];
+    }
+
+    if (group === "feedback") {
+      return feedbackOptions.map((option) => option.rating);
+    }
+
+    return ["save", "settings", "reset", "sound"];
+  }
+
+  function bestAvailableControlGroup(): ControlNavGroup {
+    if (settingsOpen) {
+      return "platform-toggles";
+    }
+
+    if (!started) {
+      return "console-context";
+    }
+
+    if (recommendations.length && !feedbackRating) {
+      return "feedback";
+    }
+
+    return "topbar";
+  }
+
+  function startControlNavigation() {
+    const group = bestAvailableControlGroup();
+    const ids = getControlNavIds(group);
+    if (!ids.length) {
+      return;
+    }
+
+    setControlNavIndex((current) => (controlNavGroup === group ? getSafeSuggestionIndex(ids.length, current) : 0));
+    setControlNavGroup(group);
+  }
+
+  function moveControlNav(direction: 1 | -1) {
+    if (!controlNavGroup) {
+      return;
+    }
+
+    const ids = getControlNavIds(controlNavGroup);
+    if (!ids.length) {
+      return;
+    }
+
+    setControlNavIndex((current) => (current + direction + ids.length) % ids.length);
+  }
+
+  function activateControlNavItem(group: ControlNavGroup, id: string) {
+    if (group === "topbar") {
+      if (id === "save") {
+        saveSession();
+        inputRef.current?.focus();
+        return;
+      }
+
+      if (id === "settings") {
+        setSettingsOpen((value) => !value);
+        setControlNavGroup(null);
+        inputRef.current?.focus();
+        return;
+      }
+
+      if (id === "reset") {
+        resetSession();
+        return;
+      }
+
+      if (id === "sound") {
+        toggleSound();
+        inputRef.current?.focus();
+      }
+
+      return;
+    }
+
+    if (group === "platform-toggles") {
+      togglePlatform(id as Platform);
+      return;
+    }
+
+    if (group === "console-context") {
+      if (id === "confirm") {
+        if (selectedConsoles.length) {
+          beginQuestWithConsoles(selectedConsoles);
+        }
+        return;
+      }
+
+      toggleConsoleSelection(id as Platform);
+      return;
+    }
+
+    rateRecommendations(id as FeedbackRating);
+  }
+
+  function activateControlNav() {
+    if (!controlNavGroup) {
+      return;
+    }
+
+    const ids = getControlNavIds(controlNavGroup);
+    const id = ids[getSafeSuggestionIndex(ids.length, controlNavIndex)];
+    if (!id) {
+      return;
+    }
+
+    activateControlNavItem(controlNavGroup, id);
+  }
+
+  function isControlNavCursor(group: ControlNavGroup, id: string) {
+    if (controlNavGroup !== group) {
+      return false;
+    }
+
+    const ids = getControlNavIds(group);
+    return ids[getSafeSuggestionIndex(ids.length, controlNavIndex)] === id;
   }
 
   async function toggleSound() {
@@ -786,10 +975,8 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
         throat: 150,
         mouth: 190,
       });
-      setSamReady(true);
       return samRef.current;
     } catch {
-      setSamReady(false);
       return null;
     }
   }
@@ -806,6 +993,13 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     }
 
     return { audio };
+  }
+
+  async function speakGreeting() {
+    const rendered = await renderSamLine(consoleGreeting);
+    if (rendered) {
+      playSamBuffer(rendered.audio);
+    }
   }
 
   function playSamBuffer(audio: Float32Array) {
@@ -828,6 +1022,15 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     source.start();
     return source;
   }
+
+  useEffect(() => {
+    if (fastMode || started || !soundOn || greetingSpokenRef.current) {
+      return;
+    }
+
+    greetingSpokenRef.current = true;
+    void speakGreeting();
+  }, [fastMode, started, soundOn]);
 
   function playKeyTone(kind: "letter" | "backspace" | "enter" | "move" | "deny") {
     const rig = audioRef.current;
@@ -914,6 +1117,9 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     };
   });
 
+  const activeShowcaseGame =
+    showcase && showcase.length ? showcase[Math.min(showcaseIndex, showcase.length - 1)] : null;
+
   return (
     <main
       className="min-h-screen overflow-hidden bg-[#050505] text-[#f7f7f7]"
@@ -950,22 +1156,44 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
               >
                 <button
                   type="button"
-                  className="settings-button"
-                  onClick={() => setSettingsOpen((value) => !value)}
+                  className={`save-button ${isControlNavCursor("topbar", "save") ? "is-nav-cursor" : ""}`}
+                  onClick={() => {
+                    saveSession();
+                    inputRef.current?.focus();
+                  }}
+                  aria-label="Save session"
+                  title="Save session"
+                  data-nav-item="true"
+                >
+                  <span aria-hidden="true">💾</span>
+                  <span className="icon-button-label" aria-hidden="true">
+                    Save
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  className={`settings-button ${isControlNavCursor("topbar", "settings") ? "is-nav-cursor" : ""}`}
+                  onClick={() => {
+                    setSettingsOpen((value) => !value);
+                    setControlNavGroup(null);
+                    inputRef.current?.focus();
+                  }}
                   aria-label="Catalog settings"
                   aria-expanded={settingsOpen}
                   title="Catalog settings"
+                  data-nav-item="true"
                 >
                   ⚙
                 </button>
                 <button
                   type="button"
-                  className="reset-button"
+                  className={`reset-button ${isControlNavCursor("topbar", "reset") ? "is-nav-cursor" : ""}`}
                   onClick={() => {
                     resetSession();
                   }}
                   aria-label="Start over"
                   title="Start over"
+                  data-nav-item="true"
                 >
                   X
                 </button>
@@ -980,8 +1208,11 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                           <button
                             key={platform}
                             type="button"
-                            className={`platform-toggle ${enabled ? "is-on" : "is-off"}`}
+                            className={`platform-toggle ${enabled ? "is-on" : "is-off"} ${
+                              isControlNavCursor("platform-toggles", platform) ? "is-nav-cursor" : ""
+                            }`}
                             data-platform={platform}
+                            data-nav-item="true"
                             onClick={() => togglePlatform(platform)}
                             aria-pressed={enabled}
                           >
@@ -1014,36 +1245,6 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
 
           <div className="bottom-terminal z-10">
             {recommendations.length ? (
-              <div className="recommendation-grid">
-                {recommendations.map((recommendation, index) => (
-                  <article key={recommendation.game.id} className="recommendation-card">
-                    <div className="recommendation-meta">
-                      <p>TOME {index + 1}</p>
-                      <p>{Math.round(recommendation.score * 100)}%</p>
-                    </div>
-                    <h2>{recommendation.game.title}</h2>
-                    <p className="recommendation-kind">
-                      {platformLabel(recommendation.game.platform)} / {recommendation.game.year}
-                    </p>
-                    <p>{recommendation.game.pitch}</p>
-                    <p className="recommendation-reasons">{recommendation.reasons.join(" / ")}</p>
-                    <a
-                      className="playthrough-link"
-                      href={recommendation.game.playthroughUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      data-recommendation-button="true"
-                    >
-                      {recommendation.game.playthroughUrl?.includes("youtube.com")
-                        ? "Watch Playthrough"
-                        : "View Source"}
-                    </a>
-                  </article>
-                ))}
-              </div>
-            ) : null}
-
-            {recommendations.length ? (
               <div className="feedback-bar" onKeyDown={(event) => event.stopPropagation()}>
                 {!feedbackRating ? (
                   <>
@@ -1053,8 +1254,11 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                         <button
                           key={option.rating}
                           type="button"
-                          className="feedback-chip"
+                          className={`feedback-chip ${
+                            isControlNavCursor("feedback", option.rating) ? "is-nav-cursor" : ""
+                          }`}
                           data-recommendation-button="true"
+                          data-nav-item="true"
                           onClick={() => {
                             rateRecommendations(option.rating);
                           }}
@@ -1095,67 +1299,6 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
               </div>
             ) : null}
 
-            {!recommendations.length ? (
-              <div className="chat-hud">
-                <div className="status-line">
-                  ANS {answeredCount}/6 TOP {Math.round(topScore * 100)} NEED{" "}
-                  {Math.round(recommendationThreshold * 100)} SAM {samReady ? "OK" : "--"}
-                </div>
-              </div>
-            ) : null}
-
-            <section
-              className={`agent-data-panel ${agentDataExpanded ? "is-expanded" : ""}`}
-              aria-label="Agent data"
-              onKeyDown={(event) => event.stopPropagation()}
-              data-recommendation-button="true"
-            >
-              <button
-                type="button"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  setAgentDataExpanded((value) => !value);
-                }}
-                className={`magnify-button ${agentDataExpanded ? "is-on" : "is-off"}`}
-                aria-label={agentDataExpanded ? "Collapse agent data" : "Expand agent data"}
-                aria-expanded={agentDataExpanded}
-                title={agentDataExpanded ? "Collapse agent data" : "Expand agent data"}
-              >
-                <span className="magnify-glyph" aria-hidden="true">
-                  <span className="magnify-lens" />
-                  <span className="magnify-handle" />
-                </span>
-                <span className="sr-only">{agentDataExpanded ? "Collapse agent data" : "Expand agent data"}</span>
-              </button>
-              <div className="agent-data-summary">
-                <span>AGENT DATA</span>
-                <span>
-                  ABOVE {visibleAgentData.gamesAboveThreshold.length} / THRESHOLD{" "}
-                  {visibleAgentData.thresholdPercent}%
-                </span>
-              </div>
-              <div className="agent-data-body">
-                <div>
-                  <h2>Games Above Threshold</h2>
-                  {visibleAgentData.gamesAboveThreshold.length ? (
-                    <ol className="agent-game-list">
-                      {visibleAgentData.gamesAboveThreshold.map((game) => (
-                        <li key={game.id}>
-                          <strong>{game.title}</strong> {game.matchPercent}%
-                          {game.reasons.length ? <span> / {game.reasons.join(" / ")}</span> : null}
-                        </li>
-                      ))}
-                    </ol>
-                  ) : (
-                    <p>No games clear the threshold yet.</p>
-                  )}
-                </div>
-                <div>
-                  <h2>Data Consumed And Generated</h2>
-                  <pre>{JSON.stringify(visibleAgentData, null, 2)}</pre>
-                </div>
-              </div>
-            </section>
 
             {suggestions.length ? (
               <div className="suggestion-row" aria-label="Suggestions">
@@ -1195,20 +1338,38 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
               <section className="console-context-panel" aria-label="Choose console context">
                 <h2>Choose Console Context</h2>
                 <div className="console-context-grid">
-                  {catalogPlatforms.map((platform) => (
-                    <button
-                      key={platform}
-                      type="button"
-                      className="console-context-button"
-                      aria-label={`Select ${platformLabels[platform]}`}
-                      onClick={() => selectConsoleContext(platform)}
-                      data-recommendation-button="true"
-                    >
-                      <span>ON</span>
-                      <strong>{platformLabels[platform]}</strong>
-                    </button>
-                  ))}
+                  {catalogPlatforms.map((platform) => {
+                    const selected = selectedConsoles.includes(platform);
+                    return (
+                      <button
+                        key={platform}
+                        type="button"
+                        className={`console-context-button ${selected ? "is-selected" : ""} ${
+                          isControlNavCursor("console-context", platform) ? "is-nav-cursor" : ""
+                        }`}
+                        aria-label={`Select ${platformLabels[platform]}`}
+                        aria-pressed={selected}
+                        onClick={() => toggleConsoleSelection(platform)}
+                        data-recommendation-button="true"
+                        data-nav-item="true"
+                      >
+                        <strong>{platformLabels[platform]}</strong>
+                      </button>
+                    );
+                  })}
                 </div>
+                <button
+                  type="button"
+                  className={`console-context-confirm ${
+                    isControlNavCursor("console-context", "confirm") ? "is-nav-cursor" : ""
+                  }`}
+                  onClick={() => beginQuestWithConsoles(selectedConsoles)}
+                  disabled={!selectedConsoles.length}
+                  data-recommendation-button="true"
+                  data-nav-item="true"
+                >
+                  Begin Quest{selectedConsoles.length > 1 ? ` (${selectedConsoles.length})` : ""}
+                </button>
               </section>
             ) : null}
 
@@ -1220,25 +1381,40 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                 <span>{command}</span>
                 <span className="terminal-cursor prompt-cursor" />
               </div>
-              <button
-                type="button"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  toggleSound();
-                  inputRef.current?.focus();
-                }}
-                className={`sound-button ${soundOn ? "is-on" : "is-off"}`}
-                aria-label={soundOn ? "Audio on. Disable sound" : "Audio off. Enable sound"}
-                title={soundOn ? "Audio on" : "Audio off"}
-              >
-                <span className="audio-glyph" aria-hidden="true">
-                  <span className="audio-core" />
-                  <span className="audio-wave audio-wave-1" />
-                  <span className="audio-wave audio-wave-2" />
-                  <span className="audio-slash" />
-                </span>
-                <span className="sr-only">{soundOn ? "Audio on" : "Audio off"}</span>
-              </button>
+              <div className="prompt-actions">
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    toggleSound();
+                    inputRef.current?.focus();
+                  }}
+                  className={`prompt-icon-button sound-button ${soundOn ? "is-on" : "is-off"} ${
+                    isControlNavCursor("topbar", "sound") ? "is-nav-cursor" : ""
+                  }`}
+                  aria-label={soundOn ? "Audio on. Disable sound" : "Audio off. Enable sound"}
+                  title={soundOn ? "Audio on" : "Audio off"}
+                  data-nav-item="true"
+                >
+                  <span className="audio-glyph" aria-hidden="true">
+                    <span className="audio-core" />
+                    <span className="audio-wave audio-wave-1" />
+                    <span className="audio-wave audio-wave-2" />
+                    <span className="audio-slash" />
+                  </span>
+                  <span className="sr-only">{soundOn ? "Audio on" : "Audio off"}</span>
+                </button>
+                <button
+                  type="submit"
+                  className="prompt-icon-button send-button"
+                  disabled={!command.trim() || isStreaming}
+                  aria-label="Send command"
+                  title="Send command"
+                >
+                  <span className="send-glyph" aria-hidden="true" />
+                  <span className="sr-only">Send command</span>
+                </button>
+              </div>
               <input
                 ref={inputRef}
                 id="wizard-command"
@@ -1255,6 +1431,76 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
             </form>
           </div>
         </section>
+
+        {showcase && showcase.length && activeShowcaseGame ? (
+          <div className="showcase-overlay" role="dialog" aria-modal="true" aria-label="Game showcase">
+            <div className="showcase-modal">
+              <div className="showcase-titlebar">
+                <span className="showcase-prompt">C:\WIZWOR&gt;</span>
+                <span className="showcase-exe">SHOWCASE.EXE</span>
+                <span className="terminal-cursor" />
+                <button
+                  type="button"
+                  className="showcase-close"
+                  onClick={closeShowcase}
+                  aria-label="Close showcase"
+                  title="Close showcase"
+                  data-recommendation-button="true"
+                >
+                  X
+                </button>
+              </div>
+
+              {showcase.length > 1 ? (
+                <div className="showcase-tabs" role="tablist" aria-label="Qualifying games">
+                  {showcase.map((recommendation, index) => (
+                    <button
+                      key={recommendation.game.id}
+                      type="button"
+                      role="tab"
+                      aria-selected={index === showcaseIndex}
+                      className={`showcase-tab ${index === showcaseIndex ? "is-active" : ""}`}
+                      onClick={() => setShowcaseIndex(index)}
+                      data-recommendation-button="true"
+                    >
+                      TOME {index + 1}
+                    </button>
+                  ))}
+                </div>
+              ) : null}
+
+              <div className="showcase-body">
+                <div className="showcase-video-frame">
+                  {youTubeEmbedUrl(activeShowcaseGame.game.playthroughUrl) ? (
+                    <iframe
+                      key={activeShowcaseGame.game.id}
+                      src={youTubeEmbedUrl(activeShowcaseGame.game.playthroughUrl) ?? undefined}
+                      title={`${activeShowcaseGame.game.title} gameplay`}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  ) : (
+                    <a
+                      className="playthrough-link"
+                      href={activeShowcaseGame.game.playthroughUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Source
+                    </a>
+                  )}
+                </div>
+                <h2>{activeShowcaseGame.game.title}</h2>
+                <p className="showcase-meta">
+                  {platformLabel(activeShowcaseGame.game.platform)} / {activeShowcaseGame.game.year}
+                  {" · "}
+                  {Math.round(activeShowcaseGame.score * 100)}% match
+                </p>
+                <p className="showcase-reasons">Why it&rsquo;s relevant: {activeShowcaseGame.reasons.join(" / ")}</p>
+              </div>
+            </div>
+          </div>
+        ) : null}
       </div>
     </main>
   );
@@ -1264,14 +1510,29 @@ export default function Home() {
   return <WizardTerminal />;
 }
 
-function buildVisibleAgentData(agentData: AgentData | null) {
-  if (agentData) {
-    return agentData;
-  }
-
-  return emptyAgentData({
-    note: "No recommendation context has been generated for this conversation yet.",
-  });
+function downloadSessionSnapshot(payload: {
+  profile: UserProfile;
+  memoryMarkdown: string;
+  enabledPlatforms: Platform[];
+  terminalTheme: WizardTerminalTheme | undefined;
+  messages: Array<{ speaker: Message["speaker"]; text: string }>;
+  recommendations: Recommendation[];
+}) {
+  const filename = `wizwor-save-${Date.now()}.json`;
+  const data = {
+    savedAt: new Date().toISOString(),
+    ...payload,
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 100);
+  return filename;
 }
 
 function getSafeSuggestionIndex(length: number, index: number) {
@@ -1431,6 +1692,23 @@ function waitForSource(source: AudioBufferSourceNode, paddingMs: number) {
 
 function platformLabel(platform: Recommendation["game"]["platform"]) {
   return platformLabels[platform] ?? platform.toUpperCase();
+}
+
+function youTubeEmbedUrl(url: string): string | null {
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname === "youtu.be") {
+      const id = parsed.pathname.slice(1);
+      return id ? `https://www.youtube.com/embed/${id}` : null;
+    }
+    if (parsed.hostname.includes("youtube.com")) {
+      const id = parsed.searchParams.get("v");
+      return id ? `https://www.youtube.com/embed/${id}` : null;
+    }
+  } catch {
+    return null;
+  }
+  return null;
 }
 
 function speakerLabel(speaker: Message["speaker"]) {

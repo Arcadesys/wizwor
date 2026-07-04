@@ -4,9 +4,12 @@ import {
   buildConsumedTurnContext,
   ensureFirstTurnQuestion,
   isAgentDataSchemaError,
+  resolveShowcaseIds,
   WizardTurnOutputSchema,
 } from "@/lib/wizard/agents-sdk-workflow";
-import { initialWizardState, type WizardTurnRequest } from "@/lib/wizard/types";
+import { catalogPlatforms } from "@/data/games";
+import { maxQualifyingRecommendations, qualifyingRecommendations } from "@/lib/recommender";
+import { blankProfile, initialWizardState, type WizardTurnRequest } from "@/lib/wizard/types";
 
 function baseOutput(agentData: Record<string, unknown>) {
   return {
@@ -112,5 +115,45 @@ describe("first-turn recommendation context", () => {
     expect(ensureFirstTurnQuestion(["The screen warms."]).at(-1)).toBe(
       "Greetings Gamer! What console are you questing on today?",
     );
+  });
+});
+
+describe("resolveShowcaseIds", () => {
+  it("drops ids that don't currently clear the reveal threshold", () => {
+    const profile = {
+      ...blankProfile,
+      name: "Ada",
+      mood: "ominous" as const,
+      playStyle: "side-scroller" as const,
+      difficulty: "difficult" as const,
+      story: "some" as const,
+      keywords: ["gothic", "branching paths"],
+    };
+    const qualifying = qualifyingRecommendations(profile);
+    expect(qualifying.length).toBeGreaterThan(0);
+    const validId = qualifying[0].game.id;
+
+    const result = resolveShowcaseIds(profile, [validId, "not-a-real-game-id"], catalogPlatforms);
+
+    expect(result).toEqual([validId]);
+  });
+
+  it("returns an empty array when nothing supplied clears the threshold", () => {
+    const result = resolveShowcaseIds(blankProfile, ["not-a-real-game-id"], catalogPlatforms);
+    expect(result).toEqual([]);
+  });
+
+  it("caps the result at maxQualifyingRecommendations even if more valid ids are supplied", () => {
+    // A lone matched dimension scores 100% (relative to what's been answered),
+    // so this profile alone qualifies well more than 3 games — see the matching
+    // case in recommender.test.ts.
+    const broad = { ...blankProfile, name: "Ada", mood: "weird" as const };
+    const qualifying = qualifyingRecommendations(broad);
+    expect(qualifying.length).toBeGreaterThan(maxQualifyingRecommendations);
+    const ids = qualifying.map((recommendation) => recommendation.game.id);
+
+    const result = resolveShowcaseIds(broad, ids, catalogPlatforms);
+
+    expect(result).toEqual(ids.slice(0, maxQualifyingRecommendations));
   });
 });
