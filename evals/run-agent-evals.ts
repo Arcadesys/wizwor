@@ -1,21 +1,40 @@
 import fs from "node:fs";
 import path from "node:path";
 import { chatGptAgentAdapter, getChatGptAgentReadiness } from "../src/lib/wizard/chatgpt-agent";
-import { initialWizardState, type WizardMessage, type WizardState } from "../src/lib/wizard/types";
+import {
+  initialWizardState,
+  type WizardMessage,
+  type WizardState,
+  type WizardTerminalTheme,
+  type WizardTurnResponse,
+} from "../src/lib/wizard/types";
 
 type EvalCase = {
   id: string;
   family: string;
   description: string;
+  initialState?: Partial<WizardState>;
   turns: string[];
   expect: {
     profile?: Record<string, unknown>;
+    profileUnset?: string[];
     revealed?: boolean;
     activeQuestionKey?: string | null;
     lastAccepted?: boolean;
     minRecommendations?: number;
+    maxRecommendations?: number;
     topScoreAtLeast?: number;
     topTitle?: string;
+    topPlatform?: string;
+    hasShowcase?: boolean;
+    maxShowcaseGames?: number;
+    hasSoundtrack?: boolean;
+    soundtrackTitleIncludes?: string;
+    terminalTheme?: Partial<WizardTerminalTheme>;
+    terminalThemeKeys?: Array<keyof WizardTerminalTheme>;
+    memoryIncludes?: string[];
+    maxAgentDataGamesAboveThreshold?: number;
+    minAgentDataCurrentBestMatches?: number;
     lineIncludes?: string[];
   };
   xfail?: boolean;
@@ -106,11 +125,19 @@ function loadEnvLocal() {
 }
 
 async function runCase(testCase: EvalCase): Promise<CaseResult> {
-  let state: WizardState = initialWizardState;
+  let state: WizardState = {
+    ...initialWizardState,
+    ...testCase.initialState,
+    profile: {
+      ...initialWizardState.profile,
+      ...testCase.initialState?.profile,
+    },
+  };
   const messages: WizardMessage[] = [];
   let lastLines: string[] = [];
   let lastAccepted = true;
   let lastRecommendations: Awaited<ReturnType<typeof agent.runTurn>>["recommendations"] = [];
+  let lastResponse: WizardTurnResponse | null = null;
 
   for (const command of testCase.turns) {
     if (command) {
@@ -128,10 +155,11 @@ async function runCase(testCase: EvalCase): Promise<CaseResult> {
     lastLines = response.lines;
     lastAccepted = response.accepted;
     lastRecommendations = response.recommendations;
+    lastResponse = response;
     messages.push(...response.lines.map((text) => ({ speaker: "wizard" as const, text })));
   }
 
-  const failures = checkExpectations(testCase, state, lastAccepted, lastLines, lastRecommendations, {
+  const failures = checkExpectations(testCase, state, lastAccepted, lastLines, lastRecommendations, lastResponse, {
     checkExactLineText: true,
   });
   if (testCase.xfail) {
@@ -157,6 +185,7 @@ function checkExpectations(
   lastAccepted: boolean,
   lastLines: string[],
   recommendations: Awaited<ReturnType<typeof agent.runTurn>>["recommendations"],
+  lastResponse: WizardTurnResponse | null,
   options: { checkExactLineText: boolean },
 ) {
   const failures: string[] = [];
@@ -165,6 +194,12 @@ function checkExpectations(
   for (const [key, value] of Object.entries(expected.profile ?? {})) {
     if ((state.profile as Record<string, unknown>)[key] !== value) {
       failures.push(`Expected profile.${key}=${String(value)}, saw ${String((state.profile as Record<string, unknown>)[key])}.`);
+    }
+  }
+
+  for (const key of expected.profileUnset ?? []) {
+    if ((state.profile as Record<string, unknown>)[key] !== undefined) {
+      failures.push(`Expected profile.${key} to stay unset, saw ${String((state.profile as Record<string, unknown>)[key])}.`);
     }
   }
 
@@ -184,12 +219,90 @@ function checkExpectations(
     failures.push(`Expected at least ${expected.minRecommendations} recommendations, saw ${recommendations.length}.`);
   }
 
+  if (expected.maxRecommendations !== undefined && recommendations.length > expected.maxRecommendations) {
+    failures.push(`Expected at most ${expected.maxRecommendations} recommendations, saw ${recommendations.length}.`);
+  }
+
   if (expected.topScoreAtLeast !== undefined && (recommendations[0]?.score ?? 0) < expected.topScoreAtLeast) {
     failures.push(`Expected top score >= ${expected.topScoreAtLeast}, saw ${recommendations[0]?.score ?? 0}.`);
   }
 
   if (expected.topTitle !== undefined && recommendations[0]?.game.title !== expected.topTitle) {
     failures.push(`Expected top recommendation "${expected.topTitle}", saw "${recommendations[0]?.game.title ?? "none"}".`);
+  }
+
+  if (expected.topPlatform !== undefined && recommendations[0]?.game.platform !== expected.topPlatform) {
+    failures.push(`Expected top platform "${expected.topPlatform}", saw "${recommendations[0]?.game.platform ?? "none"}".`);
+  }
+
+  if (expected.hasShowcase !== undefined) {
+    const hasShowcase = Boolean(lastResponse?.showcase?.games.length);
+    if (hasShowcase !== expected.hasShowcase) {
+      failures.push(`Expected hasShowcase=${expected.hasShowcase}, saw ${hasShowcase}.`);
+    }
+  }
+
+  if (
+    expected.maxShowcaseGames !== undefined &&
+    (lastResponse?.showcase?.games.length ?? 0) > expected.maxShowcaseGames
+  ) {
+    failures.push(
+      `Expected at most ${expected.maxShowcaseGames} showcase games, saw ${lastResponse?.showcase?.games.length ?? 0}.`,
+    );
+  }
+
+  if (expected.hasSoundtrack !== undefined) {
+    const hasSoundtrack = Boolean(lastResponse?.soundtrack);
+    if (hasSoundtrack !== expected.hasSoundtrack) {
+      failures.push(`Expected hasSoundtrack=${expected.hasSoundtrack}, saw ${hasSoundtrack}.`);
+    }
+  }
+
+  if (
+    expected.soundtrackTitleIncludes !== undefined &&
+    !lastResponse?.soundtrack?.title.toLowerCase().includes(expected.soundtrackTitleIncludes.toLowerCase())
+  ) {
+    failures.push(`Expected soundtrack title to include "${expected.soundtrackTitleIncludes}".`);
+  }
+
+  for (const [key, value] of Object.entries(expected.terminalTheme ?? {})) {
+    if (state.terminalTheme?.[key as keyof WizardTerminalTheme] !== value) {
+      failures.push(`Expected terminalTheme.${key}=${String(value)}, saw ${String(state.terminalTheme?.[key as keyof WizardTerminalTheme])}.`);
+    }
+  }
+
+  for (const key of expected.terminalThemeKeys ?? []) {
+    if (!state.terminalTheme?.[key]) {
+      failures.push(`Expected terminalTheme.${key} to be set.`);
+    }
+  }
+
+  for (const snippet of expected.memoryIncludes ?? []) {
+    if (!state.memoryMarkdown.includes(snippet)) {
+      failures.push(`Expected memoryMarkdown to include "${snippet}".`);
+    }
+  }
+
+  if (
+    expected.maxAgentDataGamesAboveThreshold !== undefined &&
+    (lastResponse?.agentData?.gamesAboveThreshold.length ?? 0) > expected.maxAgentDataGamesAboveThreshold
+  ) {
+    failures.push(
+      `Expected agentData.gamesAboveThreshold <= ${expected.maxAgentDataGamesAboveThreshold}, saw ${
+        lastResponse?.agentData?.gamesAboveThreshold.length ?? 0
+      }.`,
+    );
+  }
+
+  if (
+    expected.minAgentDataCurrentBestMatches !== undefined &&
+    (lastResponse?.agentData?.currentBestMatches.length ?? 0) < expected.minAgentDataCurrentBestMatches
+  ) {
+    failures.push(
+      `Expected agentData.currentBestMatches >= ${expected.minAgentDataCurrentBestMatches}, saw ${
+        lastResponse?.agentData?.currentBestMatches.length ?? 0
+      }.`,
+    );
   }
 
   if (options.checkExactLineText) {
