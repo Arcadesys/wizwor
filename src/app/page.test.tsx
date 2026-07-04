@@ -5,6 +5,7 @@ import type { WizardTurnResponse } from "@/lib/wizard/types";
 import { defaultMemoryMarkdown } from "@/lib/wizard/types";
 
 const postConsolePrompt = "What plaything can I offer you today?";
+const soundOnCaution = "Best with sound on. Turn your speakers down first, then let WIZ speak.";
 
 vi.mock("sam-js", () => ({
   default: class MockSam {
@@ -64,6 +65,7 @@ describe("wizard terminal UI", () => {
     await waitFor(() => expect(input).toBeEnabled());
 
     expect(screen.getByText("Greetings Gamer! What console are you questing on today?")).toBeInTheDocument();
+    expect(screen.getByText(soundOnCaution)).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Choose Console Context/i })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /^Select NES$/i })).toBeInTheDocument();
   });
