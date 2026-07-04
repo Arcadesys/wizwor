@@ -127,6 +127,23 @@ export function recommendationGate(profile: UserProfile, options: Recommendation
   };
 }
 
+/**
+ * Fallback for when the interview has real signal but nothing clears the
+ * threshold: the top-scored games become explicit best guesses so the agent
+ * can commit instead of stalling behind the gate. Empty until the profile has
+ * enough answered dimensions to guess from.
+ */
+export function bestGuessRecommendations(
+  profile: UserProfile,
+  options: RecommendationGateOptions = {},
+): Recommendation[] {
+  if (!hasEnoughSignal(profile)) {
+    return [];
+  }
+  const maxQualifying = options.maxQualifying ?? maxQualifyingRecommendations;
+  return getRecommendations(profile, options).slice(0, maxQualifying);
+}
+
 export type NextQuestionSuggestion = {
   key: PreferenceKey;
   value: string;

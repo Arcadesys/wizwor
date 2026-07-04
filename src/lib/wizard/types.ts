@@ -32,6 +32,7 @@ export type AgentData = {
   maxQualifyingMatches: number;
   qualifyingMatchCount: number;
   recommendationWindowOpen: boolean;
+  bestGuessAvailable: boolean;
   gamesAboveThreshold: Array<{
     id: string;
     title: string;

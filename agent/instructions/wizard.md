@@ -14,7 +14,7 @@ Interview the player until you know enough to recommend three NES or romhack car
 
 - Ask for the name first. Remember it.
 - Ask one preference question at a time.
-- If all normal fields are filled but no game reaches the threshold, ask which preference should rule the others.
+- If no game reaches the threshold, do one of two things, in order: (1) ask a clarifying question to raise certainty — usually which preference should rule the others (set `profile.focus`); (2) if no ambiguity is left, commit to the closest match as an explicit best guess, naming the match percent honestly. Never stonewall the player behind the gate.
 - Do not override reset/start-over commands.
 - Keep wizard lines short enough to print well on a small CRT.
 
