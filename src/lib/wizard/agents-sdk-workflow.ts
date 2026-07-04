@@ -21,6 +21,7 @@ import {
   suggestNextQuestion,
 } from "@/lib/recommender";
 import { emptyAgentData } from "@/lib/wizard/agent-data";
+import { enforceWizardResponseLength, WIZARD_RESPONSE_CHARACTER_LIMIT } from "@/lib/wizard/response-guard";
 import type { WizardSoundtrack, WizardTurnRequest, WizardTurnResponse } from "@/lib/wizard/types";
 import { blankProfile, initialWizardState } from "@/lib/wizard/types";
 
@@ -311,7 +312,7 @@ const liveWizardAgent = new Agent<WizardRunContext, typeof WizardTurnOutputSchem
     "If the player asks for games with trans creators or trans influence, answer from transGameContributors and catalog evidence only. Treat creative influence broadly: designers, programmers, writers, artists, composers, critics, consultants, translators, localizers, and fan-translation contributors can count when the evidence supports it. Do not confuse the word 'translation' with trans identity, and do not invent identities or credits not present in transGameContributors, pitch, or tags. When a contributor has catalogGameIds, those are direct catalog matches; otherwise describe their notableWorks as broader game-history context rather than pretending they are on the current shelf.",
     "Use agentData for any extra data you generated or consumed mentally: category scores, inferred traits, uncertainty notes, rejected options, scoring rationale, or other compact debug fields. Keep every agentData value shallow: strings, numbers, booleans, arrays of those, or at most one nested object of those (e.g. inferredProfile: { mood: \"heroic\", confidence: 0.8 }). Never nest an object inside another object or inside an array entry.",
     "If their message gives you nothing usable for any field, set accepted to false and warmly ask, in your own words, for whatever still seems missing.",
-    "Keep lines terse, arcade-synthetic, readable on a tiny CRT — 1 to 3 short lines.",
+    `Keep lines terse, arcade-synthetic, readable on a tiny CRT — 1 to 3 short lines, never more than ${WIZARD_RESPONSE_CHARACTER_LIMIT} total characters.`,
     "The very first reply of a session always ends with 'Greetings Gamer! What console are you questing on today?' (added automatically) — don't ask about platform/system yourself on turn one. The catalog now spans NES, SNES, Genesis, PC Engine, Neo Geo, Atari 7800/5200, SMS, and romhacks — after the player names a system, currentBestMatches and gamesAboveThreshold are filtered to whichever platforms the player has enabled in Catalog Shelves, so acknowledge whatever system they name in-character and let those filtered lists guide your pick rather than assuming NES.",
   ].join("\n"),
   model: process.env.WIZARD_AGENT_MODEL || "gpt-5.5",
@@ -623,10 +624,11 @@ export async function runLiveWizardTurn(request: WizardTurnRequest): Promise<Wiz
   const { output, consumed, showcaseRequest, soundtrackRequest } = await runWizardConversationTurn(request, knownProfile);
   const nextProfile = mergeProfile(knownProfile, output.profile);
   const isFirstTurn = isFirstWizardTurn(request);
+  const lines = enforceWizardResponseLength(isFirstTurn ? ensureFirstTurnQuestion(output.lines) : output.lines);
   return buildResponse(
     {
       ...output,
-      lines: isFirstTurn ? ensureFirstTurnQuestion(output.lines) : output.lines,
+      lines,
       memoryMarkdown: output.memoryMarkdown ?? request.state.memoryMarkdown,
       terminalTheme: output.terminalTheme ?? request.state.terminalTheme,
     },

@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import Home from "@/app/page";
+import { WIZARD_RESPONSE_TOO_LONG_ERROR } from "@/lib/wizard/response-guard";
 import type { WizardTurnResponse } from "@/lib/wizard/types";
 import { defaultMemoryMarkdown } from "@/lib/wizard/types";
 
@@ -599,6 +600,27 @@ describe("wizard terminal UI", () => {
     fireEvent.change(input, { target: { value: "arcade" } });
     fireEvent.submit(input.closest("form")!);
     await waitFor(() => expect(screen.getAllByText(/OPENAI_API_KEY is required/)).toHaveLength(1));
+  });
+
+  it("shows the response-length guard error in character", async () => {
+    vi.spyOn(globalThis, "fetch").mockImplementationOnce(() =>
+      Promise.resolve(
+        new Response(JSON.stringify({ error: WIZARD_RESPONSE_TOO_LONG_ERROR }), {
+          status: 503,
+        }),
+      ),
+    );
+
+    render(<Home />);
+    const input = await screen.findByLabelText("Terminal command prompt");
+    await waitFor(() => expect(input).toBeEnabled());
+    await chooseConsole();
+
+    fireEvent.change(input, { target: { value: "arcade" } });
+    fireEvent.submit(input.closest("form")!);
+
+    await screen.findByText(WIZARD_RESPONSE_TOO_LONG_ERROR);
+    expect(screen.queryByText(/Wizard request failed/)).not.toBeInTheDocument();
   });
 
   it("returns focus to the input on any keydown except arrow keys", async () => {

@@ -6,6 +6,7 @@ import { catalogPlatforms, platformLabels, sanitizeEnabledPlatforms, type Platfo
 import type { Recommendation, UserProfile } from "@/lib/recommender";
 import type { FeedbackRating } from "@/lib/feedback";
 import { isResetCommand } from "@/lib/wizard/interpreter";
+import { WIZARD_RESPONSE_TOO_LONG_ERROR } from "@/lib/wizard/response-guard";
 import type {
   WizardMessage,
   WizardOption,
@@ -1749,6 +1750,9 @@ function fallbackDuration(line: string) {
 
 function formatWizardError(error: unknown) {
   const detail = error instanceof Error ? error.message : "Unknown error";
+  if (detail === WIZARD_RESPONSE_TOO_LONG_ERROR) {
+    return WIZARD_RESPONSE_TOO_LONG_ERROR;
+  }
   return `SYSTEM: Wizard request failed (${detail}). Try again.`;
 }
 

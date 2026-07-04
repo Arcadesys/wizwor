@@ -13,6 +13,7 @@ import {
 } from "@/lib/wizard/agents-sdk-workflow";
 import { catalogPlatforms } from "@/data/games";
 import { bestGuessRecommendations, maxQualifyingRecommendations, qualifyingRecommendations } from "@/lib/recommender";
+import { enforceWizardResponseLength, WIZARD_RESPONSE_TOO_LONG_ERROR } from "@/lib/wizard/response-guard";
 import { blankProfile, initialWizardState, type WizardTurnRequest } from "@/lib/wizard/types";
 
 type WizardTurnOutputInput = z.input<typeof WizardTurnOutputSchema>;
@@ -59,6 +60,16 @@ describe("WizardTurnOutputSchema agentData", () => {
       baseOutput({ inferredProfile: { traits: { confidence: 0.8, mood: "heroic" } } }),
     );
     expect(result.success).toBe(true);
+  });
+});
+
+describe("enforceWizardResponseLength", () => {
+  it("accepts responses at the 1000 character limit", () => {
+    expect(enforceWizardResponseLength(["x".repeat(1000)])).toEqual(["x".repeat(1000)]);
+  });
+
+  it("throws the in-character error when responses exceed 1000 characters", () => {
+    expect(() => enforceWizardResponseLength(["x".repeat(1001)])).toThrow(WIZARD_RESPONSE_TOO_LONG_ERROR);
   });
 });
 
