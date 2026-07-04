@@ -219,15 +219,6 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     };
   }, []);
 
-  useEffect(() => {
-    if (fastMode || started || !soundOn || greetingSpokenRef.current) {
-      return;
-    }
-
-    greetingSpokenRef.current = true;
-    void speakGreeting();
-  }, [fastMode, started, soundOn]);
-
   function persistProfile(nextProfile: UserProfile) {
     setProfile(nextProfile);
     profileRef.current = nextProfile;
@@ -423,26 +414,15 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   }
 
   function saveSession() {
-    const filename = `wizwor-save-${Date.now()}.json`;
     try {
-      const payload = {
-        savedAt: new Date().toISOString(),
+      const filename = downloadSessionSnapshot({
         profile: profileRef.current,
         memoryMarkdown: memoryMarkdownRef.current,
         enabledPlatforms: enabledPlatformsRef.current,
         terminalTheme: terminalThemeRef.current,
         messages: messagesRef.current.map(({ speaker, text }) => ({ speaker, text })),
         recommendations: recommendationsRef.current,
-      };
-      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = filename;
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      URL.revokeObjectURL(url);
+      });
       appendSystem(`Session downloaded as ${filename}. Reload it later, or just keep questing.`);
     } catch (error) {
       console.warn("Failed to save session:", error);
@@ -1031,6 +1011,15 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     return source;
   }
 
+  useEffect(() => {
+    if (fastMode || started || !soundOn || greetingSpokenRef.current) {
+      return;
+    }
+
+    greetingSpokenRef.current = true;
+    void speakGreeting();
+  }, [fastMode, started, soundOn]);
+
   function playKeyTone(kind: "letter" | "backspace" | "enter" | "move" | "deny") {
     const rig = audioRef.current;
     if (!rig) {
@@ -1464,6 +1453,31 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
 
 export default function Home() {
   return <WizardTerminal />;
+}
+
+function downloadSessionSnapshot(payload: {
+  profile: UserProfile;
+  memoryMarkdown: string;
+  enabledPlatforms: Platform[];
+  terminalTheme: WizardTerminalTheme | undefined;
+  messages: Array<{ speaker: Message["speaker"]; text: string }>;
+  recommendations: Recommendation[];
+}) {
+  const filename = `wizwor-save-${Date.now()}.json`;
+  const data = {
+    savedAt: new Date().toISOString(),
+    ...payload,
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+  return filename;
 }
 
 function getSafeSuggestionIndex(length: number, index: number) {
