@@ -64,19 +64,28 @@ export type WizardState = {
   enabledPlatforms?: Platform[];
   memoryMarkdown: string;
   terminalTheme?: WizardTerminalTheme;
+  soundtrack?: WizardSoundtrack;
 };
 
-// A chiptune loop for the terminal's Tone.js engine: four voices stepped on
-// eighth notes (square bass, pulse stabs, triangle sparks, noise drums).
-// Empty strings in stabs/sparks are rests; bass plays every step.
+// A chiptune loop for the terminal's Tone.js engine, built from five musical
+// roles stepped on eighth notes: bassline (foundation), chords (the harmonic
+// progression), harmony (when the chord strikes), lead (the melody), and
+// rhythm (the beat). bassline's length sets the loop: 8/16/24/32 steps, whole
+// measures. chords has one entry per HALF-MEASURE (bassline.length / 4): ""
+// carries the previous chord forward, otherwise a space-separated note stack
+// (e.g. "A2 C3 E3"). harmony/lead/rhythm each have one entry per step: harmony
+// is "" (silent) or "x" (strike the currently active chord); lead is "" or a
+// melody note; rhythm is "" or space-separated drum tokens from kick/snare/hat
+// (e.g. "kick hat").
 export type WizardSoundtrack = {
   title: string;
   bpm: number;
   loopEnd: string;
-  bass: string[];
-  stabs: string[];
-  sparks: string[];
-  drumSteps: number[];
+  bassline: string[];
+  chords: string[];
+  harmony: string[];
+  lead: string[];
+  rhythm: string[];
 };
 
 export type WizardTerminalTheme = {

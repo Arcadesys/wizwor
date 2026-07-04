@@ -165,16 +165,34 @@ input:disabled {
   border-left-color: #666;
 }
 
+/* Two independent icons — speaker (vocals/speech) and note (background
+   music) — so the player can tell at a glance which channel(s) are on
+   instead of inferring it from a single speaker's wave count. */
 .audio-glyph {
   position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
   width: 2rem;
   height: 2rem;
 }
 
-.audio-core,
-.audio-core::before,
-.audio-wave,
+.audio-icon {
+  position: relative;
+  width: 0.75rem;
+  height: 1.3rem;
+  opacity: 0.3;
+  filter: grayscale(1);
+  transition:
+    opacity 80ms steps(2, end),
+    filter 80ms steps(2, end);
+}
+
+.audio-speaker-body,
+.audio-speaker-cone,
+.audio-note-head,
+.audio-note-stem,
 .audio-slash {
   position: absolute;
   display: block;
@@ -182,71 +200,63 @@ input:disabled {
   image-rendering: pixelated;
 }
 
-.audio-core {
-  top: 0.72rem;
-  left: 0.2rem;
-  width: 0.55rem;
-  height: 0.62rem;
+.audio-speaker-body {
+  top: 0.46rem;
+  left: 0;
+  width: 0.32rem;
+  height: 0.38rem;
   background: var(--terminal-amber);
   box-shadow: 0 0 0 2px #000;
 }
 
-.audio-core::before {
-  top: -0.32rem;
-  left: 0.46rem;
-  width: 0.55rem;
-  height: 1.26rem;
+.audio-speaker-cone {
+  top: 0.06rem;
+  left: 0.28rem;
+  width: 0.32rem;
+  height: 1.18rem;
   background: var(--terminal-amber);
   clip-path: polygon(0 32%, 100% 0, 100% 100%, 0 68%);
 }
 
-.audio-wave {
-  right: 0.18rem;
-  border-color: var(--terminal-green);
-  border-style: solid;
-  border-left: 0;
-  border-top-right-radius: 999px;
-  border-bottom-right-radius: 999px;
-  opacity: 0;
+.audio-note-head {
+  bottom: 0;
+  left: 0;
+  width: 0.46rem;
+  height: 0.36rem;
+  background: var(--terminal-green);
+  box-shadow: 0 0 0 2px #000;
 }
 
-.audio-wave-1 {
-  top: 0.58rem;
-  width: 0.44rem;
-  height: 0.86rem;
-  border-width: 4px;
+.audio-note-stem {
+  bottom: 0.1rem;
+  right: 0.02rem;
+  width: 0.16rem;
+  height: 1.2rem;
+  background: var(--terminal-green);
+  box-shadow: 0 0 0 2px #000;
 }
 
-.audio-wave-2 {
-  top: 0.28rem;
-  width: 0.8rem;
-  height: 1.46rem;
-  border-width: 4px;
-}
-
-.sound-button.is-on .audio-wave {
+/* Vocals are audible in both "voice" and "music" mode. */
+.sound-button.is-voice .audio-icon-voice,
+.sound-button.is-on .audio-icon-voice,
+.sound-button.is-on .audio-icon-music {
   opacity: 1;
-}
-
-.sound-button.is-voice .audio-wave-1 {
-  opacity: 1;
+  filter: none;
 }
 
 .audio-slash {
-  top: 0.18rem;
-  right: 0.18rem;
+  top: 0.02rem;
+  right: -0.1rem;
   width: 0.32rem;
-  height: 1.8rem;
+  height: 1.9rem;
   background: var(--terminal-red);
   box-shadow: 2px 0 0 #000;
   transform: rotate(-45deg);
   transform-origin: center;
+  opacity: 1;
 }
 
-.sound-button.is-on .audio-slash {
-  opacity: 0;
-}
-
+.sound-button.is-on .audio-slash,
 .sound-button.is-voice .audio-slash {
   opacity: 0;
 }
@@ -1021,7 +1031,11 @@ input:disabled {
   }
 
   .terminal-stage {
-    grid-template-rows: minmax(12rem, 30vh) minmax(0, 1fr);
+    /* The transcript row flexes to fill available height (with a floor so
+       it doesn't collapse on short viewports); the input row below it stays
+       content-sized. A swapped 1fr here previously stretched the empty
+       input container (.bottom-terminal) to fill the whole screen. */
+    grid-template-rows: minmax(12rem, 1fr) auto;
   }
 
   .terminal-top-panel {
