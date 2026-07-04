@@ -753,7 +753,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     }
 
     if (group === "console-context") {
-      return [...catalogPlatforms, "confirm"];
+      return selectedConsoles.length ? [...catalogPlatforms, "confirm"] : [...catalogPlatforms];
     }
 
     if (group === "feedback") {
@@ -849,6 +849,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     }
 
     rateRecommendations(id as FeedbackRating);
+    setControlNavGroup(null);
   }
 
   function activateControlNav() {
@@ -1276,6 +1277,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                           data-nav-item="true"
                           onClick={() => {
                             rateRecommendations(option.rating);
+                            setControlNavGroup(null);
                           }}
                         >
                           {option.label}
@@ -1476,7 +1478,7 @@ function downloadSessionSnapshot(payload: {
   document.body.appendChild(link);
   link.click();
   link.remove();
-  URL.revokeObjectURL(url);
+  setTimeout(() => URL.revokeObjectURL(url), 100);
   return filename;
 }
 
