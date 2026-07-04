@@ -1,5 +1,7 @@
 import { expect, test, type Page, type TestInfo } from "@playwright/test";
 
+const postConsolePrompt = "What plaything can I offer you today?";
+
 async function attachScreenshot(page: Page, testInfo: TestInfo, name: string) {
   const body = await page.screenshot({ fullPage: true });
   await testInfo.attach(name, { body, contentType: "image/png" });
@@ -258,6 +260,7 @@ test("console context gates the prompt until a platform is chosen", async ({ pag
   await page.getByRole("button", { name: /Begin Quest/i }).click();
   await expect(page.getByRole("heading", { name: "Choose Console Context" })).toHaveCount(0);
   await expect(page.getByText("SNES", { exact: true })).toBeVisible();
+  await expect(page.getByText(postConsolePrompt, { exact: true })).toBeVisible();
   await expect(prompt).toBeFocused();
   await attachScreenshot(page, testInfo, "console-context-selected-snes");
 
@@ -312,6 +315,7 @@ test("typing a console name selects that console context", async ({ page }, test
   await prompt.press("Enter");
   await expect(page.getByRole("heading", { name: "Choose Console Context" })).toHaveCount(0);
   await expect(page.getByText("Genesis / Mega Drive", { exact: true })).toBeVisible();
+  await expect(page.getByText(postConsolePrompt, { exact: true })).toBeVisible();
   await attachScreenshot(page, testInfo, "console-context-typed-genesis");
 });
 
