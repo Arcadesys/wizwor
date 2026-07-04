@@ -183,7 +183,7 @@ export function sanitizeSoundtrack(input: SetSoundtrackInput): SoundtrackSanitiz
     ok: true,
     soundtrack: {
       title: input.title.trim().slice(0, 48) || "Untitled Wor Loop",
-      bpm: Math.round(Math.min(180, Math.max(70, input.bpm))),
+      bpm: Number.isFinite(input.bpm) ? Math.round(Math.min(180, Math.max(70, input.bpm))) : 120,
       // The sequences step on eighth notes, so 8 steps = 1 measure; the
       // transport loop must land exactly on the sequence boundary or the
       // song truncates mid-phrase.

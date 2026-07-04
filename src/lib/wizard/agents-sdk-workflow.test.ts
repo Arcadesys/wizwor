@@ -247,6 +247,16 @@ describe("sanitizeSoundtrack", () => {
     }
   });
 
+  it("falls back to a default bpm when the value is not finite", () => {
+    for (const bpm of [Number.NaN, Number.POSITIVE_INFINITY]) {
+      const result = sanitizeSoundtrack({ ...validInput, bpm });
+      expect(result.ok).toBe(true);
+      if (result.ok) {
+        expect(result.soundtrack.bpm).toBe(120);
+      }
+    }
+  });
+
   it("falls back to a default title when the agent sends whitespace", () => {
     const result = sanitizeSoundtrack({ ...validInput, title: "   " });
     expect(result.ok).toBe(true);

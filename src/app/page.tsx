@@ -140,6 +140,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const sessionIdRef = useRef(makeId("session"));
   const audioRef = useRef<AudioRig | null>(null);
   const soundtrackRef = useRef<WizardSoundtrack>(dungeonSong);
+  const audioBusyRef = useRef(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const streamChainRef = useRef(Promise.resolve());
@@ -954,23 +955,36 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   }
 
   async function toggleSound() {
-    if (audioMode === "muted") {
-      const rig = await ensureAudioRig();
-      if (rig) {
-        await loadSam();
-        setAudioMode("voice");
+    // The button stays enabled while the rig loads, so a double-click would
+    // otherwise run two transitions concurrently — building two sets of
+    // synths/sequences where the first set's references are overwritten and
+    // its loops keep playing with no way to stop them.
+    if (audioBusyRef.current) {
+      return;
+    }
+
+    audioBusyRef.current = true;
+    try {
+      if (audioMode === "muted") {
+        const rig = await ensureAudioRig();
+        if (rig) {
+          await loadSam();
+          setAudioMode("voice");
+        }
+        return;
       }
-      return;
-    }
 
-    if (audioMode === "voice") {
-      await startMusic();
-      await loadSam();
-      return;
-    }
+      if (audioMode === "voice") {
+        await startMusic();
+        await loadSam();
+        return;
+      }
 
-    stopAllAudio();
-    setAudioMode("muted");
+      stopAllAudio();
+      setAudioMode("muted");
+    } finally {
+      audioBusyRef.current = false;
+    }
   }
 
   async function ensureAudioRig() {
@@ -981,6 +995,12 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
 
     try {
       const Tone = await import("tone");
+      // stopAllAudio disposes the global Tone context (muting); a disposed
+      // context can never resume, so unmuting must install a fresh one or
+      // audio stays dead for the rest of the session.
+      if (Tone.getContext().disposed) {
+        Tone.setContext(new Tone.Context());
+      }
       await Tone.start();
       const context = Tone.getContext().rawContext as Partial<AudioContext>;
       if (typeof context.createBuffer !== "function" || typeof context.createOscillator !== "function") {
