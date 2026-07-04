@@ -9,6 +9,7 @@ import { isResetCommand } from "@/lib/wizard/interpreter";
 import type {
   WizardMessage,
   WizardOption,
+  WizardSoundtrack,
   WizardState,
   WizardTurnResponse,
 } from "@/lib/wizard/types";
@@ -24,17 +25,10 @@ type AudioRig = {
   tone: typeof ToneNamespace;
   sequences: ToneNamespace.Sequence<number>[];
   instruments: Array<{ dispose: () => unknown }>;
+  musicActive: boolean;
 };
 
-type DungeonSong = {
-  title: string;
-  bpm: number;
-  loopEnd: string;
-  bass: string[];
-  stabs: string[];
-  sparks: string[];
-  drumSteps: number[];
-};
+type AudioMode = "muted" | "voice" | "music";
 
 type SamConstructor = new (options?: {
   phonetic?: boolean;
@@ -83,7 +77,8 @@ const feedbackOptions: Array<{ rating: FeedbackRating; label: string }> = [
 const consoleGreeting = "Greetings Gamer! What console are you questing on today?";
 const postConsolePrompt = "What plaything can I offer you today?";
 const soundOnCaution = "Best with sound on. Turn your speakers down first, then let WIZ speak.";
-const dungeonSong: DungeonSong = {
+const dungeonMusicGain = 0.12;
+const dungeonSong: WizardSoundtrack = {
   title: "Wor Dungeon Omen",
   bpm: 108,
   loopEnd: "4m",
@@ -125,7 +120,8 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const [showcase, setShowcase] = useState<Recommendation[] | null>(null);
   const [showcaseIndex, setShowcaseIndex] = useState(0);
   const [isStreaming, setIsStreaming] = useState(false);
-  const [soundOn, setSoundOn] = useState(false);
+  const [audioMode, setAudioMode] = useState<AudioMode>("muted");
+  const [soundtrack, setSoundtrack] = useState<WizardSoundtrack>(dungeonSong);
   const [feedbackRating, setFeedbackRating] = useState<FeedbackRating | null>(null);
   const [feedbackNote, setFeedbackNote] = useState("");
   const [feedbackNoteSent, setFeedbackNoteSent] = useState(false);
@@ -143,6 +139,8 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const messagesRef = useRef(messages);
   const sessionIdRef = useRef(makeId("session"));
   const audioRef = useRef<AudioRig | null>(null);
+  const soundtrackRef = useRef<WizardSoundtrack>(dungeonSong);
+  const audioBusyRef = useRef(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const streamChainRef = useRef(Promise.resolve());
@@ -155,6 +153,12 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const suppressFocusRef = useRef(false);
 
   const terminalStyle = useMemo(() => themeToCssVariables(terminalTheme), [terminalTheme]);
+  const soundOn = audioMode !== "muted";
+  const musicOn = audioMode === "music";
+  const audioStatus =
+    audioMode === "music" ? `Music and voice: ${soundtrack.title}` : audioMode === "voice" ? "Voice only" : "Muted";
+  const nextAudioModeLabel =
+    audioMode === "music" ? "Switch to muted" : audioMode === "voice" ? "Switch to music and voice" : "Switch to voice only";
 
   useEffect(() => {
     queueMicrotask(() => {
@@ -250,7 +254,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
 
   useEffect(() => {
     return () => {
-      stopMusic();
+      stopAllAudio();
     };
   }, []);
 
@@ -432,17 +436,25 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   }
 
   function applyWizardResponse(response: WizardTurnResponse) {
+    const nextStarted =
+      response.state.started ||
+      startedRef.current ||
+      response.recommendations.length > 0 ||
+      Boolean(response.showcase?.games.length);
     persistProfile(response.state.profile);
     persistMemory(response.state.memoryMarkdown, response.state.terminalTheme);
     persistEnabledPlatforms(response.state.enabledPlatforms ?? [...catalogPlatforms]);
-    setStarted(response.state.started);
-    startedRef.current = response.state.started;
+    setStarted(nextStarted);
+    startedRef.current = nextStarted;
     setNeedsName(response.state.needsName);
     needsNameRef.current = response.state.needsName;
     setSuggestions(response.suggestions);
     setRecommendations(response.recommendations);
     recommendationsRef.current = response.recommendations;
     setShowcase(response.showcase?.games ?? null);
+    if (response.soundtrack) {
+      applySoundtrack(response.soundtrack);
+    }
     setShowcaseIndex(0);
     setSuggestionIndex(0);
     setIsSuggestionBrowsing(false);
@@ -943,29 +955,88 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   }
 
   async function toggleSound() {
-    if (soundOn) {
-      stopMusic();
-      setSoundOn(false);
+    // The button stays enabled while the rig loads, so a double-click would
+    // otherwise run two transitions concurrently — building two sets of
+    // synths/sequences where the first set's references are overwritten and
+    // its loops keep playing with no way to stop them.
+    if (audioBusyRef.current) {
       return;
     }
 
-    await startMusic();
-    await loadSam();
+    audioBusyRef.current = true;
+    try {
+      if (audioMode === "muted") {
+        const rig = await ensureAudioRig();
+        if (rig) {
+          await loadSam();
+          setAudioMode("voice");
+        }
+        return;
+      }
+
+      if (audioMode === "voice") {
+        await startMusic();
+        await loadSam();
+        return;
+      }
+
+      stopAllAudio();
+      setAudioMode("muted");
+    } finally {
+      audioBusyRef.current = false;
+    }
   }
 
-  async function startMusic() {
+  async function ensureAudioRig() {
     if (audioRef.current) {
       await audioRef.current.tone.start();
-      audioRef.current.tone.getTransport().start();
-      setSoundOn(true);
       return audioRef.current;
     }
 
     try {
       const Tone = await import("tone");
+      // stopAllAudio disposes the global Tone context (muting); a disposed
+      // context can never resume, so unmuting must install a fresh one or
+      // audio stays dead for the rest of the session.
+      if (Tone.getContext().disposed) {
+        Tone.setContext(new Tone.Context());
+      }
       await Tone.start();
+      const context = Tone.getContext().rawContext as Partial<AudioContext>;
+      if (typeof context.createBuffer !== "function" || typeof context.createOscillator !== "function") {
+        return null;
+      }
 
-      const master = new Tone.Gain(0.08).toDestination();
+      audioRef.current = {
+        context: context as AudioContext,
+        tone: Tone,
+        sequences: [],
+        instruments: [],
+        musicActive: false,
+      };
+      return audioRef.current;
+    } catch {
+      return null;
+    }
+  }
+
+  async function startMusic() {
+    const rig = await ensureAudioRig();
+    if (!rig) {
+      setAudioMode("muted");
+      return null;
+    }
+
+    if (rig.musicActive) {
+      rig.tone.getTransport().start();
+      setAudioMode("music");
+      return rig;
+    }
+
+    try {
+      const song = soundtrackRef.current;
+      const Tone = rig.tone;
+      const master = new Tone.Gain(dungeonMusicGain).toDestination();
       const dungeonFilter = new Tone.Filter({ frequency: 980, rolloff: -24, type: "lowpass" }).connect(master);
       const echo = new Tone.FeedbackDelay({ delayTime: "8n.", feedback: 0.34, wet: 0.24 }).connect(dungeonFilter);
       const bassSynth = new Tone.MonoSynth({
@@ -990,46 +1061,56 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       const transport = Tone.getTransport();
       transport.stop();
       transport.cancel(0);
-      transport.bpm.value = dungeonSong.bpm;
+      transport.bpm.value = song.bpm;
       transport.loop = true;
       transport.loopStart = 0;
-      transport.loopEnd = dungeonSong.loopEnd;
+      transport.loopEnd = song.loopEnd;
 
-      const steps = dungeonSong.bass.map((_, index) => index);
+      const accentDrumStep = song.drumSteps[song.drumSteps.length - 1];
+      const steps = song.bass.map((_, index) => index);
       const bassSequence = new Tone.Sequence<number>((time, step) => {
-        bassSynth.triggerAttackRelease(dungeonSong.bass[step], "16n", time, 0.78);
+        bassSynth.triggerAttackRelease(song.bass[step], "16n", time, 0.78);
       }, steps, "8n").start(0);
       const stabSequence = new Tone.Sequence<number>((time, step) => {
-        const note = dungeonSong.stabs[step];
+        const note = song.stabs[step];
         if (note) {
           const shadow = Tone.Frequency(note).transpose(6).toNote();
           stabSynth.triggerAttackRelease([note, shadow], "32n", time, 0.22);
         }
       }, steps, "8n").start(0);
       const sparkSequence = new Tone.Sequence<number>((time, step) => {
-        const note = dungeonSong.sparks[step];
+        const note = song.sparks[step];
         if (note) {
           sparkSynth.triggerAttackRelease(note, "64n", time, 0.13);
         }
       }, steps, "8n").start(0);
       const drumSequence = new Tone.Sequence<number>((time, step) => {
-        if (dungeonSong.drumSteps.includes(step)) {
-          drumSynth.triggerAttackRelease("32n", time, step === 14 ? 0.18 : 0.12);
+        if (song.drumSteps.includes(step)) {
+          drumSynth.triggerAttackRelease("32n", time, step === accentDrumStep ? 0.18 : 0.12);
         }
       }, steps, "8n").start(0);
 
       transport.start();
-      audioRef.current = {
-        context: Tone.getContext().rawContext as AudioContext,
-        tone: Tone,
-        sequences: [bassSequence, stabSequence, sparkSequence, drumSequence],
-        instruments: [master, dungeonFilter, echo, bassSynth, stabSynth, sparkSynth, drumSynth],
-      };
-      setSoundOn(true);
-      return audioRef.current;
+      rig.sequences = [bassSequence, stabSequence, sparkSequence, drumSequence];
+      rig.instruments = [master, dungeonFilter, echo, bassSynth, stabSynth, sparkSynth, drumSynth];
+      rig.musicActive = true;
+      setAudioMode("music");
+      return rig;
     } catch {
-      setSoundOn(false);
+      stopMusic();
+      setAudioMode("voice");
       return null;
+    }
+  }
+
+  function applySoundtrack(nextSoundtrack: WizardSoundtrack) {
+    soundtrackRef.current = nextSoundtrack;
+    setSoundtrack(nextSoundtrack);
+    // Rebuild the loop only if music is already audible; otherwise the new
+    // track just waits for the next time the player unmutes into music mode.
+    if (audioRef.current?.musicActive) {
+      stopMusic();
+      void startMusic();
     }
   }
 
@@ -1038,14 +1119,27 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       return;
     }
 
-    audioRef.current.tone.getTransport().stop();
-    audioRef.current.tone.getTransport().cancel(0);
+    const transport = audioRef.current.tone.getTransport();
+    transport.stop?.();
+    transport.cancel?.(0);
     for (const sequence of audioRef.current.sequences) {
       sequence.dispose();
     }
     for (const instrument of audioRef.current.instruments) {
       instrument.dispose();
     }
+    audioRef.current.sequences = [];
+    audioRef.current.instruments = [];
+    audioRef.current.musicActive = false;
+  }
+
+  function stopAllAudio() {
+    if (!audioRef.current) {
+      return;
+    }
+
+    stopMusic();
+    audioRef.current.tone.getContext().dispose();
     audioRef.current = null;
   }
 
@@ -1476,7 +1570,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
               </div>
               <div className="prompt-actions">
                 <span className="music-status" aria-live="polite">
-                  {soundOn ? `Playing: ${dungeonSong.title}` : "Music off"}
+                  {audioStatus}
                 </span>
                 <button
                   type="button"
@@ -1485,11 +1579,13 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                     toggleSound();
                     inputRef.current?.focus();
                   }}
-                  className={`prompt-icon-button sound-button ${soundOn ? "is-on" : "is-off"} ${
+                  className={`prompt-icon-button sound-button ${
+                    musicOn ? "is-on" : audioMode === "voice" ? "is-voice" : "is-off"
+                  } ${
                     isControlNavCursor("topbar", "sound") ? "is-nav-cursor" : ""
                   }`}
-                  aria-label={soundOn ? "Audio on. Disable sound" : "Audio off. Enable sound"}
-                  title={soundOn ? "Audio on" : "Audio off"}
+                  aria-label={`Audio mode: ${audioStatus}. ${nextAudioModeLabel}`}
+                  title={audioStatus}
                   data-nav-item="true"
                 >
                   <span className="audio-glyph" aria-hidden="true">
@@ -1498,7 +1594,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                     <span className="audio-wave audio-wave-2" />
                     <span className="audio-slash" />
                   </span>
-                  <span className="sr-only">{soundOn ? "Audio on" : "Audio off"}</span>
+                  <span className="sr-only">{audioStatus}</span>
                 </button>
                 <button
                   type="submit"

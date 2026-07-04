@@ -5,6 +5,7 @@ import {
   ensureFirstTurnQuestion,
   isAgentDataSchemaError,
   resolveShowcaseIds,
+  sanitizeSoundtrack,
   WizardTurnOutputSchema,
 } from "@/lib/wizard/agents-sdk-workflow";
 import { catalogPlatforms } from "@/data/games";
@@ -173,5 +174,94 @@ describe("resolveShowcaseIds", () => {
     const result = resolveShowcaseIds(broad, ids, catalogPlatforms);
 
     expect(result).toEqual(ids.slice(0, maxQualifyingRecommendations));
+  });
+});
+
+describe("sanitizeSoundtrack", () => {
+  const validInput = {
+    title: "Neon Skyway Assault",
+    bpm: 150,
+    bass: ["C2", "C2", "G2", "E2", "F2", "F2", "C3", "G2", "A2", "A2", "E2", "C2", "F2", "G2", "C2", "C2"],
+    stabs: ["C4", "", "E4", "", "G4", "", "", "C5", "A3", "", "C4", "", "F4", "", "G4", ""],
+    sparks: ["", "G5", "", "E5", "", "C6", "", "", "", "A5", "", "E5", "", "F5", "", "G5"],
+    drumSteps: [0, 2, 4, 6, 8, 10, 12, 14],
+  };
+
+  it("accepts a valid 16-step composition and derives loopEnd from the bass length", () => {
+    const result = sanitizeSoundtrack(validInput);
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.soundtrack.title).toBe("Neon Skyway Assault");
+      expect(result.soundtrack.bpm).toBe(150);
+      expect(result.soundtrack.loopEnd).toBe("2m");
+      expect(result.soundtrack.bass).toEqual(validInput.bass);
+    }
+  });
+
+  it("rejects a bass line that isn't whole measures", () => {
+    const result = sanitizeSoundtrack({ ...validInput, bass: validInput.bass.slice(0, 12) });
+    expect(result).toMatchObject({ ok: false, reason: expect.stringContaining("8, 16, 24, or 32") });
+  });
+
+  it("rejects malformed bass notes with the offenders named so the agent can retry", () => {
+    const bass = [...validInput.bass];
+    bass[3] = "H2";
+    const result = sanitizeSoundtrack({ ...validInput, bass });
+    expect(result).toMatchObject({ ok: false, reason: expect.stringContaining("H2") });
+  });
+
+  it("rejects malformed stab or spark notes but allows empty-string rests", () => {
+    const stabs = [...validInput.stabs];
+    stabs[0] = "C#x";
+    expect(sanitizeSoundtrack({ ...validInput, stabs })).toMatchObject({
+      ok: false,
+      reason: expect.stringContaining("C#x"),
+    });
+    expect(sanitizeSoundtrack(validInput).ok).toBe(true);
+  });
+
+  it("pads short stab/spark tracks with rests and truncates long ones to the bass length", () => {
+    const result = sanitizeSoundtrack({
+      ...validInput,
+      stabs: ["C4", "E4"],
+      sparks: [...validInput.sparks, "C5", "D5"],
+    });
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.soundtrack.stabs).toHaveLength(16);
+      expect(result.soundtrack.stabs.slice(2)).toEqual(Array(14).fill(""));
+      expect(result.soundtrack.sparks).toHaveLength(16);
+    }
+  });
+
+  it("clamps bpm, drops out-of-range drum steps, and dedupes/sorts the rest", () => {
+    const result = sanitizeSoundtrack({
+      ...validInput,
+      bpm: 300,
+      drumSteps: [14, 0, 14, -2, 99, 7.4],
+    });
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.soundtrack.bpm).toBe(180);
+      expect(result.soundtrack.drumSteps).toEqual([0, 7, 14]);
+    }
+  });
+
+  it("falls back to a default bpm when the value is not finite", () => {
+    for (const bpm of [Number.NaN, Number.POSITIVE_INFINITY]) {
+      const result = sanitizeSoundtrack({ ...validInput, bpm });
+      expect(result.ok).toBe(true);
+      if (result.ok) {
+        expect(result.soundtrack.bpm).toBe(120);
+      }
+    }
+  });
+
+  it("falls back to a default title when the agent sends whitespace", () => {
+    const result = sanitizeSoundtrack({ ...validInput, title: "   " });
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.soundtrack.title).toBe("Untitled Wor Loop");
+    }
   });
 });
