@@ -69,6 +69,8 @@ const feedbackOptions: Array<{ rating: FeedbackRating; label: string }> = [
 ];
 
 const consoleGreeting = "Greetings Gamer! What console are you questing on today?";
+const postConsolePrompt = "What plaything can I offer you today?";
+const soundOnCaution = "Best with sound on. Turn your speakers down first, then let WIZ speak.";
 
 type WizardTerminalProps = {
   fastMode?: boolean;
@@ -126,6 +128,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const streamTokenRef = useRef(0);
   const samRef = useRef<InstanceType<SamConstructor> | null>(null);
   const greetingSpokenRef = useRef(false);
+  const startupSoundAttemptedRef = useRef(false);
   const gamepadFrameRef = useRef<number | null>(null);
   const lastGamepadRef = useRef<GamepadState>({ left: false, right: false, submit: false });
   const suppressFocusRef = useRef(false);
@@ -210,6 +213,19 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       inputRef.current?.focus();
     }
   }, [started, isStreaming]);
+
+  useEffect(() => {
+    if (fastMode || !hydrated || startupSoundAttemptedRef.current) {
+      return;
+    }
+
+    startupSoundAttemptedRef.current = true;
+    void startMusic().then((rig) => {
+      if (rig) {
+        void loadSam();
+      }
+    });
+  }, [fastMode, hydrated]);
 
   useEffect(() => {
     return () => {
@@ -308,6 +324,9 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     setSettingsOpen(false);
     setControlNavGroup(null);
     window.setTimeout(() => inputRef.current?.focus(), 0);
+    void streamWizard([postConsolePrompt], { instantWhenSilent: true, lockInput: false }).then(() => {
+      window.setTimeout(() => inputRef.current?.focus(), 0);
+    });
   }
 
   function selectConsoleContext(platform: Platform) {
@@ -472,10 +491,30 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     window.setTimeout(() => inputRef.current?.focus(), 0);
   }
 
-  function streamWizard(lines: string[]) {
+  function streamWizard(lines: string[], options: { instantWhenSilent?: boolean; lockInput?: boolean } = {}) {
     streamChainRef.current = streamChainRef.current.then(async () => {
       const token = streamTokenRef.current;
-      setIsStreaming(true);
+      const lockInput = (options.lockInput ?? true) && lines.length > 0;
+      const shouldUnlock = lockInput || lines.length === 0;
+      if (options.instantWhenSilent && !soundOn) {
+        setMessages((current) => [
+          ...current,
+          ...lines.map((line) => ({
+            id: makeId("wiz"),
+            speaker: "wizard" as const,
+            text: line,
+          })),
+        ]);
+        await wait(0);
+        if (shouldUnlock && token === streamTokenRef.current) {
+          setIsStreaming(false);
+        }
+        return;
+      }
+
+      if (lockInput) {
+        setIsStreaming(true);
+      }
 
       if (fastMode) {
         setMessages((current) => [
@@ -487,7 +526,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
           })),
         ]);
         await wait(0);
-        if (token === streamTokenRef.current) {
+        if (shouldUnlock && token === streamTokenRef.current) {
           setIsStreaming(false);
         }
         return;
@@ -502,7 +541,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
         await wait(180);
       }
 
-      if (token === streamTokenRef.current) {
+      if (shouldUnlock && token === streamTokenRef.current) {
         setIsStreaming(false);
       }
     });
@@ -1337,6 +1376,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
             {!started ? (
               <section className="console-context-panel" aria-label="Choose console context">
                 <h2>Choose Console Context</h2>
+                <p className="sound-caution">{soundOnCaution}</p>
                 <div className="console-context-grid">
                   {catalogPlatforms.map((platform) => {
                     const selected = selectedConsoles.includes(platform);
