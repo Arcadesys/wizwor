@@ -30,6 +30,14 @@ describe("game repository", () => {
     );
   });
 
+  it("excludes generated homebrew entries from the live recommendation catalog", () => {
+    const homebrewIds = new Set(
+      generatedCatalogs.flat().filter((game) => game.sourceCategory === "homebrew").map((game) => game.id),
+    );
+    expect(homebrewIds.size).toBeGreaterThan(0);
+    expect(getAllGames().some((game) => homebrewIds.has(game.id))).toBe(false);
+  });
+
   it("never surfaces two games with the same normalized title", () => {
     const merged = getAllGames();
     const seen = new Set<string>();

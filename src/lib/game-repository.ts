@@ -52,6 +52,7 @@ function toGame(entry: GeneratedCatalogGame): Game {
 // playStyle) and flood the recommender's 1-3-match reveal gate with
 // lookalikes instead of real signal. See src/lib/recommender.test.ts.
 const minGeneratedSignalScore = 3;
+const excludedGeneratedSourceCategories = new Set<string>(["homebrew"]);
 
 function normalizeTitleKey(title: string) {
   return title.trim().toLowerCase();
@@ -63,6 +64,9 @@ function qualityFilterGeneratedCatalog(
 ): Game[] {
   const kept: Game[] = [];
   for (const entry of entries) {
+    if (excludedGeneratedSourceCategories.has(entry.sourceCategory)) {
+      continue;
+    }
     if (entry.signalScore < minGeneratedSignalScore) {
       continue;
     }
