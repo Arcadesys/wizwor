@@ -21,31 +21,52 @@ const noRecommendationsResponse = {
   },
 };
 
+const metroidMotherRecommendation = {
+  game: {
+    id: "metroid-mother",
+    title: "Metroid: Mother",
+    platform: "romhack",
+    isRomhack: true,
+    year: "romhack",
+    pitch: "A friendlier, map-aware restoration of Metroid that keeps the lonely alien dread intact.",
+    playthroughUrl: "https://www.youtube.com/watch?v=S7fwbZjLpXE",
+    moods: ["ominous", "contemplative"],
+    difficulty: "fair",
+    story: "some",
+    playStyle: "side-scroller",
+    obscurity: "hidden-gem",
+    tags: ["exploration", "quality of life", "lonely"],
+  },
+  score: 0.96,
+  reasons: ["answers the ominous mood", "keeps to the side-scrolling path", "fair difficulty"],
+};
+
+const castlevaniaIiiRecommendation = {
+  game: {
+    id: "castlevania-iii",
+    title: "Castlevania III: Dracula's Curse",
+    platform: "nes",
+    isRomhack: false,
+    year: "1989",
+    pitch: "A grim side-scrolling pilgrimage with branching routes, gothic pressure, and just enough cruelty to feel cursed.",
+    playthroughUrl: "https://www.youtube.com/watch?v=hFFKAl2A898",
+    moods: ["ominous", "heroic"],
+    difficulty: "difficult",
+    story: "some",
+    playStyle: "side-scroller",
+    obscurity: "hidden-gem",
+    tags: ["gothic", "branching paths"],
+  },
+  score: 0.97,
+  reasons: ["gothic pilgrimage", "branching routes"],
+};
+
 const recommendationResponse = {
   adapter: "chatgpt",
   accepted: true,
   lines: ["Recommendation ready. One match clears the gate."],
-  recommendations: [
-    {
-      game: {
-        id: "metroid-mother",
-        title: "Metroid: Mother",
-        platform: "romhack",
-        isRomhack: true,
-        year: "romhack",
-        pitch: "A friendlier, map-aware restoration of Metroid that keeps the lonely alien dread intact.",
-        playthroughUrl: "https://www.youtube.com/watch?v=S7fwbZjLpXE",
-        moods: ["ominous", "contemplative"],
-        difficulty: "fair",
-        story: "some",
-        playStyle: "side-scroller",
-        obscurity: "hidden-gem",
-        tags: ["exploration", "quality of life", "lonely"],
-      },
-      score: 0.96,
-      reasons: ["answers the ominous mood", "keeps to the side-scrolling path", "fair difficulty"],
-    },
-  ],
+  recommendations: [metroidMotherRecommendation],
+  showcase: { games: [metroidMotherRecommendation] },
   suggestions: [],
   state: {
     started: true,
@@ -61,6 +82,13 @@ const recommendationResponse = {
       story: "some",
     },
   },
+};
+
+const multiGameShowcaseResponse = {
+  ...recommendationResponse,
+  lines: ["Two paths clear the gate. Your call."],
+  recommendations: [metroidMotherRecommendation, castlevaniaIiiRecommendation],
+  showcase: { games: [metroidMotherRecommendation, castlevaniaIiiRecommendation] },
 };
 
 test("starts blank without canned mock responses", async ({ page }, testInfo) => {
@@ -100,10 +128,12 @@ test("clicking the window focuses chat except recommendation buttons", async ({ 
   await prompt.fill("Ada wants an ominous side-scroller with fair difficulty and some story.");
   await prompt.press("Enter");
   await expect(page.getByRole("heading", { name: "Metroid: Mother" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Watch Playthrough" })).toHaveAttribute(
-    "href",
-    "https://www.youtube.com/watch?v=S7fwbZjLpXE",
+  await expect(page.locator("iframe[title='Metroid: Mother gameplay']")).toHaveAttribute(
+    "src",
+    "https://www.youtube.com/embed/S7fwbZjLpXE",
   );
+
+  await page.getByRole("button", { name: "Close showcase" }).click();
 
   const feedbackButton = page.getByRole("button", { name: /Nailed it/i });
   await expect(feedbackButton).toBeVisible();
@@ -141,11 +171,42 @@ test("the agent controls when recommendations appear at the narrowed threshold",
   await prompt.fill("Fair difficulty, some story.");
   await prompt.press("Enter");
   await expect(page.getByRole("heading", { name: "Metroid: Mother" })).toBeVisible();
-  await expect(page.getByText("96%", { exact: true })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Watch Playthrough" })).toBeVisible();
+  await expect(page.getByText(/96% match/)).toBeVisible();
+  await expect(page.locator("iframe[title='Metroid: Mother gameplay']")).toBeVisible();
 
   expect(commands).toEqual(["Ada wants an ominous side-scroller.", "Fair difficulty, some story."]);
   await attachScreenshot(page, testInfo, "agent-recommendation");
+});
+
+test("the showcase modal tabs between multiple qualifying games", async ({ page }, testInfo) => {
+  await page.route("**/api/wizard", async (route) => {
+    await route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify(multiGameShowcaseResponse),
+    });
+  });
+
+  await page.goto("/test");
+  const prompt = page.getByLabel("Terminal command prompt");
+  await expect(prompt).toBeEnabled();
+  await page.getByRole("button", { name: "Select Romhacks" }).click();
+  await page.getByRole("button", { name: /Begin Quest/i }).click();
+
+  await prompt.fill("Ada wants an ominous side-scroller, either pick works.");
+  await prompt.press("Enter");
+
+  await expect(page.getByRole("heading", { name: "Metroid: Mother" })).toBeVisible();
+  await expect(page.getByTitle("Metroid: Mother gameplay")).toBeVisible();
+  await expect(page.getByRole("tab", { name: "TOME 2" })).toBeVisible();
+  await attachScreenshot(page, testInfo, "showcase-modal-first-tab");
+
+  await page.getByRole("tab", { name: "TOME 2" }).click();
+  await expect(page.getByRole("heading", { name: "Castlevania III: Dracula's Curse" })).toBeVisible();
+  await expect(page.getByTitle("Castlevania III: Dracula's Curse gameplay")).toHaveAttribute(
+    "src",
+    "https://www.youtube.com/embed/hFFKAl2A898",
+  );
+  await attachScreenshot(page, testInfo, "showcase-modal-second-tab");
 });
 
 test("start over returns the terminal to a blank ready state", async ({ page }, testInfo) => {
@@ -165,6 +226,8 @@ test("start over returns the terminal to a blank ready state", async ({ page }, 
   await prompt.fill("Ada wants an ominous side-scroller with fair difficulty and some story.");
   await prompt.press("Enter");
   await expect(page.getByRole("heading", { name: "Metroid: Mother" })).toBeVisible();
+
+  await page.getByRole("button", { name: "Close showcase" }).click();
   await expect(page.getByText("Was this reading true?")).toBeVisible();
 
   await page.getByRole("button", { name: "Start over" }).click();

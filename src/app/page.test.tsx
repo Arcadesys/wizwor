@@ -355,31 +355,32 @@ describe("wizard terminal UI", () => {
         return Promise.resolve(new Response(null, { status: 204 }));
       }
 
+      const metroidMother = {
+        game: {
+          id: "metroid-mother",
+          title: "Metroid: Mother",
+          platform: "romhack" as const,
+          isRomhack: true,
+          year: "romhack",
+          pitch: "A friendlier, map-aware restoration of Metroid that keeps the lonely alien dread intact.",
+          playthroughUrl: "https://www.youtube.com/watch?v=S7fwbZjLpXE",
+          moods: ["ominous" as const],
+          difficulty: "fair" as const,
+          story: "some" as const,
+          playStyle: "side-scroller" as const,
+          obscurity: "hidden-gem" as const,
+          tags: ["exploration"],
+        },
+        score: 0.96,
+        reasons: ["answers the ominous mood"],
+      };
+
       return response({
         adapter: "chatgpt",
         accepted: true,
         lines: ["Recommendation ready."],
-        recommendations: [
-          {
-            game: {
-              id: "metroid-mother",
-              title: "Metroid: Mother",
-              platform: "romhack",
-              isRomhack: true,
-              year: "romhack",
-              pitch: "A friendlier, map-aware restoration of Metroid that keeps the lonely alien dread intact.",
-              playthroughUrl: "https://www.youtube.com/watch?v=S7fwbZjLpXE",
-              moods: ["ominous"],
-              difficulty: "fair",
-              story: "some",
-              playStyle: "side-scroller",
-              obscurity: "hidden-gem",
-              tags: ["exploration"],
-            },
-            score: 0.96,
-            reasons: ["answers the ominous mood"],
-          },
-        ],
+        recommendations: [metroidMother],
+        showcase: { games: [metroidMother] },
         suggestions: [],
         state: {
           started: true,
@@ -401,10 +402,12 @@ describe("wizard terminal UI", () => {
     fireEvent.submit(input.closest("form")!);
 
     await screen.findByRole("heading", { name: "Metroid: Mother" });
-    expect(screen.getByRole("link", { name: "Watch Playthrough" })).toHaveAttribute(
-      "href",
-      "https://www.youtube.com/watch?v=S7fwbZjLpXE",
+    expect(screen.getByTitle("Metroid: Mother gameplay")).toHaveAttribute(
+      "src",
+      "https://www.youtube.com/embed/S7fwbZjLpXE",
     );
+    fireEvent.click(screen.getByRole("button", { name: "Close showcase" }));
+
     const feedbackButton = screen.getByRole("button", { name: /Sort of/i });
     feedbackButton.focus();
     fireEvent.click(feedbackButton);

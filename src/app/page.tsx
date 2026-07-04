@@ -99,6 +99,8 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const [suggestionIndex, setSuggestionIndex] = useState(0);
   const [isSuggestionBrowsing, setIsSuggestionBrowsing] = useState(false);
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
+  const [showcase, setShowcase] = useState<Recommendation[] | null>(null);
+  const [showcaseIndex, setShowcaseIndex] = useState(0);
   const [isStreaming, setIsStreaming] = useState(false);
   const [soundOn, setSoundOn] = useState(false);
   const [feedbackRating, setFeedbackRating] = useState<FeedbackRating | null>(null);
@@ -404,6 +406,8 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     setSuggestions(response.suggestions);
     setRecommendations(response.recommendations);
     recommendationsRef.current = response.recommendations;
+    setShowcase(response.showcase?.games ?? null);
+    setShowcaseIndex(0);
     setSuggestionIndex(0);
     setIsSuggestionBrowsing(false);
     setFeedbackRating(null);
@@ -411,6 +415,11 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     setFeedbackNoteSent(false);
     setSettingsOpen(false);
     setControlNavGroup(null);
+  }
+
+  function closeShowcase() {
+    setShowcase(null);
+    setShowcaseIndex(0);
   }
 
   function saveSession() {
@@ -451,6 +460,8 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     setIsSuggestionBrowsing(false);
     setRecommendations([]);
     recommendationsRef.current = [];
+    setShowcase(null);
+    setShowcaseIndex(0);
     setIsStreaming(false);
     setFeedbackRating(null);
     setFeedbackNote("");
@@ -617,6 +628,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
 
   function rateRecommendations(rating: FeedbackRating) {
     setFeedbackRating(rating);
+    setControlNavGroup(null);
     void sendFeedback(rating);
   }
 
@@ -849,7 +861,6 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     }
 
     rateRecommendations(id as FeedbackRating);
-    setControlNavGroup(null);
   }
 
   function activateControlNav() {
@@ -1106,6 +1117,9 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     };
   });
 
+  const activeShowcaseGame =
+    showcase && showcase.length ? showcase[Math.min(showcaseIndex, showcase.length - 1)] : null;
+
   return (
     <main
       className="min-h-screen overflow-hidden bg-[#050505] text-[#f7f7f7]"
@@ -1231,36 +1245,6 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
 
           <div className="bottom-terminal z-10">
             {recommendations.length ? (
-              <div className="recommendation-grid">
-                {recommendations.map((recommendation, index) => (
-                  <article key={recommendation.game.id} className="recommendation-card">
-                    <div className="recommendation-meta">
-                      <p>TOME {index + 1}</p>
-                      <p>{Math.round(recommendation.score * 100)}%</p>
-                    </div>
-                    <h2>{recommendation.game.title}</h2>
-                    <p className="recommendation-kind">
-                      {platformLabel(recommendation.game.platform)} / {recommendation.game.year}
-                    </p>
-                    <p>{recommendation.game.pitch}</p>
-                    <p className="recommendation-reasons">{recommendation.reasons.join(" / ")}</p>
-                    <a
-                      className="playthrough-link"
-                      href={recommendation.game.playthroughUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      data-recommendation-button="true"
-                    >
-                      {recommendation.game.playthroughUrl?.includes("youtube.com")
-                        ? "Watch Playthrough"
-                        : "View Source"}
-                    </a>
-                  </article>
-                ))}
-              </div>
-            ) : null}
-
-            {recommendations.length ? (
               <div className="feedback-bar" onKeyDown={(event) => event.stopPropagation()}>
                 {!feedbackRating ? (
                   <>
@@ -1277,7 +1261,6 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                           data-nav-item="true"
                           onClick={() => {
                             rateRecommendations(option.rating);
-                            setControlNavGroup(null);
                           }}
                         >
                           {option.label}
@@ -1448,6 +1431,76 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
             </form>
           </div>
         </section>
+
+        {showcase && showcase.length && activeShowcaseGame ? (
+          <div className="showcase-overlay" role="dialog" aria-modal="true" aria-label="Game showcase">
+            <div className="showcase-modal">
+              <div className="showcase-titlebar">
+                <span className="showcase-prompt">C:\WIZWOR&gt;</span>
+                <span className="showcase-exe">SHOWCASE.EXE</span>
+                <span className="terminal-cursor" />
+                <button
+                  type="button"
+                  className="showcase-close"
+                  onClick={closeShowcase}
+                  aria-label="Close showcase"
+                  title="Close showcase"
+                  data-recommendation-button="true"
+                >
+                  X
+                </button>
+              </div>
+
+              {showcase.length > 1 ? (
+                <div className="showcase-tabs" role="tablist" aria-label="Qualifying games">
+                  {showcase.map((recommendation, index) => (
+                    <button
+                      key={recommendation.game.id}
+                      type="button"
+                      role="tab"
+                      aria-selected={index === showcaseIndex}
+                      className={`showcase-tab ${index === showcaseIndex ? "is-active" : ""}`}
+                      onClick={() => setShowcaseIndex(index)}
+                      data-recommendation-button="true"
+                    >
+                      TOME {index + 1}
+                    </button>
+                  ))}
+                </div>
+              ) : null}
+
+              <div className="showcase-body">
+                <div className="showcase-video-frame">
+                  {youTubeEmbedUrl(activeShowcaseGame.game.playthroughUrl) ? (
+                    <iframe
+                      key={activeShowcaseGame.game.id}
+                      src={youTubeEmbedUrl(activeShowcaseGame.game.playthroughUrl) ?? undefined}
+                      title={`${activeShowcaseGame.game.title} gameplay`}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  ) : (
+                    <a
+                      className="playthrough-link"
+                      href={activeShowcaseGame.game.playthroughUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Source
+                    </a>
+                  )}
+                </div>
+                <h2>{activeShowcaseGame.game.title}</h2>
+                <p className="showcase-meta">
+                  {platformLabel(activeShowcaseGame.game.platform)} / {activeShowcaseGame.game.year}
+                  {" · "}
+                  {Math.round(activeShowcaseGame.score * 100)}% match
+                </p>
+                <p className="showcase-reasons">Why it&rsquo;s relevant: {activeShowcaseGame.reasons.join(" / ")}</p>
+              </div>
+            </div>
+          </div>
+        ) : null}
       </div>
     </main>
   );
@@ -1639,6 +1692,23 @@ function waitForSource(source: AudioBufferSourceNode, paddingMs: number) {
 
 function platformLabel(platform: Recommendation["game"]["platform"]) {
   return platformLabels[platform] ?? platform.toUpperCase();
+}
+
+function youTubeEmbedUrl(url: string): string | null {
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname === "youtu.be") {
+      const id = parsed.pathname.slice(1);
+      return id ? `https://www.youtube.com/embed/${id}` : null;
+    }
+    if (parsed.hostname.includes("youtube.com")) {
+      const id = parsed.searchParams.get("v");
+      return id ? `https://www.youtube.com/embed/${id}` : null;
+    }
+  } catch {
+    return null;
+  }
+  return null;
 }
 
 function speakerLabel(speaker: Message["speaker"]) {

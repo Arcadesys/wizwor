@@ -48,6 +48,8 @@ const CandidateProfileSchema = ProfileUpdateSchema.omit({ name: true });
 
 type WizardRunContext = {
   enabledPlatforms: readonly Platform[];
+  profile: UserProfile;
+  showcaseRequest: { gameIds: string[] } | null;
 };
 
 // This tool is a capability the agent chooses to call. The fixed workflow is
@@ -83,6 +85,48 @@ const lookupRecommendationsTool = tool({
           tags: recommendation.game.tags,
         })),
     };
+  },
+});
+
+// Never trust the agent's ids blindly — mirrors resolveRecommendations,
+// which re-scores recommendedGameIds against the real catalog rather than
+// displaying whatever the model claims. Exported so the filtering/capping
+// behavior is unit-testable without spinning up the full Agents SDK runner.
+export function resolveShowcaseIds(
+  profile: UserProfile,
+  gameIds: string[],
+  enabledPlatforms: readonly Platform[],
+): string[] {
+  const gate = recommendationGate(profile, scoringOptions(enabledPlatforms));
+  const qualifyingIds = new Set(gate.recommendations.map((recommendation) => recommendation.game.id));
+  return gameIds.filter((id) => qualifyingIds.has(id)).slice(0, maxQualifyingRecommendations);
+}
+
+const OpenGameShowcaseSchema = z.object({
+  gameIds: z.array(z.string()).min(1).max(maxQualifyingRecommendations),
+});
+
+// The literal reveal mechanism: setting revealed/recommendedGameIds on the
+// output is bookkeeping only. This tool is what the frontend actually reacts
+// to (via the showcaseRequest captured on the run context, read back out in
+// buildResponse), so calling it is what puts a game in front of the player.
+const openGameShowcaseTool = tool({
+  name: "open_game_showcase",
+  description:
+    "Opens the showcase window that displays 1 to 3 games to the player, each with a gameplay video, name/year/console, and why it matched. This is the only thing that actually shows a reveal — setting revealed/recommendedGameIds alone displays nothing. Call it with the winning game id(s) from currentBestMatches or a lookup_recommendations result, ranked best first, at the same moment you decide to reveal (recommendationGate.recommendationWindowOpen is true). Ids that no longer clear the reveal threshold are dropped.",
+  parameters: OpenGameShowcaseSchema,
+  execute: async (input, runContext?: RunContext<WizardRunContext>) => {
+    const profile = runContext?.context.profile ?? blankProfile;
+    const enabledPlatforms = runContext?.context.enabledPlatforms ?? [...catalogPlatforms];
+    const gameIds = resolveShowcaseIds(profile, input.gameIds, enabledPlatforms);
+
+    if (runContext) {
+      runContext.context.showcaseRequest = gameIds.length ? { gameIds } : null;
+    }
+
+    return gameIds.length
+      ? { opened: true, gameIds }
+      : { opened: false, reason: "none of the supplied ids currently clear the reveal threshold" };
   },
 });
 
@@ -124,6 +168,7 @@ const liveWizardAgent = new Agent<WizardRunContext, typeof WizardTurnOutputSchem
     "If the player asks to change terminal colors, update memoryMarkdown and return terminalTheme with CSS hex colors for the requested palette. Use background, foreground, green, amber, red, and blue keys when relevant.",
     `After the player answers what system they are questing on, messages include recommendationGate: the real catalog scored against the profile as currently known. Reveal only when recommendationGate.recommendationWindowOpen is true, meaning 1 to ${maxQualifyingRecommendations} games score at least ${Math.round(recommendationThreshold * 100)}%. Call the lookup_recommendations tool only when you want to test a hypothetical profile different from the known one (e.g. 'what if difficulty were X'); you don't need it just to see the current picture.`,
     "Only ever recommend real games from currentBestMatches or a tool result — copy their exact id into recommendedGameIds (at most 3, ranked by how well they fit). Never invent, describe, or score a game yourself. If revealed is false, leave recommendedGameIds empty.",
+    "Setting revealed: true and recommendedGameIds does not by itself display anything to the player — it's bookkeeping. To actually show a reveal, call the open_game_showcase tool with the same id(s) (at most 3, ranked best first) at the same moment you set revealed: true. That tool call is what opens the showcase window; skipping it means the player sees nothing even though you decided to reveal.",
     "When too many games qualify, every message includes suggestedNextQuestion: computed like a well-played round of 20 Questions or Guess Who — the unanswered field+value that splits the current candidate pool closest to 50/50, so whichever way the player answers eliminates the most ground. When it's present, build your next question around that exact field (e.g. if it's {key: \"playStyle\", value: \"puzzle\"}, ask something like whether they want a puzzle game or something else) — phrase it naturally, don't recite the field name. When it's null (pool is already small, or nothing left discriminates), fall back to your own judgment from currentBestMatches.",
     "Commit when it's time — do not stall. Two situations require revealed: true this turn, using your best current pick, even with fields still unknown or the match imperfect: (1) the player explicitly hands you the decision — 'I don't care', 'you choose', 'whatever's best', 'just pick one', 'are you going to choose?' or similar — reveal immediately, do not ask yet another clarifying question first; (2) the conversation has already gone several exchanges without revealing and currentBestMatches already has a reasonably strong option — stop circling and commit rather than asking for one more detail.",
     "If a request names something very specific — a genre, a designer, a historical or cultural detail — check pitch/tags for a strong, specific match worth calling out by name and inference (e.g. a request for a notable multiplayer board-game-style NES title should lead you to feature what you find, tags and pitch included, if it's a clear fit).",
@@ -140,7 +185,7 @@ const liveWizardAgent = new Agent<WizardRunContext, typeof WizardTurnOutputSchem
     },
     store: true,
   },
-  tools: [lookupRecommendationsTool],
+  tools: [lookupRecommendationsTool, openGameShowcaseTool],
   outputType: WizardTurnOutputSchema,
 });
 
@@ -205,12 +250,16 @@ async function runAgentTurnResilient(
   runner: Runner,
   agent: typeof liveWizardAgent,
   conversationHistory: AgentInputItem[],
-  enabledPlatforms: readonly Platform[],
+  runContext: WizardRunContext,
 ) {
   for (let attempt = 1; attempt <= MAX_OUTPUT_SCHEMA_ATTEMPTS; attempt++) {
+    // Reset per attempt: a retry re-runs the agent from scratch, so a
+    // showcase request captured during a failed attempt must not leak into
+    // the retry's result.
+    runContext.showcaseRequest = null;
     try {
       return await runner.run(agent, conversationHistory, {
-        context: { enabledPlatforms },
+        context: runContext,
       });
     } catch (error) {
       if (!isAgentDataSchemaError(error) || attempt === MAX_OUTPUT_SCHEMA_ATTEMPTS) {
@@ -289,12 +338,17 @@ async function runWizardConversationTurn(request: WizardTurnRequest, knownProfil
         app: "wizwor",
       },
     });
+    const runContext: WizardRunContext = {
+      enabledPlatforms,
+      profile: knownProfile,
+      showcaseRequest: null,
+    };
     let result;
     try {
-      result = await runAgentTurnResilient(runner, liveWizardAgent, conversationHistory, enabledPlatforms);
+      result = await runAgentTurnResilient(runner, liveWizardAgent, conversationHistory, runContext);
     } catch (error) {
       if (isAgentDataSchemaError(error)) {
-        return { output: fallbackTurnOutput(), consumed };
+        return { output: fallbackTurnOutput(), consumed, showcaseRequest: null };
       }
       throw error;
     }
@@ -303,7 +357,11 @@ async function runWizardConversationTurn(request: WizardTurnRequest, knownProfil
       throw new Error("Agent result is undefined");
     }
 
-    return { output: result.finalOutput as WizardTurnOutput, consumed };
+    return {
+      output: result.finalOutput as WizardTurnOutput,
+      consumed,
+      showcaseRequest: runContext.showcaseRequest,
+    };
   });
 }
 
@@ -336,12 +394,16 @@ function buildResponse(
   enabledPlatforms: Platform[],
   consumed: Record<string, unknown>,
   includeRecommendationContext = true,
+  showcaseRequest: { gameIds: string[] } | null = null,
 ): WizardTurnResponse {
   const recommendations = includeRecommendationContext && output.revealed
     ? resolveRecommendations(profile, output.recommendedGameIds, enabledPlatforms)
     : [];
   const revealed = output.revealed && recommendations.length > 0;
   const gate = includeRecommendationContext ? recommendationGate(profile, scoringOptions(enabledPlatforms)) : null;
+  const showcaseGames = includeRecommendationContext && showcaseRequest?.gameIds.length
+    ? resolveRecommendations(profile, showcaseRequest.gameIds, enabledPlatforms)
+    : [];
 
   return {
     lines: output.lines,
@@ -370,6 +432,7 @@ function buildResponse(
           generated: output.agentData ?? {},
         }
       : emptyAgentData(consumed, output.agentData ?? {}),
+    showcase: showcaseGames.length ? { games: showcaseGames } : null,
   };
 }
 
@@ -389,7 +452,7 @@ export function ensureFirstTurnQuestion(lines: string[]): string[] {
 
 export async function runLiveWizardTurn(request: WizardTurnRequest): Promise<WizardTurnResponse> {
   const knownProfile: UserProfile = { ...blankProfile, ...request.state.profile };
-  const { output, consumed } = await runWizardConversationTurn(request, knownProfile);
+  const { output, consumed, showcaseRequest } = await runWizardConversationTurn(request, knownProfile);
   const nextProfile = mergeProfile(knownProfile, output.profile);
   const isFirstTurn = isFirstWizardTurn(request);
   return buildResponse(
@@ -403,5 +466,6 @@ export async function runLiveWizardTurn(request: WizardTurnRequest): Promise<Wiz
     request.state.enabledPlatforms ?? [...catalogPlatforms],
     consumed,
     !isFirstTurn,
+    showcaseRequest,
   );
 }
