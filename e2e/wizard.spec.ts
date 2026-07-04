@@ -92,6 +92,7 @@ test("clicking the window focuses chat except recommendation buttons", async ({ 
   const prompt = page.getByLabel("Terminal command prompt");
   await expect(prompt).toBeEnabled();
   await page.getByRole("button", { name: "Select Romhacks" }).click();
+  await page.getByRole("button", { name: /Begin Quest/i }).click();
 
   await page.locator(".terminal-window").click();
   await expect(prompt).toBeFocused();
@@ -130,6 +131,7 @@ test("the agent controls when recommendations appear at the narrowed threshold",
   const prompt = page.getByLabel("Terminal command prompt");
   await expect(prompt).toBeEnabled();
   await page.getByRole("button", { name: "Select Romhacks" }).click();
+  await page.getByRole("button", { name: /Begin Quest/i }).click();
 
   await prompt.fill("Ada wants an ominous side-scroller.");
   await prompt.press("Enter");
@@ -158,6 +160,7 @@ test("start over returns the terminal to a blank ready state", async ({ page }, 
   const prompt = page.getByLabel("Terminal command prompt");
   await expect(prompt).toBeEnabled();
   await page.getByRole("button", { name: "Select Romhacks" }).click();
+  await page.getByRole("button", { name: /Begin Quest/i }).click();
 
   await prompt.fill("Ada wants an ominous side-scroller with fair difficulty and some story.");
   await prompt.press("Enter");
@@ -172,7 +175,6 @@ test("start over returns the terminal to a blank ready state", async ({ page }, 
   await expect(page.getByRole("heading", { name: "Choose Console Context" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Metroid: Mother" })).toHaveCount(0);
   await expect(page.getByText("Was this reading true?")).toHaveCount(0);
-  await expect(page.locator(".status-line")).toContainText("ANS 0/6");
   await attachScreenshot(page, testInfo, "start-over-reset");
 });
 
@@ -190,6 +192,7 @@ test("console context gates the prompt until a platform is chosen", async ({ pag
   await attachScreenshot(page, testInfo, "console-context-rejected-freetext");
 
   await page.getByRole("button", { name: "Select SNES" }).click();
+  await page.getByRole("button", { name: /Begin Quest/i }).click();
   await expect(page.getByRole("heading", { name: "Choose Console Context" })).toHaveCount(0);
   await expect(page.getByText("SNES", { exact: true })).toBeVisible();
   await expect(prompt).toBeFocused();
@@ -200,6 +203,41 @@ test("console context gates the prompt until a platform is chosen", async ({ pag
   await expect(snesToggle).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator('[data-platform="nes"]')).toHaveAttribute("aria-pressed", "false");
   await attachScreenshot(page, testInfo, "console-context-settings-snes-only");
+});
+
+test("multiple consoles can be selected before beginning the quest", async ({ page }, testInfo) => {
+  await page.goto("/test");
+  const prompt = page.getByLabel("Terminal command prompt");
+  await expect(prompt).toBeEnabled();
+
+  const nesButton = page.getByRole("button", { name: "Select NES" });
+  const snesButton = page.getByRole("button", { name: "Select SNES" });
+  const beginButton = page.getByRole("button", { name: /Begin Quest/i });
+
+  await expect(beginButton).toBeDisabled();
+
+  await nesButton.click();
+  await expect(nesButton).toHaveAttribute("aria-pressed", "true");
+  await expect(beginButton).toBeEnabled();
+  await expect(beginButton).toHaveText("Begin Quest");
+
+  await snesButton.click();
+  await expect(snesButton).toHaveAttribute("aria-pressed", "true");
+  await expect(beginButton).toHaveText("Begin Quest (2)");
+  await attachScreenshot(page, testInfo, "console-context-multi-selected");
+
+  await nesButton.click();
+  await expect(nesButton).toHaveAttribute("aria-pressed", "false");
+  await expect(beginButton).toHaveText("Begin Quest");
+
+  await beginButton.click();
+  await expect(page.getByRole("heading", { name: "Choose Console Context" })).toHaveCount(0);
+  await expect(page.getByText("SNES", { exact: true })).toBeVisible();
+
+  await page.getByRole("button", { name: "Catalog settings" }).click();
+  await expect(page.locator('[data-platform="snes"]')).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator('[data-platform="nes"]')).toHaveAttribute("aria-pressed", "false");
+  await attachScreenshot(page, testInfo, "console-context-multi-confirmed-snes-only");
 });
 
 test("typing a console name selects that console context", async ({ page }, testInfo) => {

@@ -30,6 +30,8 @@ function response(body: MockWizardTurnResponse) {
 async function chooseConsole(label = "NES") {
   const button = await screen.findByRole("button", { name: new RegExp(`^Select ${escapeRegExp(label)}$`, "i") });
   fireEvent.click(button);
+  const confirmButton = await screen.findByRole("button", { name: /Begin Quest/i });
+  fireEvent.click(confirmButton);
   await waitFor(() => expect(screen.queryByRole("heading", { name: /Choose Console Context/i })).not.toBeInTheDocument());
 }
 
@@ -52,23 +54,14 @@ describe("wizard terminal UI", () => {
     localStorage.clear();
   });
 
-  it("starts with an empty agent data panel before recommendation context exists", async () => {
-    const { container } = render(<Home />);
+  it("shows the console context picker before a console is chosen", async () => {
+    render(<Home />);
     const input = await screen.findByLabelText("Terminal command prompt");
     await waitFor(() => expect(input).toBeEnabled());
 
     expect(screen.getByText("Greetings Gamer! What console are you questing on today?")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Choose Console Context/i })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /^Select NES$/i })).toBeInTheDocument();
-
-    fireEvent.click(screen.getByRole("button", { name: /Expand agent data/i }));
-
-    const debugText = container.querySelector(".agent-data-body pre")?.textContent ?? "";
-    expect(debugText).toContain('"qualifyingMatchCount": 0');
-    expect(debugText).toContain('"recommendationWindowOpen": false');
-    expect(debugText).toContain('"gamesAboveThreshold": []');
-    expect(debugText).toContain('"currentBestMatches": []');
-    expect(debugText).not.toContain("2-in-1 Super Mario Bros./Duck Hunt");
   });
 
   it("submits custom typed text on Enter instead of the highlighted suggestion", async () => {
