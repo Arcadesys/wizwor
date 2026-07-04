@@ -4,6 +4,8 @@ import Home from "@/app/page";
 import type { WizardTurnResponse } from "@/lib/wizard/types";
 import { defaultMemoryMarkdown } from "@/lib/wizard/types";
 
+const postConsolePrompt = "What plaything can I offer you today?";
+
 vi.mock("sam-js", () => ({
   default: class MockSam {
     buf32() {
@@ -33,6 +35,8 @@ async function chooseConsole(label = "NES") {
   const confirmButton = await screen.findByRole("button", { name: /Begin Quest/i });
   fireEvent.click(confirmButton);
   await waitFor(() => expect(screen.queryByRole("heading", { name: /Choose Console Context/i })).not.toBeInTheDocument());
+  await screen.findByText(postConsolePrompt, {}, { timeout: 5000 });
+  await waitFor(() => expect(screen.getByLabelText("Terminal command prompt")).toBeEnabled());
 }
 
 describe("wizard terminal UI", () => {
@@ -62,6 +66,37 @@ describe("wizard terminal UI", () => {
     expect(screen.getByText("Greetings Gamer! What console are you questing on today?")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Choose Console Context/i })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /^Select NES$/i })).toBeInTheDocument();
+  });
+
+  it("asks what plaything to offer after selecting a console without calling the wizard API", async () => {
+    const fetchMock = vi.spyOn(globalThis, "fetch");
+
+    render(<Home />);
+    const input = await screen.findByLabelText("Terminal command prompt");
+    await waitFor(() => expect(input).toBeEnabled());
+
+    await chooseConsole("SNES");
+
+    expect(screen.getByText("Greetings Gamer! What console are you questing on today?")).toBeInTheDocument();
+    expect(screen.getByText("SNES")).toBeInTheDocument();
+    expect(screen.getByText(postConsolePrompt)).toBeInTheDocument();
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("asks the same plaything prompt after typing a console name", async () => {
+    const fetchMock = vi.spyOn(globalThis, "fetch");
+
+    render(<Home />);
+    const input = await screen.findByLabelText("Terminal command prompt");
+    await waitFor(() => expect(input).toBeEnabled());
+
+    fireEvent.change(input, { target: { value: "genesis" } });
+    fireEvent.submit(input.closest("form")!);
+
+    await waitFor(() => expect(screen.queryByRole("heading", { name: /Choose Console Context/i })).not.toBeInTheDocument());
+    await screen.findByText(postConsolePrompt, {}, { timeout: 5000 });
+    expect(screen.getByText("Genesis / Mega Drive")).toBeInTheDocument();
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 
   it("submits custom typed text on Enter instead of the highlighted suggestion", async () => {
