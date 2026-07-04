@@ -117,6 +117,23 @@ export function resolveShowcaseIds(
   return gameIds.filter((id) => candidateIds.has(id)).slice(0, maxQualifyingRecommendations);
 }
 
+export function resolveAutomaticShowcaseIds(
+  profile: UserProfile,
+  gameIds: string[],
+  enabledPlatforms: readonly Platform[],
+): string[] {
+  const options = precomputedScoringOptions(profile, enabledPlatforms);
+  const gate = recommendationGate(profile, options);
+  if (!gate.isOpen) {
+    return [];
+  }
+
+  const requestedIds = gameIds.length
+    ? gameIds
+    : gate.recommendations.map((recommendation) => recommendation.game.id);
+  return resolveShowcaseIds(profile, requestedIds, enabledPlatforms);
+}
+
 const OpenGameShowcaseSchema = z.object({
   gameIds: z.array(z.string()).min(1).max(maxQualifyingRecommendations),
 });
@@ -525,7 +542,7 @@ function resolveRecommendations(profile: UserProfile, ids: string[], options: Re
     .filter((recommendation): recommendation is Recommendation => Boolean(recommendation));
 }
 
-function buildResponse(
+export function buildResponse(
   output: WizardTurnOutput,
   profile: UserProfile,
   enabledPlatforms: Platform[],
@@ -537,13 +554,20 @@ function buildResponse(
   const options = includeRecommendationContext
     ? precomputedScoringOptions(profile, enabledPlatforms)
     : scoringOptions(enabledPlatforms);
-  const recommendations = includeRecommendationContext && output.revealed
-    ? resolveRecommendations(profile, output.recommendedGameIds, options)
-    : [];
-  const revealed = output.revealed && recommendations.length > 0;
   const gate = includeRecommendationContext ? recommendationGate(profile, options) : null;
-  const showcaseGames = includeRecommendationContext && showcaseRequest?.gameIds.length
-    ? resolveRecommendations(profile, showcaseRequest.gameIds, options)
+  const automaticShowcaseIds =
+    includeRecommendationContext && !showcaseRequest?.gameIds.length
+      ? resolveAutomaticShowcaseIds(profile, output.recommendedGameIds, enabledPlatforms)
+      : [];
+  const showcaseIds = showcaseRequest?.gameIds.length ? showcaseRequest.gameIds : automaticShowcaseIds;
+  const recommendationIds = output.recommendedGameIds.length ? output.recommendedGameIds : showcaseIds;
+  const recommendations =
+    includeRecommendationContext && (output.revealed || showcaseIds.length)
+      ? resolveRecommendations(profile, recommendationIds, options)
+      : [];
+  const revealed = (output.revealed || showcaseIds.length > 0) && recommendations.length > 0;
+  const showcaseGames = includeRecommendationContext && showcaseIds.length
+    ? resolveRecommendations(profile, showcaseIds, options)
     : [];
 
   return {
