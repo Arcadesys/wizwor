@@ -132,7 +132,7 @@ async function runCase(testCase: EvalCase): Promise<CaseResult> {
   }
 
   const failures = checkExpectations(testCase, state, lastAccepted, lastLines, lastRecommendations, {
-    checkExactLineText: false,
+    checkExactLineText: true,
   });
   if (testCase.xfail) {
     return {
