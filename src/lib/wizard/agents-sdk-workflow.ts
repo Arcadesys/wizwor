@@ -9,6 +9,7 @@ import {
 } from "@openai/agents";
 import { z } from "zod";
 import { catalogPlatforms, type Platform } from "@/data/games";
+import { transGameContributorsForAgent } from "@/data/trans-game-contributors";
 import type { Recommendation, UserProfile } from "@/lib/recommender";
 import {
   getRecommendations,
@@ -172,7 +173,7 @@ const liveWizardAgent = new Agent<WizardRunContext, typeof WizardTurnOutputSchem
     "When too many games qualify, every message includes suggestedNextQuestion: computed like a well-played round of 20 Questions or Guess Who — the unanswered field+value that splits the current candidate pool closest to 50/50, so whichever way the player answers eliminates the most ground. When it's present, build your next question around that exact field (e.g. if it's {key: \"playStyle\", value: \"puzzle\"}, ask something like whether they want a puzzle game or something else) — phrase it naturally, don't recite the field name. When it's null (pool is already small, or nothing left discriminates), fall back to your own judgment from currentBestMatches.",
     "Commit when it's time — do not stall. Two situations require revealed: true this turn, using your best current pick, even with fields still unknown or the match imperfect: (1) the player explicitly hands you the decision — 'I don't care', 'you choose', 'whatever's best', 'just pick one', 'are you going to choose?' or similar — reveal immediately, do not ask yet another clarifying question first; (2) the conversation has already gone several exchanges without revealing and currentBestMatches already has a reasonably strong option — stop circling and commit rather than asking for one more detail.",
     "If a request names something very specific — a genre, a designer, a historical or cultural detail — check pitch/tags for a strong, specific match worth calling out by name and inference (e.g. a request for a notable multiplayer board-game-style NES title should lead you to feature what you find, tags and pitch included, if it's a clear fit).",
-    "If the player asks for games with trans creators or trans influence, answer from catalog evidence only. Treat creative influence broadly: designers, programmers, writers, artists, translators, localizers, and fan-translation contributors can count when the catalog evidence supports it. Do not confuse the word 'translation' with trans identity, and do not invent identities or credits not present in pitch/tags. In the current catalog, M.U.L.E. is the known trans-history match through Danielle Bunten Berry.",
+    "If the player asks for games with trans creators or trans influence, answer from transGameContributors and catalog evidence only. Treat creative influence broadly: designers, programmers, writers, artists, composers, critics, consultants, translators, localizers, and fan-translation contributors can count when the evidence supports it. Do not confuse the word 'translation' with trans identity, and do not invent identities or credits not present in transGameContributors, pitch, or tags. When a contributor has catalogGameIds, those are direct catalog matches; otherwise describe their notableWorks as broader game-history context rather than pretending they are on the current shelf.",
     "Use agentData for any extra data you generated or consumed mentally: category scores, inferred traits, uncertainty notes, rejected options, scoring rationale, or other compact debug fields. Keep every agentData value shallow: strings, numbers, booleans, arrays of those, or at most one nested object of those (e.g. inferredProfile: { mood: \"heroic\", confidence: 0.8 }). Never nest an object inside another object or inside an array entry.",
     "If their message gives you nothing usable for any field, set accepted to false and warmly ask, in your own words, for whatever still seems missing.",
     "Keep lines terse, arcade-synthetic, readable on a tiny CRT — 1 to 3 short lines.",
@@ -296,6 +297,7 @@ export function buildConsumedTurnContext(request: WizardTurnRequest, knownProfil
     terminalTheme: request.state.terminalTheme,
     exchangesSoFar: request.messages.length,
     recentMessages: request.messages.slice(-8),
+    transGameContributors: transGameContributorsForAgent(),
   };
 
   if (isFirstWizardTurn(request)) {

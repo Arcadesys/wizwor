@@ -97,6 +97,24 @@ describe("first-turn recommendation context", () => {
     expect(consumed).not.toHaveProperty("suggestedNextQuestion");
   });
 
+  it("serializes trans game contributor history for specific cultural requests", () => {
+    const consumed = buildConsumedTurnContext(
+      request({
+        messages: [{ speaker: "wizard", text: "Greetings Gamer! What console are you questing on today?" }],
+      }),
+      {},
+    );
+
+    expect(consumed.transGameContributors).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          name: "Danielle Bunten Berry",
+          catalogGameIds: ["mule"],
+        }),
+      ]),
+    );
+  });
+
   it("serializes recommendation context after the first wizard question", () => {
     const consumed = buildConsumedTurnContext(
       request({
