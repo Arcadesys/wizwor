@@ -1,9 +1,12 @@
 import { ModelBehaviorError } from "@openai/agents";
 import { describe, expect, it } from "vitest";
+import type { z } from "zod";
 import {
+  buildResponse,
   buildConsumedTurnContext,
   ensureFirstTurnQuestion,
   isAgentDataSchemaError,
+  resolveAutomaticShowcaseIds,
   resolveShowcaseIds,
   sanitizeSoundtrack,
   WizardTurnOutputSchema,
@@ -12,16 +15,29 @@ import { catalogPlatforms } from "@/data/games";
 import { bestGuessRecommendations, maxQualifyingRecommendations, qualifyingRecommendations } from "@/lib/recommender";
 import { blankProfile, initialWizardState, type WizardTurnRequest } from "@/lib/wizard/types";
 
-function baseOutput(agentData: Record<string, unknown>) {
-  return {
+type WizardTurnOutputInput = z.input<typeof WizardTurnOutputSchema>;
+type WizardTurnOutput = z.output<typeof WizardTurnOutputSchema>;
+
+function baseOutput(agentData: WizardTurnOutputInput["agentData"]): WizardTurnOutput {
+  return WizardTurnOutputSchema.parse({
     lines: ["The circuits hum."],
     accepted: true,
     profile: {},
     revealed: false,
     recommendedGameIds: [],
     agentData,
-  };
+  });
 }
+
+const narrowProfile = {
+  ...blankProfile,
+  name: "Ada",
+  mood: "ominous" as const,
+  playStyle: "side-scroller" as const,
+  difficulty: "difficult" as const,
+  story: "some" as const,
+  keywords: ["gothic", "branching paths"],
+};
 
 describe("WizardTurnOutputSchema agentData", () => {
   it("accepts flat primitive and array values", () => {
@@ -139,22 +155,23 @@ describe("first-turn recommendation context", () => {
 
 describe("resolveShowcaseIds", () => {
   it("drops ids that don't currently clear the reveal threshold", () => {
-    const profile = {
-      ...blankProfile,
-      name: "Ada",
-      mood: "ominous" as const,
-      playStyle: "side-scroller" as const,
-      difficulty: "difficult" as const,
-      story: "some" as const,
-      keywords: ["gothic", "branching paths"],
-    };
-    const qualifying = qualifyingRecommendations(profile);
+    const qualifying = qualifyingRecommendations(narrowProfile);
     expect(qualifying.length).toBeGreaterThan(0);
     const validId = qualifying[0].game.id;
 
-    const result = resolveShowcaseIds(profile, [validId, "not-a-real-game-id"], catalogPlatforms);
+    const result = resolveShowcaseIds(narrowProfile, [validId, "not-a-real-game-id"], catalogPlatforms);
 
     expect(result).toEqual([validId]);
+  });
+
+  it("auto-selects qualifying ids when the recommendation window is open", () => {
+    const qualifying = qualifyingRecommendations(narrowProfile);
+    expect(qualifying.length).toBeGreaterThan(0);
+    expect(qualifying.length).toBeLessThanOrEqual(maxQualifyingRecommendations);
+
+    const result = resolveAutomaticShowcaseIds(narrowProfile, [], catalogPlatforms);
+
+    expect(result).toEqual(qualifying.map((recommendation) => recommendation.game.id));
   });
 
   it("returns an empty array when nothing supplied clears the threshold", () => {
@@ -210,6 +227,41 @@ describe("resolveShowcaseIds", () => {
     const result = resolveShowcaseIds(broad, ids, catalogPlatforms);
 
     expect(result).toEqual([]);
+  });
+});
+
+describe("buildResponse showcase guard", () => {
+  function output(overrides: Partial<ReturnType<typeof baseOutput>> = {}) {
+    return {
+      ...baseOutput({}),
+      ...overrides,
+    };
+  }
+
+  it("opens the showcase when the agent reveals valid ids but forgets the tool call", () => {
+    const qualifying = qualifyingRecommendations(narrowProfile);
+    const gameIds = qualifying.map((recommendation) => recommendation.game.id);
+
+    const response = buildResponse(
+      output({ revealed: true, recommendedGameIds: gameIds }),
+      narrowProfile,
+      [...catalogPlatforms],
+      {},
+    );
+
+    expect(response.showcase?.games.map((recommendation) => recommendation.game.id)).toEqual(gameIds);
+    expect(response.state.revealed).toBe(true);
+  });
+
+  it("opens the showcase from the qualifying gate when the model forgets both ids and the tool call", () => {
+    const qualifying = qualifyingRecommendations(narrowProfile);
+    const gameIds = qualifying.map((recommendation) => recommendation.game.id);
+
+    const response = buildResponse(output(), narrowProfile, [...catalogPlatforms], {});
+
+    expect(response.showcase?.games.map((recommendation) => recommendation.game.id)).toEqual(gameIds);
+    expect(response.recommendations.map((recommendation) => recommendation.game.id)).toEqual(gameIds);
+    expect(response.state.revealed).toBe(true);
   });
 });
 
