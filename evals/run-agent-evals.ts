@@ -16,6 +16,7 @@ type EvalCase = {
     minRecommendations?: number;
     topScoreAtLeast?: number;
     topTitle?: string;
+    hasShowcase?: boolean;
     lineIncludes?: string[];
   };
   xfail?: boolean;
@@ -111,6 +112,7 @@ async function runCase(testCase: EvalCase): Promise<CaseResult> {
   let lastLines: string[] = [];
   let lastAccepted = true;
   let lastRecommendations: Awaited<ReturnType<typeof agent.runTurn>>["recommendations"] = [];
+  let lastShowcase: Awaited<ReturnType<typeof agent.runTurn>>["showcase"] = null;
 
   for (const command of testCase.turns) {
     if (command) {
@@ -128,10 +130,11 @@ async function runCase(testCase: EvalCase): Promise<CaseResult> {
     lastLines = response.lines;
     lastAccepted = response.accepted;
     lastRecommendations = response.recommendations;
+    lastShowcase = response.showcase ?? null;
     messages.push(...response.lines.map((text) => ({ speaker: "wizard" as const, text })));
   }
 
-  const failures = checkExpectations(testCase, state, lastAccepted, lastLines, lastRecommendations, {
+  const failures = checkExpectations(testCase, state, lastAccepted, lastLines, lastRecommendations, lastShowcase, {
     checkExactLineText: true,
   });
   if (testCase.xfail) {
@@ -157,6 +160,7 @@ function checkExpectations(
   lastAccepted: boolean,
   lastLines: string[],
   recommendations: Awaited<ReturnType<typeof agent.runTurn>>["recommendations"],
+  showcase: Awaited<ReturnType<typeof agent.runTurn>>["showcase"],
   options: { checkExactLineText: boolean },
 ) {
   const failures: string[] = [];
@@ -190,6 +194,13 @@ function checkExpectations(
 
   if (expected.topTitle !== undefined && recommendations[0]?.game.title !== expected.topTitle) {
     failures.push(`Expected top recommendation "${expected.topTitle}", saw "${recommendations[0]?.game.title ?? "none"}".`);
+  }
+
+  if (expected.hasShowcase !== undefined) {
+    const hasShowcase = Boolean(showcase?.games.length);
+    if (hasShowcase !== expected.hasShowcase) {
+      failures.push(`Expected hasShowcase=${expected.hasShowcase}, saw ${hasShowcase}.`);
+    }
   }
 
   if (options.checkExactLineText) {
