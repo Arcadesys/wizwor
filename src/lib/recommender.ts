@@ -62,10 +62,15 @@ const questionCountRequired = 4;
 export const recommendationThreshold = 0.96;
 export const maxQualifyingRecommendations = 3;
 
-type RecommendationGateOptions = {
+export type RecommendationGateOptions = {
   threshold?: number;
   maxQualifying?: number;
   enabledPlatforms?: readonly Platform[];
+  // Precomputed output of getRecommendations for this exact profile and
+  // platform set. Scoring sweeps the whole ~2000-game catalog, and a single
+  // turn otherwise repeats that sweep for the gate, the context lists, and
+  // the reveal resolution — compute once, thread through.
+  recommendations?: Recommendation[];
 };
 
 function normalizeKeywords(value: unknown): string[] {
@@ -89,6 +94,9 @@ export function hasEnoughSignal(profile: UserProfile) {
 }
 
 export function getRecommendations(profile: UserProfile, options: RecommendationGateOptions = {}): Recommendation[] {
+  if (options.recommendations) {
+    return options.recommendations;
+  }
   return getAllGames({ enabledPlatforms: options.enabledPlatforms })
     .map((game) => scoreGame(game, profile))
     .sort((left, right) => right.score - left.score || left.game.title.localeCompare(right.game.title));

@@ -201,3 +201,15 @@ describe("bestGuessRecommendations", () => {
     expect(bestGuessRecommendations({ ...blankProfile, mood: "ominous" })).toHaveLength(0);
   });
 });
+
+describe("precomputed recommendations reuse", () => {
+  it("returns options.recommendations verbatim instead of rescoring the catalog", () => {
+    const profile = { ...blankProfile, name: "Ada", mood: "ominous" as const };
+    const scored = getRecommendations(profile);
+
+    expect(getRecommendations(profile, { recommendations: scored })).toBe(scored);
+    expect(qualifyingRecommendations(profile, { recommendations: scored })).toEqual(
+      qualifyingRecommendations(profile),
+    );
+  });
+});

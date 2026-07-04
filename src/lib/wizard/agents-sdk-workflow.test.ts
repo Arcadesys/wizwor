@@ -197,18 +197,19 @@ describe("resolveShowcaseIds", () => {
     expect(resolveShowcaseIds(blankProfile, [anyRealId], catalogPlatforms)).toEqual([]);
   });
 
-  it("caps the result at maxQualifyingRecommendations even if more valid ids are supplied", () => {
+  it("returns an empty array while too many games still qualify (pool is ambiguous)", () => {
     // A lone matched dimension scores 100% (relative to what's been answered),
-    // so this profile alone qualifies well more than 3 games — see the matching
-    // case in recommender.test.ts.
+    // so this profile alone qualifies well more than 3 games — the pool is too
+    // ambiguous to reveal, matching resolveRecommendations, which would strip
+    // these games from the response anyway.
     const broad = { ...blankProfile, name: "Ada", mood: "weird" as const };
     const qualifying = qualifyingRecommendations(broad);
     expect(qualifying.length).toBeGreaterThan(maxQualifyingRecommendations);
-    const ids = qualifying.map((recommendation) => recommendation.game.id);
+    const ids = qualifying.slice(0, maxQualifyingRecommendations).map((recommendation) => recommendation.game.id);
 
     const result = resolveShowcaseIds(broad, ids, catalogPlatforms);
 
-    expect(result).toEqual(ids.slice(0, maxQualifyingRecommendations));
+    expect(result).toEqual([]);
   });
 });
 
