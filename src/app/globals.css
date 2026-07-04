@@ -578,6 +578,18 @@ input:disabled {
   line-height: 1.35;
 }
 
+.sound-caution {
+  margin: 0;
+  padding: 0.55rem 0.62rem;
+  color: var(--terminal-amber);
+  background: #111;
+  border: 3px solid var(--terminal-amber);
+  box-shadow: 2px 2px 0 #000;
+  font-size: clamp(12px, 1.7vw, 16px);
+  letter-spacing: -0.04em;
+  line-height: 1.45;
+}
+
 .console-context-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));

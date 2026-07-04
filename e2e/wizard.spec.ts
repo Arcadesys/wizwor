@@ -1,6 +1,7 @@
 import { expect, test, type Page, type TestInfo } from "@playwright/test";
 
 const postConsolePrompt = "What plaything can I offer you today?";
+const soundOnCaution = "Best with sound on. Turn your speakers down first, then let WIZ speak.";
 
 async function attachScreenshot(page: Page, testInfo: TestInfo, name: string) {
   const body = await page.screenshot({ fullPage: true });
@@ -100,6 +101,7 @@ test("starts blank without canned mock responses", async ({ page }, testInfo) =>
   await expect(page.getByText(/CRT SIGNAL DORMANT/i)).toHaveCount(0);
   await expect(page.getByText(/PRESS ENTER TO SUMMON/i)).toHaveCount(0);
   await expect(page.getByText("Greetings Gamer! What console are you questing on today?")).toBeVisible();
+  await expect(page.getByText(soundOnCaution)).toBeVisible();
   await expect(page.getByRole("heading", { name: "Choose Console Context" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Select NES" })).toBeVisible();
 
