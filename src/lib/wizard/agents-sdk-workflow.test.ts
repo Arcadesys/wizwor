@@ -1,5 +1,6 @@
 import { ModelBehaviorError } from "@openai/agents";
 import { describe, expect, it } from "vitest";
+import type { z } from "zod";
 import {
   buildResponse,
   buildConsumedTurnContext,
@@ -14,15 +15,18 @@ import { catalogPlatforms } from "@/data/games";
 import { bestGuessRecommendations, maxQualifyingRecommendations, qualifyingRecommendations } from "@/lib/recommender";
 import { blankProfile, initialWizardState, type WizardTurnRequest } from "@/lib/wizard/types";
 
-function baseOutput(agentData: Record<string, unknown>) {
-  return {
+type WizardTurnOutputInput = z.input<typeof WizardTurnOutputSchema>;
+type WizardTurnOutput = z.output<typeof WizardTurnOutputSchema>;
+
+function baseOutput(agentData: WizardTurnOutputInput["agentData"]): WizardTurnOutput {
+  return WizardTurnOutputSchema.parse({
     lines: ["The circuits hum."],
     accepted: true,
     profile: {},
     revealed: false,
     recommendedGameIds: [],
     agentData,
-  };
+  });
 }
 
 const narrowProfile = {
