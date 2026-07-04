@@ -1,6 +1,7 @@
 "use client";
 
 import { CSSProperties, FormEvent, KeyboardEvent, useEffect, useMemo, useRef, useState } from "react";
+import type * as ToneNamespace from "tone";
 import { catalogPlatforms, platformLabels, sanitizeEnabledPlatforms, type Platform } from "@/data/games";
 import type { Recommendation, UserProfile } from "@/lib/recommender";
 import type { FeedbackRating } from "@/lib/feedback";
@@ -20,8 +21,19 @@ type Message = WizardMessage & {
 
 type AudioRig = {
   context: AudioContext;
-  timer: number;
-  musicGain: GainNode;
+  tone: typeof ToneNamespace;
+  sequences: ToneNamespace.Sequence<number>[];
+  instruments: Array<{ dispose: () => unknown }>;
+};
+
+type DungeonSong = {
+  title: string;
+  bpm: number;
+  loopEnd: string;
+  bass: string[];
+  stabs: string[];
+  sparks: string[];
+  drumSteps: number[];
 };
 
 type SamConstructor = new (options?: {
@@ -71,6 +83,15 @@ const feedbackOptions: Array<{ rating: FeedbackRating; label: string }> = [
 const consoleGreeting = "Greetings Gamer! What console are you questing on today?";
 const postConsolePrompt = "What plaything can I offer you today?";
 const soundOnCaution = "Best with sound on. Turn your speakers down first, then let WIZ speak.";
+const dungeonSong: DungeonSong = {
+  title: "Wor Dungeon Omen",
+  bpm: 108,
+  loopEnd: "4m",
+  bass: ["A1", "A1", "C2", "B1", "A1", "D2", "C2", "G1", "A1", "A1", "Eb2", "D2", "A1", "F1", "G1", "A1"],
+  stabs: ["A3", "", "C4", "", "Bb3", "", "E3", "", "A3", "", "Eb4", "", "D4", "", "G3", ""],
+  sparks: ["", "E5", "", "C5", "", "Bb4", "", "F#4", "", "A5", "", "Eb5", "", "D5", "", "C#5"],
+  drumSteps: [0, 4, 8, 12, 14],
+};
 
 type WizardTerminalProps = {
   fastMode?: boolean;
@@ -229,11 +250,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
 
   useEffect(() => {
     return () => {
-      if (audioRef.current) {
-        window.clearInterval(audioRef.current.timer);
-        audioRef.current.context.close();
-        audioRef.current = null;
-      }
+      stopMusic();
     };
   }, []);
 
@@ -938,46 +955,76 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
 
   async function startMusic() {
     if (audioRef.current) {
-      await audioRef.current.context.resume();
+      await audioRef.current.tone.start();
+      audioRef.current.tone.getTransport().start();
       setSoundOn(true);
       return audioRef.current;
     }
 
     try {
-      const AudioContextClass =
-        window.AudioContext ||
-        (window as typeof window & { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      const context = new AudioContextClass();
-      const master = context.createGain();
-      const filter = context.createBiquadFilter();
-      const musicGain = context.createGain();
-      master.gain.value = 0.055;
-      musicGain.gain.value = 0.7;
-      filter.type = "lowpass";
-      filter.frequency.value = 1150;
-      filter.connect(master);
-      master.connect(context.destination);
-      musicGain.connect(filter);
+      const Tone = await import("tone");
+      await Tone.start();
 
-      let step = 0;
-      const timer = window.setInterval(() => {
-        const now = context.currentTime;
-        const bass = [55, 55, 82.41, 73.42, 55, 98, 82.41, 49];
-        const high = [220, 0, 196, 0, 164.82, 0, 146.83, 0];
-        playTone(context, musicGain, bass[step % bass.length], now, 0.18, "square", 0.42);
+      const master = new Tone.Gain(0.08).toDestination();
+      const dungeonFilter = new Tone.Filter({ frequency: 980, rolloff: -24, type: "lowpass" }).connect(master);
+      const echo = new Tone.FeedbackDelay({ delayTime: "8n.", feedback: 0.34, wet: 0.24 }).connect(dungeonFilter);
+      const bassSynth = new Tone.MonoSynth({
+        oscillator: { type: "square" },
+        envelope: { attack: 0.006, decay: 0.08, sustain: 0.16, release: 0.08 },
+        filter: { Q: 5, type: "lowpass", rolloff: -24 },
+        filterEnvelope: { attack: 0.002, decay: 0.12, sustain: 0.18, release: 0.08, baseFrequency: 90, octaves: 2.6 },
+      }).connect(dungeonFilter);
+      const stabSynth = new Tone.PolySynth(Tone.Synth, {
+        oscillator: { type: "pulse", width: 0.26 },
+        envelope: { attack: 0.01, decay: 0.1, sustain: 0.04, release: 0.16 },
+      }).connect(echo);
+      const sparkSynth = new Tone.Synth({
+        oscillator: { type: "triangle" },
+        envelope: { attack: 0.004, decay: 0.03, sustain: 0, release: 0.08 },
+      }).connect(echo);
+      const drumSynth = new Tone.NoiseSynth({
+        noise: { type: "brown" },
+        envelope: { attack: 0.001, decay: 0.075, sustain: 0, release: 0.025 },
+      }).connect(dungeonFilter);
 
-        if (high[step % high.length]) {
-          playTone(context, musicGain, high[step % high.length], now + 0.04, 0.08, "triangle", 0.16);
+      const transport = Tone.getTransport();
+      transport.stop();
+      transport.cancel(0);
+      transport.bpm.value = dungeonSong.bpm;
+      transport.loop = true;
+      transport.loopStart = 0;
+      transport.loopEnd = dungeonSong.loopEnd;
+
+      const steps = dungeonSong.bass.map((_, index) => index);
+      const bassSequence = new Tone.Sequence<number>((time, step) => {
+        bassSynth.triggerAttackRelease(dungeonSong.bass[step], "16n", time, 0.78);
+      }, steps, "8n").start(0);
+      const stabSequence = new Tone.Sequence<number>((time, step) => {
+        const note = dungeonSong.stabs[step];
+        if (note) {
+          const shadow = Tone.Frequency(note).transpose(6).toNote();
+          stabSynth.triggerAttackRelease([note, shadow], "32n", time, 0.22);
         }
-
-        if (step % 4 === 0) {
-          playNoise(context, musicGain, now + 0.02);
+      }, steps, "8n").start(0);
+      const sparkSequence = new Tone.Sequence<number>((time, step) => {
+        const note = dungeonSong.sparks[step];
+        if (note) {
+          sparkSynth.triggerAttackRelease(note, "64n", time, 0.13);
         }
+      }, steps, "8n").start(0);
+      const drumSequence = new Tone.Sequence<number>((time, step) => {
+        if (dungeonSong.drumSteps.includes(step)) {
+          drumSynth.triggerAttackRelease("32n", time, step === 14 ? 0.18 : 0.12);
+        }
+      }, steps, "8n").start(0);
 
-        step += 1;
-      }, 230);
-
-      audioRef.current = { context, timer, musicGain };
+      transport.start();
+      audioRef.current = {
+        context: Tone.getContext().rawContext as AudioContext,
+        tone: Tone,
+        sequences: [bassSequence, stabSequence, sparkSequence, drumSequence],
+        instruments: [master, dungeonFilter, echo, bassSynth, stabSynth, sparkSynth, drumSynth],
+      };
       setSoundOn(true);
       return audioRef.current;
     } catch {
@@ -991,8 +1038,14 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       return;
     }
 
-    window.clearInterval(audioRef.current.timer);
-    audioRef.current.context.close();
+    audioRef.current.tone.getTransport().stop();
+    audioRef.current.tone.getTransport().cancel(0);
+    for (const sequence of audioRef.current.sequences) {
+      sequence.dispose();
+    }
+    for (const instrument of audioRef.current.instruments) {
+      instrument.dispose();
+    }
     audioRef.current = null;
   }
 
@@ -1422,6 +1475,9 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                 <span className="terminal-cursor prompt-cursor" />
               </div>
               <div className="prompt-actions">
+                <span className="music-status" aria-live="polite">
+                  {soundOn ? `Playing: ${dungeonSong.title}` : "Music off"}
+                </span>
                 <button
                   type="button"
                   onClick={(event) => {
@@ -1691,23 +1747,6 @@ function playTone(
   gain.connect(destination);
   oscillator.start(start);
   oscillator.stop(start + duration + 0.02);
-}
-
-function playNoise(context: AudioContext, destination: AudioNode, start: number) {
-  const buffer = context.createBuffer(1, context.sampleRate * 0.08, context.sampleRate);
-  const output = buffer.getChannelData(0);
-  for (let index = 0; index < output.length; index += 1) {
-    output[index] = pseudoNoise(index, "n") * (1 - index / output.length);
-  }
-
-  const source = context.createBufferSource();
-  const gain = context.createGain();
-  source.buffer = buffer;
-  gain.gain.setValueAtTime(0.15, start);
-  gain.gain.exponentialRampToValueAtTime(0.001, start + 0.08);
-  source.connect(gain);
-  gain.connect(destination);
-  source.start(start);
 }
 
 function pseudoNoise(index: number, seed: string) {
