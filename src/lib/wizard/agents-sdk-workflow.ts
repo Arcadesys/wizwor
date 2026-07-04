@@ -20,7 +20,7 @@ import {
   suggestNextQuestion,
 } from "@/lib/recommender";
 import { emptyAgentData } from "@/lib/wizard/agent-data";
-import type { WizardTurnRequest, WizardTurnResponse } from "@/lib/wizard/types";
+import type { WizardSoundtrack, WizardTurnRequest, WizardTurnResponse } from "@/lib/wizard/types";
 import { blankProfile, initialWizardState } from "@/lib/wizard/types";
 
 const FlexibleScalarSchema = z.union([z.string(), z.number(), z.boolean()]);
@@ -51,6 +51,7 @@ type WizardRunContext = {
   enabledPlatforms: readonly Platform[];
   profile: UserProfile;
   showcaseRequest: { gameIds: string[] } | null;
+  soundtrackRequest: WizardSoundtrack | null;
 };
 
 // This tool is a capability the agent chooses to call. The fixed workflow is
@@ -131,6 +132,104 @@ const openGameShowcaseTool = tool({
   },
 });
 
+const SetSoundtrackSchema = z.object({
+  title: z.string(),
+  bpm: z.number(),
+  bass: z.array(z.string()).min(8).max(32),
+  stabs: z.array(z.string()).max(32),
+  sparks: z.array(z.string()).max(32),
+  drumSteps: z.array(z.number()).max(32),
+});
+
+type SetSoundtrackInput = z.infer<typeof SetSoundtrackSchema>;
+
+// Scientific pitch the frontend's Tone.js voices accept, e.g. "A1", "Eb2", "F#5".
+const soundtrackNotePattern = /^[A-G](?:#|b)?[0-8]$/;
+
+export type SoundtrackSanitizeResult =
+  | { ok: true; soundtrack: WizardSoundtrack }
+  | { ok: false; reason: string };
+
+// The frontend feeds these strings straight into Tone.js triggerAttackRelease,
+// which throws on malformed notes mid-playback — so never trust the agent's
+// composition blindly: reject bad notes (with a reason the model can retry on)
+// instead of letting them crash the audio rig. Exported for unit tests.
+export function sanitizeSoundtrack(input: SetSoundtrackInput): SoundtrackSanitizeResult {
+  const steps = input.bass.length;
+  if (steps % 8 !== 0) {
+    return { ok: false, reason: `bass must be whole measures: 8, 16, 24, or 32 steps (got ${steps})` };
+  }
+
+  const badBass = input.bass.filter((note) => !soundtrackNotePattern.test(note));
+  if (badBass.length) {
+    return {
+      ok: false,
+      reason: `bass plays every step, so every entry must be a note like "A1" or "Eb2" (bad: ${badBass.join(", ")})`,
+    };
+  }
+
+  for (const [voice, notes] of [
+    ["stabs", input.stabs],
+    ["sparks", input.sparks],
+  ] as const) {
+    const bad = notes.filter((note) => note !== "" && !soundtrackNotePattern.test(note));
+    if (bad.length) {
+      return { ok: false, reason: `${voice} entries must be "" (a rest) or a note like "C4" (bad: ${bad.join(", ")})` };
+    }
+  }
+
+  const padToSteps = (notes: string[]) => Array.from({ length: steps }, (_, index) => notes[index] ?? "");
+  return {
+    ok: true,
+    soundtrack: {
+      title: input.title.trim().slice(0, 48) || "Untitled Wor Loop",
+      bpm: Math.round(Math.min(180, Math.max(70, input.bpm))),
+      // The sequences step on eighth notes, so 8 steps = 1 measure; the
+      // transport loop must land exactly on the sequence boundary or the
+      // song truncates mid-phrase.
+      loopEnd: `${steps / 8}m`,
+      bass: input.bass,
+      stabs: padToSteps(input.stabs),
+      sparks: padToSteps(input.sparks),
+      drumSteps: [...new Set(input.drumSteps.map((step) => Math.round(step)).filter((step) => step >= 0 && step < steps))].sort(
+        (a, b) => a - b,
+      ),
+    },
+  };
+}
+
+// Like open_game_showcase, this tool is the literal mechanism: the composition
+// captured on the run context is returned to the frontend, which rebuilds its
+// Tone.js loop from it. Talking about new music without calling this changes
+// nothing the player can hear.
+const setSoundtrackTool = tool({
+  name: "set_soundtrack",
+  description: [
+    "Replace the looping chiptune soundtrack the player hears, effective immediately. This is the only way to change the music — describing a new track without calling this plays nothing.",
+    "The engine is a 4-voice loop stepped on eighth notes: bass (square wave, plays a note on EVERY step — no rests), stabs (pulse chords, \"\" = rest), sparks (triangle accents, \"\" = rest), and drumSteps (noise hits at the listed step indexes).",
+    "bass sets the loop length: 8, 16, 24, or 32 steps (whole measures); stabs and sparks are padded or truncated to match it. Notes are scientific pitch like \"A1\", \"Eb2\", \"F#5\" (octaves 0-8). bpm is clamped to 70-180.",
+    "Compose to the requested vibe: fast bpm with bright major runs for lively or heroic, slow low minor drones for ominous, dense drumSteps for driving energy.",
+  ].join(" "),
+  parameters: SetSoundtrackSchema,
+  execute: async (input, runContext?: RunContext<WizardRunContext>) => {
+    const result = sanitizeSoundtrack(input);
+    if (!result.ok) {
+      return { applied: false, reason: result.reason };
+    }
+
+    if (runContext) {
+      runContext.context.soundtrackRequest = result.soundtrack;
+    }
+
+    return {
+      applied: true,
+      title: result.soundtrack.title,
+      bpm: result.soundtrack.bpm,
+      steps: result.soundtrack.bass.length,
+    };
+  },
+});
+
 const AgentGeneratedDataSchema = z.record(z.string(), FlexibleValueSchema).default({});
 
 export const WizardTurnOutputSchema = z.object({
@@ -167,6 +266,7 @@ const liveWizardAgent = new Agent<WizardRunContext, typeof WizardTurnOutputSchem
     "Do not require the player's name for anything. If they offer a name, remember it in memoryMarkdown and optionally include it in profile.name; otherwise omit profile.name.",
     "You maintain the player's durable MEMORY.md. Every turn receives the current Markdown memory. Return memoryMarkdown only when you learned something durable: name, preferences, terminal color wishes, games previously played, games rejected, accessibility/audio/style preferences, or useful notes. Keep the Markdown compact, preserving the headings: Player, Preferences, Games Previously Played, Notes.",
     "If the player asks to change terminal colors, update memoryMarkdown and return terminalTheme with CSS hex colors for the requested palette. Use background, foreground, green, amber, red, and blue keys when relevant.",
+    "The terminal loops a synthesized chiptune soundtrack. When the player asks for different music — a new vibe, genre, or energy in the soundtrack, song, or background music (e.g. 'give me a lively shmup soundtrack') — that is a music request, not a game request: compose a new loop on the spot and call the set_soundtrack tool, then confirm the new track in-character. Do not fold music requests into the game profile, do not interrogate them about subgenres first, and note their music taste in memoryMarkdown.",
     `After the player answers what system they are questing on, messages include recommendationGate: the real catalog scored against the profile as currently known. Reveal only when recommendationGate.recommendationWindowOpen is true, meaning 1 to ${maxQualifyingRecommendations} games score at least ${Math.round(recommendationThreshold * 100)}%. Call the lookup_recommendations tool only when you want to test a hypothetical profile different from the known one (e.g. 'what if difficulty were X'); you don't need it just to see the current picture.`,
     "Only ever recommend real games from currentBestMatches or a tool result — copy their exact id into recommendedGameIds (at most 3, ranked by how well they fit). Never invent, describe, or score a game yourself. If revealed is false, leave recommendedGameIds empty.",
     "Setting revealed: true and recommendedGameIds does not by itself display anything to the player — it's bookkeeping. To actually show a reveal, call the open_game_showcase tool with the same id(s) (at most 3, ranked best first) at the same moment you set revealed: true. That tool call is what opens the showcase window; skipping it means the player sees nothing even though you decided to reveal.",
@@ -187,7 +287,7 @@ const liveWizardAgent = new Agent<WizardRunContext, typeof WizardTurnOutputSchem
     },
     store: true,
   },
-  tools: [lookupRecommendationsTool, openGameShowcaseTool],
+  tools: [lookupRecommendationsTool, openGameShowcaseTool, setSoundtrackTool],
   outputType: WizardTurnOutputSchema,
 });
 
@@ -256,9 +356,10 @@ async function runAgentTurnResilient(
 ) {
   for (let attempt = 1; attempt <= MAX_OUTPUT_SCHEMA_ATTEMPTS; attempt++) {
     // Reset per attempt: a retry re-runs the agent from scratch, so a
-    // showcase request captured during a failed attempt must not leak into
-    // the retry's result.
+    // showcase or soundtrack request captured during a failed attempt must
+    // not leak into the retry's result.
     runContext.showcaseRequest = null;
+    runContext.soundtrackRequest = null;
     try {
       return await runner.run(agent, conversationHistory, {
         context: runContext,
@@ -345,13 +446,14 @@ async function runWizardConversationTurn(request: WizardTurnRequest, knownProfil
       enabledPlatforms,
       profile: knownProfile,
       showcaseRequest: null,
+      soundtrackRequest: null,
     };
     let result;
     try {
       result = await runAgentTurnResilient(runner, liveWizardAgent, conversationHistory, runContext);
     } catch (error) {
       if (isAgentDataSchemaError(error)) {
-        return { output: fallbackTurnOutput(), consumed, showcaseRequest: null };
+        return { output: fallbackTurnOutput(), consumed, showcaseRequest: null, soundtrackRequest: null };
       }
       throw error;
     }
@@ -364,6 +466,7 @@ async function runWizardConversationTurn(request: WizardTurnRequest, knownProfil
       output: result.finalOutput as WizardTurnOutput,
       consumed,
       showcaseRequest: runContext.showcaseRequest,
+      soundtrackRequest: runContext.soundtrackRequest,
     };
   });
 }
@@ -398,6 +501,7 @@ function buildResponse(
   consumed: Record<string, unknown>,
   includeRecommendationContext = true,
   showcaseRequest: { gameIds: string[] } | null = null,
+  soundtrackRequest: WizardSoundtrack | null = null,
 ): WizardTurnResponse {
   const recommendations = includeRecommendationContext && output.revealed
     ? resolveRecommendations(profile, output.recommendedGameIds, enabledPlatforms)
@@ -436,6 +540,7 @@ function buildResponse(
         }
       : emptyAgentData(consumed, output.agentData ?? {}),
     showcase: showcaseGames.length ? { games: showcaseGames } : null,
+    soundtrack: soundtrackRequest,
   };
 }
 
@@ -455,7 +560,7 @@ export function ensureFirstTurnQuestion(lines: string[]): string[] {
 
 export async function runLiveWizardTurn(request: WizardTurnRequest): Promise<WizardTurnResponse> {
   const knownProfile: UserProfile = { ...blankProfile, ...request.state.profile };
-  const { output, consumed, showcaseRequest } = await runWizardConversationTurn(request, knownProfile);
+  const { output, consumed, showcaseRequest, soundtrackRequest } = await runWizardConversationTurn(request, knownProfile);
   const nextProfile = mergeProfile(knownProfile, output.profile);
   const isFirstTurn = isFirstWizardTurn(request);
   return buildResponse(
@@ -470,5 +575,6 @@ export async function runLiveWizardTurn(request: WizardTurnRequest): Promise<Wiz
     consumed,
     !isFirstTurn,
     showcaseRequest,
+    soundtrackRequest,
   );
 }

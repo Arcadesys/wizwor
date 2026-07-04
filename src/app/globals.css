@@ -143,6 +143,10 @@ input:disabled {
   border-color: var(--terminal-green);
 }
 
+.sound-button.is-voice {
+  border-color: var(--terminal-amber);
+}
+
 .sound-button.is-off {
   border-color: var(--terminal-red);
 }
@@ -224,6 +228,10 @@ input:disabled {
   opacity: 1;
 }
 
+.sound-button.is-voice .audio-wave-1 {
+  opacity: 1;
+}
+
 .audio-slash {
   top: 0.18rem;
   right: 0.18rem;
@@ -236,6 +244,10 @@ input:disabled {
 }
 
 .sound-button.is-on .audio-slash {
+  opacity: 0;
+}
+
+.sound-button.is-voice .audio-slash {
   opacity: 0;
 }
 

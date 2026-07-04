@@ -472,6 +472,58 @@ describe("wizard terminal UI", () => {
     expect(noteBody.note).toBe("I wanted more exploration and less combat.");
   });
 
+  it("does not reopen console context when a recommendation response has a false started flag", async () => {
+    const metroidMother = {
+      game: {
+        id: "metroid-mother",
+        title: "Metroid: Mother",
+        platform: "romhack" as const,
+        isRomhack: true,
+        year: "romhack",
+        pitch: "A friendlier, map-aware restoration of Metroid that keeps the lonely alien dread intact.",
+        playthroughUrl: "https://www.youtube.com/watch?v=S7fwbZjLpXE",
+        moods: ["ominous" as const],
+        difficulty: "fair" as const,
+        story: "some" as const,
+        playStyle: "side-scroller" as const,
+        obscurity: "hidden-gem" as const,
+        tags: ["exploration"],
+      },
+      score: 0.96,
+      reasons: ["answers the ominous mood"],
+    };
+
+    vi.spyOn(globalThis, "fetch").mockImplementation(() =>
+      response({
+        adapter: "chatgpt",
+        accepted: true,
+        lines: ["Recommendation ready."],
+        recommendations: [metroidMother],
+        showcase: { games: [metroidMother] },
+        suggestions: [],
+        state: {
+          started: false,
+          needsName: false,
+          activeQuestionKey: null,
+          awaitingFocus: false,
+          revealed: true,
+          profile: { name: "Ada", mood: "ominous" },
+        },
+      }),
+    );
+
+    render(<Home />);
+    const input = await screen.findByLabelText("Terminal command prompt");
+    await waitFor(() => expect(input).toBeEnabled());
+    await chooseConsole("Romhacks");
+
+    fireEvent.change(input, { target: { value: "Ada wants an ominous side-scroller." } });
+    fireEvent.submit(input.closest("form")!);
+
+    await screen.findByRole("heading", { name: "Metroid: Mother" });
+    expect(screen.queryByRole("heading", { name: /Choose Console Context/i })).not.toBeInTheDocument();
+  });
+
   it("shows a loading indicator immediately after submitting, before the reply arrives", async () => {
     let resolveFetch!: (value: Response) => void;
     const pending = new Promise<Response>((resolve) => {

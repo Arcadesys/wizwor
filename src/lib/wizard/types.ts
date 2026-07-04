@@ -65,6 +65,19 @@ export type WizardState = {
   terminalTheme?: WizardTerminalTheme;
 };
 
+// A chiptune loop for the terminal's Tone.js engine: four voices stepped on
+// eighth notes (square bass, pulse stabs, triangle sparks, noise drums).
+// Empty strings in stabs/sparks are rests; bass plays every step.
+export type WizardSoundtrack = {
+  title: string;
+  bpm: number;
+  loopEnd: string;
+  bass: string[];
+  stabs: string[];
+  sparks: string[];
+  drumSteps: number[];
+};
+
 export type WizardTerminalTheme = {
   background?: string;
   foreground?: string;
@@ -95,6 +108,7 @@ export type WizardTurnResponse = {
   agentData?: AgentData;
   notes?: string[];
   showcase?: Showcase | null;
+  soundtrack?: WizardSoundtrack | null;
 };
 
 export const blankProfile: UserProfile = {};
