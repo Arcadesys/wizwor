@@ -23,6 +23,13 @@ import {
 } from "@/lib/recommender";
 import { emptyAgentData } from "@/lib/wizard/agent-data";
 import { enforceWizardResponseLength, WIZARD_RESPONSE_CHARACTER_LIMIT } from "@/lib/wizard/response-guard";
+import {
+  isPlayableSoundtrack,
+  isValidChordEntry,
+  isValidRhythmEntry,
+  rhythmTokens,
+  soundtrackNotePattern,
+} from "@/lib/wizard/soundtrack";
 import type { WizardSoundtrack, WizardTurnRequest, WizardTurnResponse } from "@/lib/wizard/types";
 import { blankProfile, initialWizardState } from "@/lib/wizard/types";
 
@@ -55,6 +62,7 @@ type WizardRunContext = {
   profile: UserProfile;
   showcaseRequest: { gameIds: string[] } | null;
   soundtrackRequest: WizardSoundtrack | null;
+  currentSoundtrack: WizardSoundtrack | null;
 };
 
 // This tool is a capability the agent chooses to call. The fixed workflow is
@@ -168,19 +176,20 @@ const openGameShowcaseTool = tool({
   },
 });
 
+// Every field is nullable so the agent can edit one voice of the current
+// track (null = keep as-is) — the SDK forces strict mode for Zod tool
+// parameters, which forbids .optional(), so null is the "unchanged" marker.
 const SetSoundtrackSchema = z.object({
-  title: z.string(),
-  bpm: z.number(),
-  bass: z.array(z.string()).min(8).max(32),
-  stabs: z.array(z.string()).max(32),
-  sparks: z.array(z.string()).max(32),
-  drumSteps: z.array(z.number()).max(32),
+  title: z.string().nullable(),
+  bpm: z.number().nullable(),
+  bassline: z.array(z.string()).min(8).max(32).nullable(),
+  chords: z.array(z.string()).max(8).nullable(),
+  harmony: z.array(z.string()).max(32).nullable(),
+  lead: z.array(z.string()).max(32).nullable(),
+  rhythm: z.array(z.string()).max(32).nullable(),
 });
 
 type SetSoundtrackInput = z.infer<typeof SetSoundtrackSchema>;
-
-// Scientific pitch the frontend's Tone.js voices accept, e.g. "A1", "Eb2", "F#5".
-const soundtrackNotePattern = /^[A-G](?:#|b)?[0-8]$/;
 
 export type SoundtrackSanitizeResult =
   | { ok: true; soundtrack: WizardSoundtrack }
@@ -189,47 +198,113 @@ export type SoundtrackSanitizeResult =
 // The frontend feeds these strings straight into Tone.js triggerAttackRelease,
 // which throws on malformed notes mid-playback — so never trust the agent's
 // composition blindly: reject bad notes (with a reason the model can retry on)
-// instead of letting them crash the audio rig. Exported for unit tests.
-export function sanitizeSoundtrack(input: SetSoundtrackInput): SoundtrackSanitizeResult {
-  const steps = input.bass.length;
-  if (steps % 8 !== 0) {
-    return { ok: false, reason: `bass must be whole measures: 8, 16, 24, or 32 steps (got ${steps})` };
-  }
-
-  const badBass = input.bass.filter((note) => !soundtrackNotePattern.test(note));
-  if (badBass.length) {
+// instead of letting them crash the audio rig. Null fields keep the value from
+// `current` (the track the frontend reports as playing), so the agent can edit
+// one voice without re-transcribing the rest. Only agent-supplied fields are
+// re-validated — callers must gate `current` through isPlayableSoundtrack
+// first, since it arrives as untrusted client JSON. Exported for unit tests.
+export function sanitizeSoundtrack(
+  input: SetSoundtrackInput,
+  current: WizardSoundtrack | null = null,
+): SoundtrackSanitizeResult {
+  const bassline = input.bassline ?? current?.bassline;
+  if (!bassline) {
     return {
       ok: false,
-      reason: `bass plays every step, so every entry must be a note like "A1" or "Eb2" (bad: ${badBass.join(", ")})`,
+      reason: "no track is currently playing, so bassline is required: a full bassline of 8, 16, 24, or 32 steps",
     };
   }
 
-  for (const [voice, notes] of [
-    ["stabs", input.stabs],
-    ["sparks", input.sparks],
-  ] as const) {
-    const bad = notes.filter((note) => note !== "" && !soundtrackNotePattern.test(note));
-    if (bad.length) {
-      return { ok: false, reason: `${voice} entries must be "" (a rest) or a note like "C4" (bad: ${bad.join(", ")})` };
+  const steps = bassline.length;
+  if (steps % 8 !== 0) {
+    return { ok: false, reason: `bassline must be whole measures: 8, 16, 24, or 32 steps (got ${steps})` };
+  }
+
+  const badBassline = (input.bassline ?? []).filter(
+    (note) => note !== "" && !soundtrackNotePattern.test(note),
+  );
+  if (badBassline.length) {
+    return {
+      ok: false,
+      reason: `bassline entries must be "" (a rest) or a note like "A1" or "Eb2" (bad: ${badBassline.join(", ")})`,
+    };
+  }
+
+  if (input.chords) {
+    const badChords = input.chords.filter((entry) => !isValidChordEntry(entry));
+    if (badChords.length) {
+      return {
+        ok: false,
+        reason: `chords entries must be "" (carry the previous chord) or up to 4 space-separated notes like "A2 C3 E3" (bad: ${badChords.join(", ")})`,
+      };
     }
   }
 
-  const padToSteps = (notes: string[]) => Array.from({ length: steps }, (_, index) => notes[index] ?? "");
+  if (input.harmony) {
+    const badHarmony = input.harmony.filter((entry) => entry !== "" && entry !== "x");
+    if (badHarmony.length) {
+      return {
+        ok: false,
+        reason: `harmony entries must be "" (silent) or "x" (strike the active chord) (bad: ${badHarmony.join(", ")})`,
+      };
+    }
+  }
+
+  if (input.lead) {
+    const badLead = input.lead.filter((note) => note !== "" && !soundtrackNotePattern.test(note));
+    if (badLead.length) {
+      return {
+        ok: false,
+        reason: `lead entries must be "" (a rest) or a note like "C4" (bad: ${badLead.join(", ")})`,
+      };
+    }
+  }
+
+  if (input.rhythm) {
+    const badRhythm = input.rhythm.filter((entry) => !isValidRhythmEntry(entry));
+    if (badRhythm.length) {
+      return {
+        ok: false,
+        reason: `rhythm entries must be "" or space-separated drum names from ${rhythmTokens.join("/")} (bad: ${badRhythm.join(", ")})`,
+      };
+    }
+  }
+
+  const bpm = input.bpm ?? current?.bpm;
+  // padToSteps also reconciles a length change: when the agent swaps in a
+  // longer or shorter bassline, the carried-over voices stretch (with rests)
+  // or truncate to the new loop length.
+  const padToSteps = (entries: string[], length: number) =>
+    Array.from({ length }, (_, index) => entries[index] ?? "");
+
+  const harmony = padToSteps(input.harmony ?? current?.harmony ?? [], steps);
+  const lead = padToSteps(input.lead ?? current?.lead ?? [], steps);
+  const rhythm = padToSteps(input.rhythm ?? current?.rhythm ?? [], steps);
+  const chords = padToSteps(input.chords ?? current?.chords ?? [], steps / 4);
+
+  if (
+    bassline.every((note) => note === "") &&
+    harmony.every((entry) => entry === "") &&
+    lead.every((note) => note === "") &&
+    rhythm.every((entry) => entry === "")
+  ) {
+    return { ok: false, reason: "every voice is a rest — the loop would be silent; give at least one voice notes to play" };
+  }
+
   return {
     ok: true,
     soundtrack: {
-      title: input.title.trim().slice(0, 48) || "Untitled Wor Loop",
-      bpm: Number.isFinite(input.bpm) ? Math.round(Math.min(180, Math.max(70, input.bpm))) : 120,
+      title: (input.title ?? current?.title ?? "").trim().slice(0, 48) || "Untitled Wor Loop",
+      bpm: typeof bpm === "number" && Number.isFinite(bpm) ? Math.round(Math.min(180, Math.max(70, bpm))) : 120,
       // The sequences step on eighth notes, so 8 steps = 1 measure; the
       // transport loop must land exactly on the sequence boundary or the
       // song truncates mid-phrase.
       loopEnd: `${steps / 8}m`,
-      bass: input.bass,
-      stabs: padToSteps(input.stabs),
-      sparks: padToSteps(input.sparks),
-      drumSteps: [...new Set(input.drumSteps.map((step) => Math.round(step)).filter((step) => step >= 0 && step < steps))].sort(
-        (a, b) => a - b,
-      ),
+      bassline,
+      chords,
+      harmony,
+      lead,
+      rhythm,
     },
   };
 }
@@ -241,14 +316,15 @@ export function sanitizeSoundtrack(input: SetSoundtrackInput): SoundtrackSanitiz
 const setSoundtrackTool = tool({
   name: "set_soundtrack",
   description: [
-    "Replace the looping chiptune soundtrack the player hears, effective immediately. This is the only way to change the music — describing a new track without calling this plays nothing.",
-    "The engine is a 4-voice loop stepped on eighth notes: bass (square wave, plays a note on EVERY step — no rests), stabs (pulse chords, \"\" = rest), sparks (triangle accents, \"\" = rest), and drumSteps (noise hits at the listed step indexes).",
-    "bass sets the loop length: 8, 16, 24, or 32 steps (whole measures); stabs and sparks are padded or truncated to match it. Notes are scientific pitch like \"A1\", \"Eb2\", \"F#5\" (octaves 0-8). bpm is clamped to 70-180.",
-    "Compose to the requested vibe: fast bpm with bright major runs for lively or heroic, slow low minor drones for ominous, dense drumSteps for driving energy.",
+    "Replace or edit the looping chiptune soundtrack the player hears, effective immediately. This is the only way to change the music — describing a new track without calling this plays nothing.",
+    "The engine is five musical roles stepped on eighth notes: bassline (the foundation — \"\" = rest, or a note like \"A1\"), chords (the harmonic progression — one entry per HALF-MEASURE, i.e. every 4 steps; \"\" carries the previous chord forward, or a stack of up to 4 space-separated notes like \"A2 C3 E3\"), harmony (when the chord strikes — \"\" = silent, \"x\" = strike the currently active chord), lead (the melody — \"\" = rest, or a note), and rhythm (the beat — \"\" or space-separated drum hits from kick/snare/hat, e.g. \"kick hat\").",
+    "Every field is nullable: pass null to keep that part of the currently playing track unchanged. Supply only the field(s) you want to change for a partial edit (e.g. only rhythm to make the beat busier, only bassline to swap the bassline, only chords to change the progression), or supply everything to replace the track entirely. bassline is required only when no track is playing yet.",
+    "bassline sets the loop length: 8, 16, 24, or 32 steps (whole measures); chords is padded/truncated to steps/4, and harmony/lead/rhythm are padded/truncated to steps. Notes are scientific pitch like \"A1\", \"Eb2\", \"F#5\" (octaves 0-8). bpm is clamped to 70-180.",
+    "Compose to the requested vibe: fast bpm with bright major-key chords for lively or heroic, slow low minor progressions for ominous, dense rhythm for driving energy. Write a bassline and lead that fit the active chords.",
   ].join(" "),
   parameters: SetSoundtrackSchema,
   execute: async (input, runContext?: RunContext<WizardRunContext>) => {
-    const result = sanitizeSoundtrack(input);
+    const result = sanitizeSoundtrack(input, runContext?.context.currentSoundtrack ?? null);
     if (!result.ok) {
       return { applied: false, reason: result.reason };
     }
@@ -261,7 +337,7 @@ const setSoundtrackTool = tool({
       applied: true,
       title: result.soundtrack.title,
       bpm: result.soundtrack.bpm,
-      steps: result.soundtrack.bass.length,
+      steps: result.soundtrack.bassline.length,
     };
   },
 });
@@ -302,7 +378,7 @@ const liveWizardAgent = new Agent<WizardRunContext, typeof WizardTurnOutputSchem
     "Do not require the player's name for anything. If they offer a name, remember it in memoryMarkdown and optionally include it in profile.name; otherwise omit profile.name.",
     "You maintain the player's durable MEMORY.md. Every turn receives the current Markdown memory. Return memoryMarkdown only when you learned something durable: name, preferences, terminal color wishes, games previously played, games rejected, accessibility/audio/style preferences, or useful notes. Keep the Markdown compact, preserving the headings: Player, Preferences, Games Previously Played, Notes.",
     "If the player asks to change terminal colors, update memoryMarkdown and return terminalTheme with CSS hex colors for the requested palette. Use background, foreground, green, amber, red, and blue keys when relevant.",
-    "The terminal loops a synthesized chiptune soundtrack. When the player asks for different music — a new vibe, genre, or energy in the soundtrack, song, or background music (e.g. 'give me a lively shmup soundtrack') — that is a music request, not a game request: compose a new loop on the spot and call the set_soundtrack tool, then confirm the new track in-character. Do not fold music requests into the game profile, do not interrogate them about subgenres first, and note their music taste in memoryMarkdown.",
+    "The terminal loops a synthesized chiptune soundtrack (currentSoundtrack in your context summarizes what's playing, including its chord progression). When the player asks for different music — a new vibe, genre, or energy in the soundtrack, song, or background music (e.g. 'give me a lively shmup soundtrack') — that is a music request, not a game request: compose a new loop on the spot and call the set_soundtrack tool, then confirm the new track in-character. For a tweak to the current track — 'make the rhythm busier', 'change the bassline', 'a different chord progression', 'a little faster' — call set_soundtrack with only the field(s) that should change and null for the rest; whatever you pass null for keeps playing as-is. Do not fold music requests into the game profile, do not interrogate them about subgenres first, and note their music taste in memoryMarkdown.",
     `After the player answers what system they are questing on, messages include recommendationGate: the real catalog scored against the profile as currently known. Reveal when recommendationGate.recommendationWindowOpen is true, meaning 1 to ${maxQualifyingRecommendations} games score at least ${Math.round(recommendationThreshold * 100)}%. Call the lookup_recommendations tool only when you want to test a hypothetical profile different from the known one (e.g. 'what if difficulty were X'); you don't need it just to see the current picture.`,
     `When recommendationGate.qualifyingMatchCount is 0 — no game clears the ${Math.round(recommendationThreshold * 100)}% gate — never stonewall the player behind the threshold. Two moves, in order: (1) If real ambiguity remains, ask one clarifying question aimed at raising certainty. The strongest is asking which single preference should rule the others; set profile.focus to that dimension key (mood, playStyle, difficulty, story, obscurity, romhack, or keywords) and games honoring the ruling preference are boosted above the gate. (2) If no ambiguity is left — the useful questions are answered, the player deferred, or another question won't move the numbers — commit: set revealed true with the top currentBestMatches id(s) and call open_game_showcase (when recommendationGate.bestGuessAvailable is true, the showcase accepts the top-scored games as best guesses). Present it honestly as the closest signal on the shelf, naming the match percent, not as a perfect rune.`,
     "Only ever recommend real games from currentBestMatches or a tool result — copy their exact id into recommendedGameIds (at most 3, ranked by how well they fit). Never invent, describe, or score a game yourself. If revealed is false, leave recommendedGameIds empty.",
@@ -447,14 +523,35 @@ export function isFirstWizardTurn(request: WizardTurnRequest) {
   return !request.messages.some((message) => message.speaker === "wizard");
 }
 
+// state.soundtrack is untrusted client JSON headed for a set_soundtrack merge
+// and, from there, straight into the frontend's Tone.js voices — a corrupt
+// track is discarded here (the tool then asks for a full bassline) rather
+// than laundered through a partial edit.
+function currentSoundtrackFromState(request: WizardTurnRequest): WizardSoundtrack | null {
+  return isPlayableSoundtrack(request.state.soundtrack) ? request.state.soundtrack : null;
+}
+
 export function buildConsumedTurnContext(request: WizardTurnRequest, knownProfile: UserProfile) {
   const enabledPlatforms = request.state.enabledPlatforms ?? [...catalogPlatforms];
+  const currentSoundtrack = currentSoundtrackFromState(request);
   const consumed: Record<string, unknown> = {
     command: request.command,
     knownProfile,
     enabledPlatforms,
     memoryMarkdown: request.state.memoryMarkdown,
     terminalTheme: request.state.terminalTheme,
+    // Summary only — set_soundtrack merges against the full track in code, so
+    // the model never needs the note arrays. The chord progression is
+    // included (short) so the model can write a fitting bassline/lead over it
+    // without needing the full harmony/lead/rhythm arrays.
+    currentSoundtrack: currentSoundtrack
+      ? {
+          title: currentSoundtrack.title,
+          bpm: currentSoundtrack.bpm,
+          steps: currentSoundtrack.bassline.length,
+          chords: currentSoundtrack.chords,
+        }
+      : null,
     exchangesSoFar: request.messages.length,
     recentMessages: request.messages.slice(-8),
     transGameContributors: transGameContributorsForAgent(),
@@ -508,6 +605,7 @@ async function runWizardConversationTurn(request: WizardTurnRequest, knownProfil
       profile: knownProfile,
       showcaseRequest: null,
       soundtrackRequest: null,
+      currentSoundtrack: currentSoundtrackFromState(request),
     };
     let result;
     try {

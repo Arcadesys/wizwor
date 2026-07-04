@@ -7,6 +7,7 @@ import type { Recommendation, UserProfile } from "@/lib/recommender";
 import type { FeedbackRating } from "@/lib/feedback";
 import { isResetCommand } from "@/lib/wizard/interpreter";
 import { WIZARD_RESPONSE_TOO_LONG_ERROR } from "@/lib/wizard/response-guard";
+import { activeChordAtStep, isPlayableSoundtrack, parseRhythm } from "@/lib/wizard/soundtrack";
 import type {
   WizardMessage,
   WizardOption,
@@ -27,6 +28,10 @@ type AudioRig = {
   sequences: ToneNamespace.Sequence<number>[];
   instruments: Array<{ dispose: () => unknown }>;
   musicActive: boolean;
+  // The step count the currently-playing sequences were built for. A
+  // same-length soundtrack edit can update live (sequences read
+  // soundtrackRef.current per trigger); a length change must rebuild.
+  builtSteps: number;
 };
 
 type AudioMode = "muted" | "voice" | "music";
@@ -66,6 +71,7 @@ const storageKey = "wyrm-terminal-profile";
 const memoryStorageKey = "wyrm-terminal-MEMORY.md";
 const themeStorageKey = "wyrm-terminal-theme";
 const platformStorageKey = "wyrm-terminal-platforms";
+const soundtrackStorageKey = "wyrm-terminal-soundtrack";
 const arrowKeys = new Set(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]);
 const recommendationButtonSelector = "[data-recommendation-button='true']";
 
@@ -83,10 +89,13 @@ const dungeonSong: WizardSoundtrack = {
   title: "Wor Dungeon Omen",
   bpm: 108,
   loopEnd: "4m",
-  bass: ["A1", "A1", "C2", "B1", "A1", "D2", "C2", "G1", "A1", "A1", "Eb2", "D2", "A1", "F1", "G1", "A1"],
-  stabs: ["A3", "", "C4", "", "Bb3", "", "E3", "", "A3", "", "Eb4", "", "D4", "", "G3", ""],
-  sparks: ["", "E5", "", "C5", "", "Bb4", "", "F#4", "", "A5", "", "Eb5", "", "D5", "", "C#5"],
-  drumSteps: [0, 4, 8, 12, 14],
+  bassline: ["A1", "A1", "C2", "B1", "A1", "D2", "C2", "G1", "A1", "A1", "Eb2", "D2", "A1", "F1", "G1", "A1"],
+  // Am - F - C - E, one chord per half-measure: a minor-key cadence with the
+  // final E major resolving the leading tone back to A.
+  chords: ["A2 C3 E3", "F2 A2 C3", "C3 E3 G3", "E2 G#2 B2"],
+  harmony: ["x", "", "x", "", "x", "", "x", "", "x", "", "x", "", "x", "", "x", ""],
+  lead: ["", "E5", "", "C5", "", "Bb4", "", "F#4", "", "A5", "", "Eb5", "", "D5", "", "C#5"],
+  rhythm: ["kick", "", "", "", "snare", "", "", "", "kick", "", "", "", "snare", "", "hat", ""],
 };
 
 type WizardTerminalProps = {
@@ -142,6 +151,13 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const audioRef = useRef<AudioRig | null>(null);
   const soundtrackRef = useRef<WizardSoundtrack>(dungeonSong);
   const audioBusyRef = useRef(false);
+  // Serializes every audio lifecycle transition (startup autoplay, the sound
+  // toggle, a tool-driven soundtrack change, unmount cleanup) so they can
+  // never build/tear down the rig concurrently — see ensureAudioRig's
+  // invariant comment for why that matters.
+  const audioChainRef = useRef(Promise.resolve());
+  const audioModeRef = useRef<AudioMode>("muted");
+  const audioDisposedRef = useRef(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const streamChainRef = useRef(Promise.resolve());
@@ -188,10 +204,23 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
           setEnabledPlatforms(restoredPlatforms);
           enabledPlatformsRef.current = restoredPlatforms;
         }
+        const savedSoundtrack = persistentStorage?.getItem(soundtrackStorageKey);
+        if (savedSoundtrack) {
+          const restoredSoundtrack: unknown = JSON.parse(savedSoundtrack);
+          // A tampered or stale track would crash Tone.js mid-playback, so a
+          // failed check falls back to the built-in dungeon song.
+          if (isPlayableSoundtrack(restoredSoundtrack)) {
+            setSoundtrack(restoredSoundtrack);
+            soundtrackRef.current = restoredSoundtrack;
+          } else {
+            persistentStorage?.removeItem(soundtrackStorageKey);
+          }
+        }
       } catch {
         sessionStorage.removeItem(storageKey);
         getPersistentStorage()?.removeItem(themeStorageKey);
         getPersistentStorage()?.removeItem(platformStorageKey);
+        getPersistentStorage()?.removeItem(soundtrackStorageKey);
       } finally {
         setHydrated(true);
       }
@@ -245,17 +274,25 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       return;
     }
 
+    // A StrictMode dev double-invoke re-runs this effect after the unmount
+    // cleanup below has flagged the session disposed; clear that flag so
+    // the "remounted" instance can still start audio.
+    audioDisposedRef.current = false;
     startupSoundAttemptedRef.current = true;
-    void startMusic().then((rig) => {
+    void enqueueAudio(async () => {
+      const rig = await startMusic();
       if (rig) {
-        void loadSam();
+        await loadSam();
       }
     });
   }, [fastMode, hydrated]);
 
   useEffect(() => {
     return () => {
-      stopAllAudio();
+      audioDisposedRef.current = true;
+      void enqueueAudio(async () => {
+        stopAllAudio();
+      });
     };
   }, []);
 
@@ -402,6 +439,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       enabledPlatforms: enabledPlatformsRef.current,
       memoryMarkdown: memoryMarkdownRef.current,
       terminalTheme: terminalThemeRef.current,
+      soundtrack: soundtrackRef.current,
     };
   }
 
@@ -955,40 +993,74 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     return ids[getSafeSuggestionIndex(ids.length, controlNavIndex)] === id;
   }
 
+  function updateAudioMode(mode: AudioMode) {
+    audioModeRef.current = mode;
+    setAudioMode(mode);
+  }
+
+  // Every audio lifecycle transition (toggle, startup autoplay, a
+  // soundtrack change, unmount cleanup) runs through this queue instead of
+  // firing directly, so two transitions can never build/tear down the rig
+  // concurrently — the exact hazard that let the rig go split-brain (music
+  // audibly playing on an orphaned rig while audioRef pointed at a second,
+  // silent one, so soundtrack changes appeared to do nothing).
+  function enqueueAudio(task: () => Promise<void>) {
+    const next = audioChainRef.current.then(async () => {
+      try {
+        await task();
+      } catch (error) {
+        console.warn("Audio task failed:", error);
+      }
+    });
+    audioChainRef.current = next;
+    return next;
+  }
+
   async function toggleSound() {
     // The button stays enabled while the rig loads, so a double-click would
     // otherwise run two transitions concurrently — building two sets of
     // synths/sequences where the first set's references are overwritten and
-    // its loops keep playing with no way to stop them.
+    // its loops keep playing with no way to stop them. This guard is
+    // separate from the queue: a queued double-toggle would bounce music
+    // off/on, which is worse than just ignoring the re-entrant click.
     if (audioBusyRef.current) {
       return;
     }
 
     audioBusyRef.current = true;
-    try {
-      if (audioMode === "muted") {
-        const rig = await ensureAudioRig();
-        if (rig) {
-          await loadSam();
-          setAudioMode("voice");
+    await enqueueAudio(async () => {
+      try {
+        const mode = audioModeRef.current;
+        if (mode === "muted") {
+          const rig = await ensureAudioRig();
+          if (rig) {
+            await loadSam();
+            updateAudioMode("voice");
+          }
+          return;
         }
-        return;
-      }
 
-      if (audioMode === "voice") {
-        await startMusic();
-        await loadSam();
-        return;
-      }
+        if (mode === "voice") {
+          await startMusic();
+          await loadSam();
+          return;
+        }
 
-      stopAllAudio();
-      setAudioMode("muted");
-    } finally {
-      audioBusyRef.current = false;
-    }
+        stopAllAudio();
+        updateAudioMode("muted");
+      } finally {
+        audioBusyRef.current = false;
+      }
+    });
   }
 
   async function ensureAudioRig() {
+    // Safe only because every caller is routed through enqueueAudio: this
+    // check-then-create can't race against another build, and a disposed
+    // (unmounted) session refuses to resurrect a rig.
+    if (audioDisposedRef.current) {
+      return null;
+    }
     if (audioRef.current) {
       await audioRef.current.tone.start();
       return audioRef.current;
@@ -1014,6 +1086,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
         sequences: [],
         instruments: [],
         musicActive: false,
+        builtSteps: 0,
       };
       return audioRef.current;
     } catch {
@@ -1024,13 +1097,13 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   async function startMusic() {
     const rig = await ensureAudioRig();
     if (!rig) {
-      setAudioMode("muted");
+      updateAudioMode("muted");
       return null;
     }
 
     if (rig.musicActive) {
       rig.tone.getTransport().start();
-      setAudioMode("music");
+      updateAudioMode("music");
       return rig;
     }
 
@@ -1039,6 +1112,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       const Tone = rig.tone;
       const master = new Tone.Gain(dungeonMusicGain).toDestination();
       const dungeonFilter = new Tone.Filter({ frequency: 980, rolloff: -24, type: "lowpass" }).connect(master);
+      const hatFilter = new Tone.Filter({ frequency: 6000, rolloff: -12, type: "highpass" }).connect(master);
       const echo = new Tone.FeedbackDelay({ delayTime: "8n.", feedback: 0.34, wet: 0.24 }).connect(dungeonFilter);
       const bassSynth = new Tone.MonoSynth({
         oscillator: { type: "square" },
@@ -1046,18 +1120,27 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
         filter: { Q: 5, type: "lowpass", rolloff: -24 },
         filterEnvelope: { attack: 0.002, decay: 0.12, sustain: 0.18, release: 0.08, baseFrequency: 90, octaves: 2.6 },
       }).connect(dungeonFilter);
-      const stabSynth = new Tone.PolySynth(Tone.Synth, {
+      const harmonySynth = new Tone.PolySynth(Tone.Synth, {
         oscillator: { type: "pulse", width: 0.26 },
         envelope: { attack: 0.01, decay: 0.1, sustain: 0.04, release: 0.16 },
       }).connect(echo);
-      const sparkSynth = new Tone.Synth({
+      const leadSynth = new Tone.Synth({
         oscillator: { type: "triangle" },
         envelope: { attack: 0.004, decay: 0.03, sustain: 0, release: 0.08 },
       }).connect(echo);
-      const drumSynth = new Tone.NoiseSynth({
+      const kickSynth = new Tone.MembraneSynth({
+        pitchDecay: 0.05,
+        octaves: 4,
+        envelope: { attack: 0.001, decay: 0.35, sustain: 0, release: 0.1 },
+      }).connect(dungeonFilter);
+      const snareSynth = new Tone.NoiseSynth({
         noise: { type: "brown" },
         envelope: { attack: 0.001, decay: 0.075, sustain: 0, release: 0.025 },
       }).connect(dungeonFilter);
+      const hatSynth = new Tone.NoiseSynth({
+        noise: { type: "white" },
+        envelope: { attack: 0.001, decay: 0.02, sustain: 0, release: 0.01 },
+      }).connect(hatFilter);
 
       const transport = Tone.getTransport();
       transport.stop();
@@ -1067,39 +1150,74 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       transport.loopStart = 0;
       transport.loopEnd = song.loopEnd;
 
-      const accentDrumStep = song.drumSteps[song.drumSteps.length - 1];
-      const steps = song.bass.map((_, index) => index);
+      const steps = song.bassline.length;
+      const stepIndices = Array.from({ length: steps }, (_, index) => index);
+
+      // Every callback reads soundtrackRef.current at trigger time rather
+      // than closing over `song`, so a same-length soundtrack edit takes
+      // effect on the next step with no rebuild (see applySoundtrack).
+      // Falsy-guarded because during the brief window between a
+      // length-changing edit and its queued rebuild, these still-running
+      // sequences can index past the new (shorter) arrays.
       const bassSequence = new Tone.Sequence<number>((time, step) => {
-        bassSynth.triggerAttackRelease(song.bass[step], "16n", time, 0.78);
-      }, steps, "8n").start(0);
-      const stabSequence = new Tone.Sequence<number>((time, step) => {
-        const note = song.stabs[step];
+        const note = soundtrackRef.current.bassline[step];
         if (note) {
-          const shadow = Tone.Frequency(note).transpose(6).toNote();
-          stabSynth.triggerAttackRelease([note, shadow], "32n", time, 0.22);
+          bassSynth.triggerAttackRelease(note, "16n", time, 0.78);
         }
-      }, steps, "8n").start(0);
-      const sparkSequence = new Tone.Sequence<number>((time, step) => {
-        const note = song.sparks[step];
+      }, stepIndices, "8n").start(0);
+      const harmonySequence = new Tone.Sequence<number>((time, step) => {
+        const track = soundtrackRef.current;
+        if (track.harmony[step] === "x") {
+          const chord = activeChordAtStep(track, step);
+          if (chord.length) {
+            harmonySynth.triggerAttackRelease(chord, "32n", time, 0.22);
+          }
+        }
+      }, stepIndices, "8n").start(0);
+      const leadSequence = new Tone.Sequence<number>((time, step) => {
+        const note = soundtrackRef.current.lead[step];
         if (note) {
-          sparkSynth.triggerAttackRelease(note, "64n", time, 0.13);
+          leadSynth.triggerAttackRelease(note, "64n", time, 0.13);
         }
-      }, steps, "8n").start(0);
-      const drumSequence = new Tone.Sequence<number>((time, step) => {
-        if (song.drumSteps.includes(step)) {
-          drumSynth.triggerAttackRelease("32n", time, step === accentDrumStep ? 0.18 : 0.12);
+      }, stepIndices, "8n").start(0);
+      const rhythmSequence = new Tone.Sequence<number>((time, step) => {
+        const entry = soundtrackRef.current.rhythm[step];
+        if (!entry) {
+          return;
         }
-      }, steps, "8n").start(0);
+        const tokens = parseRhythm(entry);
+        if (tokens.includes("kick")) {
+          kickSynth.triggerAttackRelease("C1", "16n", time, 0.9);
+        }
+        if (tokens.includes("snare")) {
+          snareSynth.triggerAttackRelease("32n", time, 0.16);
+        }
+        if (tokens.includes("hat")) {
+          hatSynth.triggerAttackRelease("64n", time, 0.1);
+        }
+      }, stepIndices, "8n").start(0);
 
       transport.start();
-      rig.sequences = [bassSequence, stabSequence, sparkSequence, drumSequence];
-      rig.instruments = [master, dungeonFilter, echo, bassSynth, stabSynth, sparkSynth, drumSynth];
+      rig.sequences = [bassSequence, harmonySequence, leadSequence, rhythmSequence];
+      rig.instruments = [
+        master,
+        dungeonFilter,
+        hatFilter,
+        echo,
+        bassSynth,
+        harmonySynth,
+        leadSynth,
+        kickSynth,
+        snareSynth,
+        hatSynth,
+      ];
       rig.musicActive = true;
-      setAudioMode("music");
+      rig.builtSteps = steps;
+      updateAudioMode("music");
       return rig;
     } catch {
       stopMusic();
-      setAudioMode("voice");
+      updateAudioMode("voice");
       return null;
     }
   }
@@ -1107,12 +1225,28 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   function applySoundtrack(nextSoundtrack: WizardSoundtrack) {
     soundtrackRef.current = nextSoundtrack;
     setSoundtrack(nextSoundtrack);
-    // Rebuild the loop only if music is already audible; otherwise the new
-    // track just waits for the next time the player unmutes into music mode.
-    if (audioRef.current?.musicActive) {
-      stopMusic();
-      void startMusic();
+    try {
+      getPersistentStorage()?.setItem(soundtrackStorageKey, JSON.stringify(nextSoundtrack));
+    } catch (error) {
+      console.warn("Failed to persist soundtrack:", error);
     }
+    void enqueueAudio(async () => {
+      const rig = audioRef.current;
+      if (!rig?.musicActive) {
+        // Music isn't audible; the new track just waits for the next time
+        // the player unmutes into music mode.
+        return;
+      }
+      if (rig.builtSteps === nextSoundtrack.bassline.length) {
+        // Same step count: the running sequences already read this track
+        // live, so the new notes/chords/rhythm land on the next step.
+        // Only bpm needs an explicit nudge — it isn't read per-step.
+        rig.tone.getTransport().bpm.value = nextSoundtrack.bpm;
+        return;
+      }
+      stopMusic();
+      await startMusic();
+    });
   }
 
   function stopMusic() {
@@ -1132,6 +1266,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     audioRef.current.sequences = [];
     audioRef.current.instruments = [];
     audioRef.current.musicActive = false;
+    audioRef.current.builtSteps = 0;
   }
 
   function stopAllAudio() {
@@ -1595,9 +1730,14 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                   data-nav-item="true"
                 >
                   <span className="audio-glyph" aria-hidden="true">
-                    <span className="audio-core" />
-                    <span className="audio-wave audio-wave-1" />
-                    <span className="audio-wave audio-wave-2" />
+                    <span className="audio-icon audio-icon-voice">
+                      <span className="audio-speaker-body" />
+                      <span className="audio-speaker-cone" />
+                    </span>
+                    <span className="audio-icon audio-icon-music">
+                      <span className="audio-note-head" />
+                      <span className="audio-note-stem" />
+                    </span>
                     <span className="audio-slash" />
                   </span>
                   <span className="sr-only">{audioStatus}</span>
