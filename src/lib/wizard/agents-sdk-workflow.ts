@@ -13,6 +13,7 @@ import { transGameContributorsForAgent } from "@/data/trans-game-contributors";
 import type { Recommendation, RecommendationGateOptions, UserProfile } from "@/lib/recommender";
 import {
   bestGuessRecommendations,
+  exactTitleRecommendations,
   getRecommendations,
   qualifyingRecommendations,
   recommendationGate,
@@ -305,6 +306,7 @@ const liveWizardAgent = new Agent<WizardRunContext, typeof WizardTurnOutputSchem
     `After the player answers what system they are questing on, messages include recommendationGate: the real catalog scored against the profile as currently known. Reveal when recommendationGate.recommendationWindowOpen is true, meaning 1 to ${maxQualifyingRecommendations} games score at least ${Math.round(recommendationThreshold * 100)}%. Call the lookup_recommendations tool only when you want to test a hypothetical profile different from the known one (e.g. 'what if difficulty were X'); you don't need it just to see the current picture.`,
     `When recommendationGate.qualifyingMatchCount is 0 — no game clears the ${Math.round(recommendationThreshold * 100)}% gate — never stonewall the player behind the threshold. Two moves, in order: (1) If real ambiguity remains, ask one clarifying question aimed at raising certainty. The strongest is asking which single preference should rule the others; set profile.focus to that dimension key (mood, playStyle, difficulty, story, obscurity, romhack, or keywords) and games honoring the ruling preference are boosted above the gate. (2) If no ambiguity is left — the useful questions are answered, the player deferred, or another question won't move the numbers — commit: set revealed true with the top currentBestMatches id(s) and call open_game_showcase (when recommendationGate.bestGuessAvailable is true, the showcase accepts the top-scored games as best guesses). Present it honestly as the closest signal on the shelf, naming the match percent, not as a perfect rune.`,
     "Only ever recommend real games from currentBestMatches or a tool result — copy their exact id into recommendedGameIds (at most 3, ranked by how well they fit). Never invent, describe, or score a game yourself. If revealed is false, leave recommendedGameIds empty.",
+    "If exactTitleMatches is non-empty, the player has named a real cartridge title directly. Treat that as the conversation ending in a recommendation: set revealed true, copy those exact id(s) into recommendedGameIds, and call open_game_showcase immediately instead of asking another preference question.",
     "Setting revealed: true and recommendedGameIds does not by itself display anything to the player — it's bookkeeping. To actually show a reveal, call the open_game_showcase tool with the same id(s) (at most 3, ranked best first) at the same moment you set revealed: true. That tool call is what opens the showcase window; skipping it means the player sees nothing even though you decided to reveal.",
     "When too many games qualify, every message includes suggestedNextQuestion: computed like a well-played round of 20 Questions or Guess Who — the unanswered field+value that splits the current candidate pool closest to 50/50, so whichever way the player answers eliminates the most ground. When it's present, build your next question around that exact field (e.g. if it's {key: \"playStyle\", value: \"puzzle\"}, ask something like whether they want a puzzle game or something else) — phrase it naturally, don't recite the field name. When it's null (pool is already small, or nothing left discriminates), fall back to your own judgment from currentBestMatches.",
     "Commit when it's time — do not stall. Two situations require revealed: true this turn, using your best current pick, even with fields still unknown or the match imperfect: (1) the player explicitly hands you the decision — 'I don't care', 'you choose', 'whatever's best', 'just pick one', 'are you going to choose?' or similar — reveal immediately, do not ask yet another clarifying question first; (2) the conversation has already gone several exchanges without revealing and currentBestMatches already has a reasonably strong option — stop circling and commit rather than asking for one more detail.",
@@ -368,6 +370,19 @@ function gamesAboveThreshold(profile: UserProfile, options: RecommendationGateOp
       pitch: recommendation.game.pitch,
       tags: recommendation.game.tags,
     }));
+}
+
+function exactTitleMatchesForAgent(command: string, enabledPlatforms: readonly Platform[]) {
+  return exactTitleRecommendations(command, { enabledPlatforms }).map((recommendation) => ({
+    id: recommendation.game.id,
+    title: recommendation.game.title,
+    platform: recommendation.game.platform,
+    year: recommendation.game.year,
+    matchPercent: Math.round(recommendation.score * 100),
+    reasons: recommendation.reasons,
+    pitch: recommendation.game.pitch,
+    tags: recommendation.game.tags,
+  }));
 }
 
 const MAX_OUTPUT_SCHEMA_ATTEMPTS = 2;
@@ -453,6 +468,7 @@ export function buildConsumedTurnContext(request: WizardTurnRequest, knownProfil
   const gate = recommendationGate(knownProfile, options);
   return {
     ...consumed,
+    exactTitleMatches: exactTitleMatchesForAgent(request.command, enabledPlatforms),
     recommendationGate: {
       thresholdPercent: Math.round(recommendationThreshold * 100),
       maxQualifyingMatches: maxQualifyingRecommendations,
@@ -556,19 +572,29 @@ export function buildResponse(
     ? precomputedScoringOptions(profile, enabledPlatforms)
     : scoringOptions(enabledPlatforms);
   const gate = includeRecommendationContext ? recommendationGate(profile, options) : null;
+  const exactTitleShowcaseGames =
+    includeRecommendationContext && !showcaseRequest?.gameIds.length
+      ? exactTitleRecommendations(String(consumed.command ?? ""), { enabledPlatforms })
+      : [];
+  const exactTitleShowcaseIds = exactTitleShowcaseGames.map((recommendation) => recommendation.game.id);
   const automaticShowcaseIds =
     includeRecommendationContext && !showcaseRequest?.gameIds.length
-      ? resolveAutomaticShowcaseIds(profile, output.recommendedGameIds, enabledPlatforms)
+      ? exactTitleShowcaseIds.length
+        ? exactTitleShowcaseIds
+        : resolveAutomaticShowcaseIds(profile, output.recommendedGameIds, enabledPlatforms)
       : [];
   const showcaseIds = showcaseRequest?.gameIds.length ? showcaseRequest.gameIds : automaticShowcaseIds;
   const recommendationIds = output.recommendedGameIds.length ? output.recommendedGameIds : showcaseIds;
-  const recommendations =
-    includeRecommendationContext && (output.revealed || showcaseIds.length)
+  const recommendations = exactTitleShowcaseGames.length
+    ? exactTitleShowcaseGames
+    : includeRecommendationContext && (output.revealed || showcaseIds.length)
       ? resolveRecommendations(profile, recommendationIds, options)
       : [];
   const revealed = (output.revealed || showcaseIds.length > 0) && recommendations.length > 0;
   const showcaseGames = includeRecommendationContext && showcaseIds.length
-    ? resolveRecommendations(profile, showcaseIds, options)
+    ? exactTitleShowcaseGames.length
+      ? exactTitleShowcaseGames
+      : resolveRecommendations(profile, showcaseIds, options)
     : [];
 
   return {

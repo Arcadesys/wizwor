@@ -1333,11 +1333,31 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     >
       <div className="crt-shell relative flex min-h-screen w-screen flex-col p-2 sm:p-3">
         <section className="terminal-stage z-10">
-          <div className="terminal-window min-h-0 overflow-y-auto">
-            <p className="experimental-tag">EXPERIMENTAL &mdash; a hackathon guide, still learning the cartridges.</p>
+          <div className="terminal-top-panel">
+            <div className="terminal-window min-h-0 overflow-y-auto">
+              <div className="terminal-transcript">
+                <p className="experimental-tag">EXPERIMENTAL &mdash; a hackathon guide, still learning the cartridges.</p>
+                <div className="message-stack">
+                  {messages.map((message) => (
+                    <div key={message.id} className={`message-${message.speaker}`}>
+                      <span className="speaker">{speakerLabel(message.speaker)}</span>
+                      <span>{message.text}</span>
+                      {message.speaker === "wizard" && message.text === "" ? <span className="terminal-cursor" /> : null}
+                    </div>
+                  ))}
+                  {isStreaming ? (
+                    <div className="message-wizard">
+                      <span className="terminal-cursor" />
+                    </div>
+                  ) : null}
+                  <div ref={scrollRef} />
+                </div>
+              </div>
+            </div>
             {hydrated ? (
-              <div
+              <section
                 className="window-controls"
+                aria-label="Terminal controls"
                 onKeyDown={(event) => event.stopPropagation()}
                 onClick={(event) => event.stopPropagation()}
               >
@@ -1411,23 +1431,8 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                     </div>
                   </section>
                 ) : null}
-              </div>
+              </section>
             ) : null}
-            <div className="message-stack">
-              {messages.map((message) => (
-                <div key={message.id} className={`message-${message.speaker}`}>
-                  <span className="speaker">{speakerLabel(message.speaker)}</span>
-                  <span>{message.text}</span>
-                  {message.speaker === "wizard" && message.text === "" ? <span className="terminal-cursor" /> : null}
-                </div>
-              ))}
-              {isStreaming ? (
-                <div className="message-wizard">
-                  <span className="terminal-cursor" />
-                </div>
-              ) : null}
-              <div ref={scrollRef} />
-            </div>
           </div>
 
           <div className="bottom-terminal z-10">

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   bestGuessRecommendations,
+  exactTitleRecommendations,
   getRecommendations,
   maxQualifyingRecommendations,
   qualifyingRecommendations,
@@ -98,6 +99,18 @@ describe("recommendation rubric", () => {
       maxQualifying: maxQualifyingRecommendations,
       qualifyingCount: qualifying.length,
       isOpen: true,
+    });
+  });
+
+  it("finds exact title recommendations for direct cartridge-name commands before compilation carts", () => {
+    const recommendations = exactTitleRecommendations("Super Mario Bros.", { enabledPlatforms: ["nes"] });
+
+    expect(recommendations.length).toBeGreaterThan(0);
+    expect(recommendations.every((recommendation) => recommendation.game.title === "Super Mario Bros.")).toBe(true);
+    expect(recommendations[0]).toMatchObject({
+      game: { id: "super-mario-bros" },
+      score: 1,
+      reasons: ["exact title match"],
     });
   });
 

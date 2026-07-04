@@ -157,6 +157,26 @@ describe("first-turn recommendation context", () => {
     expect(consumed).toHaveProperty("suggestedNextQuestion");
   });
 
+  it("serializes exact title matches after a direct cartridge-name command", () => {
+    const consumed = buildConsumedTurnContext(
+      request({
+        command: "Super Mario Bros.",
+        state: { ...initialWizardState, enabledPlatforms: ["nes"] },
+        messages: [{ speaker: "wizard", text: "Greetings Gamer! What console are you questing on today?" }],
+      }),
+      {},
+    );
+
+    expect(consumed.exactTitleMatches).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: "super-mario-bros",
+          title: "Super Mario Bros.",
+        }),
+      ]),
+    );
+  });
+
   it("enforces the exact first-turn system question", () => {
     expect(ensureFirstTurnQuestion(["The screen warms."]).at(-1)).toBe(
       "Greetings Gamer! What console are you questing on today?",
@@ -272,6 +292,23 @@ describe("buildResponse showcase guard", () => {
 
     expect(response.showcase?.games.map((recommendation) => recommendation.game.id)).toEqual(gameIds);
     expect(response.recommendations.map((recommendation) => recommendation.game.id)).toEqual(gameIds);
+    expect(response.state.revealed).toBe(true);
+  });
+
+  it("opens the showcase from an exact title command even if the model keeps chatting", () => {
+    const response = buildResponse(
+      output({
+        lines: ["A known cartridge glows."],
+        revealed: false,
+        recommendedGameIds: [],
+      }),
+      blankProfile,
+      ["nes"],
+      { command: "Super Mario Bros." },
+    );
+
+    expect(response.recommendations[0]?.game.id).toBe("super-mario-bros");
+    expect(response.showcase?.games[0]?.game.id).toBe("super-mario-bros");
     expect(response.state.revealed).toBe(true);
   });
 });

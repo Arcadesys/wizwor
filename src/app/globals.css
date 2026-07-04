@@ -297,13 +297,23 @@ input:disabled {
 }
 
 .window-controls {
-  position: absolute;
-  top: clamp(0.65rem, 2vw, 1.2rem);
-  right: clamp(0.65rem, 2vw, 1.2rem);
+  position: relative;
   z-index: 2;
   display: flex;
+  align-self: start;
   align-items: flex-start;
-  gap: 0.55rem;
+  justify-content: flex-end;
+  gap: clamp(0.45rem, 1vw, 0.7rem);
+  width: max-content;
+  max-width: 100%;
+  padding: clamp(0.45rem, 1vw, 0.7rem);
+  background: var(--background);
+  border: 6px solid var(--foreground);
+  border-radius: 8px;
+  box-shadow:
+    6px 6px 0 #111,
+    inset 0 0 0 4px #1b1b1b,
+    inset 0 0 2rem rgba(146, 249, 76, 0.035);
 }
 
 .reset-button,
@@ -476,11 +486,20 @@ input:disabled {
   min-height: 0;
 }
 
+.terminal-top-panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: clamp(0.8rem, 2vw, 1.3rem);
+  min-height: 0;
+}
+
 .terminal-window {
   position: relative;
   min-height: 0;
   max-height: none;
-  padding: clamp(1.5rem, 4.4vw, 2.9rem) clamp(1.05rem, 3.5vw, 2.2rem) 1rem;
+  padding: clamp(1.15rem, 3vw, 2.1rem) clamp(1.05rem, 3.5vw, 2.2rem) 1rem;
   background: transparent !important;
   color: var(--terminal-green) !important;
   border: 0 !important;
@@ -489,6 +508,10 @@ input:disabled {
   box-shadow:
     inset 0 0 6rem rgba(0, 0, 0, 0.58),
     inset 0 0 4rem rgba(146, 249, 76, 0.035);
+}
+
+.terminal-transcript {
+  min-width: 0;
 }
 
 .message-stack {
@@ -997,11 +1020,27 @@ input:disabled {
       inset 0 0 5rem rgba(0, 0, 0, 0.92);
   }
 
+  .terminal-stage {
+    grid-template-rows: minmax(12rem, 30vh) minmax(0, 1fr);
+  }
+
+  .terminal-top-panel {
+    grid-template-columns: minmax(0, 1fr);
+    overflow: hidden;
+  }
+
   .terminal-window {
     padding: 1.1rem 0.72rem 0.62rem;
   }
 
+  .window-controls {
+    justify-self: start;
+    order: -1;
+  }
+
   .bottom-terminal {
+    min-height: 0;
+    overflow-y: auto;
     padding: 0.55rem;
   }
 

@@ -8,7 +8,7 @@ import type {
   RomhackInterest,
   StoryPreference,
 } from "@/data/games";
-import { getAllGames } from "@/lib/game-repository";
+import { getAllGames, getGamesByExactTitle } from "@/lib/game-repository";
 
 export type UserProfile = {
   name?: string;
@@ -80,6 +80,27 @@ function normalizeKeywords(value: unknown): string[] {
     .filter((entry) => entry.length > 0);
 }
 
+function normalizeTitle(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim()
+    .replace(/\s+/g, " ");
+}
+
+function titleKeywordRank(game: Game, profile: UserProfile) {
+  const title = normalizeTitle(game.title);
+  const keywords = normalizeKeywords(profile.keywords).map(normalizeTitle).filter(Boolean);
+  if (keywords.some((keyword) => keyword === title)) {
+    return 2;
+  }
+  if (keywords.some((keyword) => title.includes(keyword))) {
+    return 1;
+  }
+  return 0;
+}
+
 export function answeredPreferenceCount(profile: UserProfile) {
   return rubric.filter((dimension) => {
     if (dimension.key === "keywords") {
@@ -99,7 +120,31 @@ export function getRecommendations(profile: UserProfile, options: Recommendation
   }
   return getAllGames({ enabledPlatforms: options.enabledPlatforms })
     .map((game) => scoreGame(game, profile))
-    .sort((left, right) => right.score - left.score || left.game.title.localeCompare(right.game.title));
+    .sort(
+      (left, right) =>
+        right.score - left.score ||
+        titleKeywordRank(right.game, profile) - titleKeywordRank(left.game, profile) ||
+        left.game.title.localeCompare(right.game.title),
+    );
+}
+
+export function exactTitleRecommendations(
+  query: string,
+  options: Pick<RecommendationGateOptions, "enabledPlatforms"> = {},
+): Recommendation[] {
+  const normalizedQuery = normalizeTitle(query);
+  if (!normalizedQuery) {
+    return [];
+  }
+
+  return getGamesByExactTitle(normalizedQuery, { enabledPlatforms: options.enabledPlatforms })
+    .sort((left, right) => left.year.localeCompare(right.year) || left.title.localeCompare(right.title))
+    .slice(0, maxQualifyingRecommendations)
+    .map((game) => ({
+      game,
+      score: 1,
+      reasons: ["exact title match"],
+    }));
 }
 
 export function qualifyingRecommendations(profile: UserProfile, options: RecommendationGateOptions = {}) {

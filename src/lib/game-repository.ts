@@ -58,6 +58,15 @@ function normalizeTitleKey(title: string) {
   return title.trim().toLowerCase();
 }
 
+function normalizeExactTitleKey(title: string) {
+  return title
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim()
+    .replace(/\s+/g, " ");
+}
+
 function qualityFilterGeneratedCatalog(
   entries: GeneratedCatalogGame[],
   seenTitles: Set<string>,
@@ -81,6 +90,18 @@ function qualityFilterGeneratedCatalog(
 }
 
 let cachedCatalog: Game[] | null = null;
+let cachedExactTitleCatalog: Game[] | null = null;
+
+const generatedCatalogs = [
+  generatedNesGames,
+  generatedSmsGames,
+  generatedAtari7800Games,
+  generatedAtari5200Games,
+  generatedSnesGames,
+  generatedGenesisGames,
+  generatedPcEngineGames,
+  generatedNeoGeoGames,
+] as const;
 
 function buildCatalog(): Game[] {
   // Hand-curated titles always win over a generated duplicate (e.g. Castlevania III,
@@ -100,6 +121,27 @@ function buildCatalog(): Game[] {
   ];
 }
 
+function buildExactTitleCatalog(): Game[] {
+  const seenIds = new Set<string>();
+  const entries: Game[] = [];
+  for (const game of games) {
+    seenIds.add(game.id);
+    entries.push(game);
+  }
+
+  for (const catalog of generatedCatalogs) {
+    for (const entry of catalog) {
+      if (excludedGeneratedSourceCategories.has(entry.sourceCategory) || seenIds.has(entry.id)) {
+        continue;
+      }
+      seenIds.add(entry.id);
+      entries.push(toGame(entry));
+    }
+  }
+
+  return entries;
+}
+
 export function getAllGames(options: GameRepositoryOptions = {}): Game[] {
   if (!cachedCatalog) {
     cachedCatalog = buildCatalog();
@@ -112,4 +154,19 @@ export function getAllGames(options: GameRepositoryOptions = {}): Game[] {
     return [];
   }
   return cachedCatalog.filter((game) => enabled.has(game.platform));
+}
+
+export function getGamesByExactTitle(title: string, options: GameRepositoryOptions = {}): Game[] {
+  const titleKey = normalizeExactTitleKey(title);
+  if (!titleKey) {
+    return [];
+  }
+  if (!cachedExactTitleCatalog) {
+    cachedExactTitleCatalog = buildExactTitleCatalog();
+  }
+
+  const enabled = options.enabledPlatforms ? new Set(options.enabledPlatforms) : null;
+  return cachedExactTitleCatalog.filter(
+    (game) => (!enabled || enabled.has(game.platform)) && normalizeExactTitleKey(game.title) === titleKey,
+  );
 }
