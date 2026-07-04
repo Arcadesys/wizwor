@@ -9,7 +9,7 @@ import {
   WizardTurnOutputSchema,
 } from "@/lib/wizard/agents-sdk-workflow";
 import { catalogPlatforms } from "@/data/games";
-import { maxQualifyingRecommendations, qualifyingRecommendations } from "@/lib/recommender";
+import { bestGuessRecommendations, maxQualifyingRecommendations, qualifyingRecommendations } from "@/lib/recommender";
 import { blankProfile, initialWizardState, type WizardTurnRequest } from "@/lib/wizard/types";
 
 function baseOutput(agentData: Record<string, unknown>) {
@@ -162,18 +162,54 @@ describe("resolveShowcaseIds", () => {
     expect(result).toEqual([]);
   });
 
-  it("caps the result at maxQualifyingRecommendations even if more valid ids are supplied", () => {
+  it("falls back to top-scored best guesses when nothing clears the threshold", () => {
+    // Four answered dimensions (enough signal), but the unmatchable keyword
+    // caps every score well below the gate — the stuck-at-88% shape.
+    const stuck = {
+      ...blankProfile,
+      name: "Ada",
+      mood: "ominous" as const,
+      playStyle: "puzzle" as const,
+      difficulty: "casual" as const,
+      keywords: ["zzz-unmatchable-keyword"],
+    };
+    expect(qualifyingRecommendations(stuck)).toHaveLength(0);
+    const guesses = bestGuessRecommendations(stuck);
+    expect(guesses.length).toBeGreaterThan(0);
+    const bestId = guesses[0].game.id;
+
+    const result = resolveShowcaseIds(stuck, [bestId, "not-a-real-game-id"], catalogPlatforms);
+
+    expect(result).toEqual([bestId]);
+  });
+
+  it("refuses best guesses when the profile lacks enough signal", () => {
+    // Nothing qualifies against a blank profile either, but with zero answered
+    // dimensions there is nothing to guess from — the showcase stays shut.
+    const anyRealId = bestGuessRecommendations({
+      ...blankProfile,
+      mood: "ominous" as const,
+      playStyle: "puzzle" as const,
+      difficulty: "casual" as const,
+      keywords: ["zzz-unmatchable-keyword"],
+    })[0].game.id;
+
+    expect(resolveShowcaseIds(blankProfile, [anyRealId], catalogPlatforms)).toEqual([]);
+  });
+
+  it("returns an empty array while too many games still qualify (pool is ambiguous)", () => {
     // A lone matched dimension scores 100% (relative to what's been answered),
-    // so this profile alone qualifies well more than 3 games — see the matching
-    // case in recommender.test.ts.
+    // so this profile alone qualifies well more than 3 games — the pool is too
+    // ambiguous to reveal, matching resolveRecommendations, which would strip
+    // these games from the response anyway.
     const broad = { ...blankProfile, name: "Ada", mood: "weird" as const };
     const qualifying = qualifyingRecommendations(broad);
     expect(qualifying.length).toBeGreaterThan(maxQualifyingRecommendations);
-    const ids = qualifying.map((recommendation) => recommendation.game.id);
+    const ids = qualifying.slice(0, maxQualifyingRecommendations).map((recommendation) => recommendation.game.id);
 
     const result = resolveShowcaseIds(broad, ids, catalogPlatforms);
 
-    expect(result).toEqual(ids.slice(0, maxQualifyingRecommendations));
+    expect(result).toEqual([]);
   });
 });
 

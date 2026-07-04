@@ -10,8 +10,9 @@ import {
 import { z } from "zod";
 import { catalogPlatforms, type Platform } from "@/data/games";
 import { transGameContributorsForAgent } from "@/data/trans-game-contributors";
-import type { Recommendation, UserProfile } from "@/lib/recommender";
+import type { Recommendation, RecommendationGateOptions, UserProfile } from "@/lib/recommender";
 import {
+  bestGuessRecommendations,
   getRecommendations,
   qualifyingRecommendations,
   recommendationGate,
@@ -63,18 +64,19 @@ type WizardRunContext = {
 const lookupRecommendationsTool = tool({
   name: "lookup_recommendations",
   description:
-    "Score the real catalog (whichever platforms the player currently has enabled) against a candidate profile (any subset of fields). Returns each game's id, title, match percent, whether it clears the reveal threshold, why it matched, its pitch, and its tags. Reveal only when 1 to 3 games clear the configured threshold.",
+    "Score the real catalog (whichever platforms the player currently has enabled) against a candidate profile (any subset of fields). Returns each game's id, title, match percent, whether it clears the reveal threshold, why it matched, its pitch, and its tags. Reveal when 1 to 3 games clear the configured threshold — or, when bestGuessAvailable is true (nothing clears it and the profile has enough signal), commit to the top-scored games as explicit best guesses.",
   parameters: CandidateProfileSchema,
   execute: async (input, runContext?: RunContext<WizardRunContext>) => {
     const profile = { name: "", ...input } as UserProfile;
     const enabledPlatforms = runContext?.context.enabledPlatforms ?? [...catalogPlatforms];
-    const options = scoringOptions(enabledPlatforms);
+    const options = precomputedScoringOptions(profile, enabledPlatforms);
     const gate = recommendationGate(profile, options);
     return {
       thresholdPercent: Math.round(gate.threshold * 100),
       maxQualifyingMatches: gate.maxQualifying,
       qualifyingMatchCount: gate.qualifyingCount,
       recommendationWindowOpen: gate.isOpen,
+      bestGuessAvailable: gate.qualifyingCount === 0 && bestGuessRecommendations(profile, options).length > 0,
       matches: getRecommendations(profile, options)
         .slice(0, 8)
         .map((recommendation) => ({
@@ -99,9 +101,20 @@ export function resolveShowcaseIds(
   gameIds: string[],
   enabledPlatforms: readonly Platform[],
 ): string[] {
-  const gate = recommendationGate(profile, scoringOptions(enabledPlatforms));
-  const qualifyingIds = new Set(gate.recommendations.map((recommendation) => recommendation.game.id));
-  return gameIds.filter((id) => qualifyingIds.has(id)).slice(0, maxQualifyingRecommendations);
+  const options = precomputedScoringOptions(profile, enabledPlatforms);
+  const gate = recommendationGate(profile, options);
+  // Too many games above the gate means the pool is still ambiguous — refuse
+  // here too, so open_game_showcase reports opened: false instead of claiming
+  // success while resolveRecommendations strips the reveal from the response.
+  if (gate.qualifyingCount > gate.maxQualifying) {
+    return [];
+  }
+  // When nothing clears the gate, accept the top-scored games as explicit
+  // best guesses instead of refusing every id — the agent only lands here
+  // after clarifying questions have stopped moving the numbers.
+  const candidates = gate.qualifyingCount > 0 ? gate.recommendations : bestGuessRecommendations(profile, options);
+  const candidateIds = new Set(candidates.map((recommendation) => recommendation.game.id));
+  return gameIds.filter((id) => candidateIds.has(id)).slice(0, maxQualifyingRecommendations);
 }
 
 const OpenGameShowcaseSchema = z.object({
@@ -115,7 +128,7 @@ const OpenGameShowcaseSchema = z.object({
 const openGameShowcaseTool = tool({
   name: "open_game_showcase",
   description:
-    "Opens the showcase window that displays 1 to 3 games to the player, each with a gameplay video, name/year/console, and why it matched. This is the only thing that actually shows a reveal — setting revealed/recommendedGameIds alone displays nothing. Call it with the winning game id(s) from currentBestMatches or a lookup_recommendations result, ranked best first, at the same moment you decide to reveal (recommendationGate.recommendationWindowOpen is true). Ids that no longer clear the reveal threshold are dropped.",
+    "Opens the showcase window that displays 1 to 3 games to the player, each with a gameplay video, name/year/console, and why it matched. This is the only thing that actually shows a reveal — setting revealed/recommendedGameIds alone displays nothing. Call it with the winning game id(s) from currentBestMatches or a lookup_recommendations result, ranked best first, at the same moment you decide to reveal — either recommendationGate.recommendationWindowOpen is true, or nothing clears the gate and you are committing to a best guess (recommendationGate.bestGuessAvailable is true). When games clear the threshold, ids below it are dropped; when none do, only the top-scored best guesses are accepted.",
   parameters: OpenGameShowcaseSchema,
   execute: async (input, runContext?: RunContext<WizardRunContext>) => {
     const profile = runContext?.context.profile ?? blankProfile;
@@ -128,7 +141,11 @@ const openGameShowcaseTool = tool({
 
     return gameIds.length
       ? { opened: true, gameIds }
-      : { opened: false, reason: "none of the supplied ids currently clear the reveal threshold" };
+      : {
+          opened: false,
+          reason:
+            "the supplied ids are not current reveal candidates — either too many games still qualify (keep narrowing) or none of the ids are in the qualifying/best-guess set",
+        };
   },
 });
 
@@ -267,7 +284,8 @@ const liveWizardAgent = new Agent<WizardRunContext, typeof WizardTurnOutputSchem
     "You maintain the player's durable MEMORY.md. Every turn receives the current Markdown memory. Return memoryMarkdown only when you learned something durable: name, preferences, terminal color wishes, games previously played, games rejected, accessibility/audio/style preferences, or useful notes. Keep the Markdown compact, preserving the headings: Player, Preferences, Games Previously Played, Notes.",
     "If the player asks to change terminal colors, update memoryMarkdown and return terminalTheme with CSS hex colors for the requested palette. Use background, foreground, green, amber, red, and blue keys when relevant.",
     "The terminal loops a synthesized chiptune soundtrack. When the player asks for different music — a new vibe, genre, or energy in the soundtrack, song, or background music (e.g. 'give me a lively shmup soundtrack') — that is a music request, not a game request: compose a new loop on the spot and call the set_soundtrack tool, then confirm the new track in-character. Do not fold music requests into the game profile, do not interrogate them about subgenres first, and note their music taste in memoryMarkdown.",
-    `After the player answers what system they are questing on, messages include recommendationGate: the real catalog scored against the profile as currently known. Reveal only when recommendationGate.recommendationWindowOpen is true, meaning 1 to ${maxQualifyingRecommendations} games score at least ${Math.round(recommendationThreshold * 100)}%. Call the lookup_recommendations tool only when you want to test a hypothetical profile different from the known one (e.g. 'what if difficulty were X'); you don't need it just to see the current picture.`,
+    `After the player answers what system they are questing on, messages include recommendationGate: the real catalog scored against the profile as currently known. Reveal when recommendationGate.recommendationWindowOpen is true, meaning 1 to ${maxQualifyingRecommendations} games score at least ${Math.round(recommendationThreshold * 100)}%. Call the lookup_recommendations tool only when you want to test a hypothetical profile different from the known one (e.g. 'what if difficulty were X'); you don't need it just to see the current picture.`,
+    `When recommendationGate.qualifyingMatchCount is 0 — no game clears the ${Math.round(recommendationThreshold * 100)}% gate — never stonewall the player behind the threshold. Two moves, in order: (1) If real ambiguity remains, ask one clarifying question aimed at raising certainty. The strongest is asking which single preference should rule the others; set profile.focus to that dimension key (mood, playStyle, difficulty, story, obscurity, romhack, or keywords) and games honoring the ruling preference are boosted above the gate. (2) If no ambiguity is left — the useful questions are answered, the player deferred, or another question won't move the numbers — commit: set revealed true with the top currentBestMatches id(s) and call open_game_showcase (when recommendationGate.bestGuessAvailable is true, the showcase accepts the top-scored games as best guesses). Present it honestly as the closest signal on the shelf, naming the match percent, not as a perfect rune.`,
     "Only ever recommend real games from currentBestMatches or a tool result — copy their exact id into recommendedGameIds (at most 3, ranked by how well they fit). Never invent, describe, or score a game yourself. If revealed is false, leave recommendedGameIds empty.",
     "Setting revealed: true and recommendedGameIds does not by itself display anything to the player — it's bookkeeping. To actually show a reveal, call the open_game_showcase tool with the same id(s) (at most 3, ranked best first) at the same moment you set revealed: true. That tool call is what opens the showcase window; skipping it means the player sees nothing even though you decided to reveal.",
     "When too many games qualify, every message includes suggestedNextQuestion: computed like a well-played round of 20 Questions or Guess Who — the unanswered field+value that splits the current candidate pool closest to 50/50, so whichever way the player answers eliminates the most ground. When it's present, build your next question around that exact field (e.g. if it's {key: \"playStyle\", value: \"puzzle\"}, ask something like whether they want a puzzle game or something else) — phrase it naturally, don't recite the field name. When it's null (pool is already small, or nothing left discriminates), fall back to your own judgment from currentBestMatches.",
@@ -295,8 +313,16 @@ function scoringOptions(enabledPlatforms: readonly Platform[]) {
   return { enabledPlatforms };
 }
 
-function currentBestMatches(profile: UserProfile, enabledPlatforms: readonly Platform[]) {
-  return getRecommendations(profile, scoringOptions(enabledPlatforms))
+// Scoring sweeps the whole catalog; a turn needs the same scored list for the
+// gate, the context lists, and the reveal resolution. Sweep once here and let
+// every downstream recommender call reuse it via options.recommendations.
+function precomputedScoringOptions(profile: UserProfile, enabledPlatforms: readonly Platform[]): RecommendationGateOptions {
+  const options = scoringOptions(enabledPlatforms);
+  return { ...options, recommendations: getRecommendations(profile, options) };
+}
+
+function currentBestMatches(profile: UserProfile, options: RecommendationGateOptions) {
+  return getRecommendations(profile, options)
     .slice(0, 5)
     .map((recommendation) => ({
       id: recommendation.game.id,
@@ -309,12 +335,12 @@ function currentBestMatches(profile: UserProfile, enabledPlatforms: readonly Pla
     }));
 }
 
-function gamesAboveThreshold(profile: UserProfile, enabledPlatforms: readonly Platform[]) {
+function gamesAboveThreshold(profile: UserProfile, options: RecommendationGateOptions) {
   // qualifyingRecommendations is unbounded by count (unlike lookup_recommendations'
   // .slice(0, 8) below), so a broad, single-dimension profile against the ~2000-game
   // catalog could otherwise serialize hundreds of matches into the agent's context
   // and the client-facing agentData payload on every turn.
-  return qualifyingRecommendations(profile, scoringOptions(enabledPlatforms))
+  return qualifyingRecommendations(profile, options)
     .slice(0, 8)
     .map((recommendation) => ({
       id: recommendation.game.id,
@@ -405,7 +431,7 @@ export function buildConsumedTurnContext(request: WizardTurnRequest, knownProfil
     return consumed;
   }
 
-  const options = scoringOptions(enabledPlatforms);
+  const options = precomputedScoringOptions(knownProfile, enabledPlatforms);
   const gate = recommendationGate(knownProfile, options);
   return {
     ...consumed,
@@ -414,9 +440,10 @@ export function buildConsumedTurnContext(request: WizardTurnRequest, knownProfil
       maxQualifyingMatches: maxQualifyingRecommendations,
       qualifyingMatchCount: gate.qualifyingCount,
       recommendationWindowOpen: gate.isOpen,
+      bestGuessAvailable: gate.qualifyingCount === 0 && bestGuessRecommendations(knownProfile, options).length > 0,
     },
-    gamesAboveThreshold: gamesAboveThreshold(knownProfile, enabledPlatforms),
-    currentBestMatches: currentBestMatches(knownProfile, enabledPlatforms),
+    gamesAboveThreshold: gamesAboveThreshold(knownProfile, options),
+    currentBestMatches: currentBestMatches(knownProfile, options),
     suggestedNextQuestion: suggestNextQuestion(knownProfile, options),
   };
 }
@@ -482,13 +509,17 @@ function mergeProfile(current: UserProfile, update: WizardTurnOutput["profile"])
 // The agent decides *whether* to reveal and *which* games to name (recommendedGameIds).
 // This just looks up real score/reasons for whichever ids it picked, so the UI never
 // displays a hallucinated number — the decision stays the agent's, the arithmetic is ours.
-function resolveRecommendations(profile: UserProfile, ids: string[], enabledPlatforms: readonly Platform[]): Recommendation[] {
-  const gate = recommendationGate(profile, scoringOptions(enabledPlatforms));
-  if (!gate.isOpen) {
+function resolveRecommendations(profile: UserProfile, ids: string[], options: RecommendationGateOptions): Recommendation[] {
+  const gate = recommendationGate(profile, options);
+  // Too many games above the gate means the pool is still ambiguous — keep
+  // interviewing. Zero games above it falls through to best guesses so the
+  // wizard can commit rather than stonewall.
+  if (gate.qualifyingCount > gate.maxQualifying) {
     return [];
   }
 
-  const scoredById = new Map(gate.recommendations.map((recommendation) => [recommendation.game.id, recommendation]));
+  const candidates = gate.qualifyingCount > 0 ? gate.recommendations : bestGuessRecommendations(profile, options);
+  const scoredById = new Map(candidates.map((recommendation) => [recommendation.game.id, recommendation]));
   return ids
     .map((id) => scoredById.get(id))
     .filter((recommendation): recommendation is Recommendation => Boolean(recommendation));
@@ -503,13 +534,16 @@ function buildResponse(
   showcaseRequest: { gameIds: string[] } | null = null,
   soundtrackRequest: WizardSoundtrack | null = null,
 ): WizardTurnResponse {
+  const options = includeRecommendationContext
+    ? precomputedScoringOptions(profile, enabledPlatforms)
+    : scoringOptions(enabledPlatforms);
   const recommendations = includeRecommendationContext && output.revealed
-    ? resolveRecommendations(profile, output.recommendedGameIds, enabledPlatforms)
+    ? resolveRecommendations(profile, output.recommendedGameIds, options)
     : [];
   const revealed = output.revealed && recommendations.length > 0;
-  const gate = includeRecommendationContext ? recommendationGate(profile, scoringOptions(enabledPlatforms)) : null;
+  const gate = includeRecommendationContext ? recommendationGate(profile, options) : null;
   const showcaseGames = includeRecommendationContext && showcaseRequest?.gameIds.length
-    ? resolveRecommendations(profile, showcaseRequest.gameIds, enabledPlatforms)
+    ? resolveRecommendations(profile, showcaseRequest.gameIds, options)
     : [];
 
   return {
@@ -533,8 +567,10 @@ function buildResponse(
           maxQualifyingMatches: maxQualifyingRecommendations,
           qualifyingMatchCount: gate.qualifyingCount,
           recommendationWindowOpen: gate.isOpen,
-          gamesAboveThreshold: gamesAboveThreshold(profile, enabledPlatforms),
-          currentBestMatches: currentBestMatches(profile, enabledPlatforms),
+          bestGuessAvailable:
+            gate.qualifyingCount === 0 && bestGuessRecommendations(profile, options).length > 0,
+          gamesAboveThreshold: gamesAboveThreshold(profile, options),
+          currentBestMatches: currentBestMatches(profile, options),
           consumed,
           generated: output.agentData ?? {},
         }

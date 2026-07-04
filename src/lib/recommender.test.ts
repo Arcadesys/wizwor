@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
+  bestGuessRecommendations,
+  getRecommendations,
   maxQualifyingRecommendations,
   qualifyingRecommendations,
   recommendationGate,
@@ -165,5 +167,49 @@ describe("recommendation rubric", () => {
       romhack: "yes" as const,
     };
     expect(shouldRevealRecommendations(narrowed)).toBe(false);
+  });
+});
+
+describe("bestGuessRecommendations", () => {
+  // Enough answered dimensions to guess from, but the unmatchable keyword
+  // keeps every score below the gate.
+  const stuck = {
+    ...blankProfile,
+    name: "Ada",
+    mood: "ominous" as const,
+    playStyle: "puzzle" as const,
+    difficulty: "casual" as const,
+    keywords: ["zzz-unmatchable-keyword"],
+  };
+
+  it("returns the top-scored games when nothing clears the gate", () => {
+    expect(qualifyingRecommendations(stuck)).toHaveLength(0);
+
+    const guesses = bestGuessRecommendations(stuck);
+
+    expect(guesses.length).toBeGreaterThan(0);
+    expect(guesses.length).toBeLessThanOrEqual(maxQualifyingRecommendations);
+    expect(guesses.map((guess) => guess.game.id)).toEqual(
+      getRecommendations(stuck)
+        .slice(0, maxQualifyingRecommendations)
+        .map((recommendation) => recommendation.game.id),
+    );
+  });
+
+  it("returns nothing until the profile has enough signal", () => {
+    expect(bestGuessRecommendations(blankProfile)).toHaveLength(0);
+    expect(bestGuessRecommendations({ ...blankProfile, mood: "ominous" })).toHaveLength(0);
+  });
+});
+
+describe("precomputed recommendations reuse", () => {
+  it("returns options.recommendations verbatim instead of rescoring the catalog", () => {
+    const profile = { ...blankProfile, name: "Ada", mood: "ominous" as const };
+    const scored = getRecommendations(profile);
+
+    expect(getRecommendations(profile, { recommendations: scored })).toBe(scored);
+    expect(qualifyingRecommendations(profile, { recommendations: scored })).toEqual(
+      qualifyingRecommendations(profile),
+    );
   });
 });

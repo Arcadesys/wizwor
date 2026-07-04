@@ -10,6 +10,7 @@ export function emptyAgentData(
     maxQualifyingMatches: maxQualifyingRecommendations,
     qualifyingMatchCount: 0,
     recommendationWindowOpen: false,
+    bestGuessAvailable: false,
     gamesAboveThreshold: [],
     currentBestMatches: [],
     consumed,
