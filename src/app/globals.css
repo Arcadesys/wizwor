@@ -507,6 +507,7 @@ input:disabled {
 
 .terminal-window {
   position: relative;
+  align-self: stretch;
   min-height: 0;
   max-height: none;
   padding: clamp(1.15rem, 3vw, 2.1rem) clamp(1.05rem, 3.5vw, 2.2rem) 1rem;
