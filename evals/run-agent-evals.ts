@@ -28,8 +28,6 @@ type EvalCase = {
     topPlatform?: string;
     hasShowcase?: boolean;
     maxShowcaseGames?: number;
-    hasSoundtrack?: boolean;
-    soundtrackTitleIncludes?: string;
     terminalTheme?: Partial<WizardTerminalTheme>;
     terminalThemeKeys?: Array<keyof WizardTerminalTheme>;
     memoryIncludes?: string[];
@@ -249,20 +247,6 @@ function checkExpectations(
     failures.push(
       `Expected at most ${expected.maxShowcaseGames} showcase games, saw ${lastResponse?.showcase?.games.length ?? 0}.`,
     );
-  }
-
-  if (expected.hasSoundtrack !== undefined) {
-    const hasSoundtrack = Boolean(lastResponse?.soundtrack);
-    if (hasSoundtrack !== expected.hasSoundtrack) {
-      failures.push(`Expected hasSoundtrack=${expected.hasSoundtrack}, saw ${hasSoundtrack}.`);
-    }
-  }
-
-  if (
-    expected.soundtrackTitleIncludes !== undefined &&
-    !lastResponse?.soundtrack?.title.toLowerCase().includes(expected.soundtrackTitleIncludes.toLowerCase())
-  ) {
-    failures.push(`Expected soundtrack title to include "${expected.soundtrackTitleIncludes}".`);
   }
 
   for (const [key, value] of Object.entries(expected.terminalTheme ?? {})) {

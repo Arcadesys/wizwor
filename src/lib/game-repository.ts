@@ -1,4 +1,4 @@
-import { games } from "@/data/games";
+import { platformLabels } from "@/data/games";
 import type { Game, Platform } from "@/data/games";
 import { generatedAtari5200Games } from "@/data/atari-5200-catalog.generated";
 import { generatedAtari7800Games } from "@/data/atari-7800-catalog.generated";
@@ -23,10 +23,16 @@ export type GameRepositoryOptions = {
   enabledPlatforms?: readonly Platform[];
 };
 
-// The generated catalog lacks a curated YouTube playthrough; fall back to its
-// Wikipedia source so every entry still has somewhere to send the player.
-// (page.tsx labels the button "View Source" instead of "Watch Playthrough"
-// when the URL isn't a youtube.com link.)
+// The generated catalog lacks a curated YouTube playthrough; fall back to a
+// YouTube search for the title instead of sending the player to a generic
+// Wikipedia list page. youTubeEmbedUrl (page.tsx) can't embed a search
+// results page, so these render as a "View Source" link rather than an
+// inline player — same as before, just pointed at YouTube.
+function youTubeSearchUrl(title: string, platform: Platform): string {
+  const query = `${title} ${platformLabels[platform]} gameplay`;
+  return `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
+}
+
 function toGame(entry: GeneratedCatalogGame): Game {
   return {
     id: entry.id,
@@ -35,7 +41,7 @@ function toGame(entry: GeneratedCatalogGame): Game {
     isRomhack: entry.isRomhack,
     year: entry.year,
     pitch: entry.pitch,
-    playthroughUrl: entry.sourceUrl,
+    playthroughUrl: youTubeSearchUrl(entry.title, entry.platform),
     moods: entry.moods,
     difficulty: entry.difficulty,
     story: entry.story,
@@ -104,12 +110,8 @@ const generatedCatalogs = [
 ] as const;
 
 function buildCatalog(): Game[] {
-  // Hand-curated titles always win over a generated duplicate (e.g. Castlevania III,
-  // Zelda II, and Bubble Bobble exist in both) since their metadata is hand-tuned,
-  // not heuristically inferred.
-  const seenTitles = new Set(games.map((game) => normalizeTitleKey(game.title)));
+  const seenTitles = new Set<string>();
   return [
-    ...games,
     ...qualityFilterGeneratedCatalog(generatedNesGames, seenTitles),
     ...qualityFilterGeneratedCatalog(generatedSmsGames, seenTitles),
     ...qualityFilterGeneratedCatalog(generatedAtari7800Games, seenTitles),
@@ -124,10 +126,6 @@ function buildCatalog(): Game[] {
 function buildExactTitleCatalog(): Game[] {
   const seenIds = new Set<string>();
   const entries: Game[] = [];
-  for (const game of games) {
-    seenIds.add(game.id);
-    entries.push(game);
-  }
 
   for (const catalog of generatedCatalogs) {
     for (const entry of catalog) {
@@ -168,5 +166,30 @@ export function getGamesByExactTitle(title: string, options: GameRepositoryOptio
   const enabled = options.enabledPlatforms ? new Set(options.enabledPlatforms) : null;
   return cachedExactTitleCatalog.filter(
     (game) => (!enabled || enabled.has(game.platform)) && normalizeExactTitleKey(game.title) === titleKey,
+  );
+}
+
+// The quality filter (minGeneratedSignalScore) keeps getAllGames() from flooding
+// with heuristic-default lookalikes, but it also hides every entry of a named
+// franchise whose generated tags happened to score low signal (e.g. every Mega
+// Man NES title scores signalScore 1) — so "the easiest Mega Man game" scores
+// against a pool that contains zero Mega Man games and recommends an unrelated
+// title instead. When the player names a real title/franchise, this rescues
+// matching games back into consideration regardless of signalScore, without
+// loosening the quality bar for open-ended browsing.
+export function getGamesByTitleKeyword(keyword: string, options: GameRepositoryOptions = {}): Game[] {
+  const normalizedKeyword = normalizeExactTitleKey(keyword);
+  if (!normalizedKeyword) {
+    return [];
+  }
+  if (!cachedExactTitleCatalog) {
+    cachedExactTitleCatalog = buildExactTitleCatalog();
+  }
+
+  const enabled = options.enabledPlatforms ? new Set(options.enabledPlatforms) : null;
+  return cachedExactTitleCatalog.filter(
+    (game) =>
+      (!enabled || enabled.has(game.platform)) &&
+      normalizeExactTitleKey(game.title).includes(normalizedKeyword),
   );
 }

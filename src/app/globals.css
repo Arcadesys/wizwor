@@ -92,7 +92,7 @@ input:disabled {
   transform: translateY(-50%);
 }
 
-.music-status {
+.audio-status {
   max-width: min(34vw, 20rem);
   color: var(--foreground);
   font-size: clamp(0.55rem, 1.35vw, 0.82rem);
@@ -143,10 +143,6 @@ input:disabled {
   border-color: var(--terminal-green);
 }
 
-.sound-button.is-voice {
-  border-color: var(--terminal-amber);
-}
-
 .sound-button.is-off {
   border-color: var(--terminal-red);
 }
@@ -165,9 +161,6 @@ input:disabled {
   border-left-color: #666;
 }
 
-/* Two independent icons — speaker (vocals/speech) and note (background
-   music) — so the player can tell at a glance which channel(s) are on
-   instead of inferring it from a single speaker's wave count. */
 .audio-glyph {
   position: relative;
   display: flex;
@@ -191,8 +184,6 @@ input:disabled {
 
 .audio-speaker-body,
 .audio-speaker-cone,
-.audio-note-head,
-.audio-note-stem,
 .audio-slash {
   position: absolute;
   display: block;
@@ -218,28 +209,7 @@ input:disabled {
   clip-path: polygon(0 32%, 100% 0, 100% 100%, 0 68%);
 }
 
-.audio-note-head {
-  bottom: 0;
-  left: 0;
-  width: 0.46rem;
-  height: 0.36rem;
-  background: var(--terminal-green);
-  box-shadow: 0 0 0 2px #000;
-}
-
-.audio-note-stem {
-  bottom: 0.1rem;
-  right: 0.02rem;
-  width: 0.16rem;
-  height: 1.2rem;
-  background: var(--terminal-green);
-  box-shadow: 0 0 0 2px #000;
-}
-
-/* Vocals are audible in both "voice" and "music" mode. */
-.sound-button.is-voice .audio-icon-voice,
-.sound-button.is-on .audio-icon-voice,
-.sound-button.is-on .audio-icon-music {
+.sound-button.is-on .audio-icon-voice {
   opacity: 1;
   filter: none;
 }
@@ -256,13 +226,12 @@ input:disabled {
   opacity: 1;
 }
 
-.sound-button.is-on .audio-slash,
-.sound-button.is-voice .audio-slash {
+.sound-button.is-on .audio-slash {
   opacity: 0;
 }
 
 @media (max-width: 760px) {
-  .music-status {
+  .audio-status {
     display: none;
   }
 }
@@ -926,6 +895,43 @@ input:disabled {
   background: var(--background);
   outline: 3px solid var(--terminal-amber);
   outline-offset: 2px;
+}
+
+.enrichment-spinner {
+  display: grid;
+  justify-items: center;
+  gap: 0.6rem;
+  color: var(--terminal-amber);
+  font-size: clamp(10px, 1.4vw, 13px);
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.enrichment-spinner-glyph {
+  display: block;
+  width: 1.4rem;
+  height: 1.4rem;
+  background: var(--terminal-amber);
+  image-rendering: pixelated;
+  animation: enrichment-spin 800ms steps(4, end) infinite;
+}
+
+@keyframes enrichment-spin {
+  0% {
+    clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%);
+  }
+  25% {
+    clip-path: polygon(50% 50%, 100% 0, 100% 100%, 0 100%, 0 0);
+  }
+  50% {
+    clip-path: polygon(50% 50%, 100% 100%, 0 100%, 0 0, 100% 0);
+  }
+  75% {
+    clip-path: polygon(50% 50%, 0 100%, 0 0, 100% 0, 100% 100%);
+  }
+  100% {
+    clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%);
+  }
 }
 
 .experimental-tag {

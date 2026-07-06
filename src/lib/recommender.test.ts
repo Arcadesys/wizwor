@@ -11,16 +11,10 @@ import {
   shouldRevealRecommendations,
 } from "@/lib/recommender";
 import { getAllGames } from "@/lib/game-repository";
-import { catalogPlatforms, games as curatedGames, type Game } from "@/data/games";
+import { catalogPlatforms, type Game } from "@/data/games";
 import { blankProfile } from "@/lib/wizard/types";
 
 describe("recommendation rubric", () => {
-  it("keeps every hand-curated recommendation wired to a YouTube playthrough", () => {
-    for (const game of curatedGames) {
-      expect(game.playthroughUrl).toMatch(/^https:\/\/www\.youtube\.com\/watch\?v=[A-Za-z0-9_-]+$/);
-    }
-  });
-
   it("gives every game in the full catalog somewhere to learn more", () => {
     for (const game of getAllGames()) {
       expect(game.playthroughUrl).toMatch(/^https:\/\//);
@@ -86,7 +80,7 @@ describe("recommendation rubric", () => {
       playStyle: "side-scroller" as const,
       difficulty: "difficult" as const,
       story: "some" as const,
-      keywords: ["gothic", "branching paths"],
+      keywords: ["dracula"],
     };
     const qualifying = qualifyingRecommendations(profile);
     expect(qualifying.length).toBeGreaterThan(0);
@@ -212,6 +206,20 @@ describe("bestGuessRecommendations", () => {
   it("returns nothing until the profile has enough signal", () => {
     expect(bestGuessRecommendations(blankProfile)).toHaveLength(0);
     expect(bestGuessRecommendations({ ...blankProfile, mood: "ominous" })).toHaveLength(0);
+  });
+});
+
+describe("keyword-rescued franchise matches", () => {
+  it("surfaces a named franchise even when every generated entry scored below the quality filter", () => {
+    // Regression test: every generated "Mega Man" NES entry has signalScore 1,
+    // below getAllGames' quality bar, so a request naming the franchise used to
+    // score against a pool containing zero Mega Man games and could recommend an
+    // unrelated title (e.g. Kick Master) for "the easiest Mega Man game" instead.
+    const profile = { ...blankProfile, difficulty: "casual" as const, keywords: ["mega man"] };
+    const recs = getRecommendations(profile);
+    const top = recs.slice(0, 5).map((recommendation) => recommendation.game.title);
+
+    expect(top.some((title) => title.startsWith("Mega Man"))).toBe(true);
   });
 });
 
