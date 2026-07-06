@@ -80,13 +80,13 @@ describe("recommendation rubric", () => {
       playStyle: "side-scroller" as const,
       difficulty: "difficult" as const,
       story: "some" as const,
-      keywords: ["dracula"],
+      keywords: ["castlevania"],
     };
     const qualifying = qualifyingRecommendations(profile);
     expect(qualifying.length).toBeGreaterThan(0);
     expect(qualifying.length).toBeLessThanOrEqual(maxQualifyingRecommendations);
     expect(qualifying.every((rec) => rec.score >= recommendationThreshold)).toBe(true);
-    expect(qualifying[0]?.game.title).toBe("Castlevania III: Dracula's Curse");
+    expect(qualifying[0]?.game.title).toBe("Castlevania");
     expect(shouldRevealRecommendations(profile)).toBe(true);
     expect(recommendationGate(profile)).toMatchObject({
       threshold: recommendationThreshold,

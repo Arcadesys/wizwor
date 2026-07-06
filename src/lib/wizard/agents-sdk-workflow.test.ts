@@ -6,6 +6,7 @@ import {
   buildConsumedTurnContext,
   ensureFirstTurnQuestion,
   isAgentDataSchemaError,
+  normalizeOpenGameShowcaseInput,
   resolveAutomaticShowcaseIds,
   resolveShowcaseIds,
   WizardTurnOutputSchema,
@@ -36,7 +37,7 @@ const narrowProfile = {
   playStyle: "side-scroller" as const,
   difficulty: "difficult" as const,
   story: "some" as const,
-  keywords: ["dracula"],
+  keywords: ["castlevania"],
 };
 
 describe("WizardTurnOutputSchema agentData", () => {
@@ -184,6 +185,15 @@ describe("first-turn recommendation context", () => {
 });
 
 describe("resolveShowcaseIds", () => {
+  it("normalizes common model argument shapes before the showcase tool resolves ids", () => {
+    expect(normalizeOpenGameShowcaseInput({ gameIds: " castlevania " })).toEqual(["castlevania"]);
+    expect(normalizeOpenGameShowcaseInput({ gameId: "castlevania" })).toEqual(["castlevania"]);
+    expect(normalizeOpenGameShowcaseInput({ ids: ["castlevania", "metroid-mother"] })).toEqual([
+      "castlevania",
+      "metroid-mother",
+    ]);
+  });
+
   it("drops ids that don't currently clear the reveal threshold", () => {
     const qualifying = qualifyingRecommendations(narrowProfile);
     expect(qualifying.length).toBeGreaterThan(0);

@@ -172,9 +172,28 @@ export function resolveAutomaticShowcaseIds(
   return resolveShowcaseIds(profile, requestedIds, enabledPlatforms);
 }
 
+const ShowcaseIdInputSchema = z.union([z.string(), z.array(z.string())]);
+
 const OpenGameShowcaseSchema = z.object({
-  gameIds: z.array(z.string()).min(1).max(maxQualifyingRecommendations),
+  gameIds: ShowcaseIdInputSchema.optional(),
+  gameId: z.string().optional(),
+  ids: ShowcaseIdInputSchema.optional(),
 });
+
+function normalizeShowcaseIdInput(value: string | string[] | undefined): string[] {
+  if (typeof value === "undefined") {
+    return [];
+  }
+  return (Array.isArray(value) ? value : [value]).map((id) => id.trim()).filter(Boolean);
+}
+
+export function normalizeOpenGameShowcaseInput(input: z.output<typeof OpenGameShowcaseSchema>): string[] {
+  return [
+    ...normalizeShowcaseIdInput(input.gameIds),
+    ...normalizeShowcaseIdInput(input.gameId),
+    ...normalizeShowcaseIdInput(input.ids),
+  ].slice(0, maxQualifyingRecommendations);
+}
 
 // The literal reveal mechanism: setting revealed/recommendedGameIds on the
 // output is bookkeeping only. This tool is what the frontend actually reacts
@@ -188,7 +207,8 @@ const openGameShowcaseTool = tool({
   execute: async (input, runContext?: RunContext<WizardRunContext>) => {
     const profile = runContext?.context.profile ?? blankProfile;
     const enabledPlatforms = runContext?.context.enabledPlatforms ?? [...catalogPlatforms];
-    const gameIds = resolveShowcaseIds(profile, input.gameIds, enabledPlatforms);
+    const requestedGameIds = normalizeOpenGameShowcaseInput(input);
+    const gameIds = resolveShowcaseIds(profile, requestedGameIds, enabledPlatforms);
 
     if (runContext) {
       runContext.context.showcaseRequest = gameIds.length ? { gameIds } : null;
