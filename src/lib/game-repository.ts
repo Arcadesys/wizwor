@@ -193,3 +193,30 @@ export function getGamesByTitleKeyword(keyword: string, options: GameRepositoryO
       normalizeExactTitleKey(game.title).includes(normalizedKeyword),
   );
 }
+
+// getGamesByExactTitle requires the whole message to equal a title, so a
+// direct, unambiguous ask phrased as a sentence ("I want to play Mega Man 2")
+// never matches even though the player named a real cartridge — the reveal
+// gate then falls back to score-based gating and can refuse a title the
+// player asked for by name. This finds catalog titles that appear as a whole
+// word/phrase inside the message, the reverse direction of
+// getGamesByTitleKeyword's substring search.
+export function getGamesByTitleContainedIn(message: string, options: GameRepositoryOptions = {}): Game[] {
+  const normalizedMessage = normalizeExactTitleKey(message);
+  if (!normalizedMessage) {
+    return [];
+  }
+  if (!cachedExactTitleCatalog) {
+    cachedExactTitleCatalog = buildExactTitleCatalog();
+  }
+
+  const paddedMessage = ` ${normalizedMessage} `;
+  const enabled = options.enabledPlatforms ? new Set(options.enabledPlatforms) : null;
+  return cachedExactTitleCatalog.filter((game) => {
+    if (enabled && !enabled.has(game.platform)) {
+      return false;
+    }
+    const titleKey = normalizeExactTitleKey(game.title);
+    return titleKey.length > 0 && paddedMessage.includes(` ${titleKey} `);
+  });
+}

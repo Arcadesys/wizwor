@@ -108,6 +108,31 @@ describe("recommendation rubric", () => {
     });
   });
 
+  it("finds a named cartridge even when it's phrased inside a full sentence, not just as a bare command", () => {
+    // Regression: a direct ask like "I want to play Mega Man 2" was refused
+    // because exactTitleRecommendations only matched when the whole message
+    // equaled a catalog title verbatim.
+    const recommendations = exactTitleRecommendations("I want to play Mega Man 2 please", {
+      enabledPlatforms: ["nes"],
+    });
+
+    expect(recommendations).toHaveLength(1);
+    expect(recommendations[0]).toMatchObject({
+      game: { id: "mega-man-2", title: "Mega Man 2" },
+      score: 1,
+      reasons: ["exact title match"],
+    });
+  });
+
+  it("prefers the more specific title when a shorter title's words are a subset of a longer one", () => {
+    // "Mega Man" is itself a real, different cartridge, and its words are a
+    // strict subset of "Mega Man 2" — naming the sequel directly shouldn't
+    // also surface the unrelated original.
+    const recommendations = exactTitleRecommendations("mega man 2", { enabledPlatforms: ["nes"] });
+
+    expect(recommendations.map((recommendation) => recommendation.game.id)).toEqual(["mega-man-2"]);
+  });
+
   it("stays closed while the high-confidence set is still too broad", () => {
     const broad = {
       ...blankProfile,

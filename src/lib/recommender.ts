@@ -8,7 +8,12 @@ import type {
   RomhackInterest,
   StoryPreference,
 } from "@/data/games";
-import { getAllGames, getGamesByExactTitle, getGamesByTitleKeyword } from "@/lib/game-repository";
+import {
+  getAllGames,
+  getGamesByExactTitle,
+  getGamesByTitleContainedIn,
+  getGamesByTitleKeyword,
+} from "@/lib/game-repository";
 
 export type UserProfile = {
   name?: string;
@@ -154,6 +159,19 @@ export function getRecommendations(profile: UserProfile, options: Recommendation
     );
 }
 
+// A shorter matched title that's wholly contained in another matched title's
+// text (e.g. "Mega Man" inside "Mega Man 2") is a false positive — naming the
+// longer, more specific cartridge shouldn't also surface its unrelated
+// prequel just because the words overlap.
+function mostSpecificTitleMatches(games: Game[]): Game[] {
+  return games.filter((game) => {
+    const titleKey = normalizeTitle(game.title);
+    return !games.some(
+      (other) => other !== game && normalizeTitle(other.title) !== titleKey && normalizeTitle(other.title).includes(titleKey),
+    );
+  });
+}
+
 export function exactTitleRecommendations(
   query: string,
   options: Pick<RecommendationGateOptions, "enabledPlatforms"> = {},
@@ -163,7 +181,13 @@ export function exactTitleRecommendations(
     return [];
   }
 
-  return getGamesByExactTitle(normalizedQuery, { enabledPlatforms: options.enabledPlatforms })
+  const enabledPlatforms = options.enabledPlatforms;
+  const exactMatches = getGamesByExactTitle(normalizedQuery, { enabledPlatforms });
+  const games = exactMatches.length
+    ? exactMatches
+    : mostSpecificTitleMatches(getGamesByTitleContainedIn(query, { enabledPlatforms }));
+
+  return games
     .sort((left, right) => left.year.localeCompare(right.year) || left.title.localeCompare(right.title))
     .slice(0, maxQualifyingRecommendations)
     .map((game) => ({
