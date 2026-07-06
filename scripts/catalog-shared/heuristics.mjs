@@ -1,5 +1,12 @@
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 export function matchesAny(haystack, patterns) {
-  return patterns.some((pattern) => haystack.includes(pattern));
+  return patterns.some((pattern) => {
+    const regex = new RegExp(`(?<![a-z0-9])${escapeRegExp(pattern)}(?![a-z0-9])`, "i");
+    return regex.test(haystack);
+  });
 }
 
 export function matchingRules(haystack, rules) {
