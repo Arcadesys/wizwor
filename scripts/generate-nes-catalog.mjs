@@ -1,6 +1,8 @@
 import { writeFile } from "node:fs/promises";
 import { JSDOM } from "jsdom";
 import { collectMatchingTags, matchingRules, matchesAny, slugify, stableStringify, unique } from "./catalog-shared/heuristics.mjs";
+import { fetchGenreMap } from "./catalog-shared/wikipedia-genre.mjs";
+import { deriveSignalsFromGenre } from "./catalog-shared/genre-taxonomy.mjs";
 
 const cartridgeSourceUrl = "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games";
 const fdsSourceUrl = "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games";
@@ -262,7 +264,7 @@ const regionLabels = {
 async function main() {
   const generatedAt = new Date().toISOString();
   const documents = new Map();
-  const byId = new Map();
+  const parsedById = new Map();
 
   for (const tableSource of sourceTables) {
     if (!documents.has(tableSource.url)) {
@@ -294,17 +296,39 @@ async function main() {
       }
 
       let id = slugify(entry.title);
-      if (byId.has(id)) {
+      if (parsedById.has(id)) {
         const baseId = slugify(`${entry.title}-${entry.sourceCategory}-${entry.publisher.join("-") || entry.year}`);
         id = baseId;
         let counter = 2;
-        while (byId.has(id)) {
+        while (parsedById.has(id)) {
           id = `${baseId}-${counter}`;
           counter++;
         }
       }
-      byId.set(id, { id, ...deriveGameFields(entry), ...entry, generatedAt });
+      parsedById.set(id, { id, entry });
     }
+  }
+
+  // A game's own Wikipedia article carries real genre signal that the console
+  // list-tables don't (they only have title/developer/publisher/date columns),
+  // so fetch it once for every title before scoring, rather than guessing
+  // mood/playStyle/story from franchise names alone.
+  console.log(`Fetching genre data for ${parsedById.size} NES titles...`);
+  const genreByTitle = await fetchGenreMap(
+    [...parsedById.values()].map(({ entry }) => entry.title),
+    {
+      onProgress: (done, total) => {
+        if (done % 200 === 0 || done === total) {
+          console.log(`  ${done}/${total} genres fetched`);
+        }
+      },
+    },
+  );
+
+  const byId = new Map();
+  for (const [id, { entry }] of parsedById) {
+    const genre = genreByTitle.get(entry.title) ?? null;
+    byId.set(id, { id, ...deriveGameFields(entry, genre), ...entry, generatedAt });
   }
 
   const entries = [...byId.values()].sort((left, right) => left.title.localeCompare(right.title));
@@ -517,13 +541,19 @@ function normalizeEntry(entry) {
   };
 }
 
-function deriveGameFields(entry) {
+function deriveGameFields(entry, genreText) {
   const haystack = [entry.title, ...entry.publisher, ...entry.developer, entry.sourceCategory].join(" ").toLowerCase();
   const tags = new Set();
 
   for (const tag of collectMatchingTags(haystack, tagRules)) {
     tags.add(tag);
   }
+
+  // Genre text pulled from the game's own Wikipedia infobox is real per-game
+  // signal, unlike the franchise-name matching below (which only recognizes
+  // titles it already has a pattern for). Prefer it when present, and only
+  // fall back to the weaker title/publisher/developer heuristics otherwise.
+  const genreSignals = deriveSignalsFromGenre(genreText);
 
   if (entry.sourceCategory.startsWith("unlicensed") || entry.sourceCategory === "famicom-disk-system-unlicensed") {
     tags.add("unlicensed");
@@ -545,15 +575,15 @@ function deriveGameFields(entry) {
   }
 
   const playStyleRule = playStyleRules.find((rule) => matchesAny(haystack, rule.patterns));
-  const playStyle = playStyleRule?.playStyle ?? "side-scroller";
-  const playStyleSignal = Boolean(playStyleRule);
+  const playStyle = genreSignals?.playStyle ?? playStyleRule?.playStyle ?? "side-scroller";
+  const playStyleSignal = Boolean(genreSignals?.playStyle) || Boolean(playStyleRule);
   for (const tag of playStyleRule?.tags ?? ["action"]) {
     tags.add(tag);
   }
 
   const matchedMoodRules = matchingRules(haystack, moodRules);
-  const moodSignal = matchedMoodRules.length > 0;
-  const moods = matchedMoodRules.map((rule) => rule.mood);
+  const moods = unique([...(genreSignals?.moods ?? []), ...matchedMoodRules.map((rule) => rule.mood)]);
+  const moodSignal = moods.length > 0;
   if (!moods.length) {
     moods.push(playStyle === "puzzle" ? "contemplative" : playStyle === "action-adventure" ? "heroic" : "arcade");
   }
@@ -561,13 +591,13 @@ function deriveGameFields(entry) {
     moods.push(moods[0] === "arcade" ? "heroic" : "arcade");
   }
 
-  const difficultSignal = matchesAny(haystack, difficultSignals);
-  const casualSignal = matchesAny(haystack, casualSignals);
+  const difficultSignal = genreSignals?.difficulty === "difficult" || matchesAny(haystack, difficultSignals);
+  const casualSignal = genreSignals?.difficulty === "casual" || matchesAny(haystack, casualSignals);
   const difficulty = difficultSignal ? "difficult" : casualSignal ? "casual" : "fair";
   const difficultySignal = difficultSignal || casualSignal;
 
-  const richStorySignal = matchesAny(haystack, richStorySignals);
-  const someStorySignal = matchesAny(haystack, someStorySignals);
+  const richStorySignal = genreSignals?.story === "rich" || matchesAny(haystack, richStorySignals);
+  const someStorySignal = genreSignals?.story === "some" || matchesAny(haystack, someStorySignals);
   const story = richStorySignal ? "rich" : someStorySignal || playStyle === "action-adventure" ? "some" : "low";
   const storySignal = richStorySignal || someStorySignal;
 
