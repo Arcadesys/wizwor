@@ -33,7 +33,7 @@ export const transGameContributors: TransGameContributor[] = [
     confidence: "confirmed",
     roles: ["designer", "programmer"],
     notableWorks: ["M.U.L.E.", "The Seven Cities of Gold", "Modem Wars"],
-    catalogGameIds: ["mule"],
+    catalogGameIds: ["m-u-l-e"],
     influenceNote: "Pioneering multiplayer game designer; M.U.L.E. is the current catalog's direct trans-history match.",
     sourceUrl: "https://encyclopediaofarkansas.net/entries/danielle-bunten-berry-4524/",
     sourceNote: "Biography identifies Berry's game-design career and transition history.",

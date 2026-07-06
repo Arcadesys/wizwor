@@ -8,7 +8,7 @@ import type {
   RomhackInterest,
   StoryPreference,
 } from "@/data/games";
-import { getAllGames, getGamesByExactTitle } from "@/lib/game-repository";
+import { getAllGames, getGamesByExactTitle, getGamesByTitleKeyword } from "@/lib/game-repository";
 
 export type UserProfile = {
   name?: string;
@@ -114,11 +114,37 @@ export function hasEnoughSignal(profile: UserProfile) {
   return answeredPreferenceCount(profile) >= questionCountRequired;
 }
 
+// Named franchises/titles the player mentions (via profile.keywords) get rescued
+// back into the scoring pool even when the quality filter dropped them for low
+// signalScore — see the comment on getGamesByTitleKeyword. Only substantial
+// keywords (3+ chars) are used for this so short incidental words like "run"
+// don't pull in unrelated titles.
+function keywordRescuedGames(profile: UserProfile, options: RecommendationGateOptions): Game[] {
+  const keywords = normalizeKeywords(profile.keywords).filter((keyword) => keyword.length >= 3);
+  if (keywords.length === 0) {
+    return [];
+  }
+  const seen = new Set<string>();
+  const rescued: Game[] = [];
+  for (const keyword of keywords) {
+    for (const game of getGamesByTitleKeyword(keyword, { enabledPlatforms: options.enabledPlatforms })) {
+      if (!seen.has(game.id)) {
+        seen.add(game.id);
+        rescued.push(game);
+      }
+    }
+  }
+  return rescued;
+}
+
 export function getRecommendations(profile: UserProfile, options: RecommendationGateOptions = {}): Recommendation[] {
   if (options.recommendations) {
     return options.recommendations;
   }
-  return getAllGames({ enabledPlatforms: options.enabledPlatforms })
+  const pool = getAllGames({ enabledPlatforms: options.enabledPlatforms });
+  const poolIds = new Set(pool.map((game) => game.id));
+  const rescued = keywordRescuedGames(profile, options).filter((game) => !poolIds.has(game.id));
+  return [...pool, ...rescued]
     .map((game) => scoreGame(game, profile))
     .sort(
       (left, right) =>

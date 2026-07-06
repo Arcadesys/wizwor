@@ -5,16 +5,12 @@ import type * as ToneNamespace from "tone";
 import { catalogPlatforms, platformLabels, sanitizeEnabledPlatforms, type Platform } from "@/data/games";
 import type { Recommendation, UserProfile } from "@/lib/recommender";
 import type { FeedbackRating } from "@/lib/feedback";
+import { fetchEnrichment, getCachedEnrichment, setCachedEnrichment } from "@/lib/game-enrichment-client";
 import { isResetCommand } from "@/lib/wizard/interpreter";
 import { WIZARD_RESPONSE_TOO_LONG_ERROR } from "@/lib/wizard/response-guard";
-import { activeChordAtStep, isPlayableSoundtrack, parseRhythm } from "@/lib/wizard/soundtrack";
-import type {
-  WizardMessage,
-  WizardOption,
-  WizardSoundtrack,
-  WizardState,
-  WizardTurnResponse,
-} from "@/lib/wizard/types";
+import { youTubeEmbedUrl } from "@/lib/youtube";
+import type { GameEnrichmentResult } from "@/lib/wizard/game-enrichment";
+import type { WizardMessage, WizardOption, WizardState, WizardTurnResponse } from "@/lib/wizard/types";
 import { blankProfile, defaultMemoryMarkdown } from "@/lib/wizard/types";
 import type { WizardTerminalTheme } from "@/lib/wizard/types";
 
@@ -25,16 +21,9 @@ type Message = WizardMessage & {
 type AudioRig = {
   context: AudioContext;
   tone: typeof ToneNamespace;
-  sequences: ToneNamespace.Sequence<number>[];
-  instruments: Array<{ dispose: () => unknown }>;
-  musicActive: boolean;
-  // The step count the currently-playing sequences were built for. A
-  // same-length soundtrack edit can update live (sequences read
-  // soundtrackRef.current per trigger); a length change must rebuild.
-  builtSteps: number;
+  thinkingSynth: ToneNamespace.Synth | null;
+  thinkingLoop: ToneNamespace.Loop | null;
 };
-
-type AudioMode = "muted" | "voice" | "music";
 
 type SamConstructor = new (options?: {
   phonetic?: boolean;
@@ -71,7 +60,6 @@ const storageKey = "wyrm-terminal-profile";
 const memoryStorageKey = "wyrm-terminal-MEMORY.md";
 const themeStorageKey = "wyrm-terminal-theme";
 const platformStorageKey = "wyrm-terminal-platforms";
-const soundtrackStorageKey = "wyrm-terminal-soundtrack";
 const arrowKeys = new Set(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]);
 const recommendationButtonSelector = "[data-recommendation-button='true']";
 
@@ -84,19 +72,6 @@ const feedbackOptions: Array<{ rating: FeedbackRating; label: string }> = [
 const consoleGreeting = "Greetings Gamer! What console are you questing on today?";
 const postConsolePrompt = "What plaything can I offer you today?";
 const soundOnCaution = "Best with sound on. Turn your speakers down first, then let WIZ speak.";
-const dungeonMusicGain = 0.12;
-const dungeonSong: WizardSoundtrack = {
-  title: "Wor Dungeon Omen",
-  bpm: 108,
-  loopEnd: "4m",
-  bassline: ["A1", "A1", "C2", "B1", "A1", "D2", "C2", "G1", "A1", "A1", "Eb2", "D2", "A1", "F1", "G1", "A1"],
-  // Am - F - C - E, one chord per half-measure: a minor-key cadence with the
-  // final E major resolving the leading tone back to A.
-  chords: ["A2 C3 E3", "F2 A2 C3", "C3 E3 G3", "E2 G#2 B2"],
-  harmony: ["x", "", "x", "", "x", "", "x", "", "x", "", "x", "", "x", "", "x", ""],
-  lead: ["", "E5", "", "C5", "", "Bb4", "", "F#4", "", "A5", "", "Eb5", "", "D5", "", "C#5"],
-  rhythm: ["kick", "", "", "", "snare", "", "", "", "kick", "", "", "", "snare", "", "hat", ""],
-};
 
 type WizardTerminalProps = {
   fastMode?: boolean;
@@ -129,9 +104,10 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
   const [showcase, setShowcase] = useState<Recommendation[] | null>(null);
   const [showcaseIndex, setShowcaseIndex] = useState(0);
+  const [enrichmentById, setEnrichmentById] = useState<Record<string, GameEnrichmentResult>>({});
+  const [enrichingIds, setEnrichingIds] = useState<Record<string, boolean>>({});
   const [isStreaming, setIsStreaming] = useState(false);
-  const [audioMode, setAudioMode] = useState<AudioMode>("muted");
-  const [soundtrack, setSoundtrack] = useState<WizardSoundtrack>(dungeonSong);
+  const [soundOn, setSoundOn] = useState(false);
   const [feedbackRating, setFeedbackRating] = useState<FeedbackRating | null>(null);
   const [feedbackNote, setFeedbackNote] = useState("");
   const [feedbackNoteSent, setFeedbackNoteSent] = useState(false);
@@ -139,6 +115,8 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const [controlNavGroup, setControlNavGroup] = useState<ControlNavGroup | null>(null);
   const [controlNavIndex, setControlNavIndex] = useState(0);
 
+  const enrichmentRef = useRef<Record<string, GameEnrichmentResult>>({});
+  const enrichingRef = useRef<Set<string>>(new Set());
   const profileRef = useRef(profile);
   const memoryMarkdownRef = useRef(memoryMarkdown);
   const enabledPlatformsRef = useRef(enabledPlatforms);
@@ -149,14 +127,13 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const messagesRef = useRef(messages);
   const sessionIdRef = useRef(makeId("session"));
   const audioRef = useRef<AudioRig | null>(null);
-  const soundtrackRef = useRef<WizardSoundtrack>(dungeonSong);
   const audioBusyRef = useRef(false);
-  // Serializes every audio lifecycle transition (startup autoplay, the sound
-  // toggle, a tool-driven soundtrack change, unmount cleanup) so they can
-  // never build/tear down the rig concurrently — see ensureAudioRig's
-  // invariant comment for why that matters.
+  // Serializes every audio lifecycle transition (the sound toggle, the
+  // thinking-sound start/stop, unmount cleanup) so they can never
+  // build/tear down the rig concurrently — see ensureAudioRig's invariant
+  // comment for why that matters.
   const audioChainRef = useRef(Promise.resolve());
-  const audioModeRef = useRef<AudioMode>("muted");
+  const soundOnRef = useRef(false);
   const audioDisposedRef = useRef(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -164,18 +141,13 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   const streamTokenRef = useRef(0);
   const samRef = useRef<InstanceType<SamConstructor> | null>(null);
   const greetingSpokenRef = useRef(false);
-  const startupSoundAttemptedRef = useRef(false);
   const gamepadFrameRef = useRef<number | null>(null);
   const lastGamepadRef = useRef<GamepadState>({ left: false, right: false, submit: false });
   const suppressFocusRef = useRef(false);
 
   const terminalStyle = useMemo(() => themeToCssVariables(terminalTheme), [terminalTheme]);
-  const soundOn = audioMode !== "muted";
-  const musicOn = audioMode === "music";
-  const audioStatus =
-    audioMode === "music" ? `Music and voice: ${soundtrack.title}` : audioMode === "voice" ? "Voice only" : "Muted";
-  const nextAudioModeLabel =
-    audioMode === "music" ? "Switch to muted" : audioMode === "voice" ? "Switch to music and voice" : "Switch to voice only";
+  const audioStatus = soundOn ? "Voice on" : "Muted";
+  const nextSoundLabel = soundOn ? "Mute" : "Unmute";
 
   useEffect(() => {
     queueMicrotask(() => {
@@ -204,23 +176,10 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
           setEnabledPlatforms(restoredPlatforms);
           enabledPlatformsRef.current = restoredPlatforms;
         }
-        const savedSoundtrack = persistentStorage?.getItem(soundtrackStorageKey);
-        if (savedSoundtrack) {
-          const restoredSoundtrack: unknown = JSON.parse(savedSoundtrack);
-          // A tampered or stale track would crash Tone.js mid-playback, so a
-          // failed check falls back to the built-in dungeon song.
-          if (isPlayableSoundtrack(restoredSoundtrack)) {
-            setSoundtrack(restoredSoundtrack);
-            soundtrackRef.current = restoredSoundtrack;
-          } else {
-            persistentStorage?.removeItem(soundtrackStorageKey);
-          }
-        }
       } catch {
         sessionStorage.removeItem(storageKey);
         getPersistentStorage()?.removeItem(themeStorageKey);
         getPersistentStorage()?.removeItem(platformStorageKey);
-        getPersistentStorage()?.removeItem(soundtrackStorageKey);
       } finally {
         setHydrated(true);
       }
@@ -270,24 +229,10 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   }, [started, isStreaming]);
 
   useEffect(() => {
-    if (fastMode || !hydrated || startupSoundAttemptedRef.current) {
-      return;
-    }
-
     // A StrictMode dev double-invoke re-runs this effect after the unmount
     // cleanup below has flagged the session disposed; clear that flag so
     // the "remounted" instance can still start audio.
     audioDisposedRef.current = false;
-    startupSoundAttemptedRef.current = true;
-    void enqueueAudio(async () => {
-      const rig = await startMusic();
-      if (rig) {
-        await loadSam();
-      }
-    });
-  }, [fastMode, hydrated]);
-
-  useEffect(() => {
     return () => {
       audioDisposedRef.current = true;
       void enqueueAudio(async () => {
@@ -295,6 +240,22 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       });
     };
   }, []);
+
+  // The "thinking" sound plays for exactly as long as isStreaming is true —
+  // set right before the /api/wizard fetch and cleared once the response is
+  // done revealing — so it covers both the network wait and the typewriter
+  // reveal.
+  useEffect(() => {
+    if (isStreaming) {
+      void enqueueAudio(async () => {
+        await startThinkingSound();
+      });
+    } else {
+      void enqueueAudio(async () => {
+        stopThinkingSound();
+      });
+    }
+  }, [isStreaming]);
 
   function persistProfile(nextProfile: UserProfile) {
     setProfile(nextProfile);
@@ -439,7 +400,6 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       enabledPlatforms: enabledPlatformsRef.current,
       memoryMarkdown: memoryMarkdownRef.current,
       terminalTheme: terminalThemeRef.current,
-      soundtrack: soundtrackRef.current,
     };
   }
 
@@ -491,9 +451,6 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     setRecommendations(response.recommendations);
     recommendationsRef.current = response.recommendations;
     setShowcase(response.showcase?.games ?? null);
-    if (response.soundtrack) {
-      applySoundtrack(response.soundtrack);
-    }
     setShowcaseIndex(0);
     setSuggestionIndex(0);
     setIsSuggestionBrowsing(false);
@@ -993,17 +950,14 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     return ids[getSafeSuggestionIndex(ids.length, controlNavIndex)] === id;
   }
 
-  function updateAudioMode(mode: AudioMode) {
-    audioModeRef.current = mode;
-    setAudioMode(mode);
+  function updateSoundOn(value: boolean) {
+    soundOnRef.current = value;
+    setSoundOn(value);
   }
 
-  // Every audio lifecycle transition (toggle, startup autoplay, a
-  // soundtrack change, unmount cleanup) runs through this queue instead of
-  // firing directly, so two transitions can never build/tear down the rig
-  // concurrently — the exact hazard that let the rig go split-brain (music
-  // audibly playing on an orphaned rig while audioRef pointed at a second,
-  // silent one, so soundtrack changes appeared to do nothing).
+  // Every audio lifecycle transition (the mute toggle, the thinking sound,
+  // unmount cleanup) runs through this queue instead of firing directly, so
+  // two transitions can never build/tear down the rig concurrently.
   function enqueueAudio(task: () => Promise<void>) {
     const next = audioChainRef.current.then(async () => {
       try {
@@ -1018,11 +972,9 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
 
   async function toggleSound() {
     // The button stays enabled while the rig loads, so a double-click would
-    // otherwise run two transitions concurrently — building two sets of
-    // synths/sequences where the first set's references are overwritten and
-    // its loops keep playing with no way to stop them. This guard is
-    // separate from the queue: a queued double-toggle would bounce music
-    // off/on, which is worse than just ignoring the re-entrant click.
+    // otherwise run two transitions concurrently. This guard is separate
+    // from the queue: a queued double-toggle would bounce sound off/on,
+    // which is worse than just ignoring the re-entrant click.
     if (audioBusyRef.current) {
       return;
     }
@@ -1030,29 +982,23 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     audioBusyRef.current = true;
     await enqueueAudio(async () => {
       try {
-        const mode = audioModeRef.current;
-        if (mode === "muted") {
+        if (!soundOnRef.current) {
           const rig = await ensureAudioRig();
           if (rig) {
             await loadSam();
-            updateAudioMode("voice");
+            updateSoundOn(true);
           }
           return;
         }
 
-        if (mode === "voice") {
-          await startMusic();
-          await loadSam();
-          return;
-        }
-
         stopAllAudio();
-        updateAudioMode("muted");
+        updateSoundOn(false);
       } finally {
         audioBusyRef.current = false;
       }
     });
   }
+
 
   async function ensureAudioRig() {
     // Safe only because every caller is routed through enqueueAudio: this
@@ -1083,10 +1029,8 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       audioRef.current = {
         context: context as AudioContext,
         tone: Tone,
-        sequences: [],
-        instruments: [],
-        musicActive: false,
-        builtSteps: 0,
+        thinkingSynth: null,
+        thinkingLoop: null,
       };
       return audioRef.current;
     } catch {
@@ -1094,179 +1038,50 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     }
   }
 
-  async function startMusic() {
-    const rig = await ensureAudioRig();
-    if (!rig) {
-      updateAudioMode("muted");
-      return null;
-    }
-
-    if (rig.musicActive) {
-      rig.tone.getTransport().start();
-      updateAudioMode("music");
-      return rig;
-    }
-
-    try {
-      const song = soundtrackRef.current;
-      const Tone = rig.tone;
-      const master = new Tone.Gain(dungeonMusicGain).toDestination();
-      const dungeonFilter = new Tone.Filter({ frequency: 980, rolloff: -24, type: "lowpass" }).connect(master);
-      const hatFilter = new Tone.Filter({ frequency: 6000, rolloff: -12, type: "highpass" }).connect(master);
-      const echo = new Tone.FeedbackDelay({ delayTime: "8n.", feedback: 0.34, wet: 0.24 }).connect(dungeonFilter);
-      const bassSynth = new Tone.MonoSynth({
-        oscillator: { type: "square" },
-        envelope: { attack: 0.006, decay: 0.08, sustain: 0.16, release: 0.08 },
-        filter: { Q: 5, type: "lowpass", rolloff: -24 },
-        filterEnvelope: { attack: 0.002, decay: 0.12, sustain: 0.18, release: 0.08, baseFrequency: 90, octaves: 2.6 },
-      }).connect(dungeonFilter);
-      const harmonySynth = new Tone.PolySynth(Tone.Synth, {
-        oscillator: { type: "pulse", width: 0.26 },
-        envelope: { attack: 0.01, decay: 0.1, sustain: 0.04, release: 0.16 },
-      }).connect(echo);
-      const leadSynth = new Tone.Synth({
-        oscillator: { type: "triangle" },
-        envelope: { attack: 0.004, decay: 0.03, sustain: 0, release: 0.08 },
-      }).connect(echo);
-      const kickSynth = new Tone.MembraneSynth({
-        pitchDecay: 0.05,
-        octaves: 4,
-        envelope: { attack: 0.001, decay: 0.35, sustain: 0, release: 0.1 },
-      }).connect(dungeonFilter);
-      const snareSynth = new Tone.NoiseSynth({
-        noise: { type: "brown" },
-        envelope: { attack: 0.001, decay: 0.075, sustain: 0, release: 0.025 },
-      }).connect(dungeonFilter);
-      const hatSynth = new Tone.NoiseSynth({
-        noise: { type: "white" },
-        envelope: { attack: 0.001, decay: 0.02, sustain: 0, release: 0.01 },
-      }).connect(hatFilter);
-
-      const transport = Tone.getTransport();
-      transport.stop();
-      transport.cancel(0);
-      transport.bpm.value = song.bpm;
-      transport.loop = true;
-      transport.loopStart = 0;
-      transport.loopEnd = song.loopEnd;
-
-      const steps = song.bassline.length;
-      const stepIndices = Array.from({ length: steps }, (_, index) => index);
-
-      // Every callback reads soundtrackRef.current at trigger time rather
-      // than closing over `song`, so a same-length soundtrack edit takes
-      // effect on the next step with no rebuild (see applySoundtrack).
-      // Falsy-guarded because during the brief window between a
-      // length-changing edit and its queued rebuild, these still-running
-      // sequences can index past the new (shorter) arrays.
-      const bassSequence = new Tone.Sequence<number>((time, step) => {
-        const note = soundtrackRef.current.bassline[step];
-        if (note) {
-          bassSynth.triggerAttackRelease(note, "16n", time, 0.78);
-        }
-      }, stepIndices, "8n").start(0);
-      const harmonySequence = new Tone.Sequence<number>((time, step) => {
-        const track = soundtrackRef.current;
-        if (track.harmony[step] === "x") {
-          const chord = activeChordAtStep(track, step);
-          if (chord.length) {
-            harmonySynth.triggerAttackRelease(chord, "32n", time, 0.22);
-          }
-        }
-      }, stepIndices, "8n").start(0);
-      const leadSequence = new Tone.Sequence<number>((time, step) => {
-        const note = soundtrackRef.current.lead[step];
-        if (note) {
-          leadSynth.triggerAttackRelease(note, "64n", time, 0.13);
-        }
-      }, stepIndices, "8n").start(0);
-      const rhythmSequence = new Tone.Sequence<number>((time, step) => {
-        const entry = soundtrackRef.current.rhythm[step];
-        if (!entry) {
-          return;
-        }
-        const tokens = parseRhythm(entry);
-        if (tokens.includes("kick")) {
-          kickSynth.triggerAttackRelease("C1", "16n", time, 0.9);
-        }
-        if (tokens.includes("snare")) {
-          snareSynth.triggerAttackRelease("32n", time, 0.16);
-        }
-        if (tokens.includes("hat")) {
-          hatSynth.triggerAttackRelease("64n", time, 0.1);
-        }
-      }, stepIndices, "8n").start(0);
-
-      transport.start();
-      rig.sequences = [bassSequence, harmonySequence, leadSequence, rhythmSequence];
-      rig.instruments = [
-        master,
-        dungeonFilter,
-        hatFilter,
-        echo,
-        bassSynth,
-        harmonySynth,
-        leadSynth,
-        kickSynth,
-        snareSynth,
-        hatSynth,
-      ];
-      rig.musicActive = true;
-      rig.builtSteps = steps;
-      updateAudioMode("music");
-      return rig;
-    } catch {
-      stopMusic();
-      updateAudioMode("voice");
-      return null;
-    }
-  }
-
-  function applySoundtrack(nextSoundtrack: WizardSoundtrack) {
-    soundtrackRef.current = nextSoundtrack;
-    setSoundtrack(nextSoundtrack);
-    try {
-      getPersistentStorage()?.setItem(soundtrackStorageKey, JSON.stringify(nextSoundtrack));
-    } catch (error) {
-      console.warn("Failed to persist soundtrack:", error);
-    }
-    void enqueueAudio(async () => {
-      const rig = audioRef.current;
-      if (!rig?.musicActive) {
-        // Music isn't audible; the new track just waits for the next time
-        // the player unmutes into music mode.
-        return;
-      }
-      if (rig.builtSteps === nextSoundtrack.bassline.length) {
-        // Same step count: the running sequences already read this track
-        // live, so the new notes/chords/rhythm land on the next step.
-        // Only bpm needs an explicit nudge — it isn't read per-step.
-        rig.tone.getTransport().bpm.value = nextSoundtrack.bpm;
-        return;
-      }
-      stopMusic();
-      await startMusic();
-    });
-  }
-
-  function stopMusic() {
-    if (!audioRef.current) {
+  // A short Tone.js arpeggio loop that plays for exactly as long as the
+  // wizard is thinking — started/stopped by the isStreaming effect above.
+  async function startThinkingSound() {
+    if (!soundOnRef.current) {
       return;
     }
 
-    const transport = audioRef.current.tone.getTransport();
-    transport.stop?.();
-    transport.cancel?.(0);
-    for (const sequence of audioRef.current.sequences) {
-      sequence.dispose();
+    const rig = await ensureAudioRig();
+    if (!rig) {
+      return;
     }
-    for (const instrument of audioRef.current.instruments) {
-      instrument.dispose();
+
+    if (rig.thinkingLoop) {
+      rig.thinkingLoop.start(0);
+      rig.tone.getTransport().start();
+      return;
     }
-    audioRef.current.sequences = [];
-    audioRef.current.instruments = [];
-    audioRef.current.musicActive = false;
-    audioRef.current.builtSteps = 0;
+
+    const Tone = rig.tone;
+    const synth = new Tone.Synth({
+      oscillator: { type: "triangle" },
+      envelope: { attack: 0.01, decay: 0.08, sustain: 0.05, release: 0.05 },
+    }).toDestination();
+    synth.volume.value = -20;
+
+    const notes = ["C5", "E5", "G5", "E5"];
+    let step = 0;
+    const loop = new Tone.Loop((time) => {
+      synth.triggerAttackRelease(notes[step % notes.length], "32n", time);
+      step += 1;
+    }, "8n").start(0);
+
+    rig.tone.getTransport().start();
+    rig.thinkingSynth = synth;
+    rig.thinkingLoop = loop;
+  }
+
+  function stopThinkingSound() {
+    const rig = audioRef.current;
+    if (!rig?.thinkingLoop) {
+      return;
+    }
+
+    rig.thinkingLoop.stop(0);
   }
 
   function stopAllAudio() {
@@ -1274,7 +1089,8 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       return;
     }
 
-    stopMusic();
+    audioRef.current.thinkingLoop?.dispose();
+    audioRef.current.thinkingSynth?.dispose();
     audioRef.current.tone.getContext().dispose();
     audioRef.current = null;
   }
@@ -1441,6 +1257,49 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
 
   const activeShowcaseGame =
     showcase && showcase.length ? showcase[Math.min(showcaseIndex, showcase.length - 1)] : null;
+
+  // Fetches a real longplay + rating for whichever game the showcase is
+  // currently displaying — reactive to what's actually viewed, not a bulk
+  // pre-fetch. Cached client-side (localStorage) so revisiting the same
+  // game never re-triggers the lookup.
+  useEffect(() => {
+    const game = activeShowcaseGame?.game;
+    if (!game) {
+      return;
+    }
+
+    if (enrichmentRef.current[game.id] || enrichingRef.current.has(game.id) || getCachedEnrichment(game.id)) {
+      return;
+    }
+
+    enrichingRef.current.add(game.id);
+    setEnrichingIds((current) => ({ ...current, [game.id]: true }));
+
+    void fetchEnrichment({
+      title: game.title,
+      platform: platformLabel(game.platform),
+      year: game.year,
+    }).then((result) => {
+      setCachedEnrichment(game.id, result);
+      enrichmentRef.current[game.id] = result;
+      enrichingRef.current.delete(game.id);
+      setEnrichmentById((current) => ({ ...current, [game.id]: result }));
+      setEnrichingIds((current) => {
+        const next = { ...current };
+        delete next[game.id];
+        return next;
+      });
+    });
+  }, [activeShowcaseGame]);
+
+  const activeGameEnrichment = activeShowcaseGame
+    ? (enrichmentById[activeShowcaseGame.game.id] ?? getCachedEnrichment(activeShowcaseGame.game.id) ?? undefined)
+    : undefined;
+  const isEnrichingActiveGame = activeShowcaseGame ? Boolean(enrichingIds[activeShowcaseGame.game.id]) : false;
+  const curatedEmbedUrl = activeShowcaseGame ? youTubeEmbedUrl(activeShowcaseGame.game.playthroughUrl) : null;
+  const enrichedEmbedUrl =
+    !curatedEmbedUrl && activeGameEnrichment?.youtubeUrl ? youTubeEmbedUrl(activeGameEnrichment.youtubeUrl) : null;
+  const activeShowcaseEmbedUrl = curatedEmbedUrl ?? enrichedEmbedUrl;
 
   return (
     <main
@@ -1710,7 +1569,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                 <span className="terminal-cursor prompt-cursor" />
               </div>
               <div className="prompt-actions">
-                <span className="music-status" aria-live="polite">
+                <span className="audio-status" aria-live="polite">
                   {audioStatus}
                 </span>
                 <button
@@ -1720,13 +1579,11 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                     toggleSound();
                     inputRef.current?.focus();
                   }}
-                  className={`prompt-icon-button sound-button ${
-                    musicOn ? "is-on" : audioMode === "voice" ? "is-voice" : "is-off"
-                  } ${
+                  className={`prompt-icon-button sound-button ${soundOn ? "is-on" : "is-off"} ${
                     isControlNavCursor("topbar", "sound") ? "is-nav-cursor" : ""
                   }`}
-                  aria-label={`Audio mode: ${audioStatus}. ${nextAudioModeLabel}`}
-                  title={audioStatus}
+                  aria-label={`Voice: ${soundOn ? "on" : "muted"}. ${nextSoundLabel}`}
+                  title={soundOn ? "Voice on" : "Muted"}
                   data-nav-item="true"
                 >
                   <span className="audio-glyph" aria-hidden="true">
@@ -1734,13 +1591,9 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                       <span className="audio-speaker-body" />
                       <span className="audio-speaker-cone" />
                     </span>
-                    <span className="audio-icon audio-icon-music">
-                      <span className="audio-note-head" />
-                      <span className="audio-note-stem" />
-                    </span>
                     <span className="audio-slash" />
                   </span>
-                  <span className="sr-only">{audioStatus}</span>
+                  <span className="sr-only">{soundOn ? "Voice on" : "Muted"}</span>
                 </button>
                 <button
                   type="submit"
@@ -1809,14 +1662,19 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
 
               <div className="showcase-body">
                 <div className="showcase-video-frame">
-                  {youTubeEmbedUrl(activeShowcaseGame.game.playthroughUrl) ? (
+                  {activeShowcaseEmbedUrl ? (
                     <iframe
                       key={activeShowcaseGame.game.id}
-                      src={youTubeEmbedUrl(activeShowcaseGame.game.playthroughUrl) ?? undefined}
+                      src={activeShowcaseEmbedUrl}
                       title={`${activeShowcaseGame.game.title} gameplay`}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                     />
+                  ) : isEnrichingActiveGame ? (
+                    <div className="enrichment-spinner" role="status" aria-label="Searching for footage">
+                      <span className="enrichment-spinner-glyph" aria-hidden="true" />
+                      Searching for footage&hellip;
+                    </div>
                   ) : (
                     <a
                       className="playthrough-link"
@@ -1833,6 +1691,13 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                   {platformLabel(activeShowcaseGame.game.platform)} / {activeShowcaseGame.game.year}
                   {" · "}
                   {Math.round(activeShowcaseGame.score * 100)}% match
+                  {activeGameEnrichment?.rating != null ? (
+                    <>
+                      {" · "}
+                      Rated {activeGameEnrichment.rating.toFixed(1)}/10
+                      {activeGameEnrichment.ratingSource ? ` (${activeGameEnrichment.ratingSource})` : ""}
+                    </>
+                  ) : null}
                 </p>
                 <p className="showcase-reasons">Why it&rsquo;s relevant: {activeShowcaseGame.reasons.join(" / ")}</p>
               </div>
@@ -2016,23 +1881,6 @@ function waitForSource(source: AudioBufferSourceNode, paddingMs: number) {
 
 function platformLabel(platform: Recommendation["game"]["platform"]) {
   return platformLabels[platform] ?? platform.toUpperCase();
-}
-
-function youTubeEmbedUrl(url: string): string | null {
-  try {
-    const parsed = new URL(url);
-    if (parsed.hostname === "youtu.be") {
-      const id = parsed.pathname.slice(1);
-      return id ? `https://www.youtube.com/embed/${id}` : null;
-    }
-    if (parsed.hostname.includes("youtube.com")) {
-      const id = parsed.searchParams.get("v");
-      return id ? `https://www.youtube.com/embed/${id}` : null;
-    }
-  } catch {
-    return null;
-  }
-  return null;
 }
 
 function speakerLabel(speaker: Message["speaker"]) {

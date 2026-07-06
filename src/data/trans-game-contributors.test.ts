@@ -19,7 +19,7 @@ describe("trans game contributors", () => {
       expect.arrayContaining([
         expect.objectContaining({
           id: "danielle-bunten-berry",
-          catalogGameIds: ["mule"],
+          catalogGameIds: ["m-u-l-e"],
         }),
       ]),
     );

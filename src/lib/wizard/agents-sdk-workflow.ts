@@ -10,6 +10,7 @@ import {
 import { z } from "zod";
 import { catalogPlatforms, type Platform } from "@/data/games";
 import { transGameContributorsForAgent } from "@/data/trans-game-contributors";
+import { getGamesByTitleKeyword } from "@/lib/game-repository";
 import type { Recommendation, RecommendationGateOptions, UserProfile } from "@/lib/recommender";
 import {
   bestGuessRecommendations,
@@ -23,14 +24,7 @@ import {
 } from "@/lib/recommender";
 import { emptyAgentData } from "@/lib/wizard/agent-data";
 import { enforceWizardResponseLength, WIZARD_RESPONSE_CHARACTER_LIMIT } from "@/lib/wizard/response-guard";
-import {
-  isPlayableSoundtrack,
-  isValidChordEntry,
-  isValidRhythmEntry,
-  rhythmTokens,
-  soundtrackNotePattern,
-} from "@/lib/wizard/soundtrack";
-import type { WizardSoundtrack, WizardTurnRequest, WizardTurnResponse } from "@/lib/wizard/types";
+import type { WizardTurnRequest, WizardTurnResponse } from "@/lib/wizard/types";
 import { blankProfile, initialWizardState } from "@/lib/wizard/types";
 
 const FlexibleScalarSchema = z.union([z.string(), z.number(), z.boolean()]);
@@ -61,8 +55,6 @@ type WizardRunContext = {
   enabledPlatforms: readonly Platform[];
   profile: UserProfile;
   showcaseRequest: { gameIds: string[] } | null;
-  soundtrackRequest: WizardSoundtrack | null;
-  currentSoundtrack: WizardSoundtrack | null;
 };
 
 // This tool is a capability the agent chooses to call. The fixed workflow is
@@ -98,6 +90,42 @@ const lookupRecommendationsTool = tool({
           pitch: recommendation.game.pitch,
           tags: recommendation.game.tags,
         })),
+    };
+  },
+});
+
+const SearchCatalogSchema = z.object({
+  query: z.string().trim().min(1),
+});
+
+// lookup_recommendations only ever scores the quality-filtered pool (see
+// game-repository's minGeneratedSignalScore), so a named title/franchise that
+// scored low signal in the generated catalog can be invisible to it even
+// though it's a real cartridge (every Mega Man NES entry, for instance, scores
+// signalScore 1 and used to vanish from recommendations entirely). This tool
+// searches title text directly against the unfiltered catalog, so the agent
+// can confirm what actually exists on the shelf before trusting the scored
+// pool's silence as "doesn't exist."
+const searchCatalogTool = tool({
+  name: "search_catalog",
+  description:
+    "Search the full catalog (whichever platforms the player currently has enabled) by title substring, bypassing the recommendation quality filter. Use this when a player names a specific title or franchise and lookup_recommendations/currentBestMatches doesn't show it — that silence can mean the game was filtered out of scoring for low signal, not that it doesn't exist. Returns up to 10 matches with id, title, year, platform, pitch, tags, and difficulty so you can decide how to talk about it or fold it back into the conversation.",
+  parameters: SearchCatalogSchema,
+  execute: async (input, runContext?: RunContext<WizardRunContext>) => {
+    const enabledPlatforms = runContext?.context.enabledPlatforms ?? [...catalogPlatforms];
+    const matches = getGamesByTitleKeyword(input.query, { enabledPlatforms }).slice(0, 10);
+    return {
+      query: input.query,
+      matchCount: matches.length,
+      matches: matches.map((game) => ({
+        id: game.id,
+        title: game.title,
+        year: game.year,
+        platform: game.platform,
+        pitch: game.pitch,
+        tags: game.tags,
+        difficulty: game.difficulty,
+      })),
     };
   },
 });
@@ -176,172 +204,6 @@ const openGameShowcaseTool = tool({
   },
 });
 
-// Every field is nullable so the agent can edit one voice of the current
-// track (null = keep as-is) — the SDK forces strict mode for Zod tool
-// parameters, which forbids .optional(), so null is the "unchanged" marker.
-const SetSoundtrackSchema = z.object({
-  title: z.string().nullable(),
-  bpm: z.number().nullable(),
-  bassline: z.array(z.string()).min(8).max(32).nullable(),
-  chords: z.array(z.string()).max(8).nullable(),
-  harmony: z.array(z.string()).max(32).nullable(),
-  lead: z.array(z.string()).max(32).nullable(),
-  rhythm: z.array(z.string()).max(32).nullable(),
-});
-
-type SetSoundtrackInput = z.infer<typeof SetSoundtrackSchema>;
-
-export type SoundtrackSanitizeResult =
-  | { ok: true; soundtrack: WizardSoundtrack }
-  | { ok: false; reason: string };
-
-// The frontend feeds these strings straight into Tone.js triggerAttackRelease,
-// which throws on malformed notes mid-playback — so never trust the agent's
-// composition blindly: reject bad notes (with a reason the model can retry on)
-// instead of letting them crash the audio rig. Null fields keep the value from
-// `current` (the track the frontend reports as playing), so the agent can edit
-// one voice without re-transcribing the rest. Only agent-supplied fields are
-// re-validated — callers must gate `current` through isPlayableSoundtrack
-// first, since it arrives as untrusted client JSON. Exported for unit tests.
-export function sanitizeSoundtrack(
-  input: SetSoundtrackInput,
-  current: WizardSoundtrack | null = null,
-): SoundtrackSanitizeResult {
-  const bassline = input.bassline ?? current?.bassline;
-  if (!bassline) {
-    return {
-      ok: false,
-      reason: "no track is currently playing, so bassline is required: a full bassline of 8, 16, 24, or 32 steps",
-    };
-  }
-
-  const steps = bassline.length;
-  if (steps % 8 !== 0) {
-    return { ok: false, reason: `bassline must be whole measures: 8, 16, 24, or 32 steps (got ${steps})` };
-  }
-
-  const badBassline = (input.bassline ?? []).filter(
-    (note) => note !== "" && !soundtrackNotePattern.test(note),
-  );
-  if (badBassline.length) {
-    return {
-      ok: false,
-      reason: `bassline entries must be "" (a rest) or a note like "A1" or "Eb2" (bad: ${badBassline.join(", ")})`,
-    };
-  }
-
-  if (input.chords) {
-    const badChords = input.chords.filter((entry) => !isValidChordEntry(entry));
-    if (badChords.length) {
-      return {
-        ok: false,
-        reason: `chords entries must be "" (carry the previous chord) or up to 4 space-separated notes like "A2 C3 E3" (bad: ${badChords.join(", ")})`,
-      };
-    }
-  }
-
-  if (input.harmony) {
-    const badHarmony = input.harmony.filter((entry) => entry !== "" && entry !== "x");
-    if (badHarmony.length) {
-      return {
-        ok: false,
-        reason: `harmony entries must be "" (silent) or "x" (strike the active chord) (bad: ${badHarmony.join(", ")})`,
-      };
-    }
-  }
-
-  if (input.lead) {
-    const badLead = input.lead.filter((note) => note !== "" && !soundtrackNotePattern.test(note));
-    if (badLead.length) {
-      return {
-        ok: false,
-        reason: `lead entries must be "" (a rest) or a note like "C4" (bad: ${badLead.join(", ")})`,
-      };
-    }
-  }
-
-  if (input.rhythm) {
-    const badRhythm = input.rhythm.filter((entry) => !isValidRhythmEntry(entry));
-    if (badRhythm.length) {
-      return {
-        ok: false,
-        reason: `rhythm entries must be "" or space-separated drum names from ${rhythmTokens.join("/")} (bad: ${badRhythm.join(", ")})`,
-      };
-    }
-  }
-
-  const bpm = input.bpm ?? current?.bpm;
-  // padToSteps also reconciles a length change: when the agent swaps in a
-  // longer or shorter bassline, the carried-over voices stretch (with rests)
-  // or truncate to the new loop length.
-  const padToSteps = (entries: string[], length: number) =>
-    Array.from({ length }, (_, index) => entries[index] ?? "");
-
-  const harmony = padToSteps(input.harmony ?? current?.harmony ?? [], steps);
-  const lead = padToSteps(input.lead ?? current?.lead ?? [], steps);
-  const rhythm = padToSteps(input.rhythm ?? current?.rhythm ?? [], steps);
-  const chords = padToSteps(input.chords ?? current?.chords ?? [], steps / 4);
-
-  if (
-    bassline.every((note) => note === "") &&
-    harmony.every((entry) => entry === "") &&
-    lead.every((note) => note === "") &&
-    rhythm.every((entry) => entry === "")
-  ) {
-    return { ok: false, reason: "every voice is a rest — the loop would be silent; give at least one voice notes to play" };
-  }
-
-  return {
-    ok: true,
-    soundtrack: {
-      title: (input.title ?? current?.title ?? "").trim().slice(0, 48) || "Untitled Wor Loop",
-      bpm: typeof bpm === "number" && Number.isFinite(bpm) ? Math.round(Math.min(180, Math.max(70, bpm))) : 120,
-      // The sequences step on eighth notes, so 8 steps = 1 measure; the
-      // transport loop must land exactly on the sequence boundary or the
-      // song truncates mid-phrase.
-      loopEnd: `${steps / 8}m`,
-      bassline,
-      chords,
-      harmony,
-      lead,
-      rhythm,
-    },
-  };
-}
-
-// Like open_game_showcase, this tool is the literal mechanism: the composition
-// captured on the run context is returned to the frontend, which rebuilds its
-// Tone.js loop from it. Talking about new music without calling this changes
-// nothing the player can hear.
-const setSoundtrackTool = tool({
-  name: "set_soundtrack",
-  description: [
-    "Replace or edit the looping chiptune soundtrack the player hears, effective immediately. This is the only way to change the music — describing a new track without calling this plays nothing.",
-    "The engine is five musical roles stepped on eighth notes: bassline (the foundation — \"\" = rest, or a note like \"A1\"), chords (the harmonic progression — one entry per HALF-MEASURE, i.e. every 4 steps; \"\" carries the previous chord forward, or a stack of up to 4 space-separated notes like \"A2 C3 E3\"), harmony (when the chord strikes — \"\" = silent, \"x\" = strike the currently active chord), lead (the melody — \"\" = rest, or a note), and rhythm (the beat — \"\" or space-separated drum hits from kick/snare/hat, e.g. \"kick hat\").",
-    "Every field is nullable: pass null to keep that part of the currently playing track unchanged. Supply only the field(s) you want to change for a partial edit (e.g. only rhythm to make the beat busier, only bassline to swap the bassline, only chords to change the progression), or supply everything to replace the track entirely. bassline is required only when no track is playing yet.",
-    "bassline sets the loop length: 8, 16, 24, or 32 steps (whole measures); chords is padded/truncated to steps/4, and harmony/lead/rhythm are padded/truncated to steps. Notes are scientific pitch like \"A1\", \"Eb2\", \"F#5\" (octaves 0-8). bpm is clamped to 70-180.",
-    "Compose to the requested vibe: fast bpm with bright major-key chords for lively or heroic, slow low minor progressions for ominous, dense rhythm for driving energy. Write a bassline and lead that fit the active chords.",
-  ].join(" "),
-  parameters: SetSoundtrackSchema,
-  execute: async (input, runContext?: RunContext<WizardRunContext>) => {
-    const result = sanitizeSoundtrack(input, runContext?.context.currentSoundtrack ?? null);
-    if (!result.ok) {
-      return { applied: false, reason: result.reason };
-    }
-
-    if (runContext) {
-      runContext.context.soundtrackRequest = result.soundtrack;
-    }
-
-    return {
-      applied: true,
-      title: result.soundtrack.title,
-      bpm: result.soundtrack.bpm,
-      steps: result.soundtrack.bassline.length,
-    };
-  },
-});
-
 const AgentGeneratedDataSchema = z.record(z.string(), FlexibleValueSchema).default({});
 
 export const WizardTurnOutputSchema = z.object({
@@ -378,11 +240,11 @@ const liveWizardAgent = new Agent<WizardRunContext, typeof WizardTurnOutputSchem
     "Do not require the player's name for anything. If they offer a name, remember it in memoryMarkdown and optionally include it in profile.name; otherwise omit profile.name.",
     "You maintain the player's durable MEMORY.md. Every turn receives the current Markdown memory. Return memoryMarkdown only when you learned something durable: name, preferences, terminal color wishes, games previously played, games rejected, accessibility/audio/style preferences, or useful notes. Keep the Markdown compact, preserving the headings: Player, Preferences, Games Previously Played, Notes.",
     "If the player asks to change terminal colors, update memoryMarkdown and return terminalTheme with CSS hex colors for the requested palette. Use background, foreground, green, amber, red, and blue keys when relevant.",
-    "The terminal loops a synthesized chiptune soundtrack (currentSoundtrack in your context summarizes what's playing, including its chord progression). When the player asks for different music — a new vibe, genre, or energy in the soundtrack, song, or background music (e.g. 'give me a lively shmup soundtrack') — that is a music request, not a game request: compose a new loop on the spot and call the set_soundtrack tool, then confirm the new track in-character. For a tweak to the current track — 'make the rhythm busier', 'change the bassline', 'a different chord progression', 'a little faster' — call set_soundtrack with only the field(s) that should change and null for the rest; whatever you pass null for keeps playing as-is. Do not fold music requests into the game profile, do not interrogate them about subgenres first, and note their music taste in memoryMarkdown.",
     `After the player answers what system they are questing on, messages include recommendationGate: the real catalog scored against the profile as currently known. Reveal when recommendationGate.recommendationWindowOpen is true, meaning 1 to ${maxQualifyingRecommendations} games score at least ${Math.round(recommendationThreshold * 100)}%. Call the lookup_recommendations tool only when you want to test a hypothetical profile different from the known one (e.g. 'what if difficulty were X'); you don't need it just to see the current picture.`,
     `When recommendationGate.qualifyingMatchCount is 0 — no game clears the ${Math.round(recommendationThreshold * 100)}% gate — never stonewall the player behind the threshold. Two moves, in order: (1) If real ambiguity remains, ask one clarifying question aimed at raising certainty. The strongest is asking which single preference should rule the others; set profile.focus to that dimension key (mood, playStyle, difficulty, story, obscurity, romhack, or keywords) and games honoring the ruling preference are boosted above the gate. (2) If no ambiguity is left — the useful questions are answered, the player deferred, or another question won't move the numbers — commit: set revealed true with the top currentBestMatches id(s) and call open_game_showcase (when recommendationGate.bestGuessAvailable is true, the showcase accepts the top-scored games as best guesses). Present it honestly as the closest signal on the shelf, naming the match percent, not as a perfect rune.`,
     "Only ever recommend real games from currentBestMatches or a tool result — copy their exact id into recommendedGameIds (at most 3, ranked by how well they fit). Never invent, describe, or score a game yourself. If revealed is false, leave recommendedGameIds empty.",
     "If exactTitleMatches is non-empty, the player has named a real cartridge title directly. Treat that as the conversation ending in a recommendation: set revealed true, copy those exact id(s) into recommendedGameIds, and call open_game_showcase immediately instead of asking another preference question.",
+    "If the player names a specific title or franchise (e.g. 'the easiest Mega Man game') and it doesn't show up in currentBestMatches or a lookup_recommendations result, don't conclude it isn't in the catalog — call search_catalog with that name first. currentBestMatches only reflects games that cleared the recommendation quality filter, so a real, well-known title can still be missing from it. If search_catalog finds it, use those real id(s) in your answer instead of substituting an unrelated game.",
     "Setting revealed: true and recommendedGameIds does not by itself display anything to the player — it's bookkeeping. To actually show a reveal, call the open_game_showcase tool with the same id(s) (at most 3, ranked best first) at the same moment you set revealed: true. That tool call is what opens the showcase window; skipping it means the player sees nothing even though you decided to reveal.",
     "When too many games qualify, every message includes suggestedNextQuestion: computed like a well-played round of 20 Questions or Guess Who — the unanswered field+value that splits the current candidate pool closest to 50/50, so whichever way the player answers eliminates the most ground. When it's present, build your next question around that exact field (e.g. if it's {key: \"playStyle\", value: \"puzzle\"}, ask something like whether they want a puzzle game or something else) — phrase it naturally, don't recite the field name. When it's null (pool is already small, or nothing left discriminates), fall back to your own judgment from currentBestMatches.",
     "Commit when it's time — do not stall. Two situations require revealed: true this turn, using your best current pick, even with fields still unknown or the match imperfect: (1) the player explicitly hands you the decision — 'I don't care', 'you choose', 'whatever's best', 'just pick one', 'are you going to choose?' or similar — reveal immediately, do not ask yet another clarifying question first; (2) the conversation has already gone several exchanges without revealing and currentBestMatches already has a reasonably strong option — stop circling and commit rather than asking for one more detail.",
@@ -401,7 +263,7 @@ const liveWizardAgent = new Agent<WizardRunContext, typeof WizardTurnOutputSchem
     },
     store: true,
   },
-  tools: [lookupRecommendationsTool, openGameShowcaseTool, setSoundtrackTool],
+  tools: [lookupRecommendationsTool, openGameShowcaseTool, searchCatalogTool],
   outputType: WizardTurnOutputSchema,
 });
 
@@ -491,10 +353,9 @@ async function runAgentTurnResilient(
 ) {
   for (let attempt = 1; attempt <= MAX_OUTPUT_SCHEMA_ATTEMPTS; attempt++) {
     // Reset per attempt: a retry re-runs the agent from scratch, so a
-    // showcase or soundtrack request captured during a failed attempt must
-    // not leak into the retry's result.
+    // showcase request captured during a failed attempt must not leak into
+    // the retry's result.
     runContext.showcaseRequest = null;
-    runContext.soundtrackRequest = null;
     try {
       return await runner.run(agent, conversationHistory, {
         context: runContext,
@@ -523,35 +384,14 @@ export function isFirstWizardTurn(request: WizardTurnRequest) {
   return !request.messages.some((message) => message.speaker === "wizard");
 }
 
-// state.soundtrack is untrusted client JSON headed for a set_soundtrack merge
-// and, from there, straight into the frontend's Tone.js voices — a corrupt
-// track is discarded here (the tool then asks for a full bassline) rather
-// than laundered through a partial edit.
-function currentSoundtrackFromState(request: WizardTurnRequest): WizardSoundtrack | null {
-  return isPlayableSoundtrack(request.state.soundtrack) ? request.state.soundtrack : null;
-}
-
 export function buildConsumedTurnContext(request: WizardTurnRequest, knownProfile: UserProfile) {
   const enabledPlatforms = request.state.enabledPlatforms ?? [...catalogPlatforms];
-  const currentSoundtrack = currentSoundtrackFromState(request);
   const consumed: Record<string, unknown> = {
     command: request.command,
     knownProfile,
     enabledPlatforms,
     memoryMarkdown: request.state.memoryMarkdown,
     terminalTheme: request.state.terminalTheme,
-    // Summary only — set_soundtrack merges against the full track in code, so
-    // the model never needs the note arrays. The chord progression is
-    // included (short) so the model can write a fitting bassline/lead over it
-    // without needing the full harmony/lead/rhythm arrays.
-    currentSoundtrack: currentSoundtrack
-      ? {
-          title: currentSoundtrack.title,
-          bpm: currentSoundtrack.bpm,
-          steps: currentSoundtrack.bassline.length,
-          chords: currentSoundtrack.chords,
-        }
-      : null,
     exchangesSoFar: request.messages.length,
     recentMessages: request.messages.slice(-8),
     transGameContributors: transGameContributorsForAgent(),
@@ -604,15 +444,13 @@ async function runWizardConversationTurn(request: WizardTurnRequest, knownProfil
       enabledPlatforms,
       profile: knownProfile,
       showcaseRequest: null,
-      soundtrackRequest: null,
-      currentSoundtrack: currentSoundtrackFromState(request),
     };
     let result;
     try {
       result = await runAgentTurnResilient(runner, liveWizardAgent, conversationHistory, runContext);
     } catch (error) {
       if (isAgentDataSchemaError(error)) {
-        return { output: fallbackTurnOutput(), consumed, showcaseRequest: null, soundtrackRequest: null };
+        return { output: fallbackTurnOutput(), consumed, showcaseRequest: null };
       }
       throw error;
     }
@@ -625,7 +463,6 @@ async function runWizardConversationTurn(request: WizardTurnRequest, knownProfil
       output: result.finalOutput as WizardTurnOutput,
       consumed,
       showcaseRequest: runContext.showcaseRequest,
-      soundtrackRequest: runContext.soundtrackRequest,
     };
   });
 }
@@ -664,7 +501,6 @@ export function buildResponse(
   consumed: Record<string, unknown>,
   includeRecommendationContext = true,
   showcaseRequest: { gameIds: string[] } | null = null,
-  soundtrackRequest: WizardSoundtrack | null = null,
 ): WizardTurnResponse {
   const options = includeRecommendationContext
     ? precomputedScoringOptions(profile, enabledPlatforms)
@@ -725,7 +561,6 @@ export function buildResponse(
         }
       : emptyAgentData(consumed, output.agentData ?? {}),
     showcase: showcaseGames.length ? { games: showcaseGames } : null,
-    soundtrack: soundtrackRequest,
   };
 }
 
@@ -745,7 +580,7 @@ export function ensureFirstTurnQuestion(lines: string[]): string[] {
 
 export async function runLiveWizardTurn(request: WizardTurnRequest): Promise<WizardTurnResponse> {
   const knownProfile: UserProfile = { ...blankProfile, ...request.state.profile };
-  const { output, consumed, showcaseRequest, soundtrackRequest } = await runWizardConversationTurn(request, knownProfile);
+  const { output, consumed, showcaseRequest } = await runWizardConversationTurn(request, knownProfile);
   const nextProfile = mergeProfile(knownProfile, output.profile);
   const isFirstTurn = isFirstWizardTurn(request);
   const lines = enforceWizardResponseLength(isFirstTurn ? ensureFirstTurnQuestion(output.lines) : output.lines);
@@ -761,6 +596,5 @@ export async function runLiveWizardTurn(request: WizardTurnRequest): Promise<Wiz
     consumed,
     !isFirstTurn,
     showcaseRequest,
-    soundtrackRequest,
   );
 }

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { getAllGames } from "@/lib/game-repository";
-import { catalogPlatforms, games } from "@/data/games";
+import { catalogPlatforms } from "@/data/games";
 import { generatedAtari5200Games } from "@/data/atari-5200-catalog.generated";
 import { generatedAtari7800Games } from "@/data/atari-7800-catalog.generated";
 import { generatedGenesisGames } from "@/data/genesis-catalog.generated";
@@ -24,9 +24,8 @@ const generatedCatalogs = [
 describe("game repository", () => {
   it("filters out low-signal generated entries instead of merging the whole catalog wholesale", () => {
     const merged = getAllGames();
-    expect(merged.length).toBeGreaterThan(games.length);
     expect(merged.length).toBeLessThan(
-      games.length + generatedCatalogs.reduce((sum, catalog) => sum + catalog.length, 0),
+      generatedCatalogs.reduce((sum, catalog) => sum + catalog.length, 0),
     );
   });
 
