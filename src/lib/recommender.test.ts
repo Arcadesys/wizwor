@@ -133,6 +133,15 @@ describe("recommendation rubric", () => {
     expect(recommendations.map((recommendation) => recommendation.game.id)).toEqual(["mega-man-2"]);
   });
 
+  it("does not treat a generic genre ask as a direct title mention just because a common word is also a title", () => {
+    // Regression: "Golf" is a real one-word NES title, but "I want a golf
+    // game" is naming the genre, not the cartridge — the contained-title
+    // bypass must not fire for single-word titles embedded in a sentence.
+    const recommendations = exactTitleRecommendations("I want a golf game", { enabledPlatforms: ["nes"] });
+
+    expect(recommendations).toHaveLength(0);
+  });
+
   it("does not drop a title just because it's a raw text prefix of another matched title", () => {
     // Regression: "golden axe ii" is a raw substring of "golden axe iii"
     // (no word boundary — "ii" immediately continues into "iii"), so a naive

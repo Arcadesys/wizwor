@@ -341,4 +341,20 @@ describe("buildResponse showcase guard", () => {
     expect(response.showcase?.games[0]?.game.id).toBe("mega-man-2");
     expect(response.state.revealed).toBe(true);
   });
+
+  it("does not force a reveal for a generic genre ask that happens to contain a one-word title", () => {
+    // Regression: "Golf" is a real one-word NES title, but "I want a golf
+    // game" is a broad genre request, not a direct cartridge ask — it should
+    // stay in the normal interview/recommendation flow instead of
+    // auto-revealing off the exact-title bypass.
+    const response = buildResponse(
+      output({ lines: ["What kind of adventure calls to you?"], revealed: false, recommendedGameIds: [] }),
+      blankProfile,
+      ["nes"],
+      { command: "I want a golf game" },
+    );
+
+    expect(response.showcase).toBeNull();
+    expect(response.state.revealed).toBe(false);
+  });
 });
