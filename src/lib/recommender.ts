@@ -166,9 +166,11 @@ export function getRecommendations(profile: UserProfile, options: Recommendation
 function mostSpecificTitleMatches(games: Game[]): Game[] {
   return games.filter((game) => {
     const titleKey = normalizeTitle(game.title);
-    return !games.some(
-      (other) => other !== game && normalizeTitle(other.title) !== titleKey && normalizeTitle(other.title).includes(titleKey),
-    );
+    const paddedTitleKey = ` ${titleKey} `;
+    return !games.some((other) => {
+      const otherTitleKey = normalizeTitle(other.title);
+      return other !== game && otherTitleKey !== titleKey && ` ${otherTitleKey} `.includes(paddedTitleKey);
+    });
   });
 }
 

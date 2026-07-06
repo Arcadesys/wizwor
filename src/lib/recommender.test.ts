@@ -133,6 +133,21 @@ describe("recommendation rubric", () => {
     expect(recommendations.map((recommendation) => recommendation.game.id)).toEqual(["mega-man-2"]);
   });
 
+  it("does not drop a title just because it's a raw text prefix of another matched title", () => {
+    // Regression: "golden axe ii" is a raw substring of "golden axe iii"
+    // (no word boundary — "ii" immediately continues into "iii"), so a naive
+    // unpadded containment check incorrectly treated "Golden Axe II" as
+    // subsumed by "Golden Axe III" even when both are independently named.
+    const recommendations = exactTitleRecommendations("I want Golden Axe II and Golden Axe III", {
+      enabledPlatforms: ["genesis"],
+    });
+
+    expect(recommendations.map((recommendation) => recommendation.game.id).sort()).toEqual([
+      "golden-axe-ii",
+      "golden-axe-iii",
+    ]);
+  });
+
   it("stays closed while the high-confidence set is still too broad", () => {
     const broad = {
       ...blankProfile,
