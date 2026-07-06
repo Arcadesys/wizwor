@@ -1,11 +1,13 @@
 import { writeFile } from "node:fs/promises";
 import { JSDOM } from "jsdom";
 import { collectMatchingTags, matchingRules, matchesAny, slugify, stableStringify, unique } from "./heuristics.mjs";
+import { fetchGenreMap } from "./wikipedia-genre.mjs";
+import { deriveSignalsFromGenre } from "./genre-taxonomy.mjs";
 
 export async function generateConsoleCatalog(config) {
   const generatedAt = new Date().toISOString();
   const documents = new Map();
-  const byId = new Map();
+  const parsedById = new Map();
 
   for (const tableSource of config.sourceTables) {
     if (!documents.has(tableSource.url)) {
@@ -36,17 +38,39 @@ export async function generateConsoleCatalog(config) {
       }
 
       let id = slugify(entry.title);
-      if (byId.has(id)) {
+      if (parsedById.has(id)) {
         const baseId = slugify(`${entry.title}-${entry.sourceCategory}-${entry.publisher.join("-") || entry.year}`);
         id = baseId;
         let counter = 2;
-        while (byId.has(id)) {
+        while (parsedById.has(id)) {
           id = `${baseId}-${counter}`;
           counter++;
         }
       }
-      byId.set(id, { id, ...deriveGameFields(entry, config), ...entry, generatedAt });
+      parsedById.set(id, { id, entry });
     }
+  }
+
+  // A game's own Wikipedia article carries real genre signal that the console
+  // list-tables don't (they only have title/developer/publisher/date columns),
+  // so fetch it once for every title before scoring, rather than guessing
+  // mood/playStyle/story from franchise names alone.
+  console.log(`Fetching genre data for ${parsedById.size} ${config.platformLabel} titles...`);
+  const genreByTitle = await fetchGenreMap(
+    [...parsedById.values()].map(({ entry }) => entry.title),
+    {
+      onProgress: (done, total) => {
+        if (done % 200 === 0 || done === total) {
+          console.log(`  ${done}/${total} genres fetched`);
+        }
+      },
+    },
+  );
+
+  const byId = new Map();
+  for (const [id, { entry }] of parsedById) {
+    const genre = genreByTitle.get(entry.title) ?? null;
+    byId.set(id, { id, ...deriveGameFields(entry, config, genre), ...entry, generatedAt });
   }
 
   const entries = [...byId.values()].sort((left, right) => left.title.localeCompare(right.title));
@@ -164,7 +188,7 @@ function normalizeEntry(entry, config) {
   };
 }
 
-function deriveGameFields(entry, config) {
+function deriveGameFields(entry, config, genreText) {
   const haystack = [entry.title, ...entry.publisher, ...entry.developer, entry.sourceCategory, entry.format ?? ""]
     .join(" ")
     .toLowerCase();
@@ -184,16 +208,22 @@ function deriveGameFields(entry, config) {
     tags.add(`${entry.regions[0]} exclusive`);
   }
 
+  // Genre text pulled from the game's own Wikipedia infobox is real per-game
+  // signal, unlike the franchise-name matching below (which only recognizes
+  // titles it already has a pattern for). Prefer it when present, and only
+  // fall back to the weaker title/publisher/developer heuristics otherwise.
+  const genreSignals = deriveSignalsFromGenre(genreText);
+
   const playStyleRule = config.playStyleRules.find((rule) => matchesAny(haystack, rule.patterns));
-  const playStyle = playStyleRule?.playStyle ?? "side-scroller";
-  const playStyleSignal = Boolean(playStyleRule);
+  const playStyle = genreSignals?.playStyle ?? playStyleRule?.playStyle ?? "side-scroller";
+  const playStyleSignal = Boolean(genreSignals?.playStyle) || Boolean(playStyleRule);
   for (const tag of playStyleRule?.tags ?? ["action"]) {
     tags.add(tag);
   }
 
   const matchedMoodRules = matchingRules(haystack, config.moodRules);
-  const moodSignal = matchedMoodRules.length > 0;
-  const moods = matchedMoodRules.map((rule) => rule.mood);
+  const moods = unique([...(genreSignals?.moods ?? []), ...matchedMoodRules.map((rule) => rule.mood)]);
+  const moodSignal = moods.length > 0;
   if (!moods.length) {
     moods.push(playStyle === "puzzle" ? "contemplative" : playStyle === "action-adventure" ? "heroic" : "arcade");
   }
@@ -201,13 +231,13 @@ function deriveGameFields(entry, config) {
     moods.push(moods[0] === "arcade" ? "heroic" : "arcade");
   }
 
-  const difficultSignal = matchesAny(haystack, config.difficultSignals);
-  const casualSignal = matchesAny(haystack, config.casualSignals);
+  const difficultSignal = genreSignals?.difficulty === "difficult" || matchesAny(haystack, config.difficultSignals);
+  const casualSignal = genreSignals?.difficulty === "casual" || matchesAny(haystack, config.casualSignals);
   const difficulty = difficultSignal ? "difficult" : casualSignal ? "casual" : "fair";
   const difficultySignal = difficultSignal || casualSignal;
 
-  const richStorySignal = matchesAny(haystack, config.richStorySignals);
-  const someStorySignal = matchesAny(haystack, config.someStorySignals);
+  const richStorySignal = genreSignals?.story === "rich" || matchesAny(haystack, config.richStorySignals);
+  const someStorySignal = genreSignals?.story === "some" || matchesAny(haystack, config.someStorySignals);
   const story = richStorySignal ? "rich" : someStorySignal || playStyle === "action-adventure" ? "some" : "low";
   const storySignal = richStorySignal || someStorySignal;
 
