@@ -1,5 +1,26 @@
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+// Patterns short/generic enough to false-positive as a substring of unrelated words
+// (e.g. "ys" inside "system", "Arc System Works") get matched as a whole word instead.
+// Everything else keeps stem-style substring matching (e.g. "shoot" matching "Trouble Shooter").
+const EXACT_WORD_PATTERNS = new Set(["ys"]);
+const exactWordRegexCache = new Map();
+
+function exactWordRegex(pattern) {
+  let regex = exactWordRegexCache.get(pattern);
+  if (!regex) {
+    regex = new RegExp(`(?<![a-z0-9])${escapeRegExp(pattern)}(?![a-z0-9])`, "i");
+    exactWordRegexCache.set(pattern, regex);
+  }
+  return regex;
+}
+
 export function matchesAny(haystack, patterns) {
-  return patterns.some((pattern) => haystack.includes(pattern));
+  return patterns.some((pattern) =>
+    EXACT_WORD_PATTERNS.has(pattern) ? exactWordRegex(pattern).test(haystack) : haystack.includes(pattern),
+  );
 }
 
 export function matchingRules(haystack, rules) {

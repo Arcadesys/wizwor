@@ -2,7 +2,7 @@
 // Sources:
 // - https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games
 // - https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games
-// Retrieved: 2026-07-06T15:35:09.034Z
+// Retrieved: 2026-07-06T17:49:13.139Z
 
 import type { Game } from "./games";
 
@@ -49,7 +49,7 @@ export const regionLabels = {
 
 export const nesCatalogSource = {
   "name": "Wikipedia NES/Famicom catalog tables",
-  "retrievedAt": "2026-07-06T15:35:09.034Z",
+  "retrievedAt": "2026-07-06T17:49:13.139Z",
   "rowCount": 1989,
   "sourceCounts": {
     "bandai-datach": 7,
@@ -82,7 +82,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 10, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "89-denno-kyusei-uranai",
     "isRomhack": false,
     "moods": [
@@ -116,7 +116,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 30, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "10-yard-fight",
     "isRomhack": false,
     "moods": [
@@ -152,17 +152,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 4, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "19-neunzehn",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "19: Neunzehn is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "19: Neunzehn is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Soft Pro International"
     ],
@@ -170,14 +170,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "19: Neunzehn",
     "year": "1988"
@@ -188,7 +187,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 11, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "1942",
     "isRomhack": false,
     "moods": [
@@ -224,7 +223,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 20, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "1943-the-battle-of-midway",
     "isRomhack": false,
     "moods": [
@@ -258,7 +257,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "1991-du-ma-racing",
     "isRomhack": false,
     "moods": [
@@ -294,7 +293,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 18, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "1999-hore-mita-koto-ka-seikimatsu",
     "isRomhack": false,
     "moods": [
@@ -326,7 +325,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "2-in-1-cosmocop-and-cyber-monster",
     "isRomhack": false,
     "moods": [
@@ -360,7 +359,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "2-in-1-tough-cop-and-super-tough-cop",
     "isRomhack": false,
     "moods": [
@@ -393,7 +392,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "2-turn-pair",
     "isRomhack": false,
     "moods": [
@@ -426,7 +425,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "2-in-1-cosmocop-cyber-monster",
     "isRomhack": false,
     "moods": [
@@ -464,17 +463,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "November 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "2-in-1-super-mario-bros-duck-hunt",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "2-in-1 Super Mario Bros./Duck Hunt is a compilation cartridge from 1988, tagged as approachable, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "2-in-1 Super Mario Bros./Duck Hunt is a compilation cartridge from 1988, tagged as approachable, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "platformer",
     "publisher": [
       "Nintendo"
     ],
@@ -482,15 +481,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "NA",
       "PAL"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "compilation",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
       "compilation",
       "light gun",
-      "rpg"
+      "platformer"
     ],
     "title": "2-in-1 Super Mario Bros./Duck Hunt",
     "year": "1988"
@@ -501,7 +499,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "2-in-1-super-spike-v-ball-nintendo-world-cup",
     "isRomhack": false,
     "moods": [
@@ -534,7 +532,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "2-in-1-tough-cop-super-tough-cop",
     "isRomhack": false,
     "moods": [
@@ -572,7 +570,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "December 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "3-in-1-super-mario-bros-duck-hunt-world-class-track-meet",
     "isRomhack": false,
     "moods": [
@@ -580,7 +578,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "3-in-1 Super Mario Bros./Duck Hunt/World Class Track Meet is a compilation cartridge from 1990, tagged as approachable, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "3-in-1 Super Mario Bros./Duck Hunt/World Class Track Meet is a compilation cartridge from 1990, tagged as approachable, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -589,16 +587,15 @@ export const generatedNesGames: NesCatalogGame[] = [
     "regions": [
       "NA"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "compilation",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "NA exclusive",
-      "adventure",
       "compilation",
       "light gun",
-      "rpg"
+      "platformer"
     ],
     "title": "3-in-1 Super Mario Bros./Duck Hunt/World Class Track Meet",
     "year": "1990"
@@ -611,7 +608,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "3-in-1-super-mario-bros-tetris-nintendo-world-cup",
     "isRomhack": false,
     "moods": [
@@ -644,7 +641,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989/1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "3d-block",
     "isRomhack": false,
     "moods": [
@@ -679,7 +676,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "November 2, 1984",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "4-nin-uchi-mahjong",
     "isRomhack": false,
     "moods": [
@@ -714,7 +711,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "720",
     "isRomhack": false,
     "moods": [
@@ -748,7 +745,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 27, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "8-eyes",
     "isRomhack": false,
     "moods": [
@@ -783,7 +780,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "January 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "a-boy-and-his-blob-trouble-on-blobolonia",
     "isRomhack": false,
     "moods": [
@@ -820,7 +817,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "a-nightmare-on-elm-street",
     "isRomhack": false,
     "moods": [
@@ -855,7 +852,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 21, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "a-ressha-de-iko",
     "isRomhack": false,
     "moods": [
@@ -889,7 +886,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 7, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "a-week-of-garfield",
     "isRomhack": false,
     "moods": [
@@ -923,7 +920,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 25, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "aa-yakyu-jinsei-icchokusen",
     "isRomhack": false,
     "moods": [
@@ -957,7 +954,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 15, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "abadox-the-deadly-inner-war",
     "isRomhack": false,
     "moods": [
@@ -989,7 +986,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "action-52",
     "isRomhack": false,
     "moods": [
@@ -1022,7 +1019,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "adam-and-eve",
     "isRomhack": false,
     "moods": [
@@ -1057,17 +1054,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 12, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "adian-no-tsue",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Adian no Tsue is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Adian no Tsue is a Famicom Disk System release from 1986, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Sunsoft"
     ],
@@ -1075,14 +1072,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Adian no Tsue",
     "year": "1986"
@@ -1093,7 +1089,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 21, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "advanced-dungeons-and-dragons-dragons-of-flame",
     "isRomhack": false,
     "moods": [
@@ -1128,7 +1124,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "advanced-dungeons-and-dragons-dragonstrike",
     "isRomhack": false,
     "moods": [
@@ -1163,7 +1159,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "advanced-dungeons-and-dragons-heroes-of-the-lance",
     "isRomhack": false,
     "moods": [
@@ -1199,7 +1195,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 21, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "advanced-dungeons-and-dragons-hillsfar",
     "isRomhack": false,
     "moods": [
@@ -1235,7 +1231,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 28, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "advanced-dungeons-and-dragons-pool-of-radiance",
     "isRomhack": false,
     "moods": [
@@ -1271,7 +1267,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 12, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "adventure-island",
     "isRomhack": false,
     "moods": [
@@ -1306,7 +1302,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 31, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "adventure-island-3",
     "isRomhack": false,
     "moods": [
@@ -1340,7 +1336,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "adventure-island-ii",
     "isRomhack": false,
     "moods": [
@@ -1375,7 +1371,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 24, 1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "adventure-island-iv",
     "isRomhack": false,
     "moods": [
@@ -1409,7 +1405,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "adventures-in-the-magic-kingdom",
     "isRomhack": false,
     "moods": [
@@ -1443,7 +1439,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 10, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "adventures-of-dino-riki",
     "isRomhack": false,
     "moods": [
@@ -1477,7 +1473,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "April 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "adventures-of-lolo",
     "isRomhack": false,
     "moods": [
@@ -1511,7 +1507,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "January 6, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "adventures-of-lolo-2",
     "isRomhack": false,
     "moods": [
@@ -1546,7 +1542,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "December 26, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "adventures-of-lolo-3",
     "isRomhack": false,
     "moods": [
@@ -1581,7 +1577,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 6, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "adventures-of-tom-sawyer",
     "isRomhack": false,
     "moods": [
@@ -1589,7 +1585,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Adventures of Tom Sawyer is an NES release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Adventures of Tom Sawyer is an NES release from 1989, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -1602,10 +1598,9 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 3,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
-      "adventure",
-      "rpg"
+      "adventure"
     ],
     "title": "Adventures of Tom Sawyer",
     "year": "1989"
@@ -1616,7 +1611,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 30, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "after-burner",
     "isRomhack": false,
     "moods": [
@@ -1649,7 +1644,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "after-burner-unlicensed-nes-lifespan-tengen",
     "isRomhack": false,
     "moods": [
@@ -1685,7 +1680,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 26, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ai-sensei-no-oshiete-watashi-no-hoshi",
     "isRomhack": false,
     "moods": [
@@ -1719,7 +1714,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 24, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ai-senshi-nicol",
     "isRomhack": false,
     "moods": [
@@ -1727,7 +1722,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Ai Senshi Nicol is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Ai Senshi Nicol is a Famicom Disk System release from 1987, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -1740,11 +1735,10 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Ai Senshi Nicol",
     "year": "1987"
@@ -1755,7 +1749,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 21, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "aighina-no-yogen-from-the-legend-of-balubalouk",
     "isRomhack": false,
     "moods": [
@@ -1789,7 +1783,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 17, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "air-fortress",
     "isRomhack": false,
     "moods": [
@@ -1824,7 +1818,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "airwolf",
     "isRomhack": false,
     "moods": [
@@ -1858,7 +1852,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 24, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "airwolf-licensed-kyugo-boueki",
     "isRomhack": false,
     "moods": [
@@ -1892,7 +1886,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 8, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "akagawa-jiro-no-yurei-ressha",
     "isRomhack": false,
     "moods": [
@@ -1924,17 +1918,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "19??",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "aki-to-tsukasa-no-fushigi-no-kabe",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Aki to Tsukasa no Fushigi no Kabe is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Aki to Tsukasa no Fushigi no Kabe is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Super PIG"
     ],
@@ -1943,14 +1937,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Aki to Tsukasa no Fushigi no Kabe",
@@ -1962,7 +1955,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 24, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "akira",
     "isRomhack": false,
     "moods": [
@@ -1996,17 +1989,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 12, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "aku-senki-raijin",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Akū Senki Raijin is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Akū Senki Raijin is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Square"
     ],
@@ -2014,14 +2007,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Akū Senki Raijin",
     "year": "1988"
@@ -2032,7 +2024,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 24, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "akuma-kun-makai-no-wana",
     "isRomhack": false,
     "moods": [
@@ -2066,17 +2058,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 26, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "akumajo-dracula",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Akumajō Dracula is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Akumajō Dracula is a Famicom Disk System release from 1986, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Konami"
     ],
@@ -2084,14 +2076,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Akumajō Dracula",
     "year": "1986"
@@ -2102,7 +2093,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 19, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "akumajo-special-boku-dracula-kun",
     "isRomhack": false,
     "moods": [
@@ -2136,7 +2127,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 31, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "al-unser-jr-s-turbo-racing",
     "isRomhack": false,
     "moods": [
@@ -2172,7 +2163,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 31, 1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "aladdin",
     "isRomhack": false,
     "moods": [
@@ -2204,7 +2195,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "aladdin-unlicensed-famicom-j-y-company",
     "isRomhack": false,
     "moods": [
@@ -2237,7 +2228,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995 June",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "aladdin-ii",
     "isRomhack": false,
     "moods": [
@@ -2272,7 +2263,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "alex-demeo-s-race-america",
     "isRomhack": false,
     "moods": [
@@ -2307,7 +2298,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "alfred-chicken",
     "isRomhack": false,
     "moods": [
@@ -2341,7 +2332,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "alien-3",
     "isRomhack": false,
     "moods": [
@@ -2375,7 +2366,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 2, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "alien-syndrome",
     "isRomhack": false,
     "moods": [
@@ -2407,7 +2398,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "alien-syndrome-unlicensed-nes-lifespan-tengen",
     "isRomhack": false,
     "moods": [
@@ -2442,17 +2433,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 22, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "all-1",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "All 1 is a Famicom Disk System release from 1991, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "All 1 is a Famicom Disk System release from 1991, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Tokuma Shoten"
     ],
@@ -2460,14 +2451,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "All 1",
     "year": "1991"
@@ -2478,7 +2468,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 20, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "all-night-nippon-super-mario-bros",
     "isRomhack": false,
     "moods": [
@@ -2486,7 +2476,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "All Night Nippon Super Mario Bros. is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "All Night Nippon Super Mario Bros. is a Famicom Disk System release from 1986, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -2496,14 +2486,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "platformer"
     ],
     "title": "All Night Nippon Super Mario Bros.",
     "year": "1986"
@@ -2514,7 +2503,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 21, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "all-pro-basketball",
     "isRomhack": false,
     "moods": [
@@ -2547,7 +2536,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2017",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "almost-hero",
     "isRomhack": false,
     "moods": [
@@ -2582,7 +2571,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 3, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "alpha-mission",
     "isRomhack": false,
     "moods": [
@@ -2618,7 +2607,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 2, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "amagon",
     "isRomhack": false,
     "moods": [
@@ -2653,7 +2642,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 28, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "america-daitoryo-senkyo",
     "isRomhack": false,
     "moods": [
@@ -2687,7 +2676,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 29, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "america-oudan-ultra-quiz-shijou-saidai-no-tatakai",
     "isRomhack": false,
     "moods": [
@@ -2721,7 +2710,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 23, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "american-dream",
     "isRomhack": false,
     "moods": [
@@ -2755,7 +2744,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "american-gladiators",
     "isRomhack": false,
     "moods": [
@@ -2787,7 +2776,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2025",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "angry-video-game-nerd-8-bit",
     "isRomhack": false,
     "moods": [
@@ -2822,7 +2811,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 24, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ankoku-shinwa-yamato-takeru-densetsu",
     "isRomhack": false,
     "moods": [
@@ -2856,7 +2845,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "anticipation",
     "isRomhack": false,
     "moods": [
@@ -2890,7 +2879,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 25, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "aoki-okami-to-shiroki-mejika-genchou-hishi",
     "isRomhack": false,
     "moods": [
@@ -2924,7 +2913,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 3, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "apple-town-story",
     "isRomhack": false,
     "moods": [
@@ -2932,7 +2921,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Apple Town Story is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and top down-leaning for the recommender.",
+    "pitch": "Apple Town Story is a Famicom Disk System release from 1987, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "top-down",
     "publisher": [
@@ -2942,14 +2931,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Apple Town Story",
     "year": "1987"
@@ -2960,7 +2948,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "arch-rivals",
     "isRomhack": false,
     "moods": [
@@ -2994,7 +2982,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "archon",
     "isRomhack": false,
     "moods": [
@@ -3028,7 +3016,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 23, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "arctic",
     "isRomhack": false,
     "moods": [
@@ -3062,7 +3050,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 17, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "argus",
     "isRomhack": false,
     "moods": [
@@ -3096,7 +3084,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 26, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "arkanoid",
     "isRomhack": false,
     "moods": [
@@ -3131,7 +3119,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 8, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "arkanoid-ii-revenge-of-doh",
     "isRomhack": false,
     "moods": [
@@ -3166,7 +3154,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "arkista-s-ring",
     "isRomhack": false,
     "moods": [
@@ -3200,7 +3188,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 9, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "armadillo",
     "isRomhack": false,
     "moods": [
@@ -3234,7 +3222,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 13, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "artelius",
     "isRomhack": false,
     "moods": [
@@ -3268,7 +3256,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 11, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "arumana-no-kiseki",
     "isRomhack": false,
     "moods": [
@@ -3276,7 +3264,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Arumana no Kiseki is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "Arumana no Kiseki is a Famicom Disk System release from 1987, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -3286,14 +3274,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Arumana no Kiseki",
     "year": "1987"
@@ -3304,7 +3291,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 20, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "asmik-kun-land",
     "isRomhack": false,
     "moods": [
@@ -3338,17 +3325,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 31, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "aspic-majaou-no-noroi",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Aspic: Majaou no Noroi is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Aspic: Majaou no Noroi is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Bothtec"
     ],
@@ -3356,14 +3343,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Aspic: Majaou no Noroi",
     "year": "1988"
@@ -3374,7 +3360,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "asterix",
     "isRomhack": false,
     "moods": [
@@ -3408,7 +3394,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 26, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "astro-fang-super-machine",
     "isRomhack": false,
     "moods": [
@@ -3442,7 +3428,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 9, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "astro-robo-sasa",
     "isRomhack": false,
     "moods": [
@@ -3476,7 +3462,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 21, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "astyanax",
     "isRomhack": false,
     "moods": [
@@ -3511,7 +3497,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "June 5, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "athena",
     "isRomhack": false,
     "moods": [
@@ -3545,7 +3531,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 12, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "athletic-world",
     "isRomhack": false,
     "moods": [
@@ -3581,7 +3567,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 17, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "atlantis-no-nazo",
     "isRomhack": false,
     "moods": [
@@ -3615,7 +3601,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 26, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "attack-animal-gakuen",
     "isRomhack": false,
     "moods": [
@@ -3649,7 +3635,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "attack-of-the-killer-tomatoes",
     "isRomhack": false,
     "moods": [
@@ -3683,7 +3669,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "aussie-rules-footy",
     "isRomhack": false,
     "moods": [
@@ -3715,7 +3701,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "auto-upturn",
     "isRomhack": false,
     "moods": [
@@ -3748,7 +3734,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "auto-upturn-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -3781,7 +3767,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "av-bishoujo-senshi-girl-fighting",
     "isRomhack": false,
     "moods": [
@@ -3814,7 +3800,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "av-dragon-mahjang",
     "isRomhack": false,
     "moods": [
@@ -3847,7 +3833,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "av-jiu-ji-ma-jiang-ii",
     "isRomhack": false,
     "moods": [
@@ -3880,7 +3866,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "av-mahjong-club",
     "isRomhack": false,
     "moods": [
@@ -3914,7 +3900,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "av-pachi-slot-big-chance",
     "isRomhack": false,
     "moods": [
@@ -3947,7 +3933,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "av-poker",
     "isRomhack": false,
     "moods": [
@@ -3981,7 +3967,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "av-super-real-pachinko",
     "isRomhack": false,
     "moods": [
@@ -4014,7 +4000,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "av-world-soccer",
     "isRomhack": false,
     "moods": [
@@ -4050,7 +4036,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 3, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "b-wings",
     "isRomhack": false,
     "moods": [
@@ -4084,7 +4070,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "July 18, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "babel-no-to",
     "isRomhack": false,
     "moods": [
@@ -4116,7 +4102,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "baby-boomer",
     "isRomhack": false,
     "moods": [
@@ -4151,7 +4137,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "back-to-the-future",
     "isRomhack": false,
     "moods": [
@@ -4185,7 +4171,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "September 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "back-to-the-future-part-ii-and-iii",
     "isRomhack": false,
     "moods": [
@@ -4219,17 +4205,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 7, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "backgammon",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Backgammon is a Famicom Disk System release from 1990, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Backgammon is a Famicom Disk System release from 1990, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -4237,14 +4223,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Backgammon",
     "year": "1990"
@@ -4255,7 +4240,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "July 14, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bad-dudes",
     "isRomhack": false,
     "moods": [
@@ -4291,7 +4276,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 15, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bad-news-baseball",
     "isRomhack": false,
     "moods": [
@@ -4326,7 +4311,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "September 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bad-street-brawler",
     "isRomhack": false,
     "moods": [
@@ -4360,7 +4345,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 25, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "baken-hisshou-gaku-gate-in",
     "isRomhack": false,
     "moods": [
@@ -4394,7 +4379,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "September 14, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bakusho-star-monomane-shitenno",
     "isRomhack": false,
     "moods": [
@@ -4428,7 +4413,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 29, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bakusho-ai-no-gekijo",
     "isRomhack": false,
     "moods": [
@@ -4462,7 +4447,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 17, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bakushou-jinsei-gekijou",
     "isRomhack": false,
     "moods": [
@@ -4496,7 +4481,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 22, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bakushou-jinsei-gekijou-2",
     "isRomhack": false,
     "moods": [
@@ -4530,7 +4515,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 20, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bakushou-jinsei-gekijou-3",
     "isRomhack": false,
     "moods": [
@@ -4564,17 +4549,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 5, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bakutoshi-patton-kun",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Bakutōshi Patton-Kun is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Bakutōshi Patton-Kun is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Soft Pro International"
     ],
@@ -4582,14 +4567,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Bakutōshi Patton-Kun",
     "year": "1988"
@@ -4598,7 +4582,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ball-story-jong-yuk-chuen-suet-fa-jong-ii",
     "isRomhack": false,
     "moods": [
@@ -4633,7 +4617,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 4, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ballblazer",
     "isRomhack": false,
     "moods": [
@@ -4668,7 +4652,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 22, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "balloon-fight",
     "isRomhack": false,
     "moods": [
@@ -4701,7 +4685,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "balloon-monster",
     "isRomhack": false,
     "moods": [
@@ -4737,7 +4721,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 19, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "baltron",
     "isRomhack": false,
     "moods": [
@@ -4745,23 +4729,22 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Baltron is a Famicom release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Baltron is a Famicom release from 1986, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Toei Animation"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Baltron",
     "year": "1986"
@@ -4772,7 +4755,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 8, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "banana",
     "isRomhack": false,
     "moods": [
@@ -4806,7 +4789,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 20, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "banana-prince",
     "isRomhack": false,
     "moods": [
@@ -4840,7 +4823,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "February 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bandai-golf-challenge-pebble-beach",
     "isRomhack": false,
     "moods": [
@@ -4875,7 +4858,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 25, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bandit-kings-of-ancient-china",
     "isRomhack": false,
     "moods": [
@@ -4907,7 +4890,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1996",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bao-qing-tian",
     "isRomhack": false,
     "moods": [
@@ -4940,7 +4923,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "Unknown",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bao-xiao-san-guo",
     "isRomhack": false,
     "moods": [
@@ -4976,7 +4959,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "December 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "barbie",
     "isRomhack": false,
     "moods": [
@@ -5010,7 +4993,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 18, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "barcode-world",
     "isRomhack": false,
     "moods": [
@@ -5044,7 +5027,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 21, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bard-s-tale-tales-of-the-unknown",
     "isRomhack": false,
     "moods": [
@@ -5079,7 +5062,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "barker-bill-s-trick-shooting",
     "isRomhack": false,
     "moods": [
@@ -5114,7 +5097,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 7, 1983",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "baseball",
     "isRomhack": false,
     "moods": [
@@ -5150,7 +5133,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 21, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "baseball-famicom-disk-system-nintendo",
     "isRomhack": false,
     "moods": [
@@ -5158,9 +5141,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Baseball is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Baseball is a Famicom Disk System release from 1986, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Nintendo"
     ],
@@ -5168,14 +5151,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "sports"
     ],
     "title": "Baseball",
@@ -5187,7 +5169,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 5, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "baseball-fighter",
     "isRomhack": false,
     "moods": [
@@ -5222,7 +5204,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 27, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "baseball-simulator-1-000",
     "isRomhack": false,
     "moods": [
@@ -5257,7 +5239,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 19, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "baseball-stars",
     "isRomhack": false,
     "moods": [
@@ -5292,7 +5274,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "baseball-stars-2",
     "isRomhack": false,
     "moods": [
@@ -5327,7 +5309,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 26, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bases-loaded",
     "isRomhack": false,
     "moods": [
@@ -5361,7 +5343,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 27, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bases-loaded-3",
     "isRomhack": false,
     "moods": [
@@ -5395,7 +5377,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 22, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bases-loaded-4",
     "isRomhack": false,
     "moods": [
@@ -5429,7 +5411,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 10, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bases-loaded-ii-second-season",
     "isRomhack": false,
     "moods": [
@@ -5463,7 +5445,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "batman-returns",
     "isRomhack": false,
     "moods": [
@@ -5498,7 +5480,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 20, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "batman-return-of-the-joker",
     "isRomhack": false,
     "moods": [
@@ -5534,7 +5516,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 22, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "batman-the-video-game",
     "isRomhack": false,
     "moods": [
@@ -5570,7 +5552,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 22, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bats-and-terry",
     "isRomhack": false,
     "moods": [
@@ -5604,7 +5586,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 19, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "battle-baseball",
     "isRomhack": false,
     "moods": [
@@ -5639,7 +5621,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "July 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "battle-chess",
     "isRomhack": false,
     "moods": [
@@ -5674,7 +5656,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 9, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "battle-city",
     "isRomhack": false,
     "moods": [
@@ -5708,7 +5690,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 22, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "battle-fleet",
     "isRomhack": false,
     "moods": [
@@ -5740,7 +5722,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2012",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "battle-kid-2-mountain-of-torment",
     "isRomhack": false,
     "moods": [
@@ -5773,7 +5755,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2010",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "battle-kid-fortress-of-peril",
     "isRomhack": false,
     "moods": [
@@ -5806,7 +5788,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2018",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "battle-kid-kikenna-wana",
     "isRomhack": false,
     "moods": [
@@ -5841,7 +5823,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 13, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "battle-rush-build-up-robot-tournament",
     "isRomhack": false,
     "moods": [
@@ -5876,7 +5858,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 20, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "battle-stadium-senbatsu-pro-yakyu",
     "isRomhack": false,
     "moods": [
@@ -5910,7 +5892,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 21, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "battle-storm",
     "isRomhack": false,
     "moods": [
@@ -5944,7 +5926,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "battleship",
     "isRomhack": false,
     "moods": [
@@ -5978,7 +5960,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "battletank",
     "isRomhack": false,
     "moods": [
@@ -6012,7 +5994,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "June 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "battletoads",
     "isRomhack": false,
     "moods": [
@@ -6047,7 +6029,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "June 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "battletoads-and-double-dragon-the-ultimate-team",
     "isRomhack": false,
     "moods": [
@@ -6081,7 +6063,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bb-car",
     "isRomhack": false,
     "moods": [
@@ -6116,7 +6098,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 30, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "be-bop-high-school-kokosei-gokuraku-densetsu",
     "isRomhack": false,
     "moods": [
@@ -6149,7 +6131,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2014",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "beat-em-and-eat-em",
     "isRomhack": false,
     "moods": [
@@ -6184,7 +6166,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "beauty-and-the-beast",
     "isRomhack": false,
     "moods": [
@@ -6216,7 +6198,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bee-52",
     "isRomhack": false,
     "moods": [
@@ -6251,7 +6233,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "beetlejuice",
     "isRomhack": false,
     "moods": [
@@ -6285,7 +6267,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "best-of-the-best-championship-karate",
     "isRomhack": false,
     "moods": [
@@ -6319,7 +6301,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 15, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "best-play-pro-yakyu",
     "isRomhack": false,
     "moods": [
@@ -6353,7 +6335,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 13, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "best-play-pro-yakyu-90",
     "isRomhack": false,
     "moods": [
@@ -6387,7 +6369,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 30, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "best-play-pro-yakyu-ii",
     "isRomhack": false,
     "moods": [
@@ -6421,7 +6403,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 16, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "best-play-pro-yakyu-special",
     "isRomhack": false,
     "moods": [
@@ -6453,7 +6435,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bible-adventures",
     "isRomhack": false,
     "moods": [
@@ -6486,7 +6468,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bible-buffet",
     "isRomhack": false,
     "moods": [
@@ -6521,17 +6503,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 21, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "big-challenge-dogfight-spirit",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Big Challenge! Dogfight Spirit is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Big Challenge! Dogfight Spirit is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Jaleco"
     ],
@@ -6539,14 +6521,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Big Challenge! Dogfight Spirit",
     "year": "1988"
@@ -6557,17 +6538,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 23, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "big-challenge-go-go-bowling",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Big Challenge! Go! Go! Bowling is a Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Big Challenge! Go! Go! Bowling is a Famicom Disk System release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Jaleco"
     ],
@@ -6575,14 +6556,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Big Challenge! Go! Go! Bowling",
     "year": "1989"
@@ -6593,17 +6573,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 28, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "big-challenge-gun-fighter",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Big Challenge! Gun Fighter is a Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Big Challenge! Gun Fighter is a Famicom Disk System release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Jaleco"
     ],
@@ -6611,14 +6591,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "shooter"
     ],
     "title": "Big Challenge! Gun Fighter",
@@ -6630,17 +6609,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 10, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "big-challenge-judo-senshuken",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Big Challenge! Judo Senshuken is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Big Challenge! Judo Senshuken is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Jaleco"
     ],
@@ -6648,14 +6627,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Big Challenge! Judo Senshuken",
     "year": "1988"
@@ -6664,7 +6642,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "big-nose-freaks-out",
     "isRomhack": false,
     "moods": [
@@ -6697,7 +6675,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "big-nose-the-caveman",
     "isRomhack": false,
     "moods": [
@@ -6732,7 +6710,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bigfoot",
     "isRomhack": false,
     "moods": [
@@ -6766,7 +6744,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 27, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bikkuriman-world-gekito-sei-senshi",
     "isRomhack": false,
     "moods": [
@@ -6800,7 +6778,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bill-and-ted-s-excellent-video-game-adventure",
     "isRomhack": false,
     "moods": [
@@ -6834,7 +6812,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bill-elliott-s-nascar-challenge",
     "isRomhack": false,
     "moods": [
@@ -6868,7 +6846,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "December 19, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "binary-land",
     "isRomhack": false,
     "moods": [
@@ -6900,7 +6878,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bingo-75",
     "isRomhack": false,
     "moods": [
@@ -6933,7 +6911,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bingo-75-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -6966,7 +6944,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2003",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bio-hazard",
     "isRomhack": false,
     "moods": [
@@ -7002,7 +6980,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 26, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bio-miracle-bokutte-upa",
     "isRomhack": false,
     "moods": [
@@ -7036,7 +7014,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 22, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bio-miracle-bokutte-upa-famicom-disk-system-konami",
     "isRomhack": false,
     "moods": [
@@ -7044,7 +7022,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Bio Miracle Bokutte Upa is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "Bio Miracle Bokutte Upa is a Famicom Disk System release from 1988, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -7054,14 +7032,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Bio Miracle Bokutte Upa",
     "year": "1988"
@@ -7072,7 +7049,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 22, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bio-senshi-dan-increaser-to-no-tatakai",
     "isRomhack": false,
     "moods": [
@@ -7106,7 +7083,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "July 20, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bionic-commando",
     "isRomhack": false,
     "moods": [
@@ -7141,7 +7118,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 3, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bird-week",
     "isRomhack": false,
     "moods": [
@@ -7173,17 +7150,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "19??",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bishojo-control",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Bishōjo Control is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Bishōjo Control is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Wild"
     ],
@@ -7192,14 +7169,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Bishōjo Control",
@@ -7209,17 +7185,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "19??",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bishojo-kachinuki-renju-gomokunarabe",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Bishōjo Kachinuki Renju Gomokunarabe is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Bishōjo Kachinuki Renju Gomokunarabe is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Super PIG"
     ],
@@ -7228,14 +7204,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Bishōjo Kachinuki Renju Gomokunarabe",
@@ -7245,7 +7220,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "19??",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bishojo-mahjong-club",
     "isRomhack": false,
     "moods": [
@@ -7253,7 +7228,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Bishōjo Mahjong Club is an unlicensed Famicom Disk System release from Unknown, tagged as approachable, story-forward, and puzzle-leaning for the recommender.",
+    "pitch": "Bishōjo Mahjong Club is an unlicensed Famicom Disk System release from Unknown, tagged as approachable, play-first, and puzzle-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "puzzle",
     "publisher": [],
@@ -7262,15 +7237,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
       "board and card",
       "puzzle",
-      "rpg",
       "unlicensed"
     ],
     "title": "Bishōjo Mahjong Club",
@@ -7280,17 +7254,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "19??",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bishojo-meijin-ikusa",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Bishōjo Meijin Ikusa is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Bishōjo Meijin Ikusa is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Hacker International"
     ],
@@ -7299,14 +7273,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Bishōjo Meijin Ikusa",
@@ -7316,17 +7289,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1988-99-991988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bishojo-sexy-derby",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Bishōjo Sexy Derby is an unlicensed Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Bishōjo Sexy Derby is an unlicensed Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Super PIG"
     ],
@@ -7335,14 +7308,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Bishōjo Sexy Derby",
@@ -7352,17 +7324,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "19??",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bishojo-sexy-slot",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Bishōjo Sexy Slot is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Bishōjo Sexy Slot is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Super PIG"
     ],
@@ -7371,14 +7343,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Bishōjo Sexy Slot",
@@ -7388,7 +7359,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "19??",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bishojo-sf-alien-battle",
     "isRomhack": false,
     "moods": [
@@ -7396,9 +7367,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Bishōjo SF Alien Battle is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Bishōjo SF Alien Battle is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Hacker International"
     ],
@@ -7407,14 +7378,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Bishōjo SF Alien Battle",
@@ -7424,17 +7394,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "19??",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bishojo-shashinkan-moving-school",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Bishōjo Shashinkan: Moving School is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Bishōjo Shashinkan: Moving School is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Phoenix"
     ],
@@ -7443,15 +7413,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
+      "action",
       "education",
-      "rpg",
       "unlicensed"
     ],
     "title": "Bishōjo Shashinkan: Moving School",
@@ -7461,17 +7430,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "19??",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bishojo-shashinkan-studio-cut",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Bishōjo Shashinkan: Studio Cut is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Bishōjo Shashinkan: Studio Cut is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Phoenix"
     ],
@@ -7480,14 +7449,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Bishōjo Shashinkan: Studio Cut",
@@ -7497,7 +7465,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "black-dragon",
     "isRomhack": false,
     "moods": [
@@ -7505,23 +7473,22 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Black Dragon is an unlicensed NES-era release from 1991, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Black Dragon is an unlicensed NES-era release from 1991, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Daou Infosys"
     ],
     "regions": [
       "South Korea"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "South Korea exclusive",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Black Dragon",
@@ -7531,7 +7498,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "blackjack",
     "isRomhack": false,
     "moods": [
@@ -7567,7 +7534,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "blades-of-steel",
     "isRomhack": false,
     "moods": [
@@ -7601,7 +7568,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 17, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "blaster-master",
     "isRomhack": false,
     "moods": [
@@ -7634,7 +7601,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "block-force",
     "isRomhack": false,
     "moods": [
@@ -7669,7 +7636,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 11, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "blodia-land-puzzle-quest",
     "isRomhack": false,
     "moods": [
@@ -7703,7 +7670,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 19, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bloody-warriors-shan-go-no-gyakushu",
     "isRomhack": false,
     "moods": [
@@ -7737,7 +7704,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bo-jackson-baseball",
     "isRomhack": false,
     "moods": [
@@ -7770,7 +7737,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bodyconquest-i-abakareshi-musume-tachi",
     "isRomhack": false,
     "moods": [
@@ -7778,7 +7745,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "BodyConQuest I: Abakareshi Musume Tachi is an unlicensed Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "BodyConQuest I: Abakareshi Musume Tachi is an unlicensed Famicom Disk System release from 1987, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -7789,14 +7756,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "Famicom Disk System",
       "adventure",
-      "rpg",
       "unlicensed"
     ],
     "title": "BodyConQuest I: Abakareshi Musume Tachi",
@@ -7808,7 +7774,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 14, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bokosuka-wars",
     "isRomhack": false,
     "moods": [
@@ -7840,7 +7806,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1997",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bomber-boy",
     "isRomhack": false,
     "moods": [
@@ -7875,7 +7841,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "December 20, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bomberman",
     "isRomhack": false,
     "moods": [
@@ -7909,7 +7875,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "April 24, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bomberman-famicom-disk-system-hudson-soft",
     "isRomhack": false,
     "moods": [
@@ -7917,7 +7883,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "contemplative"
     ],
     "obscurity": "strange",
-    "pitch": "Bomberman is a Famicom Disk System release from 1990, tagged as approachable, story-forward, and puzzle-leaning for the recommender.",
+    "pitch": "Bomberman is a Famicom Disk System release from 1990, tagged as approachable, play-first, and puzzle-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "puzzle",
     "publisher": [
@@ -7927,14 +7893,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "overhead"
     ],
     "title": "Bomberman",
     "year": "1990"
@@ -7945,7 +7910,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "June 28, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bomberman-ii",
     "isRomhack": false,
     "moods": [
@@ -7980,7 +7945,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 30, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bonk-s-adventure",
     "isRomhack": false,
     "moods": [
@@ -8014,7 +7979,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 10, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "booby-kids",
     "isRomhack": false,
     "moods": [
@@ -8046,7 +8011,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1997",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "boogerman",
     "isRomhack": false,
     "moods": [
@@ -8079,7 +8044,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1997",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "boogerman-2-the-final-adventure",
     "isRomhack": false,
     "moods": [
@@ -8112,7 +8077,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bookyman",
     "isRomhack": false,
     "moods": [
@@ -8147,7 +8112,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 23, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "boulder-dash",
     "isRomhack": false,
     "moods": [
@@ -8183,7 +8148,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bram-stoker-s-dracula",
     "isRomhack": false,
     "moods": [
@@ -8217,7 +8182,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "break-time-the-national-pool-tour",
     "isRomhack": false,
     "moods": [
@@ -8251,7 +8216,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "breakthru",
     "isRomhack": false,
     "moods": [
@@ -8285,17 +8250,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 15, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "breeder",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Breeder is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Breeder is a Famicom Disk System release from 1986, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Soft Pro International"
     ],
@@ -8303,14 +8268,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Breeder",
     "year": "1986"
@@ -8319,7 +8283,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "brush-roller",
     "isRomhack": false,
     "moods": [
@@ -8352,7 +8316,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bubble-bath-babes",
     "isRomhack": false,
     "moods": [
@@ -8387,7 +8351,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "November 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bubble-bobble",
     "isRomhack": false,
     "moods": [
@@ -8421,7 +8385,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "October 30, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bubble-bobble-famicom-disk-system-taito",
     "isRomhack": false,
     "moods": [
@@ -8429,7 +8393,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "weird"
     ],
     "obscurity": "classic",
-    "pitch": "Bubble Bobble is a Famicom Disk System release from 1987, tagged as approachable, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "Bubble Bobble is a Famicom Disk System release from 1987, tagged as approachable, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -8439,14 +8403,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "platformer"
     ],
     "title": "Bubble Bobble",
     "year": "1987"
@@ -8457,7 +8420,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "March 5, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bubble-bobble-part-2",
     "isRomhack": false,
     "moods": [
@@ -8491,7 +8454,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 31, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bucky-o-hare",
     "isRomhack": false,
     "moods": [
@@ -8526,7 +8489,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 8, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "bump-n-jump",
     "isRomhack": false,
     "moods": [
@@ -8560,7 +8523,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "March 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "burai-fighter",
     "isRomhack": false,
     "moods": [
@@ -8597,7 +8560,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 27, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "burgertime",
     "isRomhack": false,
     "moods": [
@@ -8632,7 +8595,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 23, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "burgertime-famicom-disk-system-data-east",
     "isRomhack": false,
     "moods": [
@@ -8640,7 +8603,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "BurgerTime is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "BurgerTime is a Famicom Disk System release from 1988, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -8650,15 +8613,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "arcade port",
-      "rpg"
+      "action",
+      "arcade port"
     ],
     "title": "BurgerTime",
     "year": "1988"
@@ -8669,7 +8631,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 24, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "business-wars",
     "isRomhack": false,
     "moods": [
@@ -8703,7 +8665,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "cabal",
     "isRomhack": false,
     "moods": [
@@ -8737,7 +8699,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 2, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "cadillac",
     "isRomhack": false,
     "moods": [
@@ -8771,7 +8733,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "caesars-palace",
     "isRomhack": false,
     "moods": [
@@ -8805,7 +8767,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "california-games",
     "isRomhack": false,
     "moods": [
@@ -8837,7 +8799,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "caltron-6-in-1",
     "isRomhack": false,
     "moods": [
@@ -8870,7 +8832,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "caltron-6-in-1-unlicensed-famicom-ntdec",
     "isRomhack": false,
     "moods": [
@@ -8905,7 +8867,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 5, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "capcom-s-gold-medal-challenge-92",
     "isRomhack": false,
     "moods": [
@@ -8940,7 +8902,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "December 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "captain-america-and-the-avengers",
     "isRomhack": false,
     "moods": [
@@ -8975,7 +8937,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 25, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "captain-ed",
     "isRomhack": false,
     "moods": [
@@ -9009,7 +8971,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "captain-planet-and-the-planeteers",
     "isRomhack": false,
     "moods": [
@@ -9043,7 +9005,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "December 16, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "captain-silver",
     "isRomhack": false,
     "moods": [
@@ -9077,7 +9039,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "captain-skyhawk",
     "isRomhack": false,
     "moods": [
@@ -9112,7 +9074,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 20, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "captain-tsubasa-vol-ii-super-striker",
     "isRomhack": false,
     "moods": [
@@ -9144,17 +9106,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "19??",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "casino-de-pink",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Casino de Pink is an unlicensed Famicom Disk System release from Unknown, tagged as approachable, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Casino de Pink is an unlicensed Famicom Disk System release from Unknown, tagged as approachable, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Wild"
     ],
@@ -9163,15 +9125,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
+      "action",
       "board and card",
-      "rpg",
       "unlicensed"
     ],
     "title": "Casino de Pink",
@@ -9183,7 +9144,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "March 19, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "casino-derby-and-super-bingo",
     "isRomhack": false,
     "moods": [
@@ -9218,7 +9179,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "January 6, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "casino-kid",
     "isRomhack": false,
     "moods": [
@@ -9253,7 +9214,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "April 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "casino-kid-2",
     "isRomhack": false,
     "moods": [
@@ -9288,7 +9249,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "castelian",
     "isRomhack": false,
     "moods": [
@@ -9321,7 +9282,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "castle-of-deceit",
     "isRomhack": false,
     "moods": [
@@ -9356,7 +9317,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "February 27, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "castle-of-dragondragon-unit",
     "isRomhack": false,
     "moods": [
@@ -9390,7 +9351,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 18, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "castle-quest",
     "isRomhack": false,
     "moods": [
@@ -9424,7 +9385,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "November 28, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "castlequest",
     "isRomhack": false,
     "moods": [
@@ -9458,7 +9419,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "April 30, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "castlevania",
     "isRomhack": false,
     "moods": [
@@ -9494,7 +9455,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "November 24, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "castlevania-ii-simon-s-quest",
     "isRomhack": false,
     "moods": [
@@ -9529,7 +9490,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "December 22, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "castlevania-iii-dracula-s-curse",
     "isRomhack": false,
     "moods": [
@@ -9563,7 +9524,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "October 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "caveman-games",
     "isRomhack": false,
     "moods": [
@@ -9597,7 +9558,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 24, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chack-n-pop",
     "isRomhack": false,
     "moods": [
@@ -9629,7 +9590,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "challenge-of-the-dragon",
     "isRomhack": false,
     "moods": [
@@ -9662,7 +9623,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "challenge-of-the-dragon-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -9697,7 +9658,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 15, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "challenger",
     "isRomhack": false,
     "moods": [
@@ -9731,7 +9692,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "December 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "championship-bowling",
     "isRomhack": false,
     "moods": [
@@ -9765,7 +9726,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "April 17, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "championship-lode-runner",
     "isRomhack": false,
     "moods": [
@@ -9799,7 +9760,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "championship-pool",
     "isRomhack": false,
     "moods": [
@@ -9833,7 +9794,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "championship-rally",
     "isRomhack": false,
     "moods": [
@@ -9867,7 +9828,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 25, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chaos-world",
     "isRomhack": false,
     "moods": [
@@ -9899,7 +9860,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chess-academy",
     "isRomhack": false,
     "moods": [
@@ -9934,7 +9895,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chess-academy-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -9971,7 +9932,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 30, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chester-field-ankoku-shin-e-no-chosen",
     "isRomhack": false,
     "moods": [
@@ -10005,7 +9966,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 4, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chibi-maruko-chan-uki-uki-shopping",
     "isRomhack": false,
     "moods": [
@@ -10039,7 +10000,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 4, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chiisana-obake-acchi-kocchi-socchi",
     "isRomhack": false,
     "moods": [
@@ -10071,7 +10032,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chiller",
     "isRomhack": false,
     "moods": [
@@ -10106,7 +10067,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "Unknown",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "china-chess",
     "isRomhack": false,
     "moods": [
@@ -10140,7 +10101,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chinese-checkers",
     "isRomhack": false,
     "moods": [
@@ -10173,7 +10134,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chinese-checkers-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -10206,7 +10167,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chinese-kung-fu",
     "isRomhack": false,
     "moods": [
@@ -10241,7 +10202,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 8, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chip-n-dale-rescue-rangers",
     "isRomhack": false,
     "moods": [
@@ -10276,7 +10237,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 10, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chip-n-dale-rescue-rangers-2",
     "isRomhack": false,
     "moods": [
@@ -10311,17 +10272,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 27, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chitei-tairiku-orudoora",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Chitei Tairiku Orudoora is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Chitei Tairiku Orudoora is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Sunsoft"
     ],
@@ -10329,14 +10290,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Chitei Tairiku Orudoora",
     "year": "1987"
@@ -10347,31 +10307,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 7, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chiyonofuji-no-oicho",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Chiyonofuji no Ōichō is a Famicom release from 1990, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Chiyonofuji no Ōichō is a Famicom release from 1990, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Face"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Chiyonofuji no Ōichō",
     "year": "1990"
@@ -10382,7 +10341,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 10, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "cho-jiku-yosai-macross",
     "isRomhack": false,
     "moods": [
@@ -10416,7 +10375,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 21, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chojin-sentai-jetman",
     "isRomhack": false,
     "moods": [
@@ -10448,7 +10407,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2002",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chongwu-feicui",
     "isRomhack": false,
     "moods": [
@@ -10484,7 +10443,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 26, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "choplifter",
     "isRomhack": false,
     "moods": [
@@ -10516,7 +10475,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1997",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chu-han-zheng-ba-war-between-chu-and-han",
     "isRomhack": false,
     "moods": [
@@ -10552,7 +10511,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 16, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chubby-cherub",
     "isRomhack": false,
     "moods": [
@@ -10586,7 +10545,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 23, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chugoku-janshi-story-tonpu",
     "isRomhack": false,
     "moods": [
@@ -10620,7 +10579,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 29, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chuugoku-senseijutsu",
     "isRomhack": false,
     "moods": [
@@ -10654,7 +10613,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 22, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "chuuka-taisen",
     "isRomhack": false,
     "moods": [
@@ -10688,7 +10647,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 8, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "circus-caper",
     "isRomhack": false,
     "moods": [
@@ -10722,7 +10681,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 4, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "circus-charlie",
     "isRomhack": false,
     "moods": [
@@ -10756,7 +10715,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 14, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "city-adventure-touch-mystery-of-triangle",
     "isRomhack": false,
     "moods": [
@@ -10764,7 +10723,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "contemplative"
     ],
     "obscurity": "strange",
-    "pitch": "City Adventure Touch: Mystery of Triangle is a Famicom release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "City Adventure Touch: Mystery of Triangle is a Famicom release from 1987, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -10776,11 +10735,10 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 3,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "adventure"
     ],
     "title": "City Adventure Touch: Mystery of Triangle",
     "year": "1987"
@@ -10791,7 +10749,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 27, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "city-connection",
     "isRomhack": false,
     "moods": [
@@ -10826,7 +10784,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 27, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "clash-at-demonhead",
     "isRomhack": false,
     "moods": [
@@ -10860,7 +10818,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "classic-concentration",
     "isRomhack": false,
     "moods": [
@@ -10894,7 +10852,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 24, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "cleopatra-no-maho",
     "isRomhack": false,
     "moods": [
@@ -10918,8 +10876,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "story": "rich",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Cleopatra no Mahō",
     "year": "1987"
@@ -10930,7 +10887,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "cliffhanger",
     "isRomhack": false,
     "moods": [
@@ -10964,17 +10921,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 19, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "clocks",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Clocks is a Famicom Disk System release from 1991, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Clocks is a Famicom Disk System release from 1991, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Tokuma Shoten"
     ],
@@ -10982,14 +10939,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Clocks",
     "year": "1991"
@@ -11000,7 +10956,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "November 22, 1984",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "clu-clu-land",
     "isRomhack": false,
     "moods": [
@@ -11035,7 +10991,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "April 28, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "clu-clu-land-welcome-to-new-clu-clu-land",
     "isRomhack": false,
     "moods": [
@@ -11043,7 +10999,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Clu Clu Land: Welcome to New Clu Clu Land is a Famicom Disk System release from 1992, tagged as approachable, story-forward, and puzzle-leaning for the recommender.",
+    "pitch": "Clu Clu Land: Welcome to New Clu Clu Land is a Famicom Disk System release from 1992, tagged as approachable, play-first, and puzzle-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "puzzle",
     "publisher": [
@@ -11053,14 +11009,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Clu Clu Land: Welcome to New Clu Clu Land",
     "year": "1992"
@@ -11071,7 +11026,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 21, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "cobra-command",
     "isRomhack": false,
     "moods": [
@@ -11105,7 +11060,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "cobra-triangle",
     "isRomhack": false,
     "moods": [
@@ -11139,17 +11094,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 10, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "cocona-world",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Cocona World is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Cocona World is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "SOFEL"
     ],
@@ -11157,14 +11112,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Cocona World",
     "year": "1987"
@@ -11175,7 +11129,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 3, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "cocoron",
     "isRomhack": false,
     "moods": [
@@ -11210,7 +11164,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 23, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "code-name-viper",
     "isRomhack": false,
     "moods": [
@@ -11218,7 +11172,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Code Name: Viper is an NES release from 1990, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "Code Name: Viper is an NES release from 1990, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -11228,13 +11182,12 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "NA"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Code Name: Viper",
     "year": "1990"
@@ -11245,7 +11198,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "color-a-dinosaur",
     "isRomhack": false,
     "moods": [
@@ -11277,7 +11230,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "colorful-dragon",
     "isRomhack": false,
     "moods": [
@@ -11312,7 +11265,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 20, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "columbus-ogon-no-yoake",
     "isRomhack": false,
     "moods": [
@@ -11346,7 +11299,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 27, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "commando",
     "isRomhack": false,
     "moods": [
@@ -11380,31 +11333,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "conan-the-mysteries-of-time",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Conan: The Mysteries of Time is an NES release from 1991, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Conan: The Mysteries of Time is an NES release from 1991, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Mindscape"
     ],
     "regions": [
       "NA"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "NA exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Conan: The Mysteries of Time",
     "year": "1991"
@@ -11415,7 +11367,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "conflict",
     "isRomhack": false,
     "moods": [
@@ -11449,7 +11401,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 24, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "conquest-of-the-crystal-palace",
     "isRomhack": false,
     "moods": [
@@ -11457,7 +11409,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Conquest of the Crystal Palace is an NES release from 1990, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "Conquest of the Crystal Palace is an NES release from 1990, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -11467,13 +11419,12 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "NA"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "rpg"
+      "adventure"
     ],
     "title": "Conquest of the Crystal Palace",
     "year": "1990"
@@ -11484,7 +11435,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "February 9, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "contra",
     "isRomhack": false,
     "moods": [
@@ -11519,7 +11470,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "September 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "contra-force",
     "isRomhack": false,
     "moods": [
@@ -11551,7 +11502,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "difficult",
     "firstReleased": "1997",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "contra-spirits",
     "isRomhack": false,
     "moods": [
@@ -11586,7 +11537,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "cool-world",
     "isRomhack": false,
     "moods": [
@@ -11620,7 +11571,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 24, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "cosmic-epsilon",
     "isRomhack": false,
     "moods": [
@@ -11654,7 +11605,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 4, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "cosmic-wars",
     "isRomhack": false,
     "moods": [
@@ -11688,7 +11639,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 3, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "cosmo-police-galivan",
     "isRomhack": false,
     "moods": [
@@ -11720,7 +11671,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "cosmos-cop",
     "isRomhack": false,
     "moods": [
@@ -11755,7 +11706,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 13, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "cowboy-kidwestern-kids",
     "isRomhack": false,
     "moods": [
@@ -11790,7 +11741,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "crackout",
     "isRomhack": false,
     "moods": [
@@ -11824,7 +11775,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 26, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "crash-n-the-boys-street-challenge",
     "isRomhack": false,
     "moods": [
@@ -11832,7 +11783,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Crash 'n' the Boys: Street Challenge is an NES release from 1992, tagged as balanced, story-forward, and top down-leaning for the recommender.",
+    "pitch": "Crash 'n' the Boys: Street Challenge is an NES release from 1992, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "top-down",
     "publisher": [
@@ -11842,13 +11793,12 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "NA"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Crash 'n' the Boys: Street Challenge",
     "year": "1992"
@@ -11857,7 +11807,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "crayon-shin-chan",
     "isRomhack": false,
     "moods": [
@@ -11892,7 +11842,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "August 27, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "crayon-shin-chan-ora-to-poi-poi",
     "isRomhack": false,
     "moods": [
@@ -11926,7 +11876,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "August 27, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "crayon-shin-chan-ora-to-poi-poi-bandai-datach-bandai",
     "isRomhack": false,
     "moods": [
@@ -11961,7 +11911,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 26, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "crazy-climber",
     "isRomhack": false,
     "moods": [
@@ -11995,7 +11945,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 27, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "crisis-force",
     "isRomhack": false,
     "moods": [
@@ -12029,7 +11979,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 2, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "crossfire",
     "isRomhack": false,
     "moods": [
@@ -12061,31 +12011,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "crystal-commando",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Crystal Commando is an unlicensed NES-era release from 1991, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Crystal Commando is an unlicensed NES-era release from 1991, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Daou Infosys"
     ],
     "regions": [
       "South Korea"
     ],
-    "signalScore": 2,
+    "signalScore": 1,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "South Korea exclusive",
-      "adventure",
-      "rpg",
+      "overhead",
       "unlicensed"
     ],
     "title": "Crystal Commando",
@@ -12095,30 +12044,29 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "crystal-mines",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Crystal Mines is an unlicensed NES-era release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Crystal Mines is an unlicensed NES-era release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Color Dreams"
     ],
     "regions": [
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "unlicensed-nes-lifespan",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed",
       "unlicensed exclusive"
     ],
@@ -12131,7 +12079,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 13, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "crystalis",
     "isRomhack": false,
     "moods": [
@@ -12154,8 +12102,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
     "story": "rich",
     "tags": [
-      "adventure",
-      "rpg"
+      "adventure"
     ],
     "title": "Crystalis",
     "year": "1990"
@@ -12166,7 +12113,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "cyber-stadium-series-base-wars",
     "isRomhack": false,
     "moods": [
@@ -12200,7 +12147,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "cyberball",
     "isRomhack": false,
     "moods": [
@@ -12234,7 +12181,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "December 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "cybernoid-the-fighting-machine",
     "isRomhack": false,
     "moods": [
@@ -12268,7 +12215,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 17, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "cycle-race-road-man",
     "isRomhack": false,
     "moods": [
@@ -12300,7 +12247,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2009",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "d-pad-hero",
     "isRomhack": false,
     "moods": [
@@ -12333,7 +12280,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2010",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "d-pad-hero-2",
     "isRomhack": false,
     "moods": [
@@ -12368,7 +12315,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 29, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dabisutarion-zenkokuban",
     "isRomhack": false,
     "moods": [
@@ -12402,7 +12349,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 30, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dai-meiro-meikyu-no-tatsujin",
     "isRomhack": false,
     "moods": [
@@ -12436,31 +12383,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 29, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dai-2-ji-super-robot-taisen",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Dai-2-ji Super Robot Taisen is a Famicom release from 1991, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Dai-2-ji Super Robot Taisen is a Famicom release from 1991, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Banpresto"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Dai-2-ji Super Robot Taisen",
     "year": "1991"
@@ -12471,7 +12417,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 21, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "daikaiju-deburas",
     "isRomhack": false,
     "moods": [
@@ -12505,7 +12451,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 22, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "daiku-no-gen-san-2-akage-no-dan-no-gyakusho",
     "isRomhack": false,
     "moods": [
@@ -12539,7 +12485,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 11, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "daisenryaku",
     "isRomhack": false,
     "moods": [
@@ -12573,7 +12519,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 5, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "daiva-story-6-nirsartia-no-gyokuza",
     "isRomhack": false,
     "moods": [
@@ -12607,7 +12553,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 26, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dance-aerobics",
     "isRomhack": false,
     "moods": [
@@ -12640,7 +12586,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dancing-block",
     "isRomhack": false,
     "moods": [
@@ -12673,7 +12619,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dancing-block-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -12708,17 +12654,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 21, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dandy-zeuon-no-fukkatsu",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Dandy: Zeuon No Fukkatsu is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Dandy: Zeuon No Fukkatsu is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Pony Canyon"
     ],
@@ -12726,14 +12672,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Dandy: Zeuon No Fukkatsu",
     "year": "1988"
@@ -12744,7 +12689,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "danny-sullivan-s-indy-heat",
     "isRomhack": false,
     "moods": [
@@ -12776,7 +12721,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dao-shuai",
     "isRomhack": false,
     "moods": [
@@ -12811,7 +12756,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 8, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dark-lord",
     "isRomhack": false,
     "moods": [
@@ -12845,7 +12790,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "darkman",
     "isRomhack": false,
     "moods": [
@@ -12879,7 +12824,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "darkwing-duck",
     "isRomhack": false,
     "moods": [
@@ -12913,7 +12858,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dash-galaxy-in-the-alien-asylum",
     "isRomhack": false,
     "moods": [
@@ -12945,17 +12890,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "19??",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "date-de-blackjack",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Date de Blackjack is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Date de Blackjack is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Hacker International"
     ],
@@ -12964,15 +12909,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
+      "action",
       "board and card",
-      "rpg",
       "unlicensed"
     ],
     "title": "Date de Blackjack",
@@ -12984,7 +12928,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "day-dreamin-davey",
     "isRomhack": false,
     "moods": [
@@ -13018,17 +12962,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "days-of-thunder",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Days of Thunder is an NES release from 1990, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Days of Thunder is an NES release from 1990, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Mindscape"
     ],
@@ -13036,13 +12980,12 @@ export const generatedNesGames: NesCatalogGame[] = [
       "NA",
       "PAL"
     ],
-    "signalScore": 2,
+    "signalScore": 1,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "rpg"
+      "overhead"
     ],
     "title": "Days of Thunder",
     "year": "1990"
@@ -13053,7 +12996,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "August 9, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "de-block",
     "isRomhack": false,
     "moods": [
@@ -13087,7 +13030,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 20, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dead-zone",
     "isRomhack": false,
     "moods": [
@@ -13095,9 +13038,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Dead Zone is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Dead Zone is a Famicom Disk System release from 1986, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Sunsoft"
     ],
@@ -13105,14 +13048,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Dead Zone",
     "year": "1986"
@@ -13123,7 +13065,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 15, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "deadly-towers",
     "isRomhack": false,
     "moods": [
@@ -13156,7 +13098,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "death-race",
     "isRomhack": false,
     "moods": [
@@ -13189,7 +13131,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "deathbots",
     "isRomhack": false,
     "moods": [
@@ -13222,7 +13164,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "decathlon",
     "isRomhack": false,
     "moods": [
@@ -13255,7 +13197,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "decathlon-unlicensed-famicom-computer-and-entertainment",
     "isRomhack": false,
     "moods": [
@@ -13290,7 +13232,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 13, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "deep-dungeon-iii-yushi-e-no-tabi",
     "isRomhack": false,
     "moods": [
@@ -13324,7 +13266,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 6, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "deep-dungeon-iv-kuro-no-yojutsushi",
     "isRomhack": false,
     "moods": [
@@ -13358,17 +13300,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 19, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "deep-dungeon-mado-senki",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Deep Dungeon: Madō Senki is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Deep Dungeon: Madō Senki is a Famicom Disk System release from 1986, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Square"
     ],
@@ -13376,14 +13318,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Deep Dungeon: Madō Senki",
     "year": "1986"
@@ -13394,7 +13335,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 24, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "defender-ii",
     "isRomhack": false,
     "moods": [
@@ -13428,7 +13369,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "defender-of-the-crown",
     "isRomhack": false,
     "moods": [
@@ -13463,7 +13404,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "defenders-of-dynatron-city",
     "isRomhack": false,
     "moods": [
@@ -13497,7 +13438,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 22, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "deja-vu",
     "isRomhack": false,
     "moods": [
@@ -13532,7 +13473,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 29, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "demon-sword",
     "isRomhack": false,
     "moods": [
@@ -13566,7 +13507,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 21, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "derby-stallion-best-keiba",
     "isRomhack": false,
     "moods": [
@@ -13600,7 +13541,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 28, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "desert-commander",
     "isRomhack": false,
     "moods": [
@@ -13634,7 +13575,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "destination-earthstar",
     "isRomhack": false,
     "moods": [
@@ -13668,7 +13609,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 19, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "destiny-of-an-emperor",
     "isRomhack": false,
     "moods": [
@@ -13700,7 +13641,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "destroyer",
     "isRomhack": false,
     "moods": [
@@ -13736,7 +13677,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 5, 1984",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "devil-world",
     "isRomhack": false,
     "moods": [
@@ -13744,9 +13685,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Devil World is a Famicom release from 1984, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Devil World is a Famicom release from 1984, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -13754,13 +13695,12 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "PAL"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Devil World",
     "year": "1984"
@@ -13771,7 +13711,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 25, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "devilman",
     "isRomhack": false,
     "moods": [
@@ -13805,7 +13745,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "September 13, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dezaemon",
     "isRomhack": false,
     "moods": [
@@ -13837,7 +13777,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dian-shi-ma-li",
     "isRomhack": false,
     "moods": [
@@ -13872,7 +13812,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dick-tracy",
     "isRomhack": false,
     "moods": [
@@ -13906,7 +13846,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 19, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "die-hard",
     "isRomhack": false,
     "moods": [
@@ -13942,7 +13882,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 4, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dig-dug",
     "isRomhack": false,
     "moods": [
@@ -13977,17 +13917,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 20, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dig-dug-famicom-disk-system-namco",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Dig Dug is a Famicom Disk System release from 1990, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Dig Dug is a Famicom Disk System release from 1990, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Namco"
     ],
@@ -13995,15 +13935,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "arcade port",
-      "rpg"
+      "action",
+      "arcade port"
     ],
     "title": "Dig Dug",
     "year": "1990"
@@ -14014,7 +13953,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 18, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dig-dug-ii",
     "isRomhack": false,
     "moods": [
@@ -14049,17 +13988,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 31, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dig-dug-ii-famicom-disk-system-namco",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Dig Dug II is a Famicom Disk System release from 1990, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Dig Dug II is a Famicom Disk System release from 1990, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Namco"
     ],
@@ -14067,15 +14006,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "arcade port",
-      "rpg"
+      "action",
+      "arcade port"
     ],
     "title": "Dig Dug II",
     "year": "1990"
@@ -14086,7 +14024,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "digger-t-rock-legend-of-the-lost-city",
     "isRomhack": false,
     "moods": [
@@ -14120,7 +14058,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 11, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "digital-devil-story-megami-tensei",
     "isRomhack": false,
     "moods": [
@@ -14154,7 +14092,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 6, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "digital-devil-story-megami-tensei-ii",
     "isRomhack": false,
     "moods": [
@@ -14188,7 +14126,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dirty-harry",
     "isRomhack": false,
     "moods": [
@@ -14222,17 +14160,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 28, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dirty-pair-project-eden",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Dirty Pair: Project Eden is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Dirty Pair: Project Eden is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Bandai"
     ],
@@ -14240,14 +14178,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Dirty Pair: Project Eden",
     "year": "1987"
@@ -14256,7 +14193,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dizzy-the-adventurer",
     "isRomhack": false,
     "moods": [
@@ -14291,7 +14228,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 5, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dokuganryu-masamune",
     "isRomhack": false,
     "moods": [
@@ -14325,7 +14262,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 9, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "don-doko-don",
     "isRomhack": false,
     "moods": [
@@ -14359,7 +14296,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 31, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "don-doko-don-2",
     "isRomhack": false,
     "moods": [
@@ -14393,7 +14330,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 29, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "donald-land",
     "isRomhack": false,
     "moods": [
@@ -14427,7 +14364,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 15, 1983",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "donkey-kong",
     "isRomhack": false,
     "moods": [
@@ -14463,7 +14400,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 8, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "donkey-kong-famicom-disk-system-nintendo",
     "isRomhack": false,
     "moods": [
@@ -14471,9 +14408,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "classic",
-    "pitch": "Donkey Kong is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Donkey Kong is a Famicom Disk System release from 1988, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "platformer",
     "publisher": [
       "Nintendo"
     ],
@@ -14481,15 +14418,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
       "arcade port",
-      "rpg"
+      "platformer"
     ],
     "title": "Donkey Kong",
     "year": "1988"
@@ -14500,7 +14436,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "July 4, 1984",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "donkey-kong-3",
     "isRomhack": false,
     "moods": [
@@ -14508,9 +14444,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Donkey Kong 3 is an NES release from 1984, tagged as demanding, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Donkey Kong 3 is an NES release from 1984, tagged as demanding, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "platformer",
     "publisher": [
       "Nintendo"
     ],
@@ -14519,14 +14455,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "NA",
       "PAL"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
       "arcade port",
-      "rpg"
+      "platformer"
     ],
     "title": "Donkey Kong 3",
     "year": "1984"
@@ -14537,7 +14472,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "donkey-kong-classics",
     "isRomhack": false,
     "moods": [
@@ -14571,7 +14506,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1997",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "donkey-kong-country-4",
     "isRomhack": false,
     "moods": [
@@ -14607,7 +14542,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 15, 1983",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "donkey-kong-jr",
     "isRomhack": false,
     "moods": [
@@ -14643,7 +14578,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 19, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "donkey-kong-jr-famicom-disk-system-nintendo",
     "isRomhack": false,
     "moods": [
@@ -14651,7 +14586,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "classic",
-    "pitch": "Donkey Kong Jr. is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "Donkey Kong Jr. is a Famicom Disk System release from 1988, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -14661,15 +14596,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
       "arcade port",
-      "rpg"
+      "platformer"
     ],
     "title": "Donkey Kong Jr.",
     "year": "1988"
@@ -14680,7 +14614,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 12, 1983",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "donkey-kong-jr-math",
     "isRomhack": false,
     "moods": [
@@ -14715,31 +14649,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dooly-bravo-land",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Dooly Bravo Land is an unlicensed NES-era release from 1992, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Dooly Bravo Land is an unlicensed NES-era release from 1992, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Daou Infosys"
     ],
     "regions": [
       "South Korea"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "South Korea exclusive",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Dooly Bravo Land",
@@ -14751,7 +14684,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "July 18, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "door-door",
     "isRomhack": false,
     "moods": [
@@ -14785,7 +14718,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 12, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "doraemon",
     "isRomhack": false,
     "moods": [
@@ -14819,7 +14752,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 14, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "doraemon-giga-zombie-no-gyakushu",
     "isRomhack": false,
     "moods": [
@@ -14854,17 +14787,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 4, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "doremikko",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Doremikko is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Doremikko is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Konami"
     ],
@@ -14872,14 +14805,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Doremikko",
     "year": "1987"
@@ -14890,7 +14822,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "double-dare",
     "isRomhack": false,
     "moods": [
@@ -14924,7 +14856,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 8, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "double-dragon",
     "isRomhack": false,
     "moods": [
@@ -14960,7 +14892,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "December 22, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "double-dragon-ii-the-revenge",
     "isRomhack": false,
     "moods": [
@@ -14995,7 +14927,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "February 22, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "double-dragon-iii-the-sacred-stones",
     "isRomhack": false,
     "moods": [
@@ -15030,7 +14962,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "double-dribble",
     "isRomhack": false,
     "moods": [
@@ -15065,7 +14997,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 30, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "double-moon-densetsu",
     "isRomhack": false,
     "moods": [
@@ -15097,7 +15029,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "double-strike",
     "isRomhack": false,
     "moods": [
@@ -15133,7 +15065,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 11, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dough-boy",
     "isRomhack": false,
     "moods": [
@@ -15167,7 +15099,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 12, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "downtown-nekketsu-march-super-awesome-field-day",
     "isRomhack": false,
     "moods": [
@@ -15201,7 +15133,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 26, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "downtown-special-kunio-kun-s-historical-period-drama",
     "isRomhack": false,
     "moods": [
@@ -15235,7 +15167,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dr-chaos",
     "isRomhack": false,
     "moods": [
@@ -15269,17 +15201,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 19, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dr-chaos-jigoku-no-tobira",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Dr. Chaos: Jigoku no Tobira is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Dr. Chaos: Jigoku no Tobira is a Famicom Disk System release from 1987, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "platformer",
     "publisher": [
       "Pony Canyon"
     ],
@@ -15287,14 +15219,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "platformer"
     ],
     "title": "Dr. Chaos: Jigoku no Tobira",
     "year": "1987"
@@ -15305,7 +15236,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "April 8, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dr-jekyll-and-mr-hyde",
     "isRomhack": false,
     "moods": [
@@ -15340,7 +15271,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "July 27, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dr-mario",
     "isRomhack": false,
     "moods": [
@@ -15375,7 +15306,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 28, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dracula-ii-noroi-no-fuin",
     "isRomhack": false,
     "moods": [
@@ -15399,8 +15330,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "story": "rich",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Dracula II: Noroi no Fūin",
     "year": "1987"
@@ -15411,7 +15341,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 27, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-ball-3-gokuden",
     "isRomhack": false,
     "moods": [
@@ -15444,7 +15374,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-ball-z-super-butoden-2",
     "isRomhack": false,
     "moods": [
@@ -15478,7 +15408,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-ball-z-5",
     "isRomhack": false,
     "moods": [
@@ -15512,7 +15442,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-ball-z-5-unlicensed-famicom-rex-soft",
     "isRomhack": false,
     "moods": [
@@ -15548,7 +15478,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 6, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-ball-z-gaiden-saiyajin-zetsumetsu-keikaku",
     "isRomhack": false,
     "moods": [
@@ -15583,7 +15513,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 10, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-ball-z-ii-gekishin-freeza",
     "isRomhack": false,
     "moods": [
@@ -15618,7 +15548,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 7, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-ball-z-iii-ressen-jinzoningen",
     "isRomhack": false,
     "moods": [
@@ -15653,7 +15583,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 29, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-ball-z-gekito-tenkaichi-budokai",
     "isRomhack": false,
     "moods": [
@@ -15689,7 +15619,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 27, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-ball-z-kyoshu-saiyajin",
     "isRomhack": false,
     "moods": [
@@ -15724,7 +15654,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 12, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-ball-daimao-fukkatsu",
     "isRomhack": false,
     "moods": [
@@ -15759,7 +15689,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 7, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-buster",
     "isRomhack": false,
     "moods": [
@@ -15793,7 +15723,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 27, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-buster-ii-yami-no-fuin",
     "isRomhack": false,
     "moods": [
@@ -15827,7 +15757,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 10, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-fighter",
     "isRomhack": false,
     "moods": [
@@ -15862,7 +15792,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 27, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-power",
     "isRomhack": false,
     "moods": [
@@ -15897,7 +15827,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 4, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-scroll",
     "isRomhack": false,
     "moods": [
@@ -15931,7 +15861,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "April 14, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-spirit-the-new-legend",
     "isRomhack": false,
     "moods": [
@@ -15966,7 +15896,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 27, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-warrior",
     "isRomhack": false,
     "moods": [
@@ -16002,7 +15932,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 26, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-warrior-ii",
     "isRomhack": false,
     "moods": [
@@ -16037,7 +15967,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 10, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-warrior-iii",
     "isRomhack": false,
     "moods": [
@@ -16072,7 +16002,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 11, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-warrior-iv",
     "isRomhack": false,
     "moods": [
@@ -16107,7 +16037,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 9, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-wars",
     "isRomhack": false,
     "moods": [
@@ -16141,7 +16071,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dragon-s-lair",
     "isRomhack": false,
     "moods": [
@@ -16149,9 +16079,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Dragon's Lair is an NES release from 1990, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Dragon's Lair is an NES release from 1990, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "CSG Imagesoft",
       "Epic/Sony Records",
@@ -16162,13 +16092,12 @@ export const generatedNesGames: NesCatalogGame[] = [
       "NA",
       "PAL"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Dragon's Lair",
     "year": "1990"
@@ -16179,7 +16108,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 22, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dream-master",
     "isRomhack": false,
     "moods": [
@@ -16213,7 +16142,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dropzone",
     "isRomhack": false,
     "moods": [
@@ -16247,17 +16176,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 3, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "druid-kyofu-no-tobira",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Druid: Kyōfu no Tobira is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Druid: Kyōfu no Tobira is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Jaleco"
     ],
@@ -16265,14 +16194,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Druid: Kyōfu no Tobira",
     "year": "1988"
@@ -16284,7 +16212,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "April 21, 1984",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "duck-hunt",
     "isRomhack": false,
     "moods": [
@@ -16292,7 +16220,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "classic",
-    "pitch": "Duck Hunt is an NES release from 1984, tagged as approachable, story-forward, and top down-leaning for the recommender.",
+    "pitch": "Duck Hunt is an NES release from 1984, tagged as approachable, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "top-down",
     "publisher": [
@@ -16303,14 +16231,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "NA",
       "PAL"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "light gun",
-      "rpg"
+      "action",
+      "light gun"
     ],
     "title": "Duck Hunt",
     "year": "1984"
@@ -16319,7 +16246,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "duck-maze",
     "isRomhack": false,
     "moods": [
@@ -16354,7 +16281,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ducktales",
     "isRomhack": false,
     "moods": [
@@ -16389,7 +16316,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 23, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ducktales-2",
     "isRomhack": false,
     "moods": [
@@ -16422,7 +16349,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dudes-with-attitude",
     "isRomhack": false,
     "moods": [
@@ -16457,7 +16384,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 31, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dungeon-kid",
     "isRomhack": false,
     "moods": [
@@ -16491,7 +16418,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 10, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dungeon-magic-sword-of-the-elements",
     "isRomhack": false,
     "moods": [
@@ -16525,7 +16452,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 27, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dusty-diamond-s-all-star-softball",
     "isRomhack": false,
     "moods": [
@@ -16560,7 +16487,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 24, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dynamite-bowl",
     "isRomhack": false,
     "moods": [
@@ -16594,7 +16521,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "dynowarz-destruction-of-spondylus",
     "isRomhack": false,
     "moods": [
@@ -16626,7 +16553,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1997",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "earthworm-jim-2",
     "isRomhack": false,
     "moods": [
@@ -16659,7 +16586,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1996",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "earthworm-jim-2-unlicensed-famicom-ka-sheng",
     "isRomhack": false,
     "moods": [
@@ -16692,7 +16619,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1997",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "earthworm-jim-3",
     "isRomhack": false,
     "moods": [
@@ -16727,7 +16654,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 29, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "eggerland",
     "isRomhack": false,
     "moods": [
@@ -16735,9 +16662,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Eggerland is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Eggerland is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "HAL Laboratory"
     ],
@@ -16745,14 +16672,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Eggerland",
     "year": "1987"
@@ -16763,7 +16689,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "August 9, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "eggerland-meikyu-no-fukkatsu",
     "isRomhack": false,
     "moods": [
@@ -16797,7 +16723,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "August 20, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "eggerland-sozo-e-no-tabidachi",
     "isRomhack": false,
     "moods": [
@@ -16805,7 +16731,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "weird"
     ],
     "obscurity": "strange",
-    "pitch": "Eggerland: Sōzō e no Tabidachi is a Famicom Disk System release from 1988, tagged as approachable, story-forward, and puzzle-leaning for the recommender.",
+    "pitch": "Eggerland: Sōzō e no Tabidachi is a Famicom Disk System release from 1988, tagged as approachable, play-first, and puzzle-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "puzzle",
     "publisher": [
@@ -16815,14 +16741,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Eggerland: Sōzō e no Tabidachi",
     "year": "1988"
@@ -16833,7 +16758,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 31, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "egypt",
     "isRomhack": false,
     "moods": [
@@ -16867,17 +16792,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 26, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "electrician",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Electrician is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Electrician is a Famicom Disk System release from 1986, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Kemco"
     ],
@@ -16885,14 +16810,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Electrician",
     "year": "1986"
@@ -16903,7 +16827,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 28, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "elevator-action",
     "isRomhack": false,
     "moods": [
@@ -16935,7 +16859,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "elfland",
     "isRomhack": false,
     "moods": [
@@ -16970,7 +16894,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "eliminator-boat-duel",
     "isRomhack": false,
     "moods": [
@@ -17006,7 +16930,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "elite",
     "isRomhack": false,
     "moods": [
@@ -17040,7 +16964,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 10, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "elnark-no-zaihou",
     "isRomhack": false,
     "moods": [
@@ -17074,31 +16998,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 28, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "elysion",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Elysion is a Famicom release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Elysion is a Famicom release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Tokyo Shoseki"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Elysion",
     "year": "1988"
@@ -17107,17 +17030,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "emi-chan-no-moero-yakyuken",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Emi-chan no Moero Yakyūken is an unlicensed Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Emi-chan no Moero Yakyūken is an unlicensed Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Super PIG"
     ],
@@ -17126,14 +17049,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Emi-chan no Moero Yakyūken",
@@ -17145,7 +17067,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 19, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "emoyan-no-10-bai-pro-yakyu",
     "isRomhack": false,
     "moods": [
@@ -17179,7 +17101,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 27, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "erika-to-satoru-no-yume-boken",
     "isRomhack": false,
     "moods": [
@@ -17213,7 +17135,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 13, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "esper-bokentai",
     "isRomhack": false,
     "moods": [
@@ -17247,7 +17169,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 20, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "esper-dream",
     "isRomhack": false,
     "moods": [
@@ -17271,8 +17193,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "story": "rich",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Esper Dream",
     "year": "1987"
@@ -17283,7 +17204,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 26, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "esper-dream-2-arata-naru-tatakai",
     "isRomhack": false,
     "moods": [
@@ -17317,7 +17238,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 30, 1984",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "excitebike",
     "isRomhack": false,
     "moods": [
@@ -17352,7 +17273,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 8, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "exciting-baseball",
     "isRomhack": false,
     "moods": [
@@ -17360,9 +17281,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Exciting Baseball is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Exciting Baseball is a Famicom Disk System release from 1987, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Konami"
     ],
@@ -17370,14 +17291,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "sports"
     ],
     "title": "Exciting Baseball",
@@ -17389,7 +17309,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 24, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "exciting-basket",
     "isRomhack": false,
     "moods": [
@@ -17397,45 +17317,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Exciting Basket is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and top down-leaning for the recommender.",
+    "pitch": "Exciting Basket is a Famicom Disk System release from 1987, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "top-down",
-    "publisher": [
-      "Konami"
-    ],
-    "regions": [
-      "JP",
-      "FDS"
-    ],
-    "signalScore": 3,
-    "sourceCategory": "famicom-disk-system",
-    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
-    "tags": [
-      "Famicom Disk System",
-      "adventure",
-      "rpg"
-    ],
-    "title": "Exciting Basket",
-    "year": "1987"
-  },
-  {
-    "developer": [
-      "Konami"
-    ],
-    "difficulty": "fair",
-    "firstReleased": "June 26, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
-    "id": "exciting-billiard",
-    "isRomhack": false,
-    "moods": [
-      "heroic",
-      "arcade"
-    ],
-    "obscurity": "strange",
-    "pitch": "Exciting Billiard is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
-    "platform": "nes",
-    "playStyle": "action-adventure",
     "publisher": [
       "Konami"
     ],
@@ -17446,11 +17330,45 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
+    ],
+    "title": "Exciting Basket",
+    "year": "1987"
+  },
+  {
+    "developer": [
+      "Konami"
+    ],
+    "difficulty": "fair",
+    "firstReleased": "June 26, 1987",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
+    "id": "exciting-billiard",
+    "isRomhack": false,
+    "moods": [
+      "arcade",
+      "heroic"
+    ],
+    "obscurity": "strange",
+    "pitch": "Exciting Billiard is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
+    "platform": "nes",
+    "playStyle": "side-scroller",
+    "publisher": [
+      "Konami"
+    ],
+    "regions": [
+      "JP",
+      "FDS"
+    ],
+    "signalScore": 0,
+    "sourceCategory": "famicom-disk-system",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
+    "story": "low",
+    "tags": [
+      "Famicom Disk System",
+      "action"
     ],
     "title": "Exciting Billiard",
     "year": "1987"
@@ -17461,7 +17379,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 16, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "exciting-boxing",
     "isRomhack": false,
     "moods": [
@@ -17496,17 +17414,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 16, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "exciting-soccer-konami-cup",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Exciting Soccer: Konami Cup is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Exciting Soccer: Konami Cup is a Famicom Disk System release from 1988, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Konami"
     ],
@@ -17514,14 +17432,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "sports"
     ],
     "title": "Exciting Soccer: Konami Cup",
@@ -17533,7 +17450,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 21, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "exed-exes",
     "isRomhack": false,
     "moods": [
@@ -17567,7 +17484,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "February 11, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "exerion",
     "isRomhack": false,
     "moods": [
@@ -17599,7 +17516,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "exodus",
     "isRomhack": false,
     "moods": [
@@ -17634,7 +17551,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "f-117a-stealth-fighter",
     "isRomhack": false,
     "moods": [
@@ -17667,7 +17584,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "f-15-city-war",
     "isRomhack": false,
     "moods": [
@@ -17704,7 +17621,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "f-15-strike-eagle",
     "isRomhack": false,
     "moods": [
@@ -17739,7 +17656,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 7, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "f1-circus",
     "isRomhack": false,
     "moods": [
@@ -17773,7 +17690,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 2, 1984",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "f1-race",
     "isRomhack": false,
     "moods": [
@@ -17805,7 +17722,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "f18-race",
     "isRomhack": false,
     "moods": [
@@ -17840,17 +17757,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 28, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fairytale",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Fairytale is a Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Fairytale is a Famicom Disk System release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Soft Pro International"
     ],
@@ -17858,14 +17775,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Fairytale",
     "year": "1989"
@@ -17876,7 +17792,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "October 21, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "falsion",
     "isRomhack": false,
     "moods": [
@@ -17884,9 +17800,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Falsion is a Famicom Disk System release from 1987, tagged as demanding, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Falsion is a Famicom Disk System release from 1987, tagged as demanding, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Konami"
     ],
@@ -17894,14 +17810,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Falsion",
     "year": "1987"
@@ -17912,7 +17827,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 15, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famicom-dobutsu-seitai-zukan-katte-ni-shirokuma-mori-o-sukue-no-maki",
     "isRomhack": false,
     "moods": [
@@ -17947,17 +17862,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 14, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famicom-grand-prix-ii-3d-hot-rally",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Famicom Grand Prix II: 3D Hot Rally is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Famicom Grand Prix II: 3D Hot Rally is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -17965,15 +17880,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "racing",
-      "rpg"
+      "action",
+      "racing"
     ],
     "title": "Famicom Grand Prix II: 3D Hot Rally",
     "year": "1988"
@@ -17984,7 +17898,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 30, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famicom-grand-prix-f-1-race",
     "isRomhack": false,
     "moods": [
@@ -17992,7 +17906,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Famicom Grand Prix: F-1 Race is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and top down-leaning for the recommender.",
+    "pitch": "Famicom Grand Prix: F-1 Race is a Famicom Disk System release from 1987, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "top-down",
     "publisher": [
@@ -18002,15 +17916,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "racing",
-      "rpg"
+      "action",
+      "racing"
     ],
     "title": "Famicom Grand Prix: F-1 Race",
     "year": "1987"
@@ -18021,7 +17934,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 29, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famicom-igo-nyuumon",
     "isRomhack": false,
     "moods": [
@@ -18055,7 +17968,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 2, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famicom-jump-ii-saikyo-no-shichinin",
     "isRomhack": false,
     "moods": [
@@ -18089,7 +18002,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 15, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famicom-jump-hero-retsuden",
     "isRomhack": false,
     "moods": [
@@ -18123,7 +18036,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 2, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famicom-meijinsen",
     "isRomhack": false,
     "moods": [
@@ -18157,17 +18070,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 30, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famicom-mukashibanashi-shin-onigashima-kohen",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Famicom Mukashibanashi: Shin Onigashima - Kōhen is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Famicom Mukashibanashi: Shin Onigashima - Kōhen is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -18175,14 +18088,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Famicom Mukashibanashi: Shin Onigashima - Kōhen",
     "year": "1987"
@@ -18193,17 +18105,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 4, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famicom-mukashibanashi-shin-onigashima-zenpen",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Famicom Mukashibanashi: Shin Onigashima - Zenpen is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Famicom Mukashibanashi: Shin Onigashima - Zenpen is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -18211,14 +18123,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Famicom Mukashibanashi: Shin Onigashima - Zenpen",
     "year": "1987"
@@ -18229,17 +18140,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 14, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famicom-mukashibanashi-yuyuki-kohen",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Famicom Mukashibanashi: Yūyūki - Kōhen is a Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Famicom Mukashibanashi: Yūyūki - Kōhen is a Famicom Disk System release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -18247,14 +18158,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Famicom Mukashibanashi: Yūyūki - Kōhen",
     "year": "1989"
@@ -18265,17 +18175,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 14, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famicom-mukashibanashi-yuyuki-zenpen",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Famicom Mukashibanashi: Yūyūki - Zenpen is a Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Famicom Mukashibanashi: Yūyūki - Zenpen is a Famicom Disk System release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -18283,14 +18193,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Famicom Mukashibanashi: Yūyūki - Zenpen",
     "year": "1989"
@@ -18301,7 +18210,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 15, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famicom-shogi-ryu-o-sen",
     "isRomhack": false,
     "moods": [
@@ -18337,7 +18246,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 30, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famicom-tantei-club-part-ii-ushiro-ni-tatsu-shojo-kohen",
     "isRomhack": false,
     "moods": [
@@ -18345,9 +18254,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Famicom Tantei Club Part II: Ushiro ni Tatsu Shōjo - Kōhen is a Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Famicom Tantei Club Part II: Ushiro ni Tatsu Shōjo - Kōhen is a Famicom Disk System release from 1989, tagged as balanced, story-forward, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -18355,13 +18264,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
     "story": "rich",
     "tags": [
       "Famicom Disk System",
-      "adventure",
+      "action",
       "rpg"
     ],
     "title": "Famicom Tantei Club Part II: Ushiro ni Tatsu Shōjo - Kōhen",
@@ -18374,7 +18283,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 23, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famicom-tantei-club-part-ii-ushiro-ni-tatsu-shojo-zenpen",
     "isRomhack": false,
     "moods": [
@@ -18382,9 +18291,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Famicom Tantei Club Part II: Ushiro ni Tatsu Shōjo - Zenpen is a Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Famicom Tantei Club Part II: Ushiro ni Tatsu Shōjo - Zenpen is a Famicom Disk System release from 1989, tagged as balanced, story-forward, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -18392,13 +18301,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
     "story": "rich",
     "tags": [
       "Famicom Disk System",
-      "adventure",
+      "action",
       "rpg"
     ],
     "title": "Famicom Tantei Club Part II: Ushiro ni Tatsu Shōjo - Zenpen",
@@ -18411,7 +18320,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 14, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famicom-tantei-club-kieta-kokeisha-kohen",
     "isRomhack": false,
     "moods": [
@@ -18419,9 +18328,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Famicom Tantei Club: Kieta Kōkeisha - Kōhen is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Famicom Tantei Club: Kieta Kōkeisha - Kōhen is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -18429,13 +18338,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
     "story": "rich",
     "tags": [
       "Famicom Disk System",
-      "adventure",
+      "action",
       "rpg"
     ],
     "title": "Famicom Tantei Club: Kieta Kōkeisha - Kōhen",
@@ -18448,7 +18357,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 27, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famicom-tantei-club-kieta-kokeisha-zenpen",
     "isRomhack": false,
     "moods": [
@@ -18456,9 +18365,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Famicom Tantei Club: Kieta Kōkeisha - Zenpen is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Famicom Tantei Club: Kieta Kōkeisha - Zenpen is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -18466,13 +18375,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
     "story": "rich",
     "tags": [
       "Famicom Disk System",
-      "adventure",
+      "action",
       "rpg"
     ],
     "title": "Famicom Tantei Club: Kieta Kōkeisha - Zenpen",
@@ -18484,7 +18393,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 12, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famicom-top-management",
     "isRomhack": false,
     "moods": [
@@ -18519,31 +18428,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 12, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famicom-wars",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Famicom Wars is a Famicom release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Famicom Wars is a Famicom release from 1988, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Nintendo"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 2,
+    "signalScore": 1,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "overhead"
     ],
     "title": "Famicom Wars",
     "year": "1988"
@@ -18554,7 +18462,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 15, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famicom-yakyu-ban",
     "isRomhack": false,
     "moods": [
@@ -18588,7 +18496,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 6, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "family-circuit",
     "isRomhack": false,
     "moods": [
@@ -18622,7 +18530,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 19, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "family-circuit-91",
     "isRomhack": false,
     "moods": [
@@ -18656,17 +18564,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 30, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "family-composer",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Family Composer is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Family Composer is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Tokyo Shoseki"
     ],
@@ -18674,14 +18582,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Family Composer",
     "year": "1987"
@@ -18692,7 +18599,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "family-feud",
     "isRomhack": false,
     "moods": [
@@ -18726,7 +18633,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 24, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "family-jockey",
     "isRomhack": false,
     "moods": [
@@ -18760,7 +18667,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "August 11, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "family-mahjong",
     "isRomhack": false,
     "moods": [
@@ -18795,7 +18702,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "November 25, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "family-mahjong-ii-shanghai-he-no-michi",
     "isRomhack": false,
     "moods": [
@@ -18828,31 +18735,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "family-noraebang",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Family Noraebang is an unlicensed NES-era release from 1993, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Family Noraebang is an unlicensed NES-era release from 1993, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Daou Infosys"
     ],
     "regions": [
       "South Korea"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "South Korea exclusive",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Family Noraebang",
@@ -18864,7 +18770,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "November 16, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "family-quiz-4-nin-wa-rival",
     "isRomhack": false,
     "moods": [
@@ -18898,7 +18804,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "December 11, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "family-tennis",
     "isRomhack": false,
     "moods": [
@@ -18933,7 +18839,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 20, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "family-trainer-fuun-takeshi-jo-two",
     "isRomhack": false,
     "moods": [
@@ -18967,7 +18873,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 28, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "family-trainer-jogging-race",
     "isRomhack": false,
     "moods": [
@@ -19001,7 +18907,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 31, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "family-trainer-meiro-daisakusen",
     "isRomhack": false,
     "moods": [
@@ -19033,7 +18939,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "January 26, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "family-trainer-rai-rai-kyonshis-baby-kyonshi-no-amida-daiboken",
     "isRomhack": false,
     "moods": [
@@ -19065,7 +18971,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "December 28, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "family-trainer-totsugeki-fuun-takeshi-jo",
     "isRomhack": false,
     "moods": [
@@ -19099,7 +19005,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 28, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famista-89-kaimaku-ban",
     "isRomhack": false,
     "moods": [
@@ -19133,7 +19039,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 19, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famista-90",
     "isRomhack": false,
     "moods": [
@@ -19167,7 +19073,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 21, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famista-91",
     "isRomhack": false,
     "moods": [
@@ -19201,7 +19107,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 20, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famista-92",
     "isRomhack": false,
     "moods": [
@@ -19235,7 +19141,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 22, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famista-93",
     "isRomhack": false,
     "moods": [
@@ -19269,7 +19175,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "famista-94",
     "isRomhack": false,
     "moods": [
@@ -19303,7 +19209,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 20, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fantasy-zone",
     "isRomhack": false,
     "moods": [
@@ -19335,7 +19241,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fantasy-zone-unlicensed-nes-lifespan-tengen",
     "isRomhack": false,
     "moods": [
@@ -19370,7 +19276,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 20, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fantasy-zone-ii-the-tears-of-opa-opa",
     "isRomhack": false,
     "moods": [
@@ -19404,7 +19310,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 21, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "faria-a-world-of-mystery-and-danger",
     "isRomhack": false,
     "moods": [
@@ -19427,7 +19333,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
     "story": "rich",
     "tags": [
-      "adventure",
+      "action",
       "rpg"
     ],
     "title": "Faria: A World of Mystery and Danger!",
@@ -19439,7 +19345,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 16, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "faxanadu",
     "isRomhack": false,
     "moods": [
@@ -19474,7 +19380,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "felix-the-cat",
     "isRomhack": false,
     "moods": [
@@ -19506,7 +19412,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1998 July 9",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "felix-the-cat-unlicensed-famicom-dragon-co",
     "isRomhack": false,
     "moods": [
@@ -19539,7 +19445,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2001",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "feng-kuang-ji-dan-zi",
     "isRomhack": false,
     "moods": [
@@ -19573,7 +19479,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "feng-shen-bang",
     "isRomhack": false,
     "moods": [
@@ -19606,7 +19512,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2005",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "feng-yin-dao",
     "isRomhack": false,
     "moods": [
@@ -19641,7 +19547,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ferrari-grand-prix-challenge",
     "isRomhack": false,
     "moods": [
@@ -19649,7 +19555,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Ferrari Grand Prix Challenge is an NES release from 1992, tagged as balanced, story-forward, and top down-leaning for the recommender.",
+    "pitch": "Ferrari Grand Prix Challenge is an NES release from 1992, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "top-down",
     "publisher": [
@@ -19660,14 +19566,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "NA",
       "PAL"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "racing",
-      "rpg"
+      "action",
+      "racing"
     ],
     "title": "Ferrari Grand Prix Challenge",
     "year": "1992"
@@ -19678,7 +19583,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fester-s-quest",
     "isRomhack": false,
     "moods": [
@@ -19712,7 +19617,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 9, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "field-combat",
     "isRomhack": false,
     "moods": [
@@ -19744,7 +19649,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fighting-hero",
     "isRomhack": false,
     "moods": [
@@ -19779,7 +19684,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 13, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fighting-road",
     "isRomhack": false,
     "moods": [
@@ -19811,7 +19716,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "final-combat",
     "isRomhack": false,
     "moods": [
@@ -19844,7 +19749,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "final-combat-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -19879,17 +19784,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 2, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "final-command-akai-yosai",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Final Command: Akai Yōsai is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Final Command: Akai Yōsai is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Konami"
     ],
@@ -19897,14 +19802,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Final Command: Akai Yōsai",
     "year": "1988"
@@ -19915,7 +19819,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 18, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "final-fantasy",
     "isRomhack": false,
     "moods": [
@@ -19950,7 +19854,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 27, 1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "final-fantasy-i-ii",
     "isRomhack": false,
     "moods": [
@@ -19986,7 +19890,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 17, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "final-fantasy-ii",
     "isRomhack": false,
     "moods": [
@@ -20021,7 +19925,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 27, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "final-fantasy-iii",
     "isRomhack": false,
     "moods": [
@@ -20054,7 +19958,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2005",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "final-fantasy-vii",
     "isRomhack": false,
     "moods": [
@@ -20088,7 +19992,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "difficult",
     "firstReleased": "1998",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "final-fight-3",
     "isRomhack": false,
     "moods": [
@@ -20123,7 +20027,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 12, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "final-lap",
     "isRomhack": false,
     "moods": [
@@ -20131,7 +20035,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "contemplative"
     ],
     "obscurity": "strange",
-    "pitch": "Final Lap is a Famicom release from 1988, tagged as balanced, story-forward, and top down-leaning for the recommender.",
+    "pitch": "Final Lap is a Famicom release from 1988, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "top-down",
     "publisher": [
@@ -20140,14 +20044,13 @@ export const generatedNesGames: NesCatalogGame[] = [
     "regions": [
       "JP"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Final Lap",
     "year": "1988"
@@ -20158,7 +20061,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fire-bam",
     "isRomhack": false,
     "moods": [
@@ -20182,8 +20085,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "story": "rich",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Fire Bam",
     "year": "1988"
@@ -20192,7 +20094,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "Unknown",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fire-dragon",
     "isRomhack": false,
     "moods": [
@@ -20227,7 +20129,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 14, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fire-emblem-gaiden",
     "isRomhack": false,
     "moods": [
@@ -20250,7 +20152,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "story": "rich",
     "tags": [
       "JP exclusive",
-      "adventure",
+      "action",
       "rpg"
     ],
     "title": "Fire Emblem Gaiden",
@@ -20263,7 +20165,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 20, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fire-emblem-shadow-dragon-and-the-blade-of-light",
     "isRomhack": false,
     "moods": [
@@ -20286,7 +20188,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "story": "rich",
     "tags": [
       "JP exclusive",
-      "adventure",
+      "action",
       "rpg"
     ],
     "title": "Fire Emblem: Shadow Dragon and the Blade of Light",
@@ -20298,17 +20200,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 20, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fire-rock",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Fire Rock is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Fire Rock is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Use Corporation"
     ],
@@ -20316,14 +20218,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Fire Rock",
     "year": "1988"
@@ -20332,7 +20233,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "firehawk",
     "isRomhack": false,
     "moods": [
@@ -20367,7 +20268,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "March 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fisher-price-firehouse-rescue",
     "isRomhack": false,
     "moods": [
@@ -20401,7 +20302,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "March 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fisher-price-i-can-remember",
     "isRomhack": false,
     "moods": [
@@ -20435,7 +20336,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "March 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fisher-price-perfect-fit",
     "isRomhack": false,
     "moods": [
@@ -20469,17 +20370,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 17, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fist-of-the-north-star",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Fist of the North Star is an NES release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Fist of the North Star is an NES release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Toei Animation",
       "Taxan"
@@ -20488,13 +20389,12 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "NA"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Fist of the North Star",
     "year": "1987"
@@ -20505,7 +20405,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "June 14, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "flappy",
     "isRomhack": false,
     "moods": [
@@ -20539,7 +20439,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 29, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fleet-commander",
     "isRomhack": false,
     "moods": [
@@ -20573,7 +20473,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "flight-of-the-intruder",
     "isRomhack": false,
     "moods": [
@@ -20608,7 +20508,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "December 15, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "flipull",
     "isRomhack": false,
     "moods": [
@@ -20642,7 +20542,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 14, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "flying-dragon-the-secret-scroll",
     "isRomhack": false,
     "moods": [
@@ -20676,7 +20576,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 17, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "flying-hero",
     "isRomhack": false,
     "moods": [
@@ -20708,31 +20608,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "flying-superboy",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Flying Superboy is an unlicensed NES-era release from 1991, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Flying Superboy is an unlicensed NES-era release from 1991, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Daou Infosys"
     ],
     "regions": [
       "South Korea"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "South Korea exclusive",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Flying Superboy",
@@ -20744,7 +20643,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "flying-warriors",
     "isRomhack": false,
     "moods": [
@@ -20778,7 +20677,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 4, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "formation-z",
     "isRomhack": false,
     "moods": [
@@ -20812,7 +20711,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 29, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "formula-1-sensation",
     "isRomhack": false,
     "moods": [
@@ -20847,7 +20746,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "formula-one-built-to-win",
     "isRomhack": false,
     "moods": [
@@ -20855,7 +20754,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Formula One: Built to Win is an NES release from 1990, tagged as balanced, story-forward, and top down-leaning for the recommender.",
+    "pitch": "Formula One: Built to Win is an NES release from 1990, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "top-down",
     "publisher": [
@@ -20864,15 +20763,14 @@ export const generatedNesGames: NesCatalogGame[] = [
     "regions": [
       "NA"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "NA exclusive",
-      "adventure",
-      "racing",
-      "rpg"
+      "action",
+      "racing"
     ],
     "title": "Formula One: Built to Win",
     "year": "1990"
@@ -20883,7 +20781,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "frankenstein-the-monster-returns",
     "isRomhack": false,
     "moods": [
@@ -20916,7 +20814,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2017",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "free-fall",
     "isRomhack": false,
     "moods": [
@@ -20951,7 +20849,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "freedom-force",
     "isRomhack": false,
     "moods": [
@@ -20985,7 +20883,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "friday-the-13th",
     "isRomhack": false,
     "moods": [
@@ -21018,7 +20916,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "frog-adventure",
     "isRomhack": false,
     "moods": [
@@ -21051,7 +20949,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "frog-river",
     "isRomhack": false,
     "moods": [
@@ -21086,7 +20984,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 1, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "front-line",
     "isRomhack": false,
     "moods": [
@@ -21120,7 +21018,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fun-house",
     "isRomhack": false,
     "moods": [
@@ -21154,7 +21052,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 15, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fushigi-no-umi-no-nadia",
     "isRomhack": false,
     "moods": [
@@ -21188,17 +21086,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 17, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fuun-shorin-ken",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Fūun Shōrin Ken is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Fūun Shōrin Ken is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Jaleco"
     ],
@@ -21206,14 +21104,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Fūun Shōrin Ken",
     "year": "1987"
@@ -21224,17 +21121,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 22, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fuun-shorin-ken-ankoku-no-mao",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Fūun Shōrin Ken: Ankoku no Maō is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Fūun Shōrin Ken: Ankoku no Maō is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Jaleco"
     ],
@@ -21242,14 +21139,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Fūun Shōrin Ken: Ankoku no Maō",
     "year": "1988"
@@ -21260,7 +21156,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 17, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "fuzzical-fighter",
     "isRomhack": false,
     "moods": [
@@ -21294,7 +21190,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "g-i-joe",
     "isRomhack": false,
     "moods": [
@@ -21328,7 +21224,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "g-i-joe-the-atlantis-factor",
     "isRomhack": false,
     "moods": [
@@ -21360,7 +21256,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gaiapolis",
     "isRomhack": false,
     "moods": [
@@ -21393,7 +21289,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gaiapolis-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -21426,7 +21322,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "galactic-crusader",
     "isRomhack": false,
     "moods": [
@@ -21459,7 +21355,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "galactic-crusader-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -21494,7 +21390,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 22, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "galaga",
     "isRomhack": false,
     "moods": [
@@ -21502,9 +21398,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "classic",
-    "pitch": "Galaga is a Famicom Disk System release from 1990, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Galaga is a Famicom Disk System release from 1990, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Namco"
     ],
@@ -21512,15 +21408,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "arcade port",
-      "rpg"
+      "action",
+      "arcade port"
     ],
     "title": "Galaga",
     "year": "1990"
@@ -21531,7 +21426,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 15, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "galaga-demons-of-death",
     "isRomhack": false,
     "moods": [
@@ -21567,7 +21462,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 7, 1984",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "galaxian",
     "isRomhack": false,
     "moods": [
@@ -21601,7 +21496,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 20, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "galaxian-famicom-disk-system-namco",
     "isRomhack": false,
     "moods": [
@@ -21609,9 +21504,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Galaxian is a Famicom Disk System release from 1990, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Galaxian is a Famicom Disk System release from 1990, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Namco"
     ],
@@ -21619,14 +21514,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Galaxian",
     "year": "1990"
@@ -21637,7 +21531,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "galaxy-5000-racing-in-the-51st-century",
     "isRomhack": false,
     "moods": [
@@ -21670,7 +21564,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2018",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "galf",
     "isRomhack": false,
     "moods": [
@@ -21705,7 +21599,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 19, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gall-force-eternal-story",
     "isRomhack": false,
     "moods": [
@@ -21713,7 +21607,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Gall Force: Eternal Story is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Gall Force: Eternal Story is a Famicom Disk System release from 1986, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -21726,11 +21620,10 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Gall Force: Eternal Story",
     "year": "1986"
@@ -21741,7 +21634,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "August 3, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "game-party",
     "isRomhack": false,
     "moods": [
@@ -21775,7 +21668,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 4, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ganbare-goemon-2",
     "isRomhack": false,
     "moods": [
@@ -21809,7 +21702,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 3, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ganbare-goemon-gaiden-2-tenka-no-zaiho",
     "isRomhack": false,
     "moods": [
@@ -21843,7 +21736,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 5, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ganbare-goemon-gaiden-kieta-ogon-kiseru",
     "isRomhack": false,
     "moods": [
@@ -21877,7 +21770,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 30, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ganbare-goemon-karakuri-dochu",
     "isRomhack": false,
     "moods": [
@@ -21911,7 +21804,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 28, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ganbare-pennant-race",
     "isRomhack": false,
     "moods": [
@@ -21945,7 +21838,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 21, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ganso-saiyuki-super-monkey-daiboken",
     "isRomhack": false,
     "moods": [
@@ -21977,7 +21870,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2022",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "garbage-pail-kids-mad-mike-and-the-quest-for-stale-gum",
     "isRomhack": false,
     "moods": [
@@ -22012,7 +21905,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 17, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gargoyle-s-quest-ii-the-demon-darkness",
     "isRomhack": false,
     "moods": [
@@ -22045,7 +21938,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "garou-densetsu-special",
     "isRomhack": false,
     "moods": [
@@ -22080,7 +21973,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gauntlet",
     "isRomhack": false,
     "moods": [
@@ -22112,7 +22005,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gauntlet-unlicensed-nes-lifespan-tengen",
     "isRomhack": false,
     "moods": [
@@ -22147,7 +22040,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "September 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gauntlet-ii",
     "isRomhack": false,
     "moods": [
@@ -22181,7 +22074,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 22, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gegege-no-kitaro-2-yokai-gundan-no-chosen",
     "isRomhack": false,
     "moods": [
@@ -22216,7 +22109,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 28, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "geimos",
     "isRomhack": false,
     "moods": [
@@ -22250,7 +22143,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 17, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gekitotsu-yonku-battle",
     "isRomhack": false,
     "moods": [
@@ -22284,7 +22177,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 29, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gemfire",
     "isRomhack": false,
     "moods": [
@@ -22318,7 +22211,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 20, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "genghis-khan",
     "isRomhack": false,
     "moods": [
@@ -22352,7 +22245,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "October 21, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "genpei-toma-den",
     "isRomhack": false,
     "moods": [
@@ -22386,7 +22279,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "george-foreman-s-ko-boxing",
     "isRomhack": false,
     "moods": [
@@ -22421,7 +22314,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 7, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "getsu-fuma-den",
     "isRomhack": false,
     "moods": [
@@ -22455,7 +22348,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 14, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ghost-lion",
     "isRomhack": false,
     "moods": [
@@ -22490,7 +22383,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 22, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ghostbusters",
     "isRomhack": false,
     "moods": [
@@ -22526,7 +22419,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ghostbusters-ii",
     "isRomhack": false,
     "moods": [
@@ -22561,7 +22454,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "June 13, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ghosts-n-goblins",
     "isRomhack": false,
     "moods": [
@@ -22597,7 +22490,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ghoul-school",
     "isRomhack": false,
     "moods": [
@@ -22633,7 +22526,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 13, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gimme-a-break-shijo-saikyo-no-quiz-o-ketteisen",
     "isRomhack": false,
     "moods": [
@@ -22667,7 +22560,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 28, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gimme-a-break-shijo-saikyo-no-quiz-o-ketteisen-2",
     "isRomhack": false,
     "moods": [
@@ -22701,17 +22594,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 6, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ginga-densho-galaxy-odyssey",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Ginga Denshō: Galaxy Odyssey is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Ginga Denshō: Galaxy Odyssey is a Famicom Disk System release from 1986, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Imagineer"
     ],
@@ -22719,14 +22612,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Ginga Denshō: Galaxy Odyssey",
     "year": "1986"
@@ -22737,7 +22629,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 21, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ginga-eiyu-densetsu",
     "isRomhack": false,
     "moods": [
@@ -22771,7 +22663,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 15, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ginga-no-sannin",
     "isRomhack": false,
     "moods": [
@@ -22803,7 +22695,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gluk-the-thunder-warrior",
     "isRomhack": false,
     "moods": [
@@ -22838,7 +22730,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 23, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "goal",
     "isRomhack": false,
     "moods": [
@@ -22873,7 +22765,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 25, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "goal-two",
     "isRomhack": false,
     "moods": [
@@ -22908,7 +22800,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "godzilla-2-war-of-the-monsters",
     "isRomhack": false,
     "moods": [
@@ -22944,7 +22836,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 9, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "godzilla-monster-of-monsters",
     "isRomhack": false,
     "moods": [
@@ -22981,17 +22873,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 12, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gokuraku-yugi-game-tengoku",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Gokuraku Yūgi: Game Tengoku is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Gokuraku Yūgi: Game Tengoku is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "SOFEL"
     ],
@@ -22999,14 +22891,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Gokuraku Yūgi: Game Tengoku",
     "year": "1987"
@@ -23018,7 +22909,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "May 1, 1984",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "golf",
     "isRomhack": false,
     "moods": [
@@ -23055,7 +22946,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "February 21, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "golf-famicom-disk-system-nintendo",
     "isRomhack": false,
     "moods": [
@@ -23063,9 +22954,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Golf is a Famicom Disk System release from 1986, tagged as approachable, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Golf is a Famicom Disk System release from 1986, tagged as approachable, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Nintendo"
     ],
@@ -23073,14 +22964,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "sports"
     ],
     "title": "Golf",
@@ -23092,7 +22982,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "December 9, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "golf-club-birdie-rush",
     "isRomhack": false,
     "moods": [
@@ -23127,7 +23017,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "January 31, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "golf-grand-slam",
     "isRomhack": false,
     "moods": [
@@ -23163,7 +23053,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "February 21, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "golf-japan-course",
     "isRomhack": false,
     "moods": [
@@ -23171,7 +23061,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Golf Japan Course is a Famicom Disk System release from 1987, tagged as approachable, story-forward, and top down-leaning for the recommender.",
+    "pitch": "Golf Japan Course is a Famicom Disk System release from 1987, tagged as approachable, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "top-down",
     "publisher": [
@@ -23181,14 +23071,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "sports"
     ],
     "title": "Golf Japan Course",
@@ -23201,7 +23090,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "June 14, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "golf-u-s-course",
     "isRomhack": false,
     "moods": [
@@ -23209,9 +23098,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Golf U.S Course is a Famicom Disk System release from 1987, tagged as approachable, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Golf U.S Course is a Famicom Disk System release from 1987, tagged as approachable, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Nintendo"
     ],
@@ -23219,14 +23108,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "sports"
     ],
     "title": "Golf U.S Course",
@@ -23238,7 +23126,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "November 25, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "golf-kko-open",
     "isRomhack": false,
     "moods": [
@@ -23273,7 +23161,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 26, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "golgo-13-top-secret-episode",
     "isRomhack": false,
     "moods": [
@@ -23307,7 +23195,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 27, 1983",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gomoku-narabe-renju",
     "isRomhack": false,
     "moods": [
@@ -23341,7 +23229,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "April 12, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gorby-no-pipeline-daisakusen",
     "isRomhack": false,
     "moods": [
@@ -23375,7 +23263,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gotcha-the-sport",
     "isRomhack": false,
     "moods": [
@@ -23410,7 +23298,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 7, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gozonji-yaji-kita-chin-douchuu",
     "isRomhack": false,
     "moods": [
@@ -23444,7 +23332,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "April 25, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gradius",
     "isRomhack": false,
     "moods": [
@@ -23480,7 +23368,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "December 16, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gradius-ii",
     "isRomhack": false,
     "moods": [
@@ -23515,7 +23403,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 26, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "grand-master",
     "isRomhack": false,
     "moods": [
@@ -23549,7 +23437,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 25, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "great-battle-cyber",
     "isRomhack": false,
     "moods": [
@@ -23572,8 +23460,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "story": "rich",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Great Battle Cyber",
     "year": "1992"
@@ -23584,7 +23471,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 25, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "great-deal",
     "isRomhack": false,
     "moods": [
@@ -23618,17 +23505,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 10, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "green-beret",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Green Beret is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Green Beret is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Konami"
     ],
@@ -23636,14 +23523,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Green Beret",
     "year": "1987"
@@ -23654,7 +23540,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "July 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "greg-norman-s-golf-power",
     "isRomhack": false,
     "moods": [
@@ -23689,7 +23575,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gremlins-2-the-new-batch",
     "isRomhack": false,
     "moods": [
@@ -23724,7 +23610,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 26, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "guerrilla-war",
     "isRomhack": false,
     "moods": [
@@ -23759,7 +23645,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gumshoe",
     "isRomhack": false,
     "moods": [
@@ -23793,7 +23679,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 5, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gun-nac",
     "isRomhack": false,
     "moods": [
@@ -23829,7 +23715,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gun-smoke",
     "isRomhack": false,
     "moods": [
@@ -23864,17 +23750,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 27, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gun-smoke-famicom-disk-system-capcom",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Gun.Smoke is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Gun.Smoke is a Famicom Disk System release from 1988, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Capcom"
     ],
@@ -23882,14 +23768,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "shooter"
     ],
     "title": "Gun.Smoke",
@@ -23901,7 +23786,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 13, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gunhed-aratanaru-tatakai",
     "isRomhack": false,
     "moods": [
@@ -23936,7 +23821,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 13, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gyrodine",
     "isRomhack": false,
     "moods": [
@@ -23971,17 +23856,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 13, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gyromite",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Gyromite is an NES release from 1985, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Gyromite is an NES release from 1985, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -23990,13 +23875,12 @@ export const generatedNesGames: NesCatalogGame[] = [
       "NA",
       "PAL"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Gyromite",
     "year": "1985"
@@ -24007,7 +23891,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gyruss",
     "isRomhack": false,
     "moods": [
@@ -24041,7 +23925,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 18, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gyruss-famicom-disk-system-konami",
     "isRomhack": false,
     "moods": [
@@ -24049,9 +23933,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Gyruss is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Gyruss is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Konami"
     ],
@@ -24059,14 +23943,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Gyruss",
     "year": "1988"
@@ -24077,7 +23960,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 11, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gyuwambler-jiko-chushinha",
     "isRomhack": false,
     "moods": [
@@ -24111,7 +23994,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 7, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "gyuwambler-jiko-chushinha-2",
     "isRomhack": false,
     "moods": [
@@ -24145,7 +24028,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 23, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "haja-no-fuin",
     "isRomhack": false,
     "moods": [
@@ -24179,7 +24062,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 14, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "halley-wars",
     "isRomhack": false,
     "moods": [
@@ -24187,9 +24070,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Halley Wars is a Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Halley Wars is a Famicom Disk System release from 1989, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Taito"
     ],
@@ -24197,14 +24080,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "overhead"
     ],
     "title": "Halley Wars",
     "year": "1989"
@@ -24215,7 +24097,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 15, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hammerin-harry",
     "isRomhack": false,
     "moods": [
@@ -24249,7 +24131,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 17, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hana-no-star-kaido",
     "isRomhack": false,
     "moods": [
@@ -24281,7 +24163,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hanafuda-yukyode-nagarebana-oryu",
     "isRomhack": false,
     "moods": [
@@ -24316,7 +24198,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 2, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hanjuku-hero",
     "isRomhack": false,
     "moods": [
@@ -24350,7 +24232,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 1, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hao-kun-no-fushigi-na-tabi",
     "isRomhack": false,
     "moods": [
@@ -24358,7 +24240,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Hao-kun no Fushigi na Tabi is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "Hao-kun no Fushigi na Tabi is a Famicom Disk System release from 1987, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -24368,14 +24250,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Hao-kun no Fushigi na Tabi",
     "year": "1987"
@@ -24384,7 +24265,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1996",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "happy-biqi-iii-world-fighter",
     "isRomhack": false,
     "moods": [
@@ -24418,7 +24299,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "happy-pairs",
     "isRomhack": false,
     "moods": [
@@ -24451,7 +24332,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "happy-pairs-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -24486,7 +24367,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "harlem-globetrotters",
     "isRomhack": false,
     "moods": [
@@ -24520,7 +24401,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "July 6, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hatris",
     "isRomhack": false,
     "moods": [
@@ -24552,7 +24433,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hayama-reiko-katsuragi-mayako-no-av-hanafuda-club",
     "isRomhack": false,
     "moods": [
@@ -24587,7 +24468,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 3, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hayauchi-super-igo",
     "isRomhack": false,
     "moods": [
@@ -24621,7 +24502,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 2, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "heavy-barrel",
     "isRomhack": false,
     "moods": [
@@ -24655,7 +24536,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "heavy-shreddin",
     "isRomhack": false,
     "moods": [
@@ -24688,7 +24569,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hee-dong-ei-s-adventures",
     "isRomhack": false,
     "moods": [
@@ -24696,7 +24577,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Hee-dong Ei's Adventures is an unlicensed NES-era release from 1991, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Hee-dong Ei's Adventures is an unlicensed NES-era release from 1991, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -24708,11 +24589,10 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 3,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "South Korea exclusive",
       "adventure",
-      "rpg",
       "unlicensed"
     ],
     "title": "Hee-dong Ei's Adventures",
@@ -24724,7 +24604,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 6, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "heisei-tensai-bakabon",
     "isRomhack": false,
     "moods": [
@@ -24756,7 +24636,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hell-fighter",
     "isRomhack": false,
     "moods": [
@@ -24789,7 +24669,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hell-fighter-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -24824,7 +24704,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 11, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hello-kitty-no-hanabatake",
     "isRomhack": false,
     "moods": [
@@ -24858,7 +24738,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 27, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hello-kitty-world",
     "isRomhack": false,
     "moods": [
@@ -24892,7 +24772,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 23, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "heracles-no-eiko-ii-titan-no-metsubo",
     "isRomhack": false,
     "moods": [
@@ -24926,7 +24806,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 4, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hi-no-tori-hououhen-gaou-no-bouken",
     "isRomhack": false,
     "moods": [
@@ -24958,7 +24838,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hidden-chinese-chess",
     "isRomhack": false,
     "moods": [
@@ -24992,7 +24872,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hidden-chinese-chess-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -25028,7 +24908,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 14, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "higemaru-makaijima-nanatsu-no-shima-daiboken",
     "isRomhack": false,
     "moods": [
@@ -25062,7 +24942,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "high-speed",
     "isRomhack": false,
     "moods": [
@@ -25096,7 +24976,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "August 28, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hikari-no-senshi-photon-the-ultimate-game-on-planet-earth",
     "isRomhack": false,
     "moods": [
@@ -25133,17 +25013,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "December 19, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hikari-shinwa-parutena-no-kagami",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Hikari Shinwa: Parutena no Kagami is a Famicom Disk System release from 1986, tagged as demanding, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Hikari Shinwa: Parutena no Kagami is a Famicom Disk System release from 1986, tagged as demanding, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Nintendo"
     ],
@@ -25151,14 +25031,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "shooter"
     ],
     "title": "Hikari Shinwa: Parutena no Kagami",
@@ -25170,7 +25049,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "March 20, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hikaru-genji-roller-panic",
     "isRomhack": false,
     "moods": [
@@ -25178,9 +25057,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Hikaru Genji: Roller Panic is a Famicom Disk System release from 1989, tagged as demanding, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Hikaru Genji: Roller Panic is a Famicom Disk System release from 1989, tagged as demanding, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Pony Canyon"
     ],
@@ -25188,14 +25067,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Hikaru Genji: Roller Panic",
     "year": "1989"
@@ -25206,7 +25084,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 17, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hirake-ponkikki",
     "isRomhack": false,
     "moods": [
@@ -25240,7 +25118,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 29, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hiryu-no-ken-ii-dragon-no-tsubasa",
     "isRomhack": false,
     "moods": [
@@ -25274,7 +25152,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 6, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hiryu-no-ken-iii-5-nin-no-ryu-senshi",
     "isRomhack": false,
     "moods": [
@@ -25308,7 +25186,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 21, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hiryu-no-ken-special-fighting-wars",
     "isRomhack": false,
     "moods": [
@@ -25342,7 +25220,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 18, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hissatsu-dojo-yaburi",
     "isRomhack": false,
     "moods": [
@@ -25376,31 +25254,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 15, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hissatsu-shigotonin",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Hissatsu Shigotonin is a Famicom release from 1990, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Hissatsu Shigotonin is a Famicom release from 1990, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Banpresto"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Hissatsu Shigotonin",
     "year": "1990"
@@ -25412,17 +25289,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 12, 1984",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hogan-s-alley",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Hogan's Alley is an NES release from 1984, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Hogan's Alley is an NES release from 1984, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -25431,13 +25308,12 @@ export const generatedNesGames: NesCatalogGame[] = [
       "NA",
       "PAL"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Hogan's Alley",
     "year": "1984"
@@ -25448,7 +25324,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 27, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hokkaido-rensa-satsujin-okhotsk-ni-kiyu",
     "isRomhack": false,
     "moods": [
@@ -25482,31 +25358,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 10, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hokuto-no-ken",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Hokuto no Ken is a Famicom release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Hokuto no Ken is a Famicom release from 1986, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Toei Animation"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Hokuto no Ken",
     "year": "1986"
@@ -25517,31 +25392,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 19, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hokuto-no-ken-3-shin-seiki-sozo-seiken-retsuden",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Hokuto no Ken 3: Shin Seiki Sōzō: Seiken Retsuden is a Famicom release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Hokuto no Ken 3: Shin Seiki Sōzō: Seiken Retsuden is a Famicom release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Toei Animation"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Hokuto no Ken 3: Shin Seiki Sōzō: Seiken Retsuden",
     "year": "1989"
@@ -25552,31 +25426,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 29, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hokuto-no-ken-4-shichisei-hakenden-hokuto-shinken-no-kanata-he",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Hokuto no Ken 4: Shichisei Hakenden: Hokuto Shinken no Kanata he is a Famicom release from 1991, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Hokuto no Ken 4: Shichisei Hakenden: Hokuto Shinken no Kanata he is a Famicom release from 1991, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Toei Animation"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Hokuto no Ken 4: Shichisei Hakenden: Hokuto Shinken no Kanata he",
     "year": "1991"
@@ -25587,7 +25460,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hollywood-squares",
     "isRomhack": false,
     "moods": [
@@ -25621,7 +25494,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 28, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "holy-diver",
     "isRomhack": false,
     "moods": [
@@ -25653,7 +25526,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2018",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "holy-diver-unlicensed-after-lifespan-irem",
     "isRomhack": false,
     "moods": [
@@ -25688,7 +25561,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "home-alone",
     "isRomhack": false,
     "moods": [
@@ -25722,7 +25595,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "home-alone-2-lost-in-new-york",
     "isRomhack": false,
     "moods": [
@@ -25756,7 +25629,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 31, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "home-run-night",
     "isRomhack": false,
     "moods": [
@@ -25790,7 +25663,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 24, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "home-run-night-90",
     "isRomhack": false,
     "moods": [
@@ -25822,7 +25695,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "honey-peach",
     "isRomhack": false,
     "moods": [
@@ -25855,7 +25728,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "honey-peach-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -25890,17 +25763,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 23, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hong-kong",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Hong Kong is a Famicom Disk System release from 1990, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Hong Kong is a Famicom Disk System release from 1990, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Tokuma Shoten"
     ],
@@ -25908,14 +25781,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Hong Kong",
     "year": "1990"
@@ -25924,7 +25796,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "Unknown",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hong-lou-meng",
     "isRomhack": false,
     "moods": [
@@ -25959,7 +25831,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 27, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hono-no-tokyuji-dodge-danpei",
     "isRomhack": false,
     "moods": [
@@ -25993,7 +25865,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 26, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hono-no-tokyuji-dodge-danpei-2",
     "isRomhack": false,
     "moods": [
@@ -26027,7 +25899,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 10, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "honshogi-naitou-kudan-shogi-hiden",
     "isRomhack": false,
     "moods": [
@@ -26062,7 +25934,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 27, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hook",
     "isRomhack": false,
     "moods": [
@@ -26099,7 +25971,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 22, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hoops",
     "isRomhack": false,
     "moods": [
@@ -26134,7 +26006,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 27, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hoshi-wo-miru-hito",
     "isRomhack": false,
     "moods": [
@@ -26166,7 +26038,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hot-slots",
     "isRomhack": false,
     "moods": [
@@ -26201,7 +26073,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 19, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hototogisu",
     "isRomhack": false,
     "moods": [
@@ -26235,7 +26107,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 6, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hottaman-no-chitei-tanken",
     "isRomhack": false,
     "moods": [
@@ -26269,7 +26141,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 27, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hudson-hawk",
     "isRomhack": false,
     "moods": [
@@ -26304,7 +26176,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "huge-insect",
     "isRomhack": false,
     "moods": [
@@ -26337,7 +26209,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1993 but released in the early 2000s",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "huge-insect-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -26372,7 +26244,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 22, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hyakkiyakou",
     "isRomhack": false,
     "moods": [
@@ -26406,7 +26278,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 9, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hyaku-no-sekai-no-monogatari-the-tales-on-a-watery-wilderness",
     "isRomhack": false,
     "moods": [
@@ -26440,7 +26312,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "March 18, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hydlide",
     "isRomhack": false,
     "moods": [
@@ -26475,7 +26347,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "February 17, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hydlide-3-yami-kara-no-homonsha",
     "isRomhack": false,
     "moods": [
@@ -26509,7 +26381,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 25, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hyokkori-hyotanjima-nazo-no-kaizokusen",
     "isRomhack": false,
     "moods": [
@@ -26543,7 +26415,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 27, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "hyper-sports",
     "isRomhack": false,
     "moods": [
@@ -26577,53 +26449,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "August 27, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "i-am-a-teacher-super-mario-sweater",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "I Am a Teacher: Super Mario Sweater is a Famicom Disk System release from 1986, tagged as approachable, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "I Am a Teacher: Super Mario Sweater is a Famicom Disk System release from 1986, tagged as approachable, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
-    "publisher": [
-      "Royal Kougyou"
-    ],
-    "regions": [
-      "JP",
-      "FDS"
-    ],
-    "signalScore": 3,
-    "sourceCategory": "famicom-disk-system",
-    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
-    "tags": [
-      "Famicom Disk System",
-      "adventure",
-      "rpg"
-    ],
-    "title": "I Am a Teacher: Super Mario Sweater",
-    "year": "1986"
-  },
-  {
-    "developer": [
-      "Royal Kougyou"
-    ],
-    "difficulty": "fair",
-    "firstReleased": "September 26, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
-    "id": "i-am-a-teacher-teami-no-kiso",
-    "isRomhack": false,
-    "moods": [
-      "heroic",
-      "arcade"
-    ],
-    "obscurity": "strange",
-    "pitch": "I am a Teacher: Teami no Kiso is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
-    "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "platformer",
     "publisher": [
       "Royal Kougyou"
     ],
@@ -26634,11 +26470,45 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "platformer"
+    ],
+    "title": "I Am a Teacher: Super Mario Sweater",
+    "year": "1986"
+  },
+  {
+    "developer": [
+      "Royal Kougyou"
+    ],
+    "difficulty": "fair",
+    "firstReleased": "September 26, 1986",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
+    "id": "i-am-a-teacher-teami-no-kiso",
+    "isRomhack": false,
+    "moods": [
+      "arcade",
+      "heroic"
+    ],
+    "obscurity": "strange",
+    "pitch": "I am a Teacher: Teami no Kiso is a Famicom Disk System release from 1986, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
+    "platform": "nes",
+    "playStyle": "side-scroller",
+    "publisher": [
+      "Royal Kougyou"
+    ],
+    "regions": [
+      "JP",
+      "FDS"
+    ],
+    "signalScore": 0,
+    "sourceCategory": "famicom-disk-system",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
+    "story": "low",
+    "tags": [
+      "Famicom Disk System",
+      "action"
     ],
     "title": "I am a Teacher: Teami no Kiso",
     "year": "1986"
@@ -26649,7 +26519,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 19, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "i-love-softball",
     "isRomhack": false,
     "moods": [
@@ -26683,7 +26553,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 30, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ice-climber",
     "isRomhack": false,
     "moods": [
@@ -26718,7 +26588,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 18, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ice-climber-famicom-disk-system-nintendo",
     "isRomhack": false,
     "moods": [
@@ -26726,7 +26596,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "classic",
-    "pitch": "Ice Climber is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "Ice Climber is a Famicom Disk System release from 1988, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -26736,14 +26606,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Ice Climber",
     "year": "1988"
@@ -26754,7 +26623,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ice-hockey",
     "isRomhack": false,
     "moods": [
@@ -26789,17 +26658,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 21, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ice-hockey-famicom-disk-system-nintendo",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Ice Hockey is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Ice Hockey is a Famicom Disk System release from 1988, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Nintendo"
     ],
@@ -26807,14 +26676,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "sports"
     ],
     "title": "Ice Hockey",
@@ -26826,7 +26694,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "September 24, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ide-yosuke-meijin-no-jissen-mahjong",
     "isRomhack": false,
     "moods": [
@@ -26861,7 +26729,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "February 22, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ide-yosuke-meijin-no-jissen-mahjong-ii",
     "isRomhack": false,
     "moods": [
@@ -26896,7 +26764,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 14, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "idol-hakkenden",
     "isRomhack": false,
     "moods": [
@@ -26928,7 +26796,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "idol-shisen-mahjong",
     "isRomhack": false,
     "moods": [
@@ -26964,7 +26832,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 10, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "igo-meikan",
     "isRomhack": false,
     "moods": [
@@ -26998,7 +26866,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 14, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "igo-shinan",
     "isRomhack": false,
     "moods": [
@@ -27032,7 +26900,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 5, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "igo-shinan-91",
     "isRomhack": false,
     "moods": [
@@ -27066,7 +26934,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 10, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "igo-shinan-92",
     "isRomhack": false,
     "moods": [
@@ -27100,7 +26968,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 27, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "igo-shinan-93",
     "isRomhack": false,
     "moods": [
@@ -27134,7 +27002,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 17, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "igo-shinan-94",
     "isRomhack": false,
     "moods": [
@@ -27168,7 +27036,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 11, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "igo-kyu-roban-taikyoku",
     "isRomhack": false,
     "moods": [
@@ -27202,17 +27070,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 14, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "igo-kyu-roban-taikyoku-famicom-disk-system-bullet-proof-software",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Igo: Kyū Roban Taikyoku is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Igo: Kyū Roban Taikyoku is a Famicom Disk System release from 1987, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Bullet-Proof Software"
     ],
@@ -27220,14 +27088,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "overhead"
     ],
     "title": "Igo: Kyū Roban Taikyoku",
     "year": "1987"
@@ -27238,7 +27105,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "November 26, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ikari-warriors",
     "isRomhack": false,
     "moods": [
@@ -27274,7 +27141,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "April 16, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ikari-warriors-ii-victory-road",
     "isRomhack": false,
     "moods": [
@@ -27309,7 +27176,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "March 16, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ikari-warriors-iii-the-rescue",
     "isRomhack": false,
     "moods": [
@@ -27344,7 +27211,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 7, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ike-ike-nekketsu-hockey-bu-subette-koronde-dairanto",
     "isRomhack": false,
     "moods": [
@@ -27379,7 +27246,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 5, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ikinari-musician",
     "isRomhack": false,
     "moods": [
@@ -27413,7 +27280,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 28, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ikki",
     "isRomhack": false,
     "moods": [
@@ -27445,7 +27312,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "March 16, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "image-fight",
     "isRomhack": false,
     "moods": [
@@ -27477,7 +27344,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "impossible-mission-ii",
     "isRomhack": false,
     "moods": [
@@ -27511,7 +27378,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "incantation",
     "isRomhack": false,
     "moods": [
@@ -27546,7 +27413,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "indiana-jones-and-the-last-crusade",
     "isRomhack": false,
     "moods": [
@@ -27580,7 +27447,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "indiana-jones-and-the-last-crusade-licensed-ubi-soft",
     "isRomhack": false,
     "moods": [
@@ -27614,7 +27481,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "indiana-jones-and-the-temple-of-doom",
     "isRomhack": false,
     "moods": [
@@ -27646,7 +27513,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "indiana-jones-and-the-temple-of-doom-unlicensed-nes-lifespan-tengen",
     "isRomhack": false,
     "moods": [
@@ -27681,7 +27548,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "October 20, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "indora-no-hikari",
     "isRomhack": false,
     "moods": [
@@ -27716,7 +27583,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "infiltrator",
     "isRomhack": false,
     "moods": [
@@ -27750,7 +27617,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 21, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "insector-x",
     "isRomhack": false,
     "moods": [
@@ -27784,7 +27651,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "international-cricket",
     "isRomhack": false,
     "moods": [
@@ -27818,7 +27685,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 29, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "iron-tank-the-invasion-of-normandy",
     "isRomhack": false,
     "moods": [
@@ -27853,7 +27720,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ironsword-wizards-and-warriors-ii",
     "isRomhack": false,
     "moods": [
@@ -27887,7 +27754,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 30, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "isaki-shugoro-no-keiba-hisshogaku",
     "isRomhack": false,
     "moods": [
@@ -27921,7 +27788,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "December 7, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ishido",
     "isRomhack": false,
     "moods": [
@@ -27929,7 +27796,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Ishido is a Famicom Disk System release from 1990, tagged as approachable, story-forward, and puzzle-leaning for the recommender.",
+    "pitch": "Ishido is a Famicom Disk System release from 1990, tagged as approachable, play-first, and puzzle-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "puzzle",
     "publisher": [
@@ -27939,14 +27806,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Ishido",
     "year": "1990"
@@ -27957,7 +27823,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 15, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ishin-no-arashi",
     "isRomhack": false,
     "moods": [
@@ -27991,7 +27857,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 15, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "isolated-warrior",
     "isRomhack": false,
     "moods": [
@@ -28028,7 +27894,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "March 21, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "itadaki-street-watashi-no-omise-ni-yottette",
     "isRomhack": false,
     "moods": [
@@ -28062,7 +27928,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ivan-ironman-stewart-s-super-off-road",
     "isRomhack": false,
     "moods": [
@@ -28097,7 +27963,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 19, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "j-league-fighting-soccer",
     "isRomhack": false,
     "moods": [
@@ -28132,7 +27998,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 27, 1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "j-league-winning-goal",
     "isRomhack": false,
     "moods": [
@@ -28166,7 +28032,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 22, 1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "j-league-super-top-players",
     "isRomhack": false,
     "moods": [
@@ -28201,7 +28067,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 29, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jaaman-tanteidan-matonarikumi",
     "isRomhack": false,
     "moods": [
@@ -28209,9 +28075,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Jaaman Tanteidan: Matonarikumi is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Jaaman Tanteidan: Matonarikumi is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Bandai"
     ],
@@ -28219,14 +28085,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Jaaman Tanteidan: Matonarikumi",
     "year": "1988"
@@ -28237,7 +28102,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "March 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jack-nicklaus-greatest-18-holes-of-major-championship-golf",
     "isRomhack": false,
     "moods": [
@@ -28272,7 +28137,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jackal",
     "isRomhack": false,
     "moods": [
@@ -28306,7 +28171,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jackie-chan-s-action-kung-fu",
     "isRomhack": false,
     "moods": [
@@ -28341,7 +28206,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 29, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jajamaru-gekimaden-maboroshi-no-kinmajou",
     "isRomhack": false,
     "moods": [
@@ -28375,7 +28240,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 22, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jajamaru-no-daibouken",
     "isRomhack": false,
     "moods": [
@@ -28409,7 +28274,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 28, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jajamaru-ninpo-cho",
     "isRomhack": false,
     "moods": [
@@ -28443,7 +28308,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "james-bond-jr",
     "isRomhack": false,
     "moods": [
@@ -28475,31 +28340,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "janggun-ui-adeul",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Janggun-ui Adeul is an unlicensed NES-era release from 1992, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Janggun-ui Adeul is an unlicensed NES-era release from 1992, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Daou Infosys"
     ],
     "regions": [
       "South Korea"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "South Korea exclusive",
-      "adventure",
-      "rpg",
+      "action",
       "shooter",
       "unlicensed"
     ],
@@ -28512,7 +28376,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 30, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jango",
     "isRomhack": false,
     "moods": [
@@ -28546,17 +28410,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 22, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "janken-disk-jo",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Janken Disk Jō is a Famicom Disk System release from 1992, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Janken Disk Jō is a Famicom Disk System release from 1992, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Tokuma Shoten"
     ],
@@ -28564,14 +28428,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Janken Disk Jō",
     "year": "1992"
@@ -28582,7 +28445,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 15, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jarinko-chie-bakudan-musume-no-shiawase-sagashi",
     "isRomhack": false,
     "moods": [
@@ -28617,7 +28480,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jaws",
     "isRomhack": false,
     "moods": [
@@ -28649,7 +28512,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2020",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jay-and-silent-bob-mall-brawl",
     "isRomhack": false,
     "moods": [
@@ -28684,7 +28547,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "September 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jeopardy",
     "isRomhack": false,
     "moods": [
@@ -28718,7 +28581,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "June 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jeopardy-25th-anniversary-edition",
     "isRomhack": false,
     "moods": [
@@ -28752,7 +28615,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "October 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jeopardy-junior-edition",
     "isRomhack": false,
     "moods": [
@@ -28786,7 +28649,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 17, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jesus-kyofu-no-bio-monster",
     "isRomhack": false,
     "moods": [
@@ -28821,17 +28684,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 3, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jikai-shounen-mettomag",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Jikai Shounen Mettomag is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Jikai Shounen Mettomag is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Square"
     ],
@@ -28839,14 +28702,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Jikai Shounen Mettomag",
     "year": "1987"
@@ -28857,7 +28719,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 27, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jikuu-yuuden-debias",
     "isRomhack": false,
     "moods": [
@@ -28891,7 +28753,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "November 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jimmy-connors-tennis",
     "isRomhack": false,
     "moods": [
@@ -28924,7 +28786,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jing-ke-xin-zhuan",
     "isRomhack": false,
     "moods": [
@@ -28959,7 +28821,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 7, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jj-tobidase-daisakusen-part-ii",
     "isRomhack": false,
     "moods": [
@@ -28993,7 +28855,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "joe-and-mac",
     "isRomhack": false,
     "moods": [
@@ -29001,7 +28863,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Joe & Mac is an NES release from 1992, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "Joe & Mac is an NES release from 1992, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -29011,13 +28873,12 @@ export const generatedNesGames: NesCatalogGame[] = [
       "NA",
       "PAL"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Joe & Mac",
     "year": "1992"
@@ -29028,7 +28889,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "john-elway-s-quarterback",
     "isRomhack": false,
     "moods": [
@@ -29062,7 +28923,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 18, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jongbou",
     "isRomhack": false,
     "moods": [
@@ -29096,7 +28957,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jordan-vs-bird-one-on-one",
     "isRomhack": false,
     "moods": [
@@ -29128,7 +28989,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "joshua-and-the-battle-of-jericho",
     "isRomhack": false,
     "moods": [
@@ -29163,7 +29024,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 10, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "journey-to-silius",
     "isRomhack": false,
     "moods": [
@@ -29198,7 +29059,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 30, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "joust",
     "isRomhack": false,
     "moods": [
@@ -29230,7 +29091,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jovial-race",
     "isRomhack": false,
     "moods": [
@@ -29263,7 +29124,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jovial-race-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -29298,7 +29159,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 21, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "joy-mech-fight",
     "isRomhack": false,
     "moods": [
@@ -29332,7 +29193,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jumbo-ozaki-no-hole-in-one-professional",
     "isRomhack": false,
     "moods": [
@@ -29366,7 +29227,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 19, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jumpin-kid-jack-to-mame-no-ki-monogatari",
     "isRomhack": false,
     "moods": [
@@ -29400,7 +29261,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "July 20, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "juoki",
     "isRomhack": false,
     "moods": [
@@ -29432,7 +29293,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jurassic-boy",
     "isRomhack": false,
     "moods": [
@@ -29465,7 +29326,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jurassic-boy-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -29500,7 +29361,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "jurassic-park",
     "isRomhack": false,
     "moods": [
@@ -29534,7 +29395,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 15, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "just-breed",
     "isRomhack": false,
     "moods": [
@@ -29568,7 +29429,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 4, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "juvei-quest",
     "isRomhack": false,
     "moods": [
@@ -29602,7 +29463,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 21, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kabuki-quantum-fighter",
     "isRomhack": false,
     "moods": [
@@ -29639,7 +29500,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 2, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kabushiki-dojo-the-stock-speculation",
     "isRomhack": false,
     "moods": [
@@ -29673,7 +29534,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 30, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kaettekita-mario-bros",
     "isRomhack": false,
     "moods": [
@@ -29681,7 +29542,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Kaettekita Mario Bros. is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "Kaettekita Mario Bros. is a Famicom Disk System release from 1988, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -29691,14 +29552,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "platformer"
     ],
     "title": "Kaettekita Mario Bros.",
     "year": "1988"
@@ -29709,7 +29569,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 26, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kaettekita-gunjin-shogi-nanya-sore",
     "isRomhack": false,
     "moods": [
@@ -29745,7 +29605,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 11, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kagerou-densetsu",
     "isRomhack": false,
     "moods": [
@@ -29779,7 +29639,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 16, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kaguya-hime-densetsu",
     "isRomhack": false,
     "moods": [
@@ -29813,7 +29673,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 22, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kai-no-boken-the-quest-of-ki",
     "isRomhack": false,
     "moods": [
@@ -29847,7 +29707,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 18, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kaiju-monogatari",
     "isRomhack": false,
     "moods": [
@@ -29881,7 +29741,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 30, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kaiketsu-yanchamaru-2-karakuri-land",
     "isRomhack": false,
     "moods": [
@@ -29915,7 +29775,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 30, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kaiketsu-yanchamaru-3-taiketsu-zoringen",
     "isRomhack": false,
     "moods": [
@@ -29949,7 +29809,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 2, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kalin-no-tsurugi",
     "isRomhack": false,
     "moods": [
@@ -29973,8 +29833,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "story": "rich",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Kalin no Tsurugi",
     "year": "1987"
@@ -29985,7 +29844,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 20, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kamen-no-ninja-akakage",
     "isRomhack": false,
     "moods": [
@@ -29993,23 +29852,22 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Kamen no Ninja Akakage is a Famicom release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Kamen no Ninja Akakage is a Famicom release from 1988, tagged as balanced, lightly narrative, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Toei Animation"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Kamen no Ninja Akakage",
     "year": "1988"
@@ -30020,7 +29878,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 15, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kamen-rider-black-taiketsu-shadow-moon",
     "isRomhack": false,
     "moods": [
@@ -30028,9 +29886,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Kamen Rider Black: Taiketsu Shadow Moon is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Kamen Rider Black: Taiketsu Shadow Moon is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Bandai"
     ],
@@ -30038,14 +29896,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Kamen Rider Black: Taiketsu Shadow Moon",
     "year": "1988"
@@ -30056,7 +29913,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 3, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kamen-rider-club-gekitotsu-shocker-land",
     "isRomhack": false,
     "moods": [
@@ -30090,7 +29947,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 22, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kamen-rider-sd-granshocker-no-yabo",
     "isRomhack": false,
     "moods": [
@@ -30124,7 +29981,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 5, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "karakuri-kengo-den-musashi-lord-karakuri-jin-hashiru",
     "isRomhack": false,
     "moods": [
@@ -30158,7 +30015,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 30, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "karaoke-studio",
     "isRomhack": false,
     "moods": [
@@ -30192,7 +30049,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 28, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "karaoke-studio-senyou-cassette-vol-1",
     "isRomhack": false,
     "moods": [
@@ -30226,7 +30083,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 18, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "karaoke-studio-senyou-cassette-vol-2",
     "isRomhack": false,
     "moods": [
@@ -30260,7 +30117,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "karate-champ",
     "isRomhack": false,
     "moods": [
@@ -30294,7 +30151,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 22, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "karate-champ-famicom-disk-system-data-east",
     "isRomhack": false,
     "moods": [
@@ -30302,9 +30159,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Karate Champ is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Karate Champ is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Data East"
     ],
@@ -30312,14 +30169,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Karate Champ",
     "year": "1988"
@@ -30330,7 +30186,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 5, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "karateka",
     "isRomhack": false,
     "moods": [
@@ -30364,7 +30220,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 18, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "karnov",
     "isRomhack": false,
     "moods": [
@@ -30396,7 +30252,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kart-fighter",
     "isRomhack": false,
     "moods": [
@@ -30429,7 +30285,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kart-fighter-unlicensed-famicom-ge-de-industry-co",
     "isRomhack": false,
     "moods": [
@@ -30464,17 +30320,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 20, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kattobi-doji",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Kattobi! Dōji is a Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Kattobi! Dōji is a Famicom Disk System release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Pack-In-Video"
     ],
@@ -30482,14 +30338,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Kattobi! Dōji",
     "year": "1989"
@@ -30500,7 +30355,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 10, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kawa-no-nushi-tsuri",
     "isRomhack": false,
     "moods": [
@@ -30534,7 +30389,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 28, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "keiba-simulation-honmei",
     "isRomhack": false,
     "moods": [
@@ -30568,7 +30423,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 22, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kekkyoku-nankyoku-daiboken",
     "isRomhack": false,
     "moods": [
@@ -30602,7 +30457,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 29, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kero-kero-keroppi-no-daibouken",
     "isRomhack": false,
     "moods": [
@@ -30636,7 +30491,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "February 19, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kero-kero-keroppi-no-daibouken-2-donuts-ike-ha-oosawagi",
     "isRomhack": false,
     "moods": [
@@ -30670,7 +30525,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "keroppi-to-keroriinu-no-splash-bomb",
     "isRomhack": false,
     "moods": [
@@ -30704,17 +30559,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 13, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kick-and-run",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Kick and Run is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Kick and Run is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Taito"
     ],
@@ -30722,14 +30577,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Kick and Run",
     "year": "1988"
@@ -30740,17 +30594,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 20, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kick-challenger-air-foot",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Kick Challenger: Air Foot is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Kick Challenger: Air Foot is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "VAP"
     ],
@@ -30758,14 +30612,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Kick Challenger: Air Foot",
     "year": "1987"
@@ -30776,7 +30629,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kick-master",
     "isRomhack": false,
     "moods": [
@@ -30810,7 +30663,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 22, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kick-off",
     "isRomhack": false,
     "moods": [
@@ -30844,7 +30697,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "June 29, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kickle-cubicle",
     "isRomhack": false,
     "moods": [
@@ -30880,7 +30733,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 15, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kid-icarus",
     "isRomhack": false,
     "moods": [
@@ -30914,7 +30767,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 30, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kid-klown-in-night-mayor-world",
     "isRomhack": false,
     "moods": [
@@ -30948,7 +30801,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 22, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kid-kool",
     "isRomhack": false,
     "moods": [
@@ -30982,7 +30835,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 2, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kid-niki-radical-ninja",
     "isRomhack": false,
     "moods": [
@@ -31017,17 +30870,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 24, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kido-keisatsu-patlabor",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Kidō Keisatsu Patlabor is a Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Kidō Keisatsu Patlabor is a Famicom Disk System release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Bandai"
     ],
@@ -31035,14 +30888,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Kidō Keisatsu Patlabor",
     "year": "1989"
@@ -31053,7 +30905,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 28, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kido-senshi-z-gundam-hot-scramble",
     "isRomhack": false,
     "moods": [
@@ -31088,17 +30940,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 20, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kieta-princess",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Kieta Princess is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Kieta Princess is a Famicom Disk System release from 1986, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Imagineer"
     ],
@@ -31106,14 +30958,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Kieta Princess",
     "year": "1986"
@@ -31124,17 +30975,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 28, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kiki-kaikai-doto-hen",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Kiki Kaikai: Dotō-hen is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Kiki Kaikai: Dotō-hen is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Taito"
     ],
@@ -31142,14 +30993,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Kiki Kaikai: Dotō-hen",
     "year": "1987"
@@ -31160,7 +31010,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 28, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kineko-the-monitor-puzzle",
     "isRomhack": false,
     "moods": [
@@ -31168,7 +31018,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Kineko: The Monitor Puzzle is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and puzzle-leaning for the recommender.",
+    "pitch": "Kineko: The Monitor Puzzle is a Famicom Disk System release from 1986, tagged as balanced, play-first, and puzzle-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "puzzle",
     "publisher": [
@@ -31178,14 +31028,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "puzzle",
-      "rpg"
+      "puzzle"
     ],
     "title": "Kineko: The Monitor Puzzle",
     "year": "1986"
@@ -31196,7 +31045,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 1, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kineko-the-monitor-puzzle-vol-ii",
     "isRomhack": false,
     "moods": [
@@ -31204,7 +31053,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Kineko: The Monitor Puzzle - Vol. II is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and puzzle-leaning for the recommender.",
+    "pitch": "Kineko: The Monitor Puzzle - Vol. II is a Famicom Disk System release from 1987, tagged as balanced, play-first, and puzzle-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "puzzle",
     "publisher": [
@@ -31214,14 +31063,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "puzzle",
-      "rpg"
+      "puzzle"
     ],
     "title": "Kineko: The Monitor Puzzle - Vol. II",
     "year": "1987"
@@ -31232,7 +31080,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "December 18, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "king-kong-2-ikari-no-megaton-punch",
     "isRomhack": false,
     "moods": [
@@ -31265,7 +31113,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "king-neptune-s-adventure",
     "isRomhack": false,
     "moods": [
@@ -31300,7 +31148,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 9, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "king-of-kings",
     "isRomhack": false,
     "moods": [
@@ -31332,7 +31180,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "king-of-kings-the-early-years",
     "isRomhack": false,
     "moods": [
@@ -31365,7 +31213,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "king-tank",
     "isRomhack": false,
     "moods": [
@@ -31400,7 +31248,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 18, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "king-s-knight",
     "isRomhack": false,
     "moods": [
@@ -31434,7 +31282,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "king-s-quest-v",
     "isRomhack": false,
     "moods": [
@@ -31468,7 +31316,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kings-of-the-beach",
     "isRomhack": false,
     "moods": [
@@ -31502,17 +31350,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 1, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kinnikuman-kinnikusei-oi-sodatsusen",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Kinnikuman: Kinnikusei Ōi Sōdatsusen is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Kinnikuman: Kinnikusei Ōi Sōdatsusen is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Bandai"
     ],
@@ -31520,14 +31368,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Kinnikuman: Kinnikusei Ōi Sōdatsusen",
     "year": "1987"
@@ -31538,7 +31385,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 23, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kirby-s-adventure",
     "isRomhack": false,
     "moods": [
@@ -31573,7 +31420,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 23, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kiteretsu-daihyakka",
     "isRomhack": false,
     "moods": [
@@ -31607,7 +31454,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "klashball",
     "isRomhack": false,
     "moods": [
@@ -31641,7 +31488,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 14, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "klax",
     "isRomhack": false,
     "moods": [
@@ -31673,7 +31520,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "klax-unlicensed-nes-lifespan-tengen",
     "isRomhack": false,
     "moods": [
@@ -31706,31 +31553,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "klax-unlicensed-famicom-daou-infosys",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Klax is an unlicensed NES-era release from 1991, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Klax is an unlicensed NES-era release from 1991, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Daou Infosys"
     ],
     "regions": [
       "South Korea"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "South Korea exclusive",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Klax",
@@ -31742,17 +31588,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 19, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "knight-lore-majou-no-ookami-otoko",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Knight Lore: Majou no Ookami Otoko is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Knight Lore: Majou no Ookami Otoko is a Famicom Disk System release from 1986, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Jaleco"
     ],
@@ -31760,14 +31606,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Knight Lore: Majou no Ookami Otoko",
     "year": "1986"
@@ -31778,7 +31623,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "June 5, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "knight-move",
     "isRomhack": false,
     "moods": [
@@ -31786,7 +31631,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "contemplative"
     ],
     "obscurity": "strange",
-    "pitch": "Knight Move is a Famicom Disk System release from 1990, tagged as approachable, story-forward, and puzzle-leaning for the recommender.",
+    "pitch": "Knight Move is a Famicom Disk System release from 1990, tagged as approachable, play-first, and puzzle-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "puzzle",
     "publisher": [
@@ -31796,14 +31641,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Knight Move",
     "year": "1990"
@@ -31814,7 +31658,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 30, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "knight-rider",
     "isRomhack": false,
     "moods": [
@@ -31847,17 +31691,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "19??",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kobayashi-hitomi-no-hold-up",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Kobayashi Hitomi no Hold Up is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Kobayashi Hitomi no Hold Up is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Hacker International"
     ],
@@ -31866,14 +31710,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Kobayashi Hitomi no Hold Up",
@@ -31883,7 +31726,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "koko-adventure",
     "isRomhack": false,
     "moods": [
@@ -31891,7 +31734,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Koko Adventure is an unlicensed NES-era release from 1993, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Koko Adventure is an unlicensed NES-era release from 1993, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -31903,11 +31746,10 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 3,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "South Korea exclusive",
       "adventure",
-      "rpg",
       "unlicensed"
     ],
     "title": "Koko Adventure",
@@ -31919,7 +31761,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "konami-hyper-soccer",
     "isRomhack": false,
     "moods": [
@@ -31954,7 +31796,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 14, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "konami-wai-wai-world",
     "isRomhack": false,
     "moods": [
@@ -31988,17 +31830,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 22, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "konamic-ice-hockey",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Konamic Ice Hockey is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Konamic Ice Hockey is a Famicom Disk System release from 1988, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Konami"
     ],
@@ -32006,14 +31848,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "sports"
     ],
     "title": "Konamic Ice Hockey",
@@ -32025,7 +31866,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "August 19, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "konamic-tennis",
     "isRomhack": false,
     "moods": [
@@ -32033,9 +31874,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Konamic Tennis is a Famicom Disk System release from 1988, tagged as approachable, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Konamic Tennis is a Famicom Disk System release from 1988, tagged as approachable, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Konami"
     ],
@@ -32043,14 +31884,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "sports"
     ],
     "title": "Konamic Tennis",
@@ -32062,7 +31902,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 19, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "koneko-monogatari-the-adventures-of-chatran",
     "isRomhack": false,
     "moods": [
@@ -32070,7 +31910,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Koneko Monogatari: The Adventures of Chatran is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Koneko Monogatari: The Adventures of Chatran is a Famicom Disk System release from 1986, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -32083,11 +31923,10 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "adventure"
     ],
     "title": "Koneko Monogatari: The Adventures of Chatran",
     "year": "1986"
@@ -32098,7 +31937,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 30, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "koryu-densetsu-villgust-gaiden",
     "isRomhack": false,
     "moods": [
@@ -32132,7 +31971,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 6, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "koshien",
     "isRomhack": false,
     "moods": [
@@ -32166,7 +32005,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 25, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "koufuku-wo-yobu-game-dora-dora-dora",
     "isRomhack": false,
     "moods": [
@@ -32198,7 +32037,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "krazy-kreatures",
     "isRomhack": false,
     "moods": [
@@ -32233,7 +32072,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "September 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "krusty-s-fun-house",
     "isRomhack": false,
     "moods": [
@@ -32267,7 +32106,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 21, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kujaku-o",
     "isRomhack": false,
     "moods": [
@@ -32301,7 +32140,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 11, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kujaku-o-ii",
     "isRomhack": false,
     "moods": [
@@ -32335,7 +32174,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 21, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kung-fu",
     "isRomhack": false,
     "moods": [
@@ -32370,7 +32209,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "June 20, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kung-fu-heroes",
     "isRomhack": false,
     "moods": [
@@ -32405,7 +32244,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 23, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kunio-kun-s-nekketsu-soccer-league",
     "isRomhack": false,
     "moods": [
@@ -32440,7 +32279,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 20, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kurogane-hiroshi-no-yoso-daisuki-kachiuma-densetsu",
     "isRomhack": false,
     "moods": [
@@ -32474,7 +32313,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 19, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kyatto-ninden-teyande",
     "isRomhack": false,
     "moods": [
@@ -32508,7 +32347,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 25, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kyonshis-2",
     "isRomhack": false,
     "moods": [
@@ -32542,7 +32381,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 13, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kyoryu-sentai-zyuranger",
     "isRomhack": false,
     "moods": [
@@ -32550,7 +32389,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Kyōryū Sentai Zyuranger is a Famicom release from 1992, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Kyōryū Sentai Zyuranger is a Famicom release from 1992, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -32562,11 +32401,10 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 3,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Kyōryū Sentai Zyuranger",
     "year": "1992"
@@ -32577,7 +32415,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 19, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kyukyoku-harikiri-koshien",
     "isRomhack": false,
     "moods": [
@@ -32611,7 +32449,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 28, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kyukyoku-harikiri-stadium",
     "isRomhack": false,
     "moods": [
@@ -32645,7 +32483,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 16, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kyukyoku-harikiri-stadium-88-senshuu-shin-data-version",
     "isRomhack": false,
     "moods": [
@@ -32679,7 +32517,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kyukyoku-harikiri-stadium-iii",
     "isRomhack": false,
     "moods": [
@@ -32713,31 +32551,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 21, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "kyukyoku-harikiri-stadium-heisei-gannen-ban",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Kyūkyoku Harikiri Stadium: Heisei Gannen-ban is a Famicom release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Kyūkyoku Harikiri Stadium: Heisei Gannen-ban is a Famicom release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Taito"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Kyūkyoku Harikiri Stadium: Heisei Gannen-ban",
     "year": "1989"
@@ -32748,7 +32585,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 23, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "l-empereur",
     "isRomhack": false,
     "moods": [
@@ -32782,7 +32619,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 7, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "labyrinth-mao-no-meikyu",
     "isRomhack": false,
     "moods": [
@@ -32816,7 +32653,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 26, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lagrange-point",
     "isRomhack": false,
     "moods": [
@@ -32850,7 +32687,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 23, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lasalle-ishii-no-child-s-quest",
     "isRomhack": false,
     "moods": [
@@ -32884,7 +32721,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 15, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "laser-invasion",
     "isRomhack": false,
     "moods": [
@@ -32918,7 +32755,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "last-action-hero",
     "isRomhack": false,
     "moods": [
@@ -32952,7 +32789,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 10, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "last-armageddon",
     "isRomhack": false,
     "moods": [
@@ -32986,7 +32823,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 6, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "law-of-the-west",
     "isRomhack": false,
     "moods": [
@@ -33020,7 +32857,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 20, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "layla",
     "isRomhack": false,
     "moods": [
@@ -33054,7 +32891,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "March 24, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lee-trevino-s-fighting-golf",
     "isRomhack": false,
     "moods": [
@@ -33090,7 +32927,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 17, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "legacy-of-the-wizard",
     "isRomhack": false,
     "moods": [
@@ -33125,7 +32962,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "legendary-wings",
     "isRomhack": false,
     "moods": [
@@ -33159,7 +32996,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "legends-of-the-diamond",
     "isRomhack": false,
     "moods": [
@@ -33191,7 +33028,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2004",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lei-dian-huang-bi-ka-qiu-chuan-shuo",
     "isRomhack": false,
     "moods": [
@@ -33226,7 +33063,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lemmings",
     "isRomhack": false,
     "moods": [
@@ -33260,7 +33097,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lethal-weapon",
     "isRomhack": false,
     "moods": [
@@ -33294,7 +33131,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 25, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "life-force",
     "isRomhack": false,
     "moods": [
@@ -33327,7 +33164,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "linus-spacehead-s-cosmic-crusade",
     "isRomhack": false,
     "moods": [
@@ -33360,17 +33197,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1988-99-991988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lipstick-1-lolita-hen",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Lipstick #1: Lolita Hen is an unlicensed Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Lipstick #1: Lolita Hen is an unlicensed Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Mimi"
     ],
@@ -33379,14 +33216,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Lipstick #1: Lolita Hen",
@@ -33396,17 +33232,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1988-99-991988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lipstick-2-joshi-gakusei-hen",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Lipstick #2: Joshi Gakusei Hen is an unlicensed Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Lipstick #2: Joshi Gakusei Hen is an unlicensed Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Mimi"
     ],
@@ -33415,14 +33251,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Lipstick #2: Joshi Gakusei Hen",
@@ -33432,17 +33267,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1988-99-991988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lipstick-3-ol-hen",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Lipstick #3: OL Hen is an unlicensed Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Lipstick #3: OL Hen is an unlicensed Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Mimi"
     ],
@@ -33451,14 +33286,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Lipstick #3: OL Hen",
@@ -33468,17 +33302,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1988-99-991988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lipstick-4-hakui-no-tenshi-hen",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Lipstick #4: Hakui no Tenshi Hen is an unlicensed Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Lipstick #4: Hakui no Tenshi Hen is an unlicensed Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Mimi"
     ],
@@ -33487,14 +33321,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Lipstick #4: Hakui no Tenshi Hen",
@@ -33504,17 +33337,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1988-99-991988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lipstick-5-stewardess-hen",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Lipstick #5: Stewardess Hen is an unlicensed Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Lipstick #5: Stewardess Hen is an unlicensed Famicom Disk System release from 1988, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Mimi"
     ],
@@ -33523,14 +33356,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "unlicensed"
     ],
     "title": "Lipstick #5: Stewardess Hen",
@@ -33542,7 +33374,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "little-league-baseball-championship-series",
     "isRomhack": false,
     "moods": [
@@ -33577,7 +33409,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 14, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "little-magic",
     "isRomhack": false,
     "moods": [
@@ -33611,7 +33443,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "little-nemo-the-dream-master",
     "isRomhack": false,
     "moods": [
@@ -33646,7 +33478,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 26, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "little-ninja-brothers",
     "isRomhack": false,
     "moods": [
@@ -33679,7 +33511,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "little-red-hood",
     "isRomhack": false,
     "moods": [
@@ -33712,7 +33544,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "little-red-hood-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -33747,7 +33579,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 26, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "little-samson",
     "isRomhack": false,
     "moods": [
@@ -33780,7 +33612,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "locksmith",
     "isRomhack": false,
     "moods": [
@@ -33813,7 +33645,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "locksmith-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -33848,7 +33680,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "July 31, 1984",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lode-runner",
     "isRomhack": false,
     "moods": [
@@ -33880,7 +33712,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2018",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "log-jammers",
     "isRomhack": false,
     "moods": [
@@ -33915,7 +33747,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "October 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "loopz",
     "isRomhack": false,
     "moods": [
@@ -33949,7 +33781,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 25, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lost-word-of-jenny",
     "isRomhack": false,
     "moods": [
@@ -33983,7 +33815,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "December 21, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lot-lot",
     "isRomhack": false,
     "moods": [
@@ -34017,7 +33849,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "low-g-man-the-low-gravity-man",
     "isRomhack": false,
     "moods": [
@@ -34050,7 +33882,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1996",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lu-ye-xian-zong",
     "isRomhack": false,
     "moods": [
@@ -34083,7 +33915,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "Unknown",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "luan-shi-san-guo",
     "isRomhack": false,
     "moods": [
@@ -34116,7 +33948,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lucky-777",
     "isRomhack": false,
     "moods": [
@@ -34149,7 +33981,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lucky-777-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -34184,7 +34016,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 5, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lunar-pool",
     "isRomhack": false,
     "moods": [
@@ -34220,7 +34052,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 6, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lupin-sansei-pandora-no-isan",
     "isRomhack": false,
     "moods": [
@@ -34254,17 +34086,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "November 24, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "lutter",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Lutter is a Famicom Disk System release from 1989, tagged as demanding, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Lutter is a Famicom Disk System release from 1989, tagged as demanding, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Athena"
     ],
@@ -34272,14 +34104,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Lutter",
     "year": "1989"
@@ -34290,7 +34121,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "m-c-kids",
     "isRomhack": false,
     "moods": [
@@ -34324,7 +34155,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "m-u-l-e",
     "isRomhack": false,
     "moods": [
@@ -34358,7 +34189,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 21, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mach-rider",
     "isRomhack": false,
     "moods": [
@@ -34393,7 +34224,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mad-max",
     "isRomhack": false,
     "moods": [
@@ -34425,7 +34256,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "magic-block",
     "isRomhack": false,
     "moods": [
@@ -34458,7 +34289,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "magic-cube",
     "isRomhack": false,
     "moods": [
@@ -34491,7 +34322,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "magic-cube-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -34526,7 +34357,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 26, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "magic-darts",
     "isRomhack": false,
     "moods": [
@@ -34558,7 +34389,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "magic-jewelry",
     "isRomhack": false,
     "moods": [
@@ -34591,7 +34422,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "magic-jewelry-ii",
     "isRomhack": false,
     "moods": [
@@ -34626,7 +34457,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "magic-johnson-s-fast-break",
     "isRomhack": false,
     "moods": [
@@ -34658,7 +34489,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "magic-kid-googoo",
     "isRomhack": false,
     "moods": [
@@ -34691,7 +34522,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "magical-mathematics",
     "isRomhack": false,
     "moods": [
@@ -34725,7 +34556,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "magical-mathematics-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -34761,7 +34592,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 19, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "magical-taruruto-kun-2-maho-daibouken",
     "isRomhack": false,
     "moods": [
@@ -34795,7 +34626,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 21, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "magical-taruruto-kun-fantastic-world",
     "isRomhack": false,
     "moods": [
@@ -34827,7 +34658,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "magical-tower",
     "isRomhack": false,
     "moods": [
@@ -34862,7 +34693,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "magician",
     "isRomhack": false,
     "moods": [
@@ -34896,17 +34727,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 10, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "magma-project-hacker",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Magma Project Hacker is a Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Magma Project Hacker is a Famicom Disk System release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Tokuma Shoten"
     ],
@@ -34914,14 +34745,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Magma Project Hacker",
     "year": "1989"
@@ -34932,7 +34762,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 19, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "magmax",
     "isRomhack": false,
     "moods": [
@@ -34966,7 +34796,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 25, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "magnum-kiki-ippatsu-empire-city-1931",
     "isRomhack": false,
     "moods": [
@@ -35000,7 +34830,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 27, 1983",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mah-jong",
     "isRomhack": false,
     "moods": [
@@ -35034,17 +34864,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 21, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mah-jong-famicom-disk-system-nintendo",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Mah-Jong is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Mah-Jong is a Famicom Disk System release from 1986, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -35052,14 +34882,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Mah-Jong",
     "year": "1986"
@@ -35070,7 +34899,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 29, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "maharaja",
     "isRomhack": false,
     "moods": [
@@ -35102,7 +34931,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mahjong-academy",
     "isRomhack": false,
     "moods": [
@@ -35137,7 +34966,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "Unknown",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mahjong-academy-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -35174,7 +35003,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "April 25, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mahjong-club-nagatacho-sosaisen",
     "isRomhack": false,
     "moods": [
@@ -35207,7 +35036,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mahjong-companion",
     "isRomhack": false,
     "moods": [
@@ -35244,7 +35073,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "August 4, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mahjong-kazoku",
     "isRomhack": false,
     "moods": [
@@ -35252,7 +35081,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Mahjong Kazoku is a Famicom Disk System release from 1987, tagged as approachable, story-forward, and puzzle-leaning for the recommender.",
+    "pitch": "Mahjong Kazoku is a Famicom Disk System release from 1987, tagged as approachable, play-first, and puzzle-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "puzzle",
     "publisher": [
@@ -35262,15 +35091,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
       "board and card",
-      "puzzle",
-      "rpg"
+      "puzzle"
     ],
     "title": "Mahjong Kazoku",
     "year": "1987"
@@ -35279,7 +35107,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mahjong-summit-kabukichou-hen",
     "isRomhack": false,
     "moods": [
@@ -35315,7 +35143,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "October 31, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mahjong-taikai",
     "isRomhack": false,
     "moods": [
@@ -35350,7 +35178,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "May 20, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mahjong-taisen",
     "isRomhack": false,
     "moods": [
@@ -35383,7 +35211,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mahjong-trap",
     "isRomhack": false,
     "moods": [
@@ -35417,7 +35245,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mahjong-trap-plus",
     "isRomhack": false,
     "moods": [
@@ -35451,7 +35279,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mahjong-trapshisen-mahjong-seifuku-hen",
     "isRomhack": false,
     "moods": [
@@ -35488,7 +35316,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 29, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "maho-no-princess-minky-momo-remember-dream",
     "isRomhack": false,
     "moods": [
@@ -35522,7 +35350,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 21, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "maison-ikkoku-omoide-no-photograph",
     "isRomhack": false,
     "moods": [
@@ -35556,7 +35384,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "October 19, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "majaventure-mahjong-senki",
     "isRomhack": false,
     "moods": [
@@ -35591,7 +35419,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 11, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "majo-densetsu-ii-daimashikyo-galious",
     "isRomhack": false,
     "moods": [
@@ -35625,7 +35453,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 27, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "major-league",
     "isRomhack": false,
     "moods": [
@@ -35659,7 +35487,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "major-league-baseball",
     "isRomhack": false,
     "moods": [
@@ -35694,7 +35522,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 13, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "maniac-mansion",
     "isRomhack": false,
     "moods": [
@@ -35729,7 +35557,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "maniac-mansion-licensed-jaleco",
     "isRomhack": false,
     "moods": [
@@ -35763,7 +35591,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 14, 1984",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mappy",
     "isRomhack": false,
     "moods": [
@@ -35797,7 +35625,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 22, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mappy-kids",
     "isRomhack": false,
     "moods": [
@@ -35831,7 +35659,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 26, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mappy-land",
     "isRomhack": false,
     "moods": [
@@ -35866,7 +35694,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "marble-madness",
     "isRomhack": false,
     "moods": [
@@ -35900,17 +35728,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 3, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "marchen-veil",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Märchen Veil is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Märchen Veil is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Sunsoft"
     ],
@@ -35918,14 +35746,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Märchen Veil",
     "year": "1987"
@@ -35934,17 +35761,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989-99-991989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mario-bobble",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Mario Bobble is an unlicensed Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Mario Bobble is an unlicensed Famicom Disk System release from 1989, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "platformer",
     "publisher": [
       "Sun"
     ],
@@ -35953,14 +35780,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "platformer",
       "unlicensed"
     ],
     "title": "Mario Bobble",
@@ -35973,7 +35799,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 9, 1983",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mario-bros",
     "isRomhack": false,
     "moods": [
@@ -35981,7 +35807,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Mario Bros. is an NES release from 1983, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "Mario Bros. is an NES release from 1983, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -35992,13 +35818,12 @@ export const generatedNesGames: NesCatalogGame[] = [
       "NA",
       "PAL"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "rpg"
+      "platformer"
     ],
     "title": "Mario Bros.",
     "year": "1983"
@@ -36009,7 +35834,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 13, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mario-bros-classic-series",
     "isRomhack": false,
     "moods": [
@@ -36043,7 +35868,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "June 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mario-is-missing",
     "isRomhack": false,
     "moods": [
@@ -36078,7 +35903,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "June 1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mario-s-time-machine",
     "isRomhack": false,
     "moods": [
@@ -36112,7 +35937,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 19, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "marusa-no-onna",
     "isRomhack": false,
     "moods": [
@@ -36146,7 +35971,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 23, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mashin-eiyuuden-wataru-gaiden",
     "isRomhack": false,
     "moods": [
@@ -36178,7 +36003,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "master-chu-and-the-drunkard-hu",
     "isRomhack": false,
     "moods": [
@@ -36213,7 +36038,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 17, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "masuzoe-yoichi-asa-made-famicom",
     "isRomhack": false,
     "moods": [
@@ -36247,7 +36072,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 2, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mato-no-hokai-the-hero-of-babel",
     "isRomhack": false,
     "moods": [
@@ -36255,9 +36080,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Matō no Hōkai: The Hero of Babel is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Matō no Hōkai: The Hero of Babel is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Pony Canyon"
     ],
@@ -36265,14 +36090,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Matō no Hōkai: The Hero of Babel",
     "year": "1988"
@@ -36283,7 +36107,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 18, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "matsumoto-toru-no-kabushiki-hisshougaku",
     "isRomhack": false,
     "moods": [
@@ -36317,7 +36141,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 31, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "matsumoto-toru-no-kabushiki-hisshougaku-ii",
     "isRomhack": false,
     "moods": [
@@ -36349,7 +36173,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "maxi-15",
     "isRomhack": false,
     "moods": [
@@ -36384,7 +36208,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mechanized-attack",
     "isRomhack": false,
     "moods": [
@@ -36418,7 +36242,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 17, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mega-man",
     "isRomhack": false,
     "moods": [
@@ -36453,7 +36277,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 24, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mega-man-2",
     "isRomhack": false,
     "moods": [
@@ -36486,7 +36310,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2017",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mega-man-2-anniversary-edition",
     "isRomhack": false,
     "moods": [
@@ -36521,7 +36345,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 28, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mega-man-3",
     "isRomhack": false,
     "moods": [
@@ -36556,7 +36380,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 6, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mega-man-4",
     "isRomhack": false,
     "moods": [
@@ -36591,7 +36415,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 4, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mega-man-5",
     "isRomhack": false,
     "moods": [
@@ -36626,7 +36450,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 5, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mega-man-6",
     "isRomhack": false,
     "moods": [
@@ -36658,7 +36482,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "Unknown",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mei-shao-nu-meng-gongchang",
     "isRomhack": false,
     "moods": [
@@ -36693,7 +36517,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 29, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "meiji-ishin",
     "isRomhack": false,
     "moods": [
@@ -36727,17 +36551,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 29, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "meikyu-jiin-dababa",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Meikyū Jiin Dababa is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Meikyū Jiin Dababa is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Konami"
     ],
@@ -36745,14 +36569,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Meikyū Jiin Dababa",
     "year": "1987"
@@ -36763,7 +36586,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 8, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "meimon-daisan-yakyu-bu",
     "isRomhack": false,
     "moods": [
@@ -36797,7 +36620,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "meimon-tako-nishioendan",
     "isRomhack": false,
     "moods": [
@@ -36831,7 +36654,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 13, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "meitantei-holmes-kiri-no-london-satsujin-jiken",
     "isRomhack": false,
     "moods": [
@@ -36865,7 +36688,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 1, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "meitantei-holmes-m-kara-no-chousenjou",
     "isRomhack": false,
     "moods": [
@@ -36897,7 +36720,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "memory-pair",
     "isRomhack": false,
     "moods": [
@@ -36930,7 +36753,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "menace-beach",
     "isRomhack": false,
     "moods": [
@@ -36965,7 +36788,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "June 27, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mendel-palace",
     "isRomhack": false,
     "moods": [
@@ -36998,7 +36821,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mermaids-of-atlantis",
     "isRomhack": false,
     "moods": [
@@ -37031,7 +36854,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "metal-fighter",
     "isRomhack": false,
     "moods": [
@@ -37064,7 +36887,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989October 30, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "metal-fighter-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -37097,31 +36920,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "metal-force",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Metal Force is an unlicensed NES-era release from 1994, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Metal Force is an unlicensed NES-era release from 1994, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Daou Infosys"
     ],
     "regions": [
       "South Korea"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "South Korea exclusive",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Metal Force",
@@ -37133,7 +36955,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 22, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "metal-gear",
     "isRomhack": false,
     "moods": [
@@ -37170,7 +36992,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 24, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "metal-max",
     "isRomhack": false,
     "moods": [
@@ -37204,7 +37026,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 14, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "metal-mech-man-and-machine",
     "isRomhack": false,
     "moods": [
@@ -37238,7 +37060,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 30, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "metal-slader-glory",
     "isRomhack": false,
     "moods": [
@@ -37272,7 +37094,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "metal-storm",
     "isRomhack": false,
     "moods": [
@@ -37306,7 +37128,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 16, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "metro-cross",
     "isRomhack": false,
     "moods": [
@@ -37341,7 +37163,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "metroid",
     "isRomhack": false,
     "moods": [
@@ -37349,7 +37171,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "classic",
-    "pitch": "Metroid is an NES release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Metroid is an NES release from 1987, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -37362,10 +37184,9 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 2,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
-      "adventure",
-      "rpg"
+      "adventure"
     ],
     "title": "Metroid",
     "year": "1987"
@@ -37377,7 +37198,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 6, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "metroid-famicom-disk-system-nintendo",
     "isRomhack": false,
     "moods": [
@@ -37385,7 +37206,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "classic",
-    "pitch": "Metroid is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Metroid is a Famicom Disk System release from 1986, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -37398,11 +37219,10 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "adventure"
     ],
     "title": "Metroid",
     "year": "1986"
@@ -37413,7 +37233,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "December 18, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mezase-pachi-pro-pachio-kun",
     "isRomhack": false,
     "moods": [
@@ -37447,7 +37267,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 5, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mezase-top-pro-green-ni-kakeru-yume",
     "isRomhack": false,
     "moods": [
@@ -37481,7 +37301,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 9, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "michael-andretti-s-world-gp",
     "isRomhack": false,
     "moods": [
@@ -37516,17 +37336,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 19, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "michael-english-daiboken",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Michael English Daibōken is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Michael English Daibōken is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Scorpion Soft"
     ],
@@ -37534,14 +37354,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Michael English Daibōken",
     "year": "1987"
@@ -37550,7 +37369,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1996",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mickey-mania-7",
     "isRomhack": false,
     "moods": [
@@ -37586,7 +37405,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 6, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mickey-mousecapade",
     "isRomhack": false,
     "moods": [
@@ -37621,7 +37440,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mickey-s-adventures-in-numberland",
     "isRomhack": false,
     "moods": [
@@ -37656,7 +37475,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mickey-s-safari-in-letterland",
     "isRomhack": false,
     "moods": [
@@ -37689,7 +37508,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "micro-machines",
     "isRomhack": false,
     "moods": [
@@ -37722,7 +37541,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2019",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "micro-mages",
     "isRomhack": false,
     "moods": [
@@ -37755,7 +37574,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "middle-school-english",
     "isRomhack": false,
     "moods": [
@@ -37789,7 +37608,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "middle-school-english-ii",
     "isRomhack": false,
     "moods": [
@@ -37823,7 +37642,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "difficult",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mig-29-soviet-fighter",
     "isRomhack": false,
     "moods": [
@@ -37858,7 +37677,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 31, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "might-and-magic-the-secret-of-the-inner-sanctum",
     "isRomhack": false,
     "moods": [
@@ -37893,7 +37712,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 24, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mighty-bomb-jack",
     "isRomhack": false,
     "moods": [
@@ -37928,7 +37747,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "June 11, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mighty-final-fight",
     "isRomhack": false,
     "moods": [
@@ -37961,7 +37780,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mighty-morphin-power-rangers-iii",
     "isRomhack": false,
     "moods": [
@@ -37996,7 +37815,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mike-tyson-s-punch-out",
     "isRomhack": false,
     "moods": [
@@ -38004,7 +37823,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "classic",
-    "pitch": "Mike Tyson's Punch-Out!! is an NES release from 1987, tagged as balanced, story-forward, and top down-leaning for the recommender.",
+    "pitch": "Mike Tyson's Punch-Out!! is an NES release from 1987, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "top-down",
     "publisher": [
@@ -38015,13 +37834,12 @@ export const generatedNesGames: NesCatalogGame[] = [
       "NA",
       "PAL"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Mike Tyson's Punch-Out!!",
     "year": "1987"
@@ -38030,7 +37848,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "millionaire",
     "isRomhack": false,
     "moods": [
@@ -38063,7 +37881,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "millionaire-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -38098,7 +37916,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "millipede",
     "isRomhack": false,
     "moods": [
@@ -38132,7 +37950,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "November 13, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "milon-s-secret-castle",
     "isRomhack": false,
     "moods": [
@@ -38166,7 +37984,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 18, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mindseeker",
     "isRomhack": false,
     "moods": [
@@ -38200,7 +38018,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 23, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "minelvaton-saga-ragon-no-fukkatsu",
     "isRomhack": false,
     "moods": [
@@ -38232,7 +38050,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "minesweeper",
     "isRomhack": false,
     "moods": [
@@ -38265,7 +38083,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "minesweeper-2",
     "isRomhack": false,
     "moods": [
@@ -38298,7 +38116,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "minesweeper-3",
     "isRomhack": false,
     "moods": [
@@ -38333,7 +38151,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 15, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mini-putt",
     "isRomhack": false,
     "moods": [
@@ -38367,7 +38185,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "November 22, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "minna-no-tabou-no-nakayoshi-daisakusen",
     "isRomhack": false,
     "moods": [
@@ -38401,7 +38219,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 7, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "miracle-ropitt-2100-nen-no-daiboken",
     "isRomhack": false,
     "moods": [
@@ -38435,7 +38253,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mirai-senshi-lios",
     "isRomhack": false,
     "moods": [
@@ -38469,7 +38287,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 30, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mirai-shinwa-jarvas",
     "isRomhack": false,
     "moods": [
@@ -38501,7 +38319,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "miss-peach-world",
     "isRomhack": false,
     "moods": [
@@ -38534,7 +38352,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mission-cobra",
     "isRomhack": false,
     "moods": [
@@ -38570,7 +38388,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mission-impossible",
     "isRomhack": false,
     "moods": [
@@ -38606,7 +38424,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 31, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mississippi-satsujin-jiken",
     "isRomhack": false,
     "moods": [
@@ -38640,7 +38458,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 11, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mito-komon-ii-sekai-manyuki",
     "isRomhack": false,
     "moods": [
@@ -38674,7 +38492,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 17, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mitsume-ga-toru",
     "isRomhack": false,
     "moods": [
@@ -38708,7 +38526,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 26, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mizushima-shinji-no-daikoshien",
     "isRomhack": false,
     "moods": [
@@ -38742,7 +38560,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "March 9, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "moai-kun",
     "isRomhack": false,
     "moods": [
@@ -38776,7 +38594,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 21, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "moero-twinbee-cinnamon-hakase-o-sukue",
     "isRomhack": false,
     "moods": [
@@ -38784,9 +38602,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Moero TwinBee: Cinnamon-hakase o Sukue! is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Moero TwinBee: Cinnamon-hakase o Sukue! is a Famicom Disk System release from 1986, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Konami"
     ],
@@ -38794,14 +38612,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Moero TwinBee: Cinnamon-hakase o Sukue!",
     "year": "1986"
@@ -38812,7 +38629,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 29, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "moero-judo-warriors",
     "isRomhack": false,
     "moods": [
@@ -38846,7 +38663,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 26, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "momotaro-densetsu",
     "isRomhack": false,
     "moods": [
@@ -38880,7 +38697,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 17, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "momotaro-densetsu-gaiden",
     "isRomhack": false,
     "moods": [
@@ -38914,7 +38731,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 2, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "momotaro-dentetsu",
     "isRomhack": false,
     "moods": [
@@ -38948,7 +38765,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "May 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "monopoly",
     "isRomhack": false,
     "moods": [
@@ -38985,7 +38802,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "monster-in-my-pocket",
     "isRomhack": false,
     "moods": [
@@ -39020,7 +38837,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 20, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "monster-maker-7-tsu-no-hihou",
     "isRomhack": false,
     "moods": [
@@ -39055,7 +38872,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "monster-party",
     "isRomhack": false,
     "moods": [
@@ -39090,7 +38907,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "monster-truck-rally",
     "isRomhack": false,
     "moods": [
@@ -39125,17 +38942,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 31, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "monty-no-doki-doki-dai-dasso-monty-on-the-run",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Monty no Doki Doki Dai Dassō: Monty on the Run is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Monty no Doki Doki Dai Dassō: Monty on the Run is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Jaleco"
     ],
@@ -39143,14 +38960,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Monty no Doki Doki Dai Dassō: Monty on the Run",
     "year": "1987"
@@ -39161,7 +38977,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 12, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "moon-ball-magic",
     "isRomhack": false,
     "moods": [
@@ -39169,9 +38985,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Moon Ball Magic is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Moon Ball Magic is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Square"
     ],
@@ -39179,14 +38995,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Moon Ball Magic",
     "year": "1988"
@@ -39197,7 +39012,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 28, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "moon-crystal",
     "isRomhack": false,
     "moods": [
@@ -39205,7 +39020,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Moon Crystal is a Famicom release from 1992, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "Moon Crystal is a Famicom release from 1992, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -39214,14 +39029,13 @@ export const generatedNesGames: NesCatalogGame[] = [
     "regions": [
       "JP"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Moon Crystal",
     "year": "1992"
@@ -39230,7 +39044,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "moon-ranger",
     "isRomhack": false,
     "moods": [
@@ -39265,7 +39079,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 14, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "morita-shogi",
     "isRomhack": false,
     "moods": [
@@ -39297,7 +39111,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "Unknown",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mortal-kombat-3",
     "isRomhack": false,
     "moods": [
@@ -39330,7 +39144,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1998",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mortal-kombat-5",
     "isRomhack": false,
     "moods": [
@@ -39363,7 +39177,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mortal-kombat-ii",
     "isRomhack": false,
     "moods": [
@@ -39396,7 +39210,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mortal-kombat-ii-unlicensed-famicom-yoko-soft",
     "isRomhack": false,
     "moods": [
@@ -39429,7 +39243,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mortal-kombat-ii-special",
     "isRomhack": false,
     "moods": [
@@ -39464,7 +39278,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 30, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "moryo-senki-madara",
     "isRomhack": false,
     "moods": [
@@ -39499,7 +39313,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 27, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mother",
     "isRomhack": false,
     "moods": [
@@ -39534,7 +39348,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 27, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "motocross-champion",
     "isRomhack": false,
     "moods": [
@@ -39568,7 +39382,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "motor-city-patrol",
     "isRomhack": false,
     "moods": [
@@ -39602,7 +39416,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 6, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mottomo-abunai-deka",
     "isRomhack": false,
     "moods": [
@@ -39636,7 +39450,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 11, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "moulin-rouge-senki-melville-no-honoo",
     "isRomhack": false,
     "moods": [
@@ -39670,7 +39484,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 31, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mr-gimmick",
     "isRomhack": false,
     "moods": [
@@ -39704,17 +39518,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 19, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mr-gold-toyama-no-kinsan-in-space",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Mr. Gold: Tōyama no Kinsan in Space is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Mr. Gold: Tōyama no Kinsan in Space is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Toei Animation"
     ],
@@ -39722,14 +39536,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Mr. Gold: Tōyama no Kinsan in Space",
     "year": "1988"
@@ -39740,7 +39553,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ms-pac-man",
     "isRomhack": false,
     "moods": [
@@ -39773,7 +39586,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ms-pac-man-unlicensed-nes-lifespan-tengen",
     "isRomhack": false,
     "moods": [
@@ -39809,7 +39622,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "muppet-adventure-chaos-at-the-carnival",
     "isRomhack": false,
     "moods": [
@@ -39843,7 +39656,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 30, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "murder-club",
     "isRomhack": false,
     "moods": [
@@ -39877,7 +39690,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 22, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "musashi-no-boken",
     "isRomhack": false,
     "moods": [
@@ -39911,7 +39724,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 8, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "musashi-no-ken-tadaima-shugyo-chu",
     "isRomhack": false,
     "moods": [
@@ -39945,7 +39758,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 3, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "my-life-my-love-boku-no-yume-watashi-no-negai",
     "isRomhack": false,
     "moods": [
@@ -39953,23 +39766,22 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "My Life My Love: Boku no Yume Watashi no Negai is a Famicom release from 1991, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "My Life My Love: Boku no Yume Watashi no Negai is a Famicom release from 1991, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Banpresto"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "My Life My Love: Boku no Yume Watashi no Negai",
     "year": "1991"
@@ -39978,7 +39790,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "myriad-6-in-1",
     "isRomhack": false,
     "moods": [
@@ -40013,7 +39825,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "mystery-quest",
     "isRomhack": false,
     "moods": [
@@ -40021,7 +39833,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Mystery Quest is an NES release from 1989, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "Mystery Quest is an NES release from 1989, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -40030,14 +39842,13 @@ export const generatedNesGames: NesCatalogGame[] = [
     "regions": [
       "NA"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "NA exclusive",
-      "adventure",
-      "rpg"
+      "adventure"
     ],
     "title": "Mystery Quest",
     "year": "1989"
@@ -40048,7 +39859,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 27, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nakajima-satoru-f-1-hero-2",
     "isRomhack": false,
     "moods": [
@@ -40084,7 +39895,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nakayama-miho-no-tokimeki-high-school",
     "isRomhack": false,
     "moods": [
@@ -40092,7 +39903,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "contemplative"
     ],
     "obscurity": "strange",
-    "pitch": "Nakayama Miho no Tokimeki High School is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Nakayama Miho no Tokimeki High School is a Famicom Disk System release from 1987, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -40105,12 +39916,11 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "education",
-      "rpg"
+      "action",
+      "education"
     ],
     "title": "Nakayama Miho no Tokimeki High School",
     "year": "1987"
@@ -40121,7 +39931,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "December 10, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nakayoshi-to-issho",
     "isRomhack": false,
     "moods": [
@@ -40155,7 +39965,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 27, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "namco-classic",
     "isRomhack": false,
     "moods": [
@@ -40189,7 +39999,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 13, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "namco-classic-ii",
     "isRomhack": false,
     "moods": [
@@ -40223,7 +40033,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "March 8, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "namcot-mahjong-iii-mahjong-tengoku",
     "isRomhack": false,
     "moods": [
@@ -40258,17 +40068,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 30, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "namida-no-sokoban-special",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Namida no Sōkoban Special is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Namida no Sōkoban Special is a Famicom Disk System release from 1986, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "ASCII"
     ],
@@ -40276,14 +40086,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Namida no Sōkoban Special",
     "year": "1986"
@@ -40294,7 +40103,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 9, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nankin-no-adventure",
     "isRomhack": false,
     "moods": [
@@ -40302,7 +40111,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Nankin no Adventure is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Nankin no Adventure is a Famicom Disk System release from 1988, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -40315,11 +40124,10 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "adventure"
     ],
     "title": "Nankin no Adventure",
     "year": "1988"
@@ -40330,7 +40138,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 27, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nankoku-shirei-spy-vs-spy",
     "isRomhack": false,
     "moods": [
@@ -40364,7 +40172,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 18, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "napoleon-senki",
     "isRomhack": false,
     "moods": [
@@ -40398,7 +40206,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "narc",
     "isRomhack": false,
     "moods": [
@@ -40432,7 +40240,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 14, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "navy-blue",
     "isRomhack": false,
     "moods": [
@@ -40466,7 +40274,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 13, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nazo-no-kabe-block-kuzushi",
     "isRomhack": false,
     "moods": [
@@ -40474,7 +40282,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Nazo no Kabe: Block-kuzushi is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and puzzle-leaning for the recommender.",
+    "pitch": "Nazo no Kabe: Block-kuzushi is a Famicom Disk System release from 1986, tagged as balanced, play-first, and puzzle-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "puzzle",
     "publisher": [
@@ -40484,14 +40292,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "puzzle",
-      "rpg"
+      "puzzle"
     ],
     "title": "Nazo no Kabe: Block-kuzushi",
     "year": "1986"
@@ -40503,7 +40310,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 14, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nazo-no-murasame-jo",
     "isRomhack": false,
     "moods": [
@@ -40511,7 +40318,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Nazo no Murasame Jō is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Nazo no Murasame Jō is a Famicom Disk System release from 1986, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -40524,11 +40331,10 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Nazo no Murasame Jō",
     "year": "1986"
@@ -40539,17 +40345,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 12, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nazoler-land-dai-2-go",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Nazoler Land Dai-2 Gō is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Nazoler Land Dai-2 Gō is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Sunsoft"
     ],
@@ -40557,14 +40363,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Nazoler Land Dai-2 Gō",
     "year": "1987"
@@ -40575,17 +40380,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 11, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nazoler-land-dai-3-go",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Nazoler Land Dai-3 Gō is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Nazoler Land Dai-3 Gō is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Sunsoft"
     ],
@@ -40593,14 +40398,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Nazoler Land Dai-3 Gō",
     "year": "1988"
@@ -40611,17 +40415,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 6, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nazoler-land-sokan-go",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Nazoler Land Sōkan Gō is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Nazoler Land Sōkan Gō is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Sunsoft"
     ],
@@ -40629,14 +40433,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Nazoler Land Sōkan Gō",
     "year": "1987"
@@ -40647,17 +40450,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 18, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nazoler-land-special-quiz-o-o-sagase",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Nazoler Land Special!! Quiz Ō o Sagase is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Nazoler Land Special!! Quiz Ō o Sagase is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Sunsoft"
     ],
@@ -40665,14 +40468,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Nazoler Land Special!! Quiz Ō o Sagase",
     "year": "1987"
@@ -40683,7 +40485,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 23, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nekketsu-kakuto-densetsu",
     "isRomhack": false,
     "moods": [
@@ -40717,7 +40519,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 22, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nekketsu-street-basket-ganbare-dunk-heroes",
     "isRomhack": false,
     "moods": [
@@ -40752,7 +40554,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "September 20, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nes-open-tournament-golf",
     "isRomhack": false,
     "moods": [
@@ -40788,7 +40590,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nes-play-action-football",
     "isRomhack": false,
     "moods": [
@@ -40823,7 +40625,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 26, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "new-ghostbusters-ii",
     "isRomhack": false,
     "moods": [
@@ -40858,7 +40660,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nfl",
     "isRomhack": false,
     "moods": [
@@ -40892,7 +40694,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nhk-gakuen-space-school-sansu-4-nen-jou",
     "isRomhack": false,
     "moods": [
@@ -40928,7 +40730,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nhk-gakuen-space-school-sansu-5-nen-ge",
     "isRomhack": false,
     "moods": [
@@ -40964,7 +40766,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nhk-gakuen-space-school-sansu-5-nen-jou",
     "isRomhack": false,
     "moods": [
@@ -41000,7 +40802,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nhk-gakuen-space-school-sansu-6-nen-ge",
     "isRomhack": false,
     "moods": [
@@ -41036,7 +40838,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nhk-gakuen-space-school-sansu-6-nen-jou",
     "isRomhack": false,
     "moods": [
@@ -41072,7 +40874,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "July 20, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nichibutsu-mahjong-iii-mahjong-g-men",
     "isRomhack": false,
     "moods": [
@@ -41107,7 +40909,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nigel-mansell-s-world-championship-racing",
     "isRomhack": false,
     "moods": [
@@ -41142,7 +40944,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nightshade",
     "isRomhack": false,
     "moods": [
@@ -41176,7 +40978,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 22, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "niji-no-silkroad",
     "isRomhack": false,
     "moods": [
@@ -41210,7 +41012,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 14, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ninja-crusaders",
     "isRomhack": false,
     "moods": [
@@ -41244,7 +41046,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "December 9, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ninja-gaiden",
     "isRomhack": false,
     "moods": [
@@ -41279,7 +41081,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "April 6, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ninja-gaiden-ii-the-dark-sword-of-chaos",
     "isRomhack": false,
     "moods": [
@@ -41314,7 +41116,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "June 21, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ninja-gaiden-iii-the-ancient-ship-of-doom",
     "isRomhack": false,
     "moods": [
@@ -41348,7 +41150,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 5, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ninja-hattori-kun",
     "isRomhack": false,
     "moods": [
@@ -41382,7 +41184,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 15, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ninja-jajamaru-kun",
     "isRomhack": false,
     "moods": [
@@ -41416,7 +41218,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 29, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ninja-jajamaru-ginga-daisakusen",
     "isRomhack": false,
     "moods": [
@@ -41450,7 +41252,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 17, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ninja-kid",
     "isRomhack": false,
     "moods": [
@@ -41484,7 +41286,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 27, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ninja-kun-ashura-no-sho",
     "isRomhack": false,
     "moods": [
@@ -41518,7 +41320,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 10, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ninja-kun-majo-no-boken",
     "isRomhack": false,
     "moods": [
@@ -41552,7 +41354,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 8, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ninjara-hoi",
     "isRomhack": false,
     "moods": [
@@ -41586,7 +41388,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nintendo-campus-challenge-1991",
     "isRomhack": false,
     "moods": [
@@ -41621,7 +41423,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nintendo-world-championships-1990",
     "isRomhack": false,
     "moods": [
@@ -41656,7 +41458,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 18, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nintendo-world-cup",
     "isRomhack": false,
     "moods": [
@@ -41691,7 +41493,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 10, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nippon-ichi-no-meikantoku",
     "isRomhack": false,
     "moods": [
@@ -41725,7 +41527,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 20, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nishimura-kyotaro-mystery-blue-train-satsujin-jiken",
     "isRomhack": false,
     "moods": [
@@ -41733,23 +41535,22 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Nishimura Kyōtarō Mystery: Blue Train Satsujin Jiken is a Famicom release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Nishimura Kyōtarō Mystery: Blue Train Satsujin Jiken is a Famicom release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Irem"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Nishimura Kyōtarō Mystery: Blue Train Satsujin Jiken",
     "year": "1989"
@@ -41760,7 +41561,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 2, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nishimura-kyotaro-mystery-super-express-satsujin-jiken",
     "isRomhack": false,
     "moods": [
@@ -41768,23 +41569,22 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Nishimura Kyōtarō Mystery: Super Express Satsujin Jiken is a Famicom release from 1990, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Nishimura Kyōtarō Mystery: Super Express Satsujin Jiken is a Famicom release from 1990, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Irem"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Nishimura Kyōtarō Mystery: Super Express Satsujin Jiken",
     "year": "1990"
@@ -41795,7 +41595,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "noah-s-ark",
     "isRomhack": false,
     "moods": [
@@ -41829,7 +41629,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 21, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nobunaga-no-yabo-busho-fuunroku",
     "isRomhack": false,
     "moods": [
@@ -41863,7 +41663,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 18, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nobunaga-s-ambition",
     "isRomhack": false,
     "moods": [
@@ -41897,7 +41697,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 3, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nobunaga-s-ambition-ii",
     "isRomhack": false,
     "moods": [
@@ -41931,7 +41731,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 21, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "north-and-south",
     "isRomhack": false,
     "moods": [
@@ -41966,7 +41766,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "July 28, 1984",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "nuts-and-milk",
     "isRomhack": false,
     "moods": [
@@ -42000,7 +41800,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 5, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "obocchama-kun",
     "isRomhack": false,
     "moods": [
@@ -42032,31 +41832,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "octagon",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Octagon is an unlicensed NES-era release from 1991, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Octagon is an unlicensed NES-era release from 1991, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Daou Infosys"
     ],
     "regions": [
       "South Korea"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "South Korea exclusive",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Octagon",
@@ -42068,7 +41867,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 26, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "oeka-kids-anpanman-no-hiragana-daisuki",
     "isRomhack": false,
     "moods": [
@@ -42102,7 +41901,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 25, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "oeka-kids-anpanman-to-oekaki-shiyo",
     "isRomhack": false,
     "moods": [
@@ -42136,7 +41935,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 25, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "oishinbo-kyukyoku-no-menu-3bon-syoubu",
     "isRomhack": false,
     "moods": [
@@ -42170,7 +41969,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 29, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "okkotoshi-puzzle-tonjan",
     "isRomhack": false,
     "moods": [
@@ -42202,7 +42001,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "olympic-i-q",
     "isRomhack": false,
     "moods": [
@@ -42236,7 +42035,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "olympic-iq",
     "isRomhack": false,
     "moods": [
@@ -42272,7 +42071,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 25, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "omoikkiri-tanteidan-haado-gumi-matenro-no-chosenjo",
     "isRomhack": false,
     "moods": [
@@ -42280,9 +42079,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Omoikkiri Tanteidan Haado Gumi: Matenrō no Chōsenjō is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Omoikkiri Tanteidan Haado Gumi: Matenrō no Chōsenjō is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Bandai"
     ],
@@ -42290,14 +42089,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Omoikkiri Tanteidan Haado Gumi: Matenrō no Chōsenjō",
     "year": "1988"
@@ -42306,31 +42104,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "one-eyed-jack",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "One-eyed Jack is an unlicensed NES-era release from 1991, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "One-eyed Jack is an unlicensed NES-era release from 1991, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Daou Infosys"
     ],
     "regions": [
       "South Korea"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "South Korea exclusive",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "One-eyed Jack",
@@ -42342,7 +42139,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 21, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "onyanko-town",
     "isRomhack": false,
     "moods": [
@@ -42374,7 +42171,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "difficult",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "operation-secret-storm",
     "isRomhack": false,
     "moods": [
@@ -42409,7 +42206,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 31, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "operation-wolf",
     "isRomhack": false,
     "moods": [
@@ -42444,7 +42241,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "orb-3d",
     "isRomhack": false,
     "moods": [
@@ -42478,7 +42275,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 8, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "osomatsu-kun-back-to-the-me-no-deppa-no-maki",
     "isRomhack": false,
     "moods": [
@@ -42512,7 +42309,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 31, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "otaku-no-seiza-an-adventure-in-the-otaku-galaxy",
     "isRomhack": false,
     "moods": [
@@ -42546,7 +42343,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 13, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "othello",
     "isRomhack": false,
     "moods": [
@@ -42580,7 +42377,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 13, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "othello-famicom-disk-system-kawada",
     "isRomhack": false,
     "moods": [
@@ -42588,7 +42385,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Othello is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and puzzle-leaning for the recommender.",
+    "pitch": "Othello is a Famicom Disk System release from 1986, tagged as balanced, play-first, and puzzle-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "puzzle",
     "publisher": [
@@ -42598,14 +42395,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "puzzle",
-      "rpg"
+      "puzzle"
     ],
     "title": "Othello",
     "year": "1986"
@@ -42616,17 +42412,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 27, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "otocky",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Otocky is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Otocky is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "ASCII"
     ],
@@ -42634,14 +42430,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Otocky",
     "year": "1987"
@@ -42652,7 +42447,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 4, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "outlanders",
     "isRomhack": false,
     "moods": [
@@ -42686,7 +42481,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 26, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "over-horizon",
     "isRomhack": false,
     "moods": [
@@ -42720,7 +42515,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "overlord",
     "isRomhack": false,
     "moods": [
@@ -42754,7 +42549,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "June 30, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "p-o-w-prisoners-of-war",
     "isRomhack": false,
     "moods": [
@@ -42789,7 +42584,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 21, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pac-land",
     "isRomhack": false,
     "moods": [
@@ -42823,7 +42618,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 2, 1984",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pac-man",
     "isRomhack": false,
     "moods": [
@@ -42857,7 +42652,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pac-man-unlicensed-nes-lifespan-tengen",
     "isRomhack": false,
     "moods": [
@@ -42893,7 +42688,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 18, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pac-man-famicom-disk-system-namco",
     "isRomhack": false,
     "moods": [
@@ -42901,9 +42696,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "classic",
-    "pitch": "Pac-Man is a Famicom Disk System release from 1990, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Pac-Man is a Famicom Disk System release from 1990, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Namco"
     ],
@@ -42911,15 +42706,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "arcade port",
-      "rpg"
+      "action",
+      "arcade port"
     ],
     "title": "Pac-Man",
     "year": "1990"
@@ -42928,7 +42722,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pac-mania",
     "isRomhack": false,
     "moods": [
@@ -42964,7 +42758,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "September 17, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pachi-slot-adventure-2",
     "isRomhack": false,
     "moods": [
@@ -42998,7 +42792,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "May 13, 1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pachi-slot-adventure-3-bitaoshii-7-kenzan",
     "isRomhack": false,
     "moods": [
@@ -43006,7 +42800,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Pachi-Slot Adventure 3: Bitaoshii 7 Kenzan! is a Famicom release from 1994, tagged as approachable, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Pachi-Slot Adventure 3: Bitaoshii 7 Kenzan! is a Famicom release from 1994, tagged as approachable, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -43018,11 +42812,10 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 4,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "adventure"
     ],
     "title": "Pachi-Slot Adventure 3: Bitaoshii 7 Kenzan!",
     "year": "1994"
@@ -43033,7 +42826,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "November 21, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pachicom",
     "isRomhack": false,
     "moods": [
@@ -43067,17 +42860,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "October 4, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pachicom-famicom-disk-system-toshiba-emi",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Pachicom is a Famicom Disk System release from 1988, tagged as approachable, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Pachicom is a Famicom Disk System release from 1988, tagged as approachable, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Toshiba EMI"
     ],
@@ -43085,14 +42878,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Pachicom",
     "year": "1988"
@@ -43103,7 +42895,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "July 19, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pachinko-daisakusen",
     "isRomhack": false,
     "moods": [
@@ -43137,7 +42929,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "July 10, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pachinko-daisakusen-2",
     "isRomhack": false,
     "moods": [
@@ -43171,17 +42963,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "November 18, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pachinko-gp",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Pachinko GP is a Famicom Disk System release from 1988, tagged as approachable, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Pachinko GP is a Famicom Disk System release from 1988, tagged as approachable, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "platformer",
     "publisher": [
       "Data East"
     ],
@@ -43189,14 +42981,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "platformer"
     ],
     "title": "Pachinko GP",
     "year": "1988"
@@ -43207,7 +42998,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "January 30, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pachio-kun-2",
     "isRomhack": false,
     "moods": [
@@ -43241,7 +43032,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "October 26, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pachio-kun-3",
     "isRomhack": false,
     "moods": [
@@ -43275,7 +43066,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "November 22, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pachio-kun-4",
     "isRomhack": false,
     "moods": [
@@ -43309,7 +43100,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "June 18, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pachio-kun-5",
     "isRomhack": false,
     "moods": [
@@ -43343,7 +43134,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 6, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "palamedes",
     "isRomhack": false,
     "moods": [
@@ -43377,7 +43168,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 17, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "palamedes-ii-star-twinkles",
     "isRomhack": false,
     "moods": [
@@ -43409,7 +43200,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1997",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "panda-baby",
     "isRomhack": false,
     "moods": [
@@ -43444,7 +43235,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 24, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "panic-restaurant",
     "isRomhack": false,
     "moods": [
@@ -43479,7 +43270,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 19, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "panic-space",
     "isRomhack": false,
     "moods": [
@@ -43487,9 +43278,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Panic Space is a Famicom Disk System release from 1990, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Panic Space is a Famicom Disk System release from 1990, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Tokuma Shoten"
     ],
@@ -43497,14 +43288,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Panic Space",
     "year": "1990"
@@ -43515,7 +43305,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "paperboy",
     "isRomhack": false,
     "moods": [
@@ -43550,7 +43340,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "paperboy-2",
     "isRomhack": false,
     "moods": [
@@ -43584,7 +43374,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 10, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "parallel-world",
     "isRomhack": false,
     "moods": [
@@ -43618,7 +43408,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 15, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "parasol-henbe",
     "isRomhack": false,
     "moods": [
@@ -43652,7 +43442,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "parasol-stars-rainbow-island-ii",
     "isRomhack": false,
     "moods": [
@@ -43686,7 +43476,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 3, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "paris-dakar-rally-special",
     "isRomhack": false,
     "moods": [
@@ -43720,7 +43510,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 30, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "parodius",
     "isRomhack": false,
     "moods": [
@@ -43752,7 +43542,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "peek-a-boo-poker",
     "isRomhack": false,
     "moods": [
@@ -43788,7 +43578,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 10, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "peepar-time",
     "isRomhack": false,
     "moods": [
@@ -43822,7 +43612,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 25, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "penguin-kun-wars",
     "isRomhack": false,
     "moods": [
@@ -43856,31 +43646,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 25, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "perfect-bowling",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Perfect Bowling is a Famicom release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Perfect Bowling is a Famicom release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Tonkin House"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Perfect Bowling",
     "year": "1989"
@@ -43891,31 +43680,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 20, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "perman-part-2-himitsu-kessha-madoodan-o-taose",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Perman Part 2: Himitsu Kessha Madoodan o Taose! is a Famicom release from 1991, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Perman Part 2: Himitsu Kessha Madoodan o Taose! is a Famicom release from 1991, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Irem"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Perman Part 2: Himitsu Kessha Madoodan o Taose!",
     "year": "1991"
@@ -43926,7 +43714,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 14, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "perman-enban-o-torikaese",
     "isRomhack": false,
     "moods": [
@@ -43958,7 +43746,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pesterminator-the-western-exterminator",
     "isRomhack": false,
     "moods": [
@@ -43993,7 +43781,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "peter-pan-and-the-pirates",
     "isRomhack": false,
     "moods": [
@@ -44027,7 +43815,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 16, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "phantom-fighter",
     "isRomhack": false,
     "moods": [
@@ -44060,7 +43848,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "Unknown",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "piano",
     "isRomhack": false,
     "moods": [
@@ -44095,7 +43883,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "July 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pictionary",
     "isRomhack": false,
     "moods": [
@@ -44129,7 +43917,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pin-bot",
     "isRomhack": false,
     "moods": [
@@ -44164,7 +43952,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "February 2, 1984",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pinball",
     "isRomhack": false,
     "moods": [
@@ -44200,7 +43988,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "May 30, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pinball-famicom-disk-system-nintendo",
     "isRomhack": false,
     "moods": [
@@ -44208,9 +43996,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Pinball is a Famicom Disk System release from 1989, tagged as approachable, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Pinball is a Famicom Disk System release from 1989, tagged as approachable, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -44218,14 +44006,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Pinball",
     "year": "1989"
@@ -44236,7 +44023,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "December 15, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pinball-quest",
     "isRomhack": false,
     "moods": [
@@ -44271,7 +44058,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pipe-dream",
     "isRomhack": false,
     "moods": [
@@ -44303,7 +44090,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pipe-v",
     "isRomhack": false,
     "moods": [
@@ -44336,7 +44123,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pipe-v-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -44371,7 +44158,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pirates",
     "isRomhack": false,
     "moods": [
@@ -44406,31 +44193,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 7, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pizza-pop",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Pizza Pop! is a Famicom release from 1992, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Pizza Pop! is a Famicom release from 1992, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Jaleco"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Pizza Pop!",
     "year": "1992"
@@ -44441,7 +44227,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 27, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "plasma-ball",
     "isRomhack": false,
     "moods": [
@@ -44475,7 +44261,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "platoon",
     "isRomhack": false,
     "moods": [
@@ -44507,7 +44293,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1997",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pocahontas-part-2",
     "isRomhack": false,
     "moods": [
@@ -44542,7 +44328,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 27, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pocket-zaurus-ju-oken-no-nazo",
     "isRomhack": false,
     "moods": [
@@ -44574,7 +44360,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1997",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pocohontos",
     "isRomhack": false,
     "moods": [
@@ -44607,7 +44393,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "Unknown",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pokemon-gold",
     "isRomhack": false,
     "moods": [
@@ -44642,7 +44428,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2009",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pokemon-leafgreen",
     "isRomhack": false,
     "moods": [
@@ -44675,7 +44461,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "poker-ii",
     "isRomhack": false,
     "moods": [
@@ -44709,7 +44495,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "poker-ii-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -44743,7 +44529,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "poker-iii",
     "isRomhack": false,
     "moods": [
@@ -44777,7 +44563,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "poker-iii-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -44811,7 +44597,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "poker-mahjong",
     "isRomhack": false,
     "moods": [
@@ -44845,7 +44631,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "poker-mahjong-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -44879,7 +44665,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pole-chudes",
     "isRomhack": false,
     "moods": [
@@ -44914,7 +44700,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 20, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pooyan",
     "isRomhack": false,
     "moods": [
@@ -44948,7 +44734,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 15, 1983",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "popeye",
     "isRomhack": false,
     "moods": [
@@ -44984,7 +44770,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "November 22, 1983",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "popeye-no-eigo-asobi",
     "isRomhack": false,
     "moods": [
@@ -45017,7 +44803,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "popo-team",
     "isRomhack": false,
     "moods": [
@@ -45050,7 +44836,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "popo-team-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -45086,7 +44872,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 20, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "power-blade",
     "isRomhack": false,
     "moods": [
@@ -45122,7 +44908,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 29, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "power-blade-2",
     "isRomhack": false,
     "moods": [
@@ -45156,7 +44942,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "power-punch-ii",
     "isRomhack": false,
     "moods": [
@@ -45190,7 +44976,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 30, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "power-soccer",
     "isRomhack": false,
     "moods": [
@@ -45225,7 +45011,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 10, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "predator",
     "isRomhack": false,
     "moods": [
@@ -45260,7 +45046,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 2, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "president-no-sentaku",
     "isRomhack": false,
     "moods": [
@@ -45294,7 +45080,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "prince-of-persia",
     "isRomhack": false,
     "moods": [
@@ -45329,7 +45115,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 27, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "princess-tomato-in-the-salad-kingdom",
     "isRomhack": false,
     "moods": [
@@ -45363,7 +45149,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "May 25, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pro-golfer-saru-kage-no-tournament",
     "isRomhack": false,
     "moods": [
@@ -45371,9 +45157,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Pro Golfer Saru: Kage no Tournament is a Famicom Disk System release from 1987, tagged as approachable, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Pro Golfer Saru: Kage no Tournament is a Famicom Disk System release from 1987, tagged as approachable, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Bandai"
     ],
@@ -45381,14 +45167,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "sports"
     ],
     "title": "Pro Golfer Saru: Kage no Tournament",
@@ -45400,7 +45185,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 6, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pro-sport-hockey",
     "isRomhack": false,
     "moods": [
@@ -45435,7 +45220,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pro-wrestling",
     "isRomhack": false,
     "moods": [
@@ -45470,17 +45255,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 21, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pro-wrestling-famicom-wrestling-association",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Pro Wrestling: Famicom Wrestling Association is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Pro Wrestling: Famicom Wrestling Association is a Famicom Disk System release from 1986, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -45488,14 +45273,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "sports"
     ],
     "title": "Pro Wrestling: Famicom Wrestling Association",
@@ -45507,7 +45291,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 22, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pro-yakyu-family-stadium-87",
     "isRomhack": false,
     "moods": [
@@ -45541,7 +45325,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 20, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pro-yakyu-family-stadium-88-nendoban",
     "isRomhack": false,
     "moods": [
@@ -45575,7 +45359,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 24, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pro-yakyu-satsujin-jiken",
     "isRomhack": false,
     "moods": [
@@ -45609,7 +45393,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "December 25, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "professional-mahjong-goku",
     "isRomhack": false,
     "moods": [
@@ -45617,7 +45401,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Professional Mahjong Gokū is a Famicom Disk System release from 1986, tagged as approachable, story-forward, and puzzle-leaning for the recommender.",
+    "pitch": "Professional Mahjong Gokū is a Famicom Disk System release from 1986, tagged as approachable, play-first, and puzzle-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "puzzle",
     "publisher": [
@@ -45627,15 +45411,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
       "board and card",
-      "puzzle",
-      "rpg"
+      "puzzle"
     ],
     "title": "Professional Mahjong Gokū",
     "year": "1986"
@@ -45646,17 +45429,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "October 2, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pulsar-no-hikari-space-wars-simulation",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Pulsar no Hikari: Space Wars Simulation is a Famicom Disk System release from 1987, tagged as demanding, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Pulsar no Hikari: Space Wars Simulation is a Famicom Disk System release from 1987, tagged as demanding, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Soft Pro International"
     ],
@@ -45664,14 +45447,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "shooter"
     ],
     "title": "Pulsar no Hikari: Space Wars Simulation",
@@ -45681,7 +45463,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "punch-sprite",
     "isRomhack": false,
     "moods": [
@@ -45716,7 +45498,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 21, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "puss-n-boots-pero-s-great-adventure",
     "isRomhack": false,
     "moods": [
@@ -45724,7 +45506,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Puss 'n Boots: Pero's Great Adventure is an NES release from 1986, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "Puss 'n Boots: Pero's Great Adventure is an NES release from 1986, tagged as balanced, lightly narrative, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -45738,10 +45520,9 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 3,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
-      "adventure",
-      "rpg"
+      "adventure"
     ],
     "title": "Puss 'n Boots: Pero's Great Adventure",
     "year": "1986"
@@ -45752,7 +45533,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "March 30, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "putt-putt-golf",
     "isRomhack": false,
     "moods": [
@@ -45760,9 +45541,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Putt Putt Golf is a Famicom Disk System release from 1989, tagged as approachable, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Putt Putt Golf is a Famicom Disk System release from 1989, tagged as approachable, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Pack-In-Video"
     ],
@@ -45770,14 +45551,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "sports"
     ],
     "title": "Putt Putt Golf",
@@ -45789,7 +45569,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "July 23, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "puyo-puyo",
     "isRomhack": false,
     "moods": [
@@ -45823,7 +45603,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "October 25, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "puyo-puyo-famicom-disk-system-tokuma-shoten",
     "isRomhack": false,
     "moods": [
@@ -45831,7 +45611,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Puyo Puyo is a Famicom Disk System release from 1991, tagged as approachable, story-forward, and puzzle-leaning for the recommender.",
+    "pitch": "Puyo Puyo is a Famicom Disk System release from 1991, tagged as approachable, play-first, and puzzle-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "puzzle",
     "publisher": [
@@ -45841,14 +45621,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Puyo Puyo",
     "year": "1991"
@@ -45859,7 +45638,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 28, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "puzslot",
     "isRomhack": false,
     "moods": [
@@ -45891,7 +45670,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "puzzle",
     "isRomhack": false,
     "moods": [
@@ -45926,7 +45705,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 16, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "puzzle-boys",
     "isRomhack": false,
     "moods": [
@@ -45934,7 +45713,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Puzzle Boys is a Famicom Disk System release from 1990, tagged as balanced, story-forward, and puzzle-leaning for the recommender.",
+    "pitch": "Puzzle Boys is a Famicom Disk System release from 1990, tagged as balanced, play-first, and puzzle-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "puzzle",
     "publisher": [
@@ -45944,14 +45723,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "puzzle",
-      "rpg"
+      "puzzle"
     ],
     "title": "Puzzle Boys",
     "year": "1990"
@@ -45962,7 +45740,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "November 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "puzznic",
     "isRomhack": false,
     "moods": [
@@ -45997,31 +45775,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 19, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pyokotan-no-dai-meiro",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Pyokotan no Dai Meiro is a Famicom release from 1993, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Pyokotan no Dai Meiro is a Famicom release from 1993, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Sunsoft"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Pyokotan no Dai Meiro",
     "year": "1993"
@@ -46030,7 +45807,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pyramid",
     "isRomhack": false,
     "moods": [
@@ -46063,7 +45840,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pyramid-ii",
     "isRomhack": false,
     "moods": [
@@ -46096,7 +45873,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pyramid-ii-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -46129,7 +45906,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "pyramidpyramid-cleopatra-kiki-ippatsu",
     "isRomhack": false,
     "moods": [
@@ -46163,7 +45940,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "q-boy",
     "isRomhack": false,
     "moods": [
@@ -46196,7 +45973,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "q-boy-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -46231,7 +46008,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "February 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "q-bert",
     "isRomhack": false,
     "moods": [
@@ -46266,7 +46043,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "January 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "qix",
     "isRomhack": false,
     "moods": [
@@ -46300,7 +46077,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 19, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "quarter-back-scramble-american-football-game",
     "isRomhack": false,
     "moods": [
@@ -46335,7 +46112,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "April 13, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "quarth",
     "isRomhack": false,
     "moods": [
@@ -46367,7 +46144,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "quattro-adventure",
     "isRomhack": false,
     "moods": [
@@ -46400,7 +46177,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "quattro-arcade",
     "isRomhack": false,
     "moods": [
@@ -46433,7 +46210,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "quattro-sports",
     "isRomhack": false,
     "moods": [
@@ -46466,7 +46243,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2015",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "quest-forge-by-order-of-kings",
     "isRomhack": false,
     "moods": [
@@ -46501,7 +46278,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 29, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "quiz-project-q-cutie-project-and-battle-10000",
     "isRomhack": false,
     "moods": [
@@ -46535,7 +46312,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 10, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "r-b-i-baseball",
     "isRomhack": false,
     "moods": [
@@ -46568,7 +46345,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "r-b-i-baseball-unlicensed-nes-lifespan-tengen",
     "isRomhack": false,
     "moods": [
@@ -46602,7 +46379,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "r-b-i-baseball-2",
     "isRomhack": false,
     "moods": [
@@ -46636,7 +46413,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "r-b-i-baseball-3",
     "isRomhack": false,
     "moods": [
@@ -46672,7 +46449,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "r-c-pro-am",
     "isRomhack": false,
     "moods": [
@@ -46706,7 +46483,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "r-c-pro-am-ii",
     "isRomhack": false,
     "moods": [
@@ -46740,7 +46517,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 25, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "racer-mini-yonku-japan-cup",
     "isRomhack": false,
     "moods": [
@@ -46773,7 +46550,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1996",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "racermate-challenge-ii",
     "isRomhack": false,
     "moods": [
@@ -46809,7 +46586,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 15, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "racket-attack",
     "isRomhack": false,
     "moods": [
@@ -46844,7 +46621,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rackets-and-rivals",
     "isRomhack": false,
     "moods": [
@@ -46878,7 +46655,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 7, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rad-racer",
     "isRomhack": false,
     "moods": [
@@ -46914,7 +46691,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rad-racer-ii",
     "isRomhack": false,
     "moods": [
@@ -46947,7 +46724,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rad-racket-deluxe-tennis-ii",
     "isRomhack": false,
     "moods": [
@@ -46983,7 +46760,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 15, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "radia-senki-reimeihen",
     "isRomhack": false,
     "moods": [
@@ -47017,17 +46794,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 29, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "radical-bomber-jirai-kun",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Radical Bomber!! Jirai-kun is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Radical Bomber!! Jirai-kun is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Jaleco"
     ],
@@ -47035,14 +46812,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Radical Bomber!! Jirai-kun",
     "year": "1988"
@@ -47051,7 +46827,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "raid-2020",
     "isRomhack": false,
     "moods": [
@@ -47086,7 +46862,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "February 22, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "raid-on-bungeling-bay",
     "isRomhack": false,
     "moods": [
@@ -47118,7 +46894,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "raid-tu-ji",
     "isRomhack": false,
     "moods": [
@@ -47153,7 +46929,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 26, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rainbow-islands",
     "isRomhack": false,
     "moods": [
@@ -47187,7 +46963,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rainbow-islands-bubble-bobble-2",
     "isRomhack": false,
     "moods": [
@@ -47221,7 +46997,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 15, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rally-bike",
     "isRomhack": false,
     "moods": [
@@ -47255,7 +47031,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 4, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rambo",
     "isRomhack": false,
     "moods": [
@@ -47289,7 +47065,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rampage",
     "isRomhack": false,
     "moods": [
@@ -47323,7 +47099,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 29, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rampart",
     "isRomhack": false,
     "moods": [
@@ -47357,7 +47133,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rampart-licensed-jaleco",
     "isRomhack": false,
     "moods": [
@@ -47391,17 +47167,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 2, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "reflect-world",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Reflect World is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Reflect World is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "East Cube"
     ],
@@ -47409,14 +47185,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Reflect World",
     "year": "1987"
@@ -47427,17 +47202,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 10, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "relics-ankoku-yosai",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Relics: Ankoku Yōsai is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Relics: Ankoku Yōsai is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Bothtec"
     ],
@@ -47445,14 +47220,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Relics: Ankoku Yōsai",
     "year": "1987"
@@ -47463,7 +47237,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "remote-control",
     "isRomhack": false,
     "moods": [
@@ -47497,7 +47271,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 17, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "renegade",
     "isRomhack": false,
     "moods": [
@@ -47531,17 +47305,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 26, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "replicart",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Replicart is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Replicart is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Taito"
     ],
@@ -47549,14 +47323,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Replicart",
     "year": "1988"
@@ -47567,7 +47340,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rescue-the-embassy-mission",
     "isRomhack": false,
     "moods": [
@@ -47603,7 +47376,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 19, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ring-king",
     "isRomhack": false,
     "moods": [
@@ -47638,7 +47411,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 23, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ripple-island",
     "isRomhack": false,
     "moods": [
@@ -47672,7 +47445,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 21, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "risa-no-yosei-densetsu",
     "isRomhack": false,
     "moods": [
@@ -47680,7 +47453,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Risa no Yōsei Densetsu is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Risa no Yōsei Densetsu is a Famicom Disk System release from 1988, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -47693,11 +47466,10 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Risa no Yōsei Densetsu",
     "year": "1988"
@@ -47708,7 +47480,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "April 25, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "river-city-ransom",
     "isRomhack": false,
     "moods": [
@@ -47743,7 +47515,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 11, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "road-fighter",
     "isRomhack": false,
     "moods": [
@@ -47775,7 +47547,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "road-runner",
     "isRomhack": false,
     "moods": [
@@ -47808,31 +47580,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "road-runner-x",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Road Runner X is an unlicensed NES-era release from 1991, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Road Runner X is an unlicensed NES-era release from 1991, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Daou Infosys"
     ],
     "regions": [
       "South Korea"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "South Korea exclusive",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Road Runner X",
@@ -47844,7 +47615,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "roadblasters",
     "isRomhack": false,
     "moods": [
@@ -47878,7 +47649,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "robin-hood-prince-of-thieves",
     "isRomhack": false,
     "moods": [
@@ -47913,7 +47684,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 2, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "robocco-wars",
     "isRomhack": false,
     "moods": [
@@ -47947,7 +47718,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 25, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "robocop",
     "isRomhack": false,
     "moods": [
@@ -47983,7 +47754,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 2, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "robocop-2",
     "isRomhack": false,
     "moods": [
@@ -48020,7 +47791,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "robocop-3",
     "isRomhack": false,
     "moods": [
@@ -48053,7 +47824,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "robodemons",
     "isRomhack": false,
     "moods": [
@@ -48089,7 +47860,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "August 7, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "robowarrior",
     "isRomhack": false,
     "moods": [
@@ -48124,7 +47895,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 24, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rock-n-ball",
     "isRomhack": false,
     "moods": [
@@ -48157,7 +47928,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rockball",
     "isRomhack": false,
     "moods": [
@@ -48190,7 +47961,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rockball-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -48225,7 +47996,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rocket-ranger",
     "isRomhack": false,
     "moods": [
@@ -48259,7 +48030,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 5, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rockin-kats",
     "isRomhack": false,
     "moods": [
@@ -48292,7 +48063,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rocman-x",
     "isRomhack": false,
     "moods": [
@@ -48325,7 +48096,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rocman-x-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -48360,7 +48131,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 11, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rod-land",
     "isRomhack": false,
     "moods": [
@@ -48395,7 +48166,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "roger-clemens-mvp-baseball",
     "isRomhack": false,
     "moods": [
@@ -48430,17 +48201,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 16, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "roger-rabbit",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Roger Rabbit is a Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Roger Rabbit is a Famicom Disk System release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Kemco"
     ],
@@ -48448,14 +48219,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Roger Rabbit",
     "year": "1989"
@@ -48466,7 +48236,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 29, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rokudenashi-blues",
     "isRomhack": false,
     "moods": [
@@ -48500,7 +48270,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 20, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rollerball",
     "isRomhack": false,
     "moods": [
@@ -48535,7 +48305,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rollerblade-racer",
     "isRomhack": false,
     "moods": [
@@ -48570,7 +48340,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rollergames",
     "isRomhack": false,
     "moods": [
@@ -48604,31 +48374,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 17, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rolling-thunder",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Rolling Thunder is a Famicom release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Rolling Thunder is a Famicom release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Namco"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Rolling Thunder",
     "year": "1989"
@@ -48637,7 +48406,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rolling-thunder-unlicensed-nes-lifespan-tengen",
     "isRomhack": false,
     "moods": [
@@ -48672,7 +48441,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 30, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "romance-of-the-three-kingdoms",
     "isRomhack": false,
     "moods": [
@@ -48706,7 +48475,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 2, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "romance-of-the-three-kingdoms-ii",
     "isRomhack": false,
     "moods": [
@@ -48740,7 +48509,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 30, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "romancia",
     "isRomhack": false,
     "moods": [
@@ -48774,7 +48543,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "roundball-2-on-2-challenge",
     "isRomhack": false,
     "moods": [
@@ -48808,7 +48577,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 4, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "route-16-turbo",
     "isRomhack": false,
     "moods": [
@@ -48842,7 +48611,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "November 26, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rpg-jinsei-game",
     "isRomhack": false,
     "moods": [
@@ -48876,7 +48645,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rush-n-attack",
     "isRomhack": false,
     "moods": [
@@ -48910,7 +48679,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 17, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "rygar",
     "isRomhack": false,
     "moods": [
@@ -48945,7 +48714,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "June 22, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "s-c-a-t-special-cybernetic-attack-team",
     "isRomhack": false,
     "moods": [
@@ -48978,17 +48747,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989-99-991989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sailor-fuku-bishojo-zukan-vol-1",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Sailor Fuku Bishōjo Zukan Vol.1 is an unlicensed Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Sailor Fuku Bishōjo Zukan Vol.1 is an unlicensed Famicom Disk System release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Mimi"
     ],
@@ -48997,14 +48766,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Sailor Fuku Bishōjo Zukan Vol.1",
@@ -49014,17 +48782,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989-99-991989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sailor-fuku-bishojo-zukan-vol-2",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Sailor Fuku Bishōjo Zukan Vol.2 is an unlicensed Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Sailor Fuku Bishōjo Zukan Vol.2 is an unlicensed Famicom Disk System release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Mimi"
     ],
@@ -49033,14 +48801,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Sailor Fuku Bishōjo Zukan Vol.2",
@@ -49050,17 +48817,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989-99-991989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sailor-fuku-bishojo-zukan-vol-3",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Sailor Fuku Bishōjo Zukan Vol.3 is an unlicensed Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Sailor Fuku Bishōjo Zukan Vol.3 is an unlicensed Famicom Disk System release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Mimi"
     ],
@@ -49069,14 +48836,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Sailor Fuku Bishōjo Zukan Vol.3",
@@ -49086,17 +48852,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989-99-991989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sailor-fuku-bishojo-zukan-vol-4",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Sailor Fuku Bishōjo Zukan Vol.4 is an unlicensed Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Sailor Fuku Bishōjo Zukan Vol.4 is an unlicensed Famicom Disk System release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Mimi"
     ],
@@ -49105,14 +48871,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Sailor Fuku Bishōjo Zukan Vol.4",
@@ -49122,17 +48887,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989-99-991989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sailor-fuku-bishojo-zukan-vol-5",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Sailor Fuku Bishōjo Zukan Vol.5 is an unlicensed Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Sailor Fuku Bishōjo Zukan Vol.5 is an unlicensed Famicom Disk System release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Mimi"
     ],
@@ -49141,14 +48906,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Sailor Fuku Bishōjo Zukan Vol.5",
@@ -49158,17 +48922,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989-99-991989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sailor-fuku-bishojo-zukan-vol-6",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Sailor Fuku Bishōjo Zukan Vol.6 is an unlicensed Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Sailor Fuku Bishōjo Zukan Vol.6 is an unlicensed Famicom Disk System release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Mimi"
     ],
@@ -49177,14 +48941,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Sailor Fuku Bishōjo Zukan Vol.6",
@@ -49196,7 +48959,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 10, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "saint-seiya-ogon-densetsu",
     "isRomhack": false,
     "moods": [
@@ -49230,7 +48993,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 30, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "saint-seiya-ogon-densetsu-kanketsu-hen",
     "isRomhack": false,
     "moods": [
@@ -49264,7 +49027,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 11, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "saiyuki-world",
     "isRomhack": false,
     "moods": [
@@ -49298,7 +49061,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 3, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sakigake-otokojuku",
     "isRomhack": false,
     "moods": [
@@ -49330,7 +49093,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "samurai-spirits",
     "isRomhack": false,
     "moods": [
@@ -49365,17 +49128,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 15, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "samurai-sword",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Samurai Sword is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Samurai Sword is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Capcom"
     ],
@@ -49383,14 +49146,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Samurai Sword",
     "year": "1988"
@@ -49401,7 +49163,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 27, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sanada-juyushi",
     "isRomhack": false,
     "moods": [
@@ -49435,7 +49197,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 10, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sangokushi-ii-hao-no-tairiku",
     "isRomhack": false,
     "moods": [
@@ -49469,7 +49231,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 29, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sangokushi-chugen-no-hasha",
     "isRomhack": false,
     "moods": [
@@ -49503,7 +49265,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 2, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sanma-no-meitantei",
     "isRomhack": false,
     "moods": [
@@ -49537,7 +49299,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 22, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sanrio-carnival",
     "isRomhack": false,
     "moods": [
@@ -49571,7 +49333,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 14, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sanrio-carnival-2",
     "isRomhack": false,
     "moods": [
@@ -49605,7 +49367,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 17, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sanrio-cup-pon-pon-volley",
     "isRomhack": false,
     "moods": [
@@ -49639,7 +49401,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 23, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sansara-naga",
     "isRomhack": false,
     "moods": [
@@ -49673,7 +49435,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 25, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sansu-1-nen-keisan-game",
     "isRomhack": false,
     "moods": [
@@ -49707,7 +49469,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 25, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sansu-2-nen-keisan-game",
     "isRomhack": false,
     "moods": [
@@ -49741,7 +49503,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 25, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sansu-3-nen-keisan-game",
     "isRomhack": false,
     "moods": [
@@ -49775,7 +49537,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 30, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sansu-4-nen-keisan-game",
     "isRomhack": false,
     "moods": [
@@ -49809,7 +49571,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 30, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sansu-5-6-nen-keisan-game",
     "isRomhack": false,
     "moods": [
@@ -49843,17 +49605,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 4, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "santa-claus-no-takarabako",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Santa Claus no Takarabako is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Santa Claus no Takarabako is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Data East"
     ],
@@ -49861,14 +49623,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Santa Claus no Takarabako",
     "year": "1987"
@@ -49879,7 +49640,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 20, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "satomi-hakkenden",
     "isRomhack": false,
     "moods": [
@@ -49913,7 +49674,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 7, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "satsui-no-kaiso-soft-house-renzoku-satsujin-jiken",
     "isRomhack": false,
     "moods": [
@@ -49947,7 +49708,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 20, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sd-battle-ozumo-heisei-hero-basho",
     "isRomhack": false,
     "moods": [
@@ -49981,7 +49742,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 11, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sd-gundam-gaiden-knight-gundam-monogatari",
     "isRomhack": false,
     "moods": [
@@ -50016,7 +49777,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "October 12, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sd-gundam-gaiden-knight-gundam-monogatari-2-hikari-no-kishi",
     "isRomhack": false,
     "moods": [
@@ -50051,7 +49812,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 23, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sd-gundam-gaiden-knight-gundam-monogatari-3-densetsu-no-kishi-dan",
     "isRomhack": false,
     "moods": [
@@ -50086,7 +49847,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 22, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sd-gundam-world-gachapon-senshi-3-eiyuu-senki",
     "isRomhack": false,
     "moods": [
@@ -50121,7 +49882,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 21, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sd-gundam-world-gachapon-senshi-4-new-type-story",
     "isRomhack": false,
     "moods": [
@@ -50156,17 +49917,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 20, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sd-gundam-world-gachapon-senshi-scramble-wars",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "SD Gundam World: Gachapon Senshi - Scramble Wars is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "SD Gundam World: Gachapon Senshi - Scramble Wars is a Famicom Disk System release from 1987, tagged as balanced, lightly narrative, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Bandai"
     ],
@@ -50177,11 +49938,10 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "shooter"
     ],
     "title": "SD Gundam World: Gachapon Senshi - Scramble Wars",
@@ -50193,17 +49953,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 3, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sd-gundam-world-gachapon-senshi-scramble-wars-map-collection",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "SD Gundam World: Gachapon Senshi - Scramble Wars Map Collection is a Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "SD Gundam World: Gachapon Senshi - Scramble Wars Map Collection is a Famicom Disk System release from 1989, tagged as balanced, lightly narrative, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Bandai"
     ],
@@ -50214,11 +49974,10 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "shooter"
     ],
     "title": "SD Gundam World: Gachapon Senshi - Scramble Wars Map Collection",
@@ -50230,7 +49989,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 25, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sd-gundam-world-gachapon-senshi-2-capsule-senki",
     "isRomhack": false,
     "moods": [
@@ -50265,7 +50024,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 22, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sd-gundam-world-gachapon-senshi-5-battle-of-universal-century",
     "isRomhack": false,
     "moods": [
@@ -50300,7 +50059,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 23, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sd-gundam-gundam-wars",
     "isRomhack": false,
     "moods": [
@@ -50336,7 +50095,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 7, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sd-hero-sokessen-taose-aku-no-gundan",
     "isRomhack": false,
     "moods": [
@@ -50371,7 +50130,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 2, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sd-keiji-blader",
     "isRomhack": false,
     "moods": [
@@ -50405,31 +50164,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 8, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sd-sengoku-busho-retsuden-rekka-no-gotoku-tenka-o-nusure",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "SD Sengoku Bushō Retsuden: Rekka no Gotoku Tenka o Nusure! is a Famicom release from 1990, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "SD Sengoku Bushō Retsuden: Rekka no Gotoku Tenka o Nusure! is a Famicom release from 1990, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Banpresto"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "SD Sengoku Bushō Retsuden: Rekka no Gotoku Tenka o Nusure!",
     "year": "1990"
@@ -50438,7 +50196,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "secret-scout-in-the-temple-of-demise",
     "isRomhack": false,
     "moods": [
@@ -50473,7 +50231,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "section-z",
     "isRomhack": false,
     "moods": [
@@ -50507,7 +50265,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 25, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "section-z-famicom-disk-system-capcom",
     "isRomhack": false,
     "moods": [
@@ -50515,9 +50273,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Section Z is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Section Z is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Capcom"
     ],
@@ -50525,14 +50283,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Section Z",
     "year": "1987"
@@ -50543,7 +50300,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 15, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "seicross",
     "isRomhack": false,
     "moods": [
@@ -50577,17 +50334,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 19, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "seiken-psycho-caliber-maju-no-mori-densetsu",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Seiken Psycho Caliber: Majū no Mori Densetsu is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Seiken Psycho Caliber: Majū no Mori Densetsu is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Imagineer"
     ],
@@ -50595,14 +50352,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Seiken Psycho Caliber: Majū no Mori Densetsu",
     "year": "1987"
@@ -50613,7 +50369,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 25, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "seikima-ii-akuma-no-gyakushu",
     "isRomhack": false,
     "moods": [
@@ -50647,7 +50403,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 8, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "seirei-gari",
     "isRomhack": false,
     "moods": [
@@ -50681,7 +50437,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 26, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "seiryaku-simulation-inbo-no-wakusei-shancara",
     "isRomhack": false,
     "moods": [
@@ -50715,7 +50471,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 10, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sekiryuo",
     "isRomhack": false,
     "moods": [
@@ -50749,7 +50505,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "January 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sesame-street-1-2-3",
     "isRomhack": false,
     "moods": [
@@ -50784,7 +50540,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "September 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sesame-street-a-b-c",
     "isRomhack": false,
     "moods": [
@@ -50819,7 +50575,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "November 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sesame-street-a-b-c-and-1-2-3",
     "isRomhack": false,
     "moods": [
@@ -50855,7 +50611,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "October 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sesame-street-big-bird-s-hide-and-speak",
     "isRomhack": false,
     "moods": [
@@ -50890,7 +50646,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "February 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sesame-street-countdown",
     "isRomhack": false,
     "moods": [
@@ -50923,17 +50679,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sexy-invaders",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Sexy Invaders is an unlicensed Famicom Disk System release from 1990, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Sexy Invaders is an unlicensed Famicom Disk System release from 1990, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Super PIG"
     ],
@@ -50942,14 +50698,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Sexy Invaders",
@@ -50961,7 +50716,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 21, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shadow-brain",
     "isRomhack": false,
     "moods": [
@@ -50995,7 +50750,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "August 10, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shadow-of-the-ninja",
     "isRomhack": false,
     "moods": [
@@ -51030,7 +50785,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 31, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shadowgate",
     "isRomhack": false,
     "moods": [
@@ -51065,7 +50820,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 4, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shanghai",
     "isRomhack": false,
     "moods": [
@@ -51099,7 +50854,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "August 24, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shanghai-ii",
     "isRomhack": false,
     "moods": [
@@ -51133,7 +50888,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "October 26, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shatterhand",
     "isRomhack": false,
     "moods": [
@@ -51167,7 +50922,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2005",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shen-qi-de-mao-zi",
     "isRomhack": false,
     "moods": [
@@ -51202,7 +50957,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 11, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sherlock-holmes-hakushaku-reijo-yukai-jiken",
     "isRomhack": false,
     "moods": [
@@ -51236,7 +50991,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 26, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shi-kin-jyo",
     "isRomhack": false,
     "moods": [
@@ -51270,7 +51025,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "June 28, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shin-4-nin-uchi-mahjong-yakuman-tengoku",
     "isRomhack": false,
     "moods": [
@@ -51305,7 +51060,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 13, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shin-moero-pro-yakyu",
     "isRomhack": false,
     "moods": [
@@ -51337,7 +51092,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1996 June",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shin-samurai-spirits-2",
     "isRomhack": false,
     "moods": [
@@ -51372,7 +51127,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "December 8, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shin-satomi-hakkenden-hikari-to-yami-no-tatakai",
     "isRomhack": false,
     "moods": [
@@ -51407,7 +51162,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 21, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shingen-the-rulertakeda-shingen-2",
     "isRomhack": false,
     "moods": [
@@ -51439,7 +51194,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shinobi",
     "isRomhack": false,
     "moods": [
@@ -51474,7 +51229,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 15, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shinsenden",
     "isRomhack": false,
     "moods": [
@@ -51506,7 +51261,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shockwave",
     "isRomhack": false,
     "moods": [
@@ -51541,7 +51296,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 30, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shogi-meikan-92",
     "isRomhack": false,
     "moods": [
@@ -51575,7 +51330,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 4, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shogi-meikan-93",
     "isRomhack": false,
     "moods": [
@@ -51609,7 +51364,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 27, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shogun",
     "isRomhack": false,
     "moods": [
@@ -51644,7 +51399,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 15, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shonen-ashibe-nepal-daiboken-no-maki",
     "isRomhack": false,
     "moods": [
@@ -51678,7 +51433,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shooting-range",
     "isRomhack": false,
     "moods": [
@@ -51713,7 +51468,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "short-order-eggsplode",
     "isRomhack": false,
     "moods": [
@@ -51747,7 +51502,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 24, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shoukoushi-ceddie",
     "isRomhack": false,
     "moods": [
@@ -51781,7 +51536,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 9, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shuffle-fight",
     "isRomhack": false,
     "moods": [
@@ -51815,7 +51570,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 21, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "shufflepuck-cafe",
     "isRomhack": false,
     "moods": [
@@ -51823,7 +51578,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Shufflepuck Café is a Famicom release from 1990, tagged as balanced, story-forward, and top down-leaning for the recommender.",
+    "pitch": "Shufflepuck Café is a Famicom release from 1990, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "top-down",
     "publisher": [
@@ -51832,14 +51587,13 @@ export const generatedNesGames: NesCatalogGame[] = [
     "regions": [
       "JP"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Shufflepuck Café",
     "year": "1990"
@@ -51850,7 +51604,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 30, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "side-pocket",
     "isRomhack": false,
     "moods": [
@@ -51883,7 +51637,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sidewinder",
     "isRomhack": false,
     "moods": [
@@ -51916,7 +51670,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sidewinder-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -51949,7 +51703,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "silent-assault",
     "isRomhack": false,
     "moods": [
@@ -51984,7 +51738,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "silent-service",
     "isRomhack": false,
     "moods": [
@@ -52019,7 +51773,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "silk-worm",
     "isRomhack": false,
     "moods": [
@@ -52053,7 +51807,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 24, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "silva-saga",
     "isRomhack": false,
     "moods": [
@@ -52085,7 +51839,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "silver-eagle",
     "isRomhack": false,
     "moods": [
@@ -52118,7 +51872,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "silver-eagle-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -52153,31 +51907,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "November 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "silver-surfer",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Silver Surfer is an NES release from 1990, tagged as demanding, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Silver Surfer is an NES release from 1990, tagged as demanding, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Arcadia Systems"
     ],
     "regions": [
       "NA"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "NA exclusive",
-      "adventure",
-      "rpg"
+      "overhead"
     ],
     "title": "Silver Surfer",
     "year": "1990"
@@ -52188,7 +51941,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "skate-or-die-2-the-search-for-double-trouble",
     "isRomhack": false,
     "moods": [
@@ -52222,7 +51975,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "skate-or-die",
     "isRomhack": false,
     "moods": [
@@ -52257,7 +52010,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ski-or-die",
     "isRomhack": false,
     "moods": [
@@ -52290,7 +52043,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "skull-and-crossbones",
     "isRomhack": false,
     "moods": [
@@ -52325,7 +52078,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 14, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sky-destroyer",
     "isRomhack": false,
     "moods": [
@@ -52359,7 +52112,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 22, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sky-kid",
     "isRomhack": false,
     "moods": [
@@ -52393,7 +52146,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sky-shark",
     "isRomhack": false,
     "moods": [
@@ -52427,7 +52180,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "slalom",
     "isRomhack": false,
     "moods": [
@@ -52461,7 +52214,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 30, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "smash-ping-pong",
     "isRomhack": false,
     "moods": [
@@ -52469,7 +52222,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Smash Ping Pong is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and top down-leaning for the recommender.",
+    "pitch": "Smash Ping Pong is a Famicom Disk System release from 1987, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "top-down",
     "publisher": [
@@ -52479,14 +52232,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Smash Ping Pong",
     "year": "1987"
@@ -52497,7 +52249,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "smash-tv",
     "isRomhack": false,
     "moods": [
@@ -52531,7 +52283,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "snake-rattle-n-roll",
     "isRomhack": false,
     "moods": [
@@ -52565,7 +52317,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "snake-s-revenge",
     "isRomhack": false,
     "moods": [
@@ -52597,7 +52349,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2017",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "snakky",
     "isRomhack": false,
     "moods": [
@@ -52632,7 +52384,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 22, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "snoopy-s-silly-sports-spectacular",
     "isRomhack": false,
     "moods": [
@@ -52666,7 +52418,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "snow-brothers",
     "isRomhack": false,
     "moods": [
@@ -52700,7 +52452,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "soap-panic",
     "isRomhack": false,
     "moods": [
@@ -52735,17 +52487,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 9, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "soccer",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Soccer is an NES release from 1985, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Soccer is an NES release from 1985, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Nintendo"
     ],
@@ -52754,13 +52506,12 @@ export const generatedNesGames: NesCatalogGame[] = [
       "NA",
       "PAL"
     ],
-    "signalScore": 2,
+    "signalScore": 1,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "rpg",
+      "overhead",
       "sports"
     ],
     "title": "Soccer",
@@ -52772,17 +52523,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 21, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "soccer-famicom-disk-system-nintendo",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Soccer is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Soccer is a Famicom Disk System release from 1986, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Nintendo"
     ],
@@ -52790,14 +52541,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "sports"
     ],
     "title": "Soccer",
@@ -52809,7 +52559,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 12, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "soccer-league-winners-cup",
     "isRomhack": false,
     "moods": [
@@ -52845,7 +52595,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "solar-jetman-hunt-for-the-golden-warpship",
     "isRomhack": false,
     "moods": [
@@ -52878,7 +52628,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "solitaire",
     "isRomhack": false,
     "moods": [
@@ -52914,7 +52664,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "January 25, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "solomon-no-kagi",
     "isRomhack": false,
     "moods": [
@@ -52922,7 +52672,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Solomon no Kagi is a Famicom Disk System release from 1991, tagged as approachable, story-forward, and puzzle-leaning for the recommender.",
+    "pitch": "Solomon no Kagi is a Famicom Disk System release from 1991, tagged as approachable, play-first, and puzzle-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "puzzle",
     "publisher": [
@@ -52932,14 +52682,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Solomon no Kagi",
     "year": "1991"
@@ -52950,7 +52699,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "July 30, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "solomon-s-key",
     "isRomhack": false,
     "moods": [
@@ -52985,7 +52734,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "January 24, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "solomon-s-key-2",
     "isRomhack": false,
     "moods": [
@@ -53020,7 +52769,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "July 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "solstice",
     "isRomhack": false,
     "moods": [
@@ -53055,7 +52804,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "somari",
     "isRomhack": false,
     "moods": [
@@ -53088,7 +52837,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1994 March 1",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "somari-unlicensed-famicom-ge-de-industry-co",
     "isRomhack": false,
     "moods": [
@@ -53123,7 +52872,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "February 8, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sonson",
     "isRomhack": false,
     "moods": [
@@ -53157,7 +52906,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 20, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "soreike-anpanman-minna-de-hiking-game",
     "isRomhack": false,
     "moods": [
@@ -53191,7 +52940,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 6, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "space-harrier",
     "isRomhack": false,
     "moods": [
@@ -53225,7 +52974,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 25, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "space-hunter",
     "isRomhack": false,
     "moods": [
@@ -53259,7 +53008,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 17, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "space-invaders",
     "isRomhack": false,
     "moods": [
@@ -53291,7 +53040,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "February 20, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "space-shadow",
     "isRomhack": false,
     "moods": [
@@ -53325,7 +53074,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "space-shuttle-project",
     "isRomhack": false,
     "moods": [
@@ -53359,7 +53108,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "September 27, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "spartan-x-2",
     "isRomhack": false,
     "moods": [
@@ -53393,7 +53142,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 7, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "spelunker",
     "isRomhack": false,
     "moods": [
@@ -53428,7 +53177,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 18, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "spelunker-ii-yuja-e-no-chosen",
     "isRomhack": false,
     "moods": [
@@ -53462,7 +53211,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "spider-man-return-of-the-sinister-six",
     "isRomhack": false,
     "moods": [
@@ -53494,7 +53243,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "spiritual-warfare",
     "isRomhack": false,
     "moods": [
@@ -53529,7 +53278,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 31, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "splatterhouse-wanpaku-graffiti",
     "isRomhack": false,
     "moods": [
@@ -53563,7 +53312,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "spot-the-video-game",
     "isRomhack": false,
     "moods": [
@@ -53571,7 +53320,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Spot: The Video Game is an NES release from 1990, tagged as balanced, story-forward, and top down-leaning for the recommender.",
+    "pitch": "Spot: The Video Game is an NES release from 1990, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "top-down",
     "publisher": [
@@ -53582,13 +53331,12 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "NA"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "rpg"
+      "overhead"
     ],
     "title": "Spot: The Video Game",
     "year": "1990"
@@ -53599,7 +53347,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "spy-hunter",
     "isRomhack": false,
     "moods": [
@@ -53633,7 +53381,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 26, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "spy-vs-spy",
     "isRomhack": false,
     "moods": [
@@ -53668,7 +53416,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "June 26, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sqoon",
     "isRomhack": false,
     "moods": [
@@ -53702,7 +53450,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 30, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "square-no-tom-sawyer",
     "isRomhack": false,
     "moods": [
@@ -53737,17 +53485,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 26, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "stack-up",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Stack-Up is an NES release from 1985, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Stack-Up is an NES release from 1985, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -53756,13 +53504,12 @@ export const generatedNesGames: NesCatalogGame[] = [
       "NA",
       "PAL"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Stack-Up",
     "year": "1985"
@@ -53773,7 +53520,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 23, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "stadium-events",
     "isRomhack": false,
     "moods": [
@@ -53809,7 +53556,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "stanley-the-search-for-dr-livingston",
     "isRomhack": false,
     "moods": [
@@ -53843,7 +53590,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 25, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "star-force",
     "isRomhack": false,
     "moods": [
@@ -53878,7 +53625,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "star-force-licensed-tecmo",
     "isRomhack": false,
     "moods": [
@@ -53913,7 +53660,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 6, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "star-luster",
     "isRomhack": false,
     "moods": [
@@ -53947,7 +53694,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 13, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "star-soldier",
     "isRomhack": false,
     "moods": [
@@ -53981,7 +53728,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "star-trek-25th-anniversary",
     "isRomhack": false,
     "moods": [
@@ -54016,7 +53763,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "star-trek-the-next-generation",
     "isRomhack": false,
     "moods": [
@@ -54050,7 +53797,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 23, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "star-voyager",
     "isRomhack": false,
     "moods": [
@@ -54084,7 +53831,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 4, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "star-wars",
     "isRomhack": false,
     "moods": [
@@ -54120,7 +53867,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 15, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "star-wars-licensed-victor-musical-industries-jvc-musical-industries",
     "isRomhack": false,
     "moods": [
@@ -54158,7 +53905,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "star-wars-the-empire-strikes-back",
     "isRomhack": false,
     "moods": [
@@ -54195,7 +53942,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 16, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "starship-hector",
     "isRomhack": false,
     "moods": [
@@ -54229,7 +53976,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 26, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "startropics",
     "isRomhack": false,
     "moods": [
@@ -54263,7 +54010,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "stealth-atf",
     "isRomhack": false,
     "moods": [
@@ -54298,7 +54045,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 27, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sted-iseki-wakusei-no-yabo",
     "isRomhack": false,
     "moods": [
@@ -54332,7 +54079,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 18, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "stick-hunter-exciting-ice-hockey",
     "isRomhack": false,
     "moods": [
@@ -54367,7 +54114,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "stinger",
     "isRomhack": false,
     "moods": [
@@ -54399,7 +54146,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "strategist",
     "isRomhack": false,
     "moods": [
@@ -54432,7 +54179,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "strategist-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -54467,7 +54214,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 31, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "street-cop",
     "isRomhack": false,
     "moods": [
@@ -54501,7 +54248,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 8, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "street-fighter-2010-the-final-fight",
     "isRomhack": false,
     "moods": [
@@ -54533,7 +54280,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "street-fighter-ii-pro",
     "isRomhack": false,
     "moods": [
@@ -54566,7 +54313,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "street-fighter-ii-the-world-warrior",
     "isRomhack": false,
     "moods": [
@@ -54599,7 +54346,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "street-heroes",
     "isRomhack": false,
     "moods": [
@@ -54632,7 +54379,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "street-heroes-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -54667,7 +54414,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "strider",
     "isRomhack": false,
     "moods": [
@@ -54699,7 +54446,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "stunt-kids",
     "isRomhack": false,
     "moods": [
@@ -54734,7 +54481,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "June 28, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sugoro-quest-dice-no-senshi-tachi",
     "isRomhack": false,
     "moods": [
@@ -54768,7 +54515,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 15, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "suisho-no-dragon",
     "isRomhack": false,
     "moods": [
@@ -54776,7 +54523,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "ominous"
     ],
     "obscurity": "strange",
-    "pitch": "Suishō no Dragon is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Suishō no Dragon is a Famicom Disk System release from 1986, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -54789,11 +54536,10 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Suishō no Dragon",
     "year": "1986"
@@ -54804,31 +54550,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 22, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sukeban-deka-iii",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Sukeban Deka III is a Famicom release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Sukeban Deka III is a Famicom release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Toei Animation"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Sukeban Deka III",
     "year": "1988"
@@ -54839,7 +54584,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 17, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "summer-carnival-92-recca",
     "isRomhack": false,
     "moods": [
@@ -54871,7 +54616,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sunday-funday",
     "isRomhack": false,
     "moods": [
@@ -54904,7 +54649,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "Unknown",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-aladdin",
     "isRomhack": false,
     "moods": [
@@ -54939,7 +54684,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 25, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-arabian",
     "isRomhack": false,
     "moods": [
@@ -54973,7 +54718,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 14, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-black-onyx",
     "isRomhack": false,
     "moods": [
@@ -55007,17 +54752,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "March 27, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-boy-allan",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Super Boy Allan is a Famicom Disk System release from 1987, tagged as approachable, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Super Boy Allan is a Famicom Disk System release from 1987, tagged as approachable, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Sunsoft"
     ],
@@ -55025,14 +54770,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Super Boy Allan",
     "year": "1987"
@@ -55043,7 +54787,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 2, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-c",
     "isRomhack": false,
     "moods": [
@@ -55078,7 +54822,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-cars",
     "isRomhack": false,
     "moods": [
@@ -55112,7 +54856,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-chinese-3",
     "isRomhack": false,
     "moods": [
@@ -55144,7 +54888,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "difficult",
     "firstReleased": "1996",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-contra-7",
     "isRomhack": false,
     "moods": [
@@ -55177,7 +54921,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "difficult",
     "firstReleased": "1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-contra-x",
     "isRomhack": false,
     "moods": [
@@ -55212,7 +54956,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 26, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-dodge-ball",
     "isRomhack": false,
     "moods": [
@@ -55244,7 +54988,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1997",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-donkey-kong",
     "isRomhack": false,
     "moods": [
@@ -55278,7 +55022,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-donkey-kong-xiang-jiao-chuan",
     "isRomhack": false,
     "moods": [
@@ -55314,7 +55058,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 26, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-dyna-mix-badminton",
     "isRomhack": false,
     "moods": [
@@ -55348,7 +55092,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-glove-ball",
     "isRomhack": false,
     "moods": [
@@ -55382,7 +55126,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "September 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-jeopardy",
     "isRomhack": false,
     "moods": [
@@ -55414,7 +55158,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "Unknown",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-lion-king",
     "isRomhack": false,
     "moods": [
@@ -55449,17 +55193,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 5, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-lode-runner",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Super Lode Runner is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Super Lode Runner is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Irem"
     ],
@@ -55467,14 +55211,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Super Lode Runner",
     "year": "1987"
@@ -55485,17 +55228,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 25, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-lode-runner-ii",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Super Lode Runner II is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Super Lode Runner II is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Irem"
     ],
@@ -55503,14 +55246,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Super Lode Runner II",
     "year": "1987"
@@ -55521,7 +55263,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 13, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-mario-bros",
     "isRomhack": false,
     "moods": [
@@ -55556,7 +55298,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 21, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-mario-bros-famicom-disk-system-nintendo",
     "isRomhack": false,
     "moods": [
@@ -55564,7 +55306,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "classic",
-    "pitch": "Super Mario Bros. is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "Super Mario Bros. is a Famicom Disk System release from 1986, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -55574,14 +55316,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "platformer"
     ],
     "title": "Super Mario Bros.",
     "year": "1986"
@@ -55592,7 +55333,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-mario-bros-2",
     "isRomhack": false,
     "moods": [
@@ -55627,7 +55368,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 3, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-mario-bros-2-famicom-disk-system-nintendo",
     "isRomhack": false,
     "moods": [
@@ -55635,7 +55376,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "classic",
-    "pitch": "Super Mario Bros. 2 is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "Super Mario Bros. 2 is a Famicom Disk System release from 1986, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -55645,14 +55386,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "platformer"
     ],
     "title": "Super Mario Bros. 2",
     "year": "1986"
@@ -55663,7 +55403,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 23, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-mario-bros-3",
     "isRomhack": false,
     "moods": [
@@ -55696,7 +55436,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-mario-world",
     "isRomhack": false,
     "moods": [
@@ -55729,7 +55469,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-mario-world-unlicensed-famicom-j-y-company",
     "isRomhack": false,
     "moods": [
@@ -55762,7 +55502,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1986?",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-maruo",
     "isRomhack": false,
     "moods": [
@@ -55797,7 +55537,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 8, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-mogura-tataki-pokkun-mogura",
     "isRomhack": false,
     "moods": [
@@ -55831,7 +55571,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 20, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-momotaro-dentetsu",
     "isRomhack": false,
     "moods": [
@@ -55863,7 +55603,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-pang",
     "isRomhack": false,
     "moods": [
@@ -55896,7 +55636,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-pang-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -55929,7 +55669,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-pang-ii",
     "isRomhack": false,
     "moods": [
@@ -55962,7 +55702,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-pang-ii-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -55997,7 +55737,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "August 23, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-pinball",
     "isRomhack": false,
     "moods": [
@@ -56031,7 +55771,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 5, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-pitfall",
     "isRomhack": false,
     "moods": [
@@ -56066,7 +55806,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 30, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-real-baseball-88",
     "isRomhack": false,
     "moods": [
@@ -56101,7 +55841,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 27, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-rugby",
     "isRomhack": false,
     "moods": [
@@ -56133,7 +55873,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2017",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-russian-roulette",
     "isRomhack": false,
     "moods": [
@@ -56166,7 +55906,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "difficult",
     "firstReleased": "1997",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-shinobi",
     "isRomhack": false,
     "moods": [
@@ -56201,7 +55941,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 10, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-spike-v-ball",
     "isRomhack": false,
     "moods": [
@@ -56236,7 +55976,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 3, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-sprint",
     "isRomhack": false,
     "moods": [
@@ -56268,7 +56008,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-sprint-unlicensed-nes-lifespan-tengen",
     "isRomhack": false,
     "moods": [
@@ -56303,7 +56043,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 27, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-spy-hunter",
     "isRomhack": false,
     "moods": [
@@ -56338,7 +56078,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "November 11, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-star-force-jikureki-no-himitsu",
     "isRomhack": false,
     "moods": [
@@ -56373,7 +56113,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 27, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-team-games",
     "isRomhack": false,
     "moods": [
@@ -56408,7 +56148,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-turrican",
     "isRomhack": false,
     "moods": [
@@ -56443,7 +56183,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 19, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "super-xevious-gamp-no-nazo",
     "isRomhack": false,
     "moods": [
@@ -56477,7 +56217,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 26, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "superman",
     "isRomhack": false,
     "moods": [
@@ -56512,7 +56252,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "swamp-thing",
     "isRomhack": false,
     "moods": [
@@ -56546,31 +56286,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 11, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "swat-special-weapons-and-tactics",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "SWAT: Special Weapons and Tactics is a Famicom release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "SWAT: Special Weapons and Tactics is a Famicom release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Toei Animation"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "SWAT: Special Weapons and Tactics",
     "year": "1987"
@@ -56581,7 +56320,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 15, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sweet-home",
     "isRomhack": false,
     "moods": [
@@ -56615,7 +56354,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "December 21, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sword-master",
     "isRomhack": false,
     "moods": [
@@ -56650,7 +56389,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "swords-and-serpents",
     "isRomhack": false,
     "moods": [
@@ -56684,17 +56423,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 10, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "sylviana-ai-ippai-no-boukensha",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Sylviana: Ai Ippai no Boukensha is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Sylviana: Ai Ippai no Boukensha is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Pack-In-Video"
     ],
@@ -56702,14 +56441,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Sylviana: Ai Ippai no Boukensha",
     "year": "1988"
@@ -56720,7 +56458,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "taboo-the-sixth-sense",
     "isRomhack": false,
     "moods": [
@@ -56754,7 +56492,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 8, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tag-team-match-m-u-s-c-l-e",
     "isRomhack": false,
     "moods": [
@@ -56788,7 +56526,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 2, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tag-team-wrestling",
     "isRomhack": false,
     "moods": [
@@ -56821,7 +56559,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tagin-dragon",
     "isRomhack": false,
     "moods": [
@@ -56856,7 +56594,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 8, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "taito-chase-h-q",
     "isRomhack": false,
     "moods": [
@@ -56890,7 +56628,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 18, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "taito-grand-prix-eiko-heno-licence",
     "isRomhack": false,
     "moods": [
@@ -56923,7 +56661,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "taiwan-16-mahjong",
     "isRomhack": false,
     "moods": [
@@ -56957,7 +56695,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "taiwan-mahjong",
     "isRomhack": false,
     "moods": [
@@ -56991,7 +56729,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "taiwan-mahjong-ii",
     "isRomhack": false,
     "moods": [
@@ -57025,7 +56763,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "taiwan-mahjong-ii-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -57059,7 +56797,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "January 11, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "taiyo-no-yusha-fighbird",
     "isRomhack": false,
     "moods": [
@@ -57093,7 +56831,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 5, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "takahashi-meijin-no-bug-tte-honey",
     "isRomhack": false,
     "moods": [
@@ -57127,7 +56865,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 28, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "takeda-shingen",
     "isRomhack": false,
     "moods": [
@@ -57161,7 +56899,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 10, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "takeshi-no-chosenjo",
     "isRomhack": false,
     "moods": [
@@ -57195,7 +56933,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 25, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "takeshi-no-sengoku-fuunji",
     "isRomhack": false,
     "moods": [
@@ -57229,7 +56967,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "talespin",
     "isRomhack": false,
     "moods": [
@@ -57263,17 +57001,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 23, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tama-and-friends-3-choume-daibouken",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Tama & Friends: 3 Choume Daibouken is a Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Tama & Friends: 3 Choume Daibouken is a Famicom Disk System release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Bandai"
     ],
@@ -57281,14 +57019,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Tama & Friends: 3 Choume Daibouken",
     "year": "1989"
@@ -57299,7 +57036,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "September 21, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tamura-mitsuaki-no-mahjong-seminar",
     "isRomhack": false,
     "moods": [
@@ -57332,7 +57069,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "March 18, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tanigawa-koji-no-shogi-shinan-ii-meijin-e-no-michi",
     "isRomhack": false,
     "moods": [
@@ -57366,17 +57103,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 13, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tanigawa-koji-no-shogi-shinan-ii-meijin-e-no-michi-famicom-disk-system-pony-cany",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Tanigawa Kōji no Shōgi Shinan II: Meijin e no Michi is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Tanigawa Kōji no Shōgi Shinan II: Meijin e no Michi is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Pony Canyon"
     ],
@@ -57384,14 +57121,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Tanigawa Kōji no Shōgi Shinan II: Meijin e no Michi",
     "year": "1987"
@@ -57402,17 +57138,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 10, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tanigawa-koji-no-shogi-shinan-ii-shinban",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Tanigawa Kōji no Shōgi Shinan II: Shinban is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Tanigawa Kōji no Shōgi Shinan II: Shinban is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Pony Canyon"
     ],
@@ -57420,14 +57156,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Tanigawa Kōji no Shōgi Shinan II: Shinban",
     "year": "1988"
@@ -57436,7 +57171,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "September 14, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tanigawa-koji-no-shogi-shinan-iii",
     "isRomhack": false,
     "moods": [
@@ -57470,7 +57205,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 10, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tantei-jinguji-saburo-kiken-na-futari-kohen",
     "isRomhack": false,
     "moods": [
@@ -57478,9 +57213,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Tantei Jingūji Saburō: Kiken na Futari - Kōhen is a Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Tantei Jingūji Saburō: Kiken na Futari - Kōhen is a Famicom Disk System release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Data East"
     ],
@@ -57488,14 +57223,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Tantei Jingūji Saburō: Kiken na Futari - Kōhen",
     "year": "1989"
@@ -57506,7 +57240,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 9, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tantei-jinguji-saburo-kiken-na-futari-zenpen",
     "isRomhack": false,
     "moods": [
@@ -57514,9 +57248,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Tantei Jingūji Saburō: Kiken na Futari - Zenpen is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Tantei Jingūji Saburō: Kiken na Futari - Zenpen is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Data East"
     ],
@@ -57524,14 +57258,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Tantei Jingūji Saburō: Kiken na Futari - Zenpen",
     "year": "1988"
@@ -57542,7 +57275,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 24, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tantei-jinguji-saburo-shinjuku-chuo-koen-satsujin-jiken",
     "isRomhack": false,
     "moods": [
@@ -57550,7 +57283,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "contemplative"
     ],
     "obscurity": "strange",
-    "pitch": "Tantei Jingūji Saburō: Shinjuku Chūō Kōen Satsujin Jiken is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Tantei Jingūji Saburō: Shinjuku Chūō Kōen Satsujin Jiken is a Famicom Disk System release from 1987, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -57563,11 +57296,10 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Tantei Jingūji Saburō: Shinjuku Chūō Kōen Satsujin Jiken",
     "year": "1987"
@@ -57578,7 +57310,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 28, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tantei-jinguji-saburo-toki-no-sugiyuku-mama-ni",
     "isRomhack": false,
     "moods": [
@@ -57612,7 +57344,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 26, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tantei-jinguji-saburo-yokohama-ko-renzoku-satsujin-jiken",
     "isRomhack": false,
     "moods": [
@@ -57646,7 +57378,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tao",
     "isRomhack": false,
     "moods": [
@@ -57680,7 +57412,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "March 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "target-renegade",
     "isRomhack": false,
     "moods": [
@@ -57714,17 +57446,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 23, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tarot-uranai",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Tarot Uranai is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Tarot Uranai is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Scorpion Soft"
     ],
@@ -57732,14 +57464,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Tarot Uranai",
     "year": "1988"
@@ -57748,7 +57479,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tasac",
     "isRomhack": false,
     "moods": [
@@ -57781,7 +57512,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tasac-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -57816,7 +57547,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 27, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tashiro-masashi-no-princess-ga-ippai",
     "isRomhack": false,
     "moods": [
@@ -57850,7 +57581,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 10, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tatakae-ramenman-sakuretsu-chojin-102-gei",
     "isRomhack": false,
     "moods": [
@@ -57884,7 +57615,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tecmo-baseball",
     "isRomhack": false,
     "moods": [
@@ -57919,7 +57650,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tecmo-bowl",
     "isRomhack": false,
     "moods": [
@@ -57953,7 +57684,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 28, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tecmo-cup-soccer-game",
     "isRomhack": false,
     "moods": [
@@ -57989,7 +57720,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tecmo-nba-basketball",
     "isRomhack": false,
     "moods": [
@@ -58024,7 +57755,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 13, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tecmo-super-bowl",
     "isRomhack": false,
     "moods": [
@@ -58058,7 +57789,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 7, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tecmo-world-cup-soccer",
     "isRomhack": false,
     "moods": [
@@ -58093,7 +57824,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tecmo-world-wrestling",
     "isRomhack": false,
     "moods": [
@@ -58129,7 +57860,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "May 12, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "teenage-mutant-ninja-turtles",
     "isRomhack": false,
     "moods": [
@@ -58166,7 +57897,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "December 7, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "teenage-mutant-ninja-turtles-ii-the-arcade-game",
     "isRomhack": false,
     "moods": [
@@ -58202,7 +57933,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "December 13, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "teenage-mutant-ninja-turtles-iii-the-manhattan-project",
     "isRomhack": false,
     "moods": [
@@ -58237,7 +57968,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "February 1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "teenage-mutant-ninja-turtles-tournament-fighters",
     "isRomhack": false,
     "moods": [
@@ -58270,7 +58001,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1996",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tekken-2",
     "isRomhack": false,
     "moods": [
@@ -58305,7 +58036,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 5, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tenchi-wo-kurau-ii-shokatsu-komei-den",
     "isRomhack": false,
     "moods": [
@@ -58339,7 +58070,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 11, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tenka-no-goikenban-mito-komon",
     "isRomhack": false,
     "moods": [
@@ -58373,7 +58104,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 21, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tenkaichi-bushi-keru-naguru",
     "isRomhack": false,
     "moods": [
@@ -58408,7 +58139,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "January 14, 1984",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tennis",
     "isRomhack": false,
     "moods": [
@@ -58416,9 +58147,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Tennis is an NES release from 1984, tagged as approachable, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Tennis is an NES release from 1984, tagged as approachable, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Nintendo"
     ],
@@ -58427,13 +58158,12 @@ export const generatedNesGames: NesCatalogGame[] = [
       "NA",
       "PAL"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "rpg",
+      "overhead",
       "sports"
     ],
     "title": "Tennis",
@@ -58446,7 +58176,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "February 21, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tennis-famicom-disk-system-nintendo",
     "isRomhack": false,
     "moods": [
@@ -58454,9 +58184,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Tennis is a Famicom Disk System release from 1986, tagged as approachable, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Tennis is a Famicom Disk System release from 1986, tagged as approachable, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Nintendo"
     ],
@@ -58464,14 +58194,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 4,
+    "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "sports"
     ],
     "title": "Tennis",
@@ -58483,7 +58212,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 24, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "terao-no-dosukoi-ozumo",
     "isRomhack": false,
     "moods": [
@@ -58517,7 +58246,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "terminator-2-judgment-day",
     "isRomhack": false,
     "moods": [
@@ -58553,7 +58282,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 27, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "terra-cresta",
     "isRomhack": false,
     "moods": [
@@ -58587,7 +58316,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 24, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tetra-star-the-fighter",
     "isRomhack": false,
     "moods": [
@@ -58621,7 +58350,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 22, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tetris",
     "isRomhack": false,
     "moods": [
@@ -58655,7 +58384,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tetris-licensed-nintendo",
     "isRomhack": false,
     "moods": [
@@ -58687,7 +58416,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tetris-unlicensed-nes-lifespan-tengen",
     "isRomhack": false,
     "moods": [
@@ -58722,7 +58451,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 21, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tetris-2",
     "isRomhack": false,
     "moods": [
@@ -58757,7 +58486,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "December 13, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tetris-2-bombliss",
     "isRomhack": false,
     "moods": [
@@ -58791,7 +58520,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 12, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tetsudo-o",
     "isRomhack": false,
     "moods": [
@@ -58825,7 +58554,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 26, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tetsuwan-atom",
     "isRomhack": false,
     "moods": [
@@ -58859,7 +58588,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-3-d-battles-of-worldrunner",
     "isRomhack": false,
     "moods": [
@@ -58893,7 +58622,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-addams-family",
     "isRomhack": false,
     "moods": [
@@ -58928,7 +58657,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-addams-family-pugsley-s-scavenger-hunt",
     "isRomhack": false,
     "moods": [
@@ -58963,7 +58692,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "August 12, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-adventures-of-bayou-billy",
     "isRomhack": false,
     "moods": [
@@ -58996,7 +58725,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-adventures-of-captain-comic",
     "isRomhack": false,
     "moods": [
@@ -59031,7 +58760,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-adventures-of-gilligan-s-island",
     "isRomhack": false,
     "moods": [
@@ -59065,7 +58794,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-adventures-of-rad-gravity",
     "isRomhack": false,
     "moods": [
@@ -59099,7 +58828,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-adventures-of-rocky-and-bullwinkle-and-friends",
     "isRomhack": false,
     "moods": [
@@ -59133,7 +58862,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 25, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-bard-s-tale-ii-the-destiny-knight",
     "isRomhack": false,
     "moods": [
@@ -59167,7 +58896,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 28, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-battle-of-olympus",
     "isRomhack": false,
     "moods": [
@@ -59204,7 +58933,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 6, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-black-bass",
     "isRomhack": false,
     "moods": [
@@ -59238,7 +58967,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 18, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-black-bass-licensed-hot-b",
     "isRomhack": false,
     "moods": [
@@ -59272,7 +59001,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 27, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-blue-marlin",
     "isRomhack": false,
     "moods": [
@@ -59306,7 +59035,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-blues-brothers",
     "isRomhack": false,
     "moods": [
@@ -59340,7 +59069,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 3, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-bugs-bunny-birthday-blowout",
     "isRomhack": false,
     "moods": [
@@ -59376,7 +59105,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "September 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-bugs-bunny-crazy-castle",
     "isRomhack": false,
     "moods": [
@@ -59411,7 +59140,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "January 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-chessmaster",
     "isRomhack": false,
     "moods": [
@@ -59444,7 +59173,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-dragon",
     "isRomhack": false,
     "moods": [
@@ -59478,7 +59207,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-fantastic-adventures-of-dizzy",
     "isRomhack": false,
     "moods": [
@@ -59514,7 +59243,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-flintstones-the-rescue-of-dino-and-hoppy",
     "isRomhack": false,
     "moods": [
@@ -59550,7 +59279,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-flintstones-the-surprise-at-dinosaur-peak",
     "isRomhack": false,
     "moods": [
@@ -59585,7 +59314,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "July 3, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-golf-92",
     "isRomhack": false,
     "moods": [
@@ -59620,7 +59349,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 21, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-goonies",
     "isRomhack": false,
     "moods": [
@@ -59654,17 +59383,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 8, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-goonies-famicom-disk-system-konami",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "The Goonies is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "The Goonies is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Konami"
     ],
@@ -59672,14 +59401,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "The Goonies",
     "year": "1988"
@@ -59690,7 +59418,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 18, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-goonies-ii",
     "isRomhack": false,
     "moods": [
@@ -59725,7 +59453,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 28, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-gorilla-man",
     "isRomhack": false,
     "moods": [
@@ -59759,7 +59487,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-great-waldo-search",
     "isRomhack": false,
     "moods": [
@@ -59791,7 +59519,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-great-wall",
     "isRomhack": false,
     "moods": [
@@ -59824,7 +59552,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-great-wall-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -59859,7 +59587,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 5, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-guardian-legend",
     "isRomhack": false,
     "moods": [
@@ -59896,7 +59624,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-hunt-for-red-october",
     "isRomhack": false,
     "moods": [
@@ -59930,7 +59658,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 21, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-hyrule-fantasy-zelda-no-densetsu",
     "isRomhack": false,
     "moods": [
@@ -59938,7 +59666,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "weird"
     ],
     "obscurity": "strange",
-    "pitch": "The Hyrule Fantasy: Zelda no Densetsu is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "The Hyrule Fantasy: Zelda no Densetsu is a Famicom Disk System release from 1986, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -59951,11 +59679,10 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "adventure"
     ],
     "title": "The Hyrule Fantasy: Zelda no Densetsu",
     "year": "1986"
@@ -59966,7 +59693,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-immortal",
     "isRomhack": false,
     "moods": [
@@ -60000,7 +59727,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 21, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-incredible-crash-dummies",
     "isRomhack": false,
     "moods": [
@@ -60034,7 +59761,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-jetsons-cogswell-s-caper",
     "isRomhack": false,
     "moods": [
@@ -60069,7 +59796,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-jungle-book",
     "isRomhack": false,
     "moods": [
@@ -60103,7 +59830,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-karate-kid",
     "isRomhack": false,
     "moods": [
@@ -60135,7 +59862,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1997",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-king-of-fighters-97",
     "isRomhack": false,
     "moods": [
@@ -60170,7 +59897,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 14, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-krion-conquest",
     "isRomhack": false,
     "moods": [
@@ -60204,7 +59931,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-last-ninja",
     "isRomhack": false,
     "moods": [
@@ -60238,7 +59965,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-last-starfighter",
     "isRomhack": false,
     "moods": [
@@ -60272,7 +59999,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "April 18, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-legend-of-kage",
     "isRomhack": false,
     "moods": [
@@ -60306,7 +60033,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-legend-of-prince-valiant",
     "isRomhack": false,
     "moods": [
@@ -60340,7 +60067,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 22, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-legend-of-zelda",
     "isRomhack": false,
     "moods": [
@@ -60375,7 +60102,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 14, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-legend-of-zelda-2-link-no-boken",
     "isRomhack": false,
     "moods": [
@@ -60383,7 +60110,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "The Legend of Zelda 2: Link no Bōken is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "The Legend of Zelda 2: Link no Bōken is a Famicom Disk System release from 1987, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -60396,11 +60123,10 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "adventure"
     ],
     "title": "The Legend of Zelda 2: Link no Bōken",
     "year": "1987"
@@ -60411,7 +60137,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 25, 1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-lion-king",
     "isRomhack": false,
     "moods": [
@@ -60443,7 +60169,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1997",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-lion-king-iii-timon-and-pumbaa",
     "isRomhack": false,
     "moods": [
@@ -60476,7 +60202,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1998",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-lion-king-v-timon-and-pumbaa",
     "isRomhack": false,
     "moods": [
@@ -60511,7 +60237,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 19, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-little-mermaid",
     "isRomhack": false,
     "moods": [
@@ -60545,7 +60271,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-lone-ranger",
     "isRomhack": false,
     "moods": [
@@ -60577,7 +60303,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1998",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-lost-world-jurassic-park",
     "isRomhack": false,
     "moods": [
@@ -60612,7 +60338,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-mafat-conspiracy",
     "isRomhack": false,
     "moods": [
@@ -60646,7 +60372,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 6, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-magic-candle",
     "isRomhack": false,
     "moods": [
@@ -60680,7 +60406,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 3, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-magic-of-scheherazade",
     "isRomhack": false,
     "moods": [
@@ -60712,7 +60438,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "casual",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-mahjong-world",
     "isRomhack": false,
     "moods": [
@@ -60748,17 +60474,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-miracle-piano-teaching-system",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "The Miracle Piano Teaching System is an NES release from 1990, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "The Miracle Piano Teaching System is an NES release from 1990, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Mindscape"
     ],
@@ -60766,13 +60492,12 @@ export const generatedNesGames: NesCatalogGame[] = [
       "NA",
       "PAL"
     ],
-    "signalScore": 2,
+    "signalScore": 1,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "rpg"
+      "overhead"
     ],
     "title": "The Miracle Piano Teaching System",
     "year": "1990"
@@ -60783,7 +60508,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 10, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-money-game",
     "isRomhack": false,
     "moods": [
@@ -60817,7 +60542,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-mutant-virus-crisis-in-a-computer-world",
     "isRomhack": false,
     "moods": [
@@ -60851,7 +60576,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-newzealand-story",
     "isRomhack": false,
     "moods": [
@@ -60884,7 +60609,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-p-radikus-conflict",
     "isRomhack": false,
     "moods": [
@@ -60917,7 +60642,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1996",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-panda-prince",
     "isRomhack": false,
     "moods": [
@@ -60950,7 +60675,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-penguin-and-seal",
     "isRomhack": false,
     "moods": [
@@ -60983,7 +60708,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-penguin-and-seal-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -61018,7 +60743,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 29, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-portopia-serial-murder-case",
     "isRomhack": false,
     "moods": [
@@ -61052,7 +60777,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-punisher",
     "isRomhack": false,
     "moods": [
@@ -61086,7 +60811,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-ren-and-stimpy-show-buckeroo",
     "isRomhack": false,
     "moods": [
@@ -61120,7 +60845,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-rocketeer",
     "isRomhack": false,
     "moods": [
@@ -61154,7 +60879,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-simpsons-bart-vs-the-space-mutants",
     "isRomhack": false,
     "moods": [
@@ -61189,7 +60914,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-simpsons-bart-vs-the-world",
     "isRomhack": false,
     "moods": [
@@ -61224,7 +60949,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-simpsons-bartman-meets-radioactive-man",
     "isRomhack": false,
     "moods": [
@@ -61259,7 +60984,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-smurfs",
     "isRomhack": false,
     "moods": [
@@ -61293,7 +61018,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-terminator",
     "isRomhack": false,
     "moods": [
@@ -61327,7 +61052,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-three-stooges",
     "isRomhack": false,
     "moods": [
@@ -61361,7 +61086,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 6, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-tower-of-druaga",
     "isRomhack": false,
     "moods": [
@@ -61395,7 +61120,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 16, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-triathron",
     "isRomhack": false,
     "moods": [
@@ -61429,7 +61154,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 9, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-trolls-in-crazyland",
     "isRomhack": false,
     "moods": [
@@ -61461,7 +61186,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-ultimate-stuntman",
     "isRomhack": false,
     "moods": [
@@ -61495,7 +61220,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "December 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-uncanny-x-men",
     "isRomhack": false,
     "moods": [
@@ -61527,7 +61252,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-universe-soldiers",
     "isRomhack": false,
     "moods": [
@@ -61562,7 +61287,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-untouchables",
     "isRomhack": false,
     "moods": [
@@ -61596,7 +61321,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 18, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-wing-of-madoola",
     "isRomhack": false,
     "moods": [
@@ -61628,7 +61353,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-world-of-card-games",
     "isRomhack": false,
     "moods": [
@@ -61661,7 +61386,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-world-of-card-games-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -61697,7 +61422,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "the-young-indiana-jones-chronicles",
     "isRomhack": false,
     "moods": [
@@ -61731,7 +61456,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 19, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "thexder",
     "isRomhack": false,
     "moods": [
@@ -61765,7 +61490,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "December 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "thunder-and-lightningfamily-block",
     "isRomhack": false,
     "moods": [
@@ -61800,7 +61525,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 29, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "thunderbirds",
     "isRomhack": false,
     "moods": [
@@ -61832,7 +61557,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1996",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "thunderbolt-2",
     "isRomhack": false,
     "moods": [
@@ -61867,7 +61592,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "thundercade",
     "isRomhack": false,
     "moods": [
@@ -61901,7 +61626,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 5, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tiger-heli",
     "isRomhack": false,
     "moods": [
@@ -61935,7 +61660,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tiles-of-fate",
     "isRomhack": false,
     "moods": [
@@ -61968,7 +61693,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "time-diver-avenger",
     "isRomhack": false,
     "moods": [
@@ -62003,7 +61728,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "time-lord",
     "isRomhack": false,
     "moods": [
@@ -62037,17 +61762,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 26, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "time-twist-rekishi-no-katasumi-de-kohen",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Time Twist: Rekishi no Katasumi de... - Kōhen is a Famicom Disk System release from 1991, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Time Twist: Rekishi no Katasumi de... - Kōhen is a Famicom Disk System release from 1991, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -62055,14 +61780,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Time Twist: Rekishi no Katasumi de... - Kōhen",
     "year": "1991"
@@ -62073,17 +61797,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 26, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "time-twist-rekishi-no-katasumi-de-zenpen",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Time Twist: Rekishi no Katasumi de... - Zenpen is a Famicom Disk System release from 1991, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Time Twist: Rekishi no Katasumi de... - Zenpen is a Famicom Disk System release from 1991, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -62091,14 +61815,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Time Twist: Rekishi no Katasumi de... - Zenpen",
     "year": "1991"
@@ -62109,7 +61832,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 25, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "time-zone",
     "isRomhack": false,
     "moods": [
@@ -62143,7 +61866,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 7, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "times-of-lore",
     "isRomhack": false,
     "moods": [
@@ -62177,7 +61900,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 20, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tiny-toon-adventures",
     "isRomhack": false,
     "moods": [
@@ -62212,7 +61935,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 27, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tiny-toon-adventures-2-trouble-in-wackyland",
     "isRomhack": false,
     "moods": [
@@ -62245,7 +61968,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1997",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tiny-toon-adventures-6",
     "isRomhack": false,
     "moods": [
@@ -62280,7 +62003,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tiny-toon-adventures-cartoon-workshop",
     "isRomhack": false,
     "moods": [
@@ -62314,7 +62037,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 10, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "titan",
     "isRomhack": false,
     "moods": [
@@ -62346,7 +62069,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2005",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "titanic",
     "isRomhack": false,
     "moods": [
@@ -62381,7 +62104,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 24, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "titanic-mystery-ao-no-senritsu",
     "isRomhack": false,
     "moods": [
@@ -62389,9 +62112,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Titanic Mystery: Ao no Senritsu is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Titanic Mystery: Ao no Senritsu is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Gakken"
     ],
@@ -62399,14 +62122,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Titanic Mystery: Ao no Senritsu",
     "year": "1987"
@@ -62417,7 +62139,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 22, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tm-network-live-in-power-bowl",
     "isRomhack": false,
     "moods": [
@@ -62451,7 +62173,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "to-the-earth",
     "isRomhack": false,
     "moods": [
@@ -62485,7 +62207,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 12, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tobidase-daisakusen",
     "isRomhack": false,
     "moods": [
@@ -62493,7 +62215,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Tobidase Daisakusen is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "Tobidase Daisakusen is a Famicom Disk System release from 1987, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -62503,14 +62225,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Tobidase Daisakusen",
     "year": "1987"
@@ -62521,7 +62242,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 12, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tojin-makyo-den-heracles-no-eiko",
     "isRomhack": false,
     "moods": [
@@ -62555,7 +62276,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 3, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tokaido-gojusan-tsugi",
     "isRomhack": false,
     "moods": [
@@ -62589,7 +62310,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 19, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "toki",
     "isRomhack": false,
     "moods": [
@@ -62623,7 +62344,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 26, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "toki-no-tabibito-time-stranger",
     "isRomhack": false,
     "moods": [
@@ -62657,7 +62378,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 27, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tokoro-san-no-mamoru-mo-semeru-mo",
     "isRomhack": false,
     "moods": [
@@ -62691,7 +62412,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "December 13, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tokyo-pachi-slot-adventure",
     "isRomhack": false,
     "moods": [
@@ -62725,7 +62446,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tom-and-jerry",
     "isRomhack": false,
     "moods": [
@@ -62758,7 +62479,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1998",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tom-and-jerry-3",
     "isRomhack": false,
     "moods": [
@@ -62793,7 +62514,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 3, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tombs-and-treasure",
     "isRomhack": false,
     "moods": [
@@ -62826,7 +62547,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "toobin",
     "isRomhack": false,
     "moods": [
@@ -62861,7 +62582,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "top-gun",
     "isRomhack": false,
     "moods": [
@@ -62897,7 +62618,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 15, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "top-gun-the-second-mission",
     "isRomhack": false,
     "moods": [
@@ -62933,7 +62654,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "October 13, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "top-players-tennis",
     "isRomhack": false,
     "moods": [
@@ -62970,7 +62691,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 17, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "top-rider",
     "isRomhack": false,
     "moods": [
@@ -63004,7 +62725,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 22, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "top-striker",
     "isRomhack": false,
     "moods": [
@@ -63038,17 +62759,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 9, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "topple-zip",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Topple Zip is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Topple Zip is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Bothtec"
     ],
@@ -63056,14 +62777,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Topple Zip",
     "year": "1987"
@@ -63074,7 +62794,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "total-recall",
     "isRomhack": false,
     "moods": [
@@ -63108,7 +62828,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 28, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "totally-rad",
     "isRomhack": false,
     "moods": [
@@ -63143,7 +62863,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 11, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "touch-down-fever",
     "isRomhack": false,
     "moods": [
@@ -63177,7 +62897,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 10, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "touhou-kenbun-roku",
     "isRomhack": false,
     "moods": [
@@ -63211,7 +62931,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 24, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "toukon-club",
     "isRomhack": false,
     "moods": [
@@ -63245,7 +62965,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "town-and-country-surf-designs-ii-thrilla-s-surfari",
     "isRomhack": false,
     "moods": [
@@ -63279,7 +62999,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "town-and-country-surf-designs-wood-and-water-rage",
     "isRomhack": false,
     "moods": [
@@ -63313,7 +63033,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "toxic-crusaders",
     "isRomhack": false,
     "moods": [
@@ -63347,7 +63067,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 21, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "track-and-field",
     "isRomhack": false,
     "moods": [
@@ -63382,7 +63102,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 16, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "track-and-field-ii",
     "isRomhack": false,
     "moods": [
@@ -63417,7 +63137,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 5, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "transformers-mystery-of-convoy",
     "isRomhack": false,
     "moods": [
@@ -63425,23 +63145,22 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Transformers: Mystery of Convoy is a Famicom release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Transformers: Mystery of Convoy is a Famicom release from 1986, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Takara"
     ],
     "regions": [
       "JP"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "JP exclusive",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Transformers: Mystery of Convoy",
     "year": "1986"
@@ -63452,7 +63171,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 28, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "transformers-the-headmasters",
     "isRomhack": false,
     "moods": [
@@ -63460,7 +63179,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Transformers: The Headmasters is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Transformers: The Headmasters is a Famicom Disk System release from 1987, tagged as balanced, lightly narrative, and action adventure-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "action-adventure",
     "publisher": [
@@ -63473,11 +63192,10 @@ export const generatedNesGames: NesCatalogGame[] = [
     "signalScore": 3,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Transformers: The Headmasters",
     "year": "1987"
@@ -63488,7 +63206,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "treasure-master",
     "isRomhack": false,
     "moods": [
@@ -63522,7 +63240,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "trog",
     "isRomhack": false,
     "moods": [
@@ -63556,7 +63274,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 24, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "trojan",
     "isRomhack": false,
     "moods": [
@@ -63589,7 +63307,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "trolls-on-treasure-island",
     "isRomhack": false,
     "moods": [
@@ -63624,7 +63342,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 18, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tsuppari-ozumo",
     "isRomhack": false,
     "moods": [
@@ -63658,7 +63376,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 28, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tsuppari-wars",
     "isRomhack": false,
     "moods": [
@@ -63692,7 +63410,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 17, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tsurikichi-sanpei-blue-marlin-hen",
     "isRomhack": false,
     "moods": [
@@ -63726,7 +63444,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 13, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tsurupika-hagemaru-mezase-tsuru-seko-no-akashi",
     "isRomhack": false,
     "moods": [
@@ -63758,31 +63476,30 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "tube-exploration",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Tube Exploration is an unlicensed NES-era release from 1991, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Tube Exploration is an unlicensed NES-era release from 1991, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Daou Infosys"
     ],
     "regions": [
       "South Korea"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "South Korea exclusive",
-      "adventure",
-      "rpg",
+      "action",
       "unlicensed"
     ],
     "title": "Tube Exploration",
@@ -63794,7 +63511,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 4, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "twin-cobra",
     "isRomhack": false,
     "moods": [
@@ -63829,7 +63546,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "twin-eagle",
     "isRomhack": false,
     "moods": [
@@ -63861,7 +63578,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "twin-eagle-unlicensed-nes-lifespan-joy-van",
     "isRomhack": false,
     "moods": [
@@ -63894,7 +63611,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "twin-eagle-unlicensed-famicom-sachen",
     "isRomhack": false,
     "moods": [
@@ -63929,7 +63646,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 4, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "twinbee",
     "isRomhack": false,
     "moods": [
@@ -63963,7 +63680,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 11, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "twinbee-famicom-disk-system-konami",
     "isRomhack": false,
     "moods": [
@@ -63971,9 +63688,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "TwinBee is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "TwinBee is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Konami"
     ],
@@ -63981,14 +63698,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "TwinBee",
     "year": "1988"
@@ -63999,7 +63715,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 29, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "twinbee-3-poko-poko-daimao",
     "isRomhack": false,
     "moods": [
@@ -64033,7 +63749,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 7, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "uchukeibitai-sdf",
     "isRomhack": false,
     "moods": [
@@ -64067,7 +63783,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 6, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "uchusen-cosmo-carrier",
     "isRomhack": false,
     "moods": [
@@ -64101,7 +63817,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 20, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ufouria-the-saga",
     "isRomhack": false,
     "moods": [
@@ -64133,7 +63849,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1995",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ugadayka",
     "isRomhack": false,
     "moods": [
@@ -64166,7 +63882,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "September 20, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ultima-iv-quest-of-the-avatar",
     "isRomhack": false,
     "moods": [
@@ -64202,7 +63918,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 9, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ultima-exodus",
     "isRomhack": false,
     "moods": [
@@ -64238,7 +63954,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ultima-warriors-of-destiny",
     "isRomhack": false,
     "moods": [
@@ -64273,7 +63989,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ultimate-air-combat",
     "isRomhack": false,
     "moods": [
@@ -64309,7 +64025,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ultimate-basketball",
     "isRomhack": false,
     "moods": [
@@ -64344,7 +64060,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ultimate-league-soccer",
     "isRomhack": false,
     "moods": [
@@ -64381,17 +64097,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 18, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ultraman-2-shutsugeki-katoku-tai",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Ultraman 2: Shutsugeki Katoku Tai!! is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Ultraman 2: Shutsugeki Katoku Tai!! is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Bandai"
     ],
@@ -64399,14 +64115,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Ultraman 2: Shutsugeki Katoku Tai!!",
     "year": "1987"
@@ -64417,7 +64132,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 7, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ultraman-club-2-kaette-kita-ultraman-club",
     "isRomhack": false,
     "moods": [
@@ -64451,7 +64166,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 29, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ultraman-club-3-mata-mata-shutsugeki-ultra-kyodai",
     "isRomhack": false,
     "moods": [
@@ -64485,17 +64200,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 22, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ultraman-club-chikyu-dakkan-sakusen",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Ultraman Club: Chikyū Dakkan Sakusen is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Ultraman Club: Chikyū Dakkan Sakusen is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Bandai"
     ],
@@ -64503,14 +64218,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Ultraman Club: Chikyū Dakkan Sakusen",
     "year": "1988"
@@ -64521,7 +64235,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 25, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ultraman-club-kaiju-dai-kessen",
     "isRomhack": false,
     "moods": [
@@ -64555,7 +64269,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 23, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ultraman-club-supokon-fight",
     "isRomhack": false,
     "moods": [
@@ -64590,17 +64304,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 29, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ultraman-kaiju-teikoku-no-gyakushu",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Ultraman: Kaijū Teikoku no Gyakushū is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Ultraman: Kaijū Teikoku no Gyakushū is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Bandai"
     ],
@@ -64608,14 +64322,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Ultraman: Kaijū Teikoku no Gyakushū",
     "year": "1987"
@@ -64626,7 +64339,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 15, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "uncharted-waters",
     "isRomhack": false,
     "moods": [
@@ -64658,7 +64371,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2025",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "undercover-shot",
     "isRomhack": false,
     "moods": [
@@ -64693,7 +64406,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 29, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "uninvited",
     "isRomhack": false,
     "moods": [
@@ -64727,7 +64440,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 14, 1984",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "urban-champion",
     "isRomhack": false,
     "moods": [
@@ -64762,7 +64475,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 23, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "urusei-yatsura-lum-no-wedding-bell",
     "isRomhack": false,
     "moods": [
@@ -64796,7 +64509,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 9, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ushio-to-tora-shin-en-no-daiyo",
     "isRomhack": false,
     "moods": [
@@ -64828,7 +64541,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "Unknown",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "utaco",
     "isRomhack": false,
     "moods": [
@@ -64863,7 +64576,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 6, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "utsurun-desu-kawauso-hawaii-e-iku",
     "isRomhack": false,
     "moods": [
@@ -64897,7 +64610,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 21, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "valis-the-fantasm-soldier",
     "isRomhack": false,
     "moods": [
@@ -64931,7 +64644,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 1, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "valkyrie-no-boken-toki-no-kagi-densetsu",
     "isRomhack": false,
     "moods": [
@@ -64965,7 +64678,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "November 24, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "vegas-connection-casino-kara-ai-wo-komete",
     "isRomhack": false,
     "moods": [
@@ -65000,7 +64713,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 30, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "vegas-dream",
     "isRomhack": false,
     "moods": [
@@ -65032,7 +64745,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "venice-beach-volleyball",
     "isRomhack": false,
     "moods": [
@@ -65068,7 +64781,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 14, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "venus-senki",
     "isRomhack": false,
     "moods": [
@@ -65102,7 +64815,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 26, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "vice-project-doom",
     "isRomhack": false,
     "moods": [
@@ -65136,7 +64849,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "videomation",
     "isRomhack": false,
     "moods": [
@@ -65168,7 +64881,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "vindicators",
     "isRomhack": false,
     "moods": [
@@ -65203,7 +64916,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 7, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "volguard-ii",
     "isRomhack": false,
     "moods": [
@@ -65237,7 +64950,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "volleyball",
     "isRomhack": false,
     "moods": [
@@ -65272,17 +64985,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 21, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "volleyball-famicom-disk-system-nintendo",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Volleyball is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Volleyball is a Famicom Disk System release from 1986, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "top-down",
     "publisher": [
       "Nintendo"
     ],
@@ -65290,14 +65003,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "overhead",
       "sports"
     ],
     "title": "Volleyball",
@@ -65309,7 +65021,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 9, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "vs-excitebike",
     "isRomhack": false,
     "moods": [
@@ -65317,7 +65029,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Vs. Excitebike is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and top down-leaning for the recommender.",
+    "pitch": "Vs. Excitebike is a Famicom Disk System release from 1988, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "top-down",
     "publisher": [
@@ -65327,14 +65039,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Vs. Excitebike",
     "year": "1988"
@@ -65345,7 +65056,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 25, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wacky-races",
     "isRomhack": false,
     "moods": [
@@ -65379,7 +65090,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 9, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wagyan-land",
     "isRomhack": false,
     "moods": [
@@ -65413,7 +65124,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 14, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wagyan-land-2",
     "isRomhack": false,
     "moods": [
@@ -65447,7 +65158,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 8, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wagyan-land-3",
     "isRomhack": false,
     "moods": [
@@ -65481,7 +65192,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 5, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wai-wai-world-2-sos-parsley-jo",
     "isRomhack": false,
     "moods": [
@@ -65513,7 +65224,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1997",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wait-and-see",
     "isRomhack": false,
     "moods": [
@@ -65548,7 +65259,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wakusei-aton-gaiden",
     "isRomhack": false,
     "moods": [
@@ -65556,9 +65267,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "arcade"
     ],
     "obscurity": "strange",
-    "pitch": "Wakusei Aton Gaiden is a Famicom Disk System release from 1990, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Wakusei Aton Gaiden is a Famicom Disk System release from 1990, tagged as balanced, lightly narrative, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Kokuzeichou"
     ],
@@ -65566,14 +65277,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "some",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Wakusei Aton Gaiden",
     "year": "1990"
@@ -65584,7 +65294,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 20, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wall-street-kid",
     "isRomhack": false,
     "moods": [
@@ -65616,7 +65326,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wally-bear-and-the-no-gang",
     "isRomhack": false,
     "moods": [
@@ -65651,7 +65361,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 25, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wardner-no-mori",
     "isRomhack": false,
     "moods": [
@@ -65659,7 +65369,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Wardner no Mori is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "Wardner no Mori is a Famicom Disk System release from 1988, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -65669,14 +65379,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "overhead"
     ],
     "title": "Wardner no Mori",
     "year": "1988"
@@ -65687,7 +65396,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "February 19, 1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wario-s-woods",
     "isRomhack": false,
     "moods": [
@@ -65722,7 +65431,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 12, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "warpman",
     "isRomhack": false,
     "moods": [
@@ -65756,7 +65465,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wayne-gretzky-hockey",
     "isRomhack": false,
     "moods": [
@@ -65791,7 +65500,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wayne-s-world",
     "isRomhack": false,
     "moods": [
@@ -65825,7 +65534,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 9, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wcw-world-championship-wrestling",
     "isRomhack": false,
     "moods": [
@@ -65861,7 +65570,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "werewolf-the-last-warrior",
     "isRomhack": false,
     "moods": [
@@ -65896,7 +65605,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "September 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wheel-of-fortune",
     "isRomhack": false,
     "moods": [
@@ -65930,7 +65639,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "March 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wheel-of-fortune-family-edition",
     "isRomhack": false,
     "moods": [
@@ -65964,7 +65673,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "October 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wheel-of-fortune-junior-edition",
     "isRomhack": false,
     "moods": [
@@ -65998,7 +65707,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "January 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wheel-of-fortune-featuring-vanna-white",
     "isRomhack": false,
     "moods": [
@@ -66032,7 +65741,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "where-in-time-is-carmen-sandiego",
     "isRomhack": false,
     "moods": [
@@ -66066,7 +65775,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "July 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "where-s-waldo",
     "isRomhack": false,
     "moods": [
@@ -66100,7 +65809,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "who-framed-roger-rabbit",
     "isRomhack": false,
     "moods": [
@@ -66134,7 +65843,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 7, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "whomp-em",
     "isRomhack": false,
     "moods": [
@@ -66168,7 +65877,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "widget",
     "isRomhack": false,
     "moods": [
@@ -66200,7 +65909,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wild-ball",
     "isRomhack": false,
     "moods": [
@@ -66236,7 +65945,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 18, 1984",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wild-gunman",
     "isRomhack": false,
     "moods": [
@@ -66244,9 +65953,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Wild Gunman is an NES release from 1984, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Wild Gunman is an NES release from 1984, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -66255,14 +65964,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "NA",
       "PAL"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
+      "action",
       "light gun",
-      "rpg",
       "shooter"
     ],
     "title": "Wild Gunman",
@@ -66274,7 +65982,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 18, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "willow",
     "isRomhack": false,
     "moods": [
@@ -66309,7 +66017,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 15, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wily-and-right-no-rockboard-that-s-paradise",
     "isRomhack": false,
     "moods": [
@@ -66343,7 +66051,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "win-lose-or-draw",
     "isRomhack": false,
     "moods": [
@@ -66377,7 +66085,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "winter-games",
     "isRomhack": false,
     "moods": [
@@ -66411,7 +66119,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 27, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "winter-games-famicom-disk-system-pony-canyon",
     "isRomhack": false,
     "moods": [
@@ -66419,7 +66127,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Winter Games is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and top down-leaning for the recommender.",
+    "pitch": "Winter Games is a Famicom Disk System release from 1987, tagged as balanced, play-first, and top down-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "top-down",
     "publisher": [
@@ -66429,14 +66137,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Winter Games",
     "year": "1987"
@@ -66445,7 +66152,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "Unknown",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wisdom-boy",
     "isRomhack": false,
     "moods": [
@@ -66478,7 +66185,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2016",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wisdom-tree-nes-collection",
     "isRomhack": false,
     "moods": [
@@ -66513,7 +66220,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "July 13, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wit-s",
     "isRomhack": false,
     "moods": [
@@ -66547,7 +66254,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 9, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wizardry-knight-of-diamonds-the-second-scenario",
     "isRomhack": false,
     "moods": [
@@ -66582,7 +66289,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 21, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wizardry-legacy-of-llylgamyn-the-third-scenario",
     "isRomhack": false,
     "moods": [
@@ -66617,7 +66324,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 22, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wizardry-proving-grounds-of-the-mad-overlord",
     "isRomhack": false,
     "moods": [
@@ -66652,7 +66359,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wizards-and-warriors",
     "isRomhack": false,
     "moods": [
@@ -66689,7 +66396,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wizards-and-warriors-iii-kuros-visions-of-power",
     "isRomhack": false,
     "moods": [
@@ -66723,7 +66430,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wolverine",
     "isRomhack": false,
     "moods": [
@@ -66755,7 +66462,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2015",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wonderland-dizzy",
     "isRomhack": false,
     "moods": [
@@ -66790,7 +66497,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 20, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "woody-poco",
     "isRomhack": false,
     "moods": [
@@ -66824,7 +66531,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 8, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "world-boxing",
     "isRomhack": false,
     "moods": [
@@ -66859,7 +66566,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 7, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "world-champgreat-boxing-rush-up",
     "isRomhack": false,
     "moods": [
@@ -66897,7 +66604,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "world-games",
     "isRomhack": false,
     "moods": [
@@ -66929,7 +66636,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "world-heroes-2",
     "isRomhack": false,
     "moods": [
@@ -66962,7 +66669,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "worm-visitor",
     "isRomhack": false,
     "moods": [
@@ -66997,7 +66704,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 17, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wrath-of-the-black-manta",
     "isRomhack": false,
     "moods": [
@@ -67032,7 +66739,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 18, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wrecking-crew",
     "isRomhack": false,
     "moods": [
@@ -67067,17 +66774,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 3, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wrecking-crew-famicom-disk-system-nintendo",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Wrecking Crew is a Famicom Disk System release from 1989, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Wrecking Crew is a Famicom Disk System release from 1989, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Nintendo"
     ],
@@ -67085,14 +66792,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Wrecking Crew",
     "year": "1989"
@@ -67103,17 +66809,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 15, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wurm-journey-to-the-center-of-the-earth",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "hidden-gem",
-    "pitch": "Wurm: Journey to the Center of the Earth is an NES release from 1991, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Wurm: Journey to the Center of the Earth is an NES release from 1991, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "SOFEL",
       "Asmik"
@@ -67122,13 +66828,12 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "NA"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "licensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Wurm: Journey to the Center of the Earth",
     "year": "1991"
@@ -67139,7 +66844,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wwf-king-of-the-ring",
     "isRomhack": false,
     "moods": [
@@ -67173,7 +66878,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wwf-wrestlemania",
     "isRomhack": false,
     "moods": [
@@ -67208,7 +66913,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wwf-wrestlemania-challenge",
     "isRomhack": false,
     "moods": [
@@ -67244,7 +66949,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "wwf-wrestlemania-steel-cage-challenge",
     "isRomhack": false,
     "moods": [
@@ -67279,7 +66984,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "xenophobe",
     "isRomhack": false,
     "moods": [
@@ -67313,7 +67018,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 8, 1984",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "xevious",
     "isRomhack": false,
     "moods": [
@@ -67348,7 +67053,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 18, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "xevious-famicom-disk-system-namco",
     "isRomhack": false,
     "moods": [
@@ -67356,9 +67061,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Xevious is a Famicom Disk System release from 1990, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Xevious is a Famicom Disk System release from 1990, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Namco"
     ],
@@ -67366,14 +67071,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Xevious",
     "year": "1990"
@@ -67384,7 +67088,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "difficult",
     "firstReleased": "August 26, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "xexyz",
     "isRomhack": false,
     "moods": [
@@ -67416,7 +67120,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "1989 or 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "xiao-ma-li",
     "isRomhack": false,
     "moods": [
@@ -67451,7 +67155,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "February 11, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "yamamura-misa-suspense-kyoto-hana-no-misshitsu-satsujin-jiken",
     "isRomhack": false,
     "moods": [
@@ -67485,7 +67189,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 11, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "yamamura-misa-suspense-kyoto-ryu-no-tera-satsujin-jiken",
     "isRomhack": false,
     "moods": [
@@ -67519,7 +67223,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 2, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "yamamura-misa-suspense-kyoto-zai-tech-satsujin-jiken",
     "isRomhack": false,
     "moods": [
@@ -67553,7 +67257,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "April 22, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "yie-ar-kung-fu",
     "isRomhack": false,
     "moods": [
@@ -67587,7 +67291,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 16, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "yo-noid",
     "isRomhack": false,
     "moods": [
@@ -67621,7 +67325,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 19, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "yokai-club",
     "isRomhack": false,
     "moods": [
@@ -67655,7 +67359,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "June 24, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "yokai-dochuki",
     "isRomhack": false,
     "moods": [
@@ -67689,17 +67393,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 23, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "yokai-yashiki",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Yōkai Yashiki is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Yōkai Yashiki is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Irem"
     ],
@@ -67707,14 +67411,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Yōkai Yashiki",
     "year": "1987"
@@ -67725,7 +67428,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "December 14, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "yoshi",
     "isRomhack": false,
     "moods": [
@@ -67760,7 +67463,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "casual",
     "firstReleased": "November 21, 1992",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "yoshi-s-cookie",
     "isRomhack": false,
     "moods": [
@@ -67795,7 +67498,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "August 26, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ys",
     "isRomhack": false,
     "moods": [
@@ -67830,7 +67533,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 25, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ys-ii",
     "isRomhack": false,
     "moods": [
@@ -67865,7 +67568,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 27, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "ys-iii-wanderers-from-ys",
     "isRomhack": false,
     "moods": [
@@ -67900,17 +67603,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 28, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "yu-maze",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Yū Maze is a Famicom Disk System release from 1988, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Yū Maze is a Famicom Disk System release from 1988, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Taito"
     ],
@@ -67918,14 +67621,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Yū Maze",
     "year": "1988"
@@ -67936,7 +67638,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 22, 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "yu-yu-hakusho-bakuto-ankoku-bujutsu-kai",
     "isRomhack": false,
     "moods": [
@@ -67971,7 +67673,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 10, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "yume-kojo-doki-doki-panic",
     "isRomhack": false,
     "moods": [
@@ -67979,7 +67681,7 @@ export const generatedNesGames: NesCatalogGame[] = [
       "weird"
     ],
     "obscurity": "strange",
-    "pitch": "Yume Kōjō: Doki Doki Panic is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and platformer-leaning for the recommender.",
+    "pitch": "Yume Kōjō: Doki Doki Panic is a Famicom Disk System release from 1987, tagged as balanced, play-first, and platformer-leaning for the recommender.",
     "platform": "nes",
     "playStyle": "platformer",
     "publisher": [
@@ -67989,14 +67691,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 2,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Yume Kōjō: Doki Doki Panic",
     "year": "1987"
@@ -68007,7 +67708,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 25, 1991",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "yume-penguin-monogatari",
     "isRomhack": false,
     "moods": [
@@ -68041,17 +67742,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "May 30, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "yushi-no-monsho-deep-dungeon",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Yūshi no Monshō: Deep Dungeon is a Famicom Disk System release from 1987, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Yūshi no Monshō: Deep Dungeon is a Famicom Disk System release from 1987, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Square"
     ],
@@ -68059,14 +67760,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg"
+      "action"
     ],
     "title": "Yūshi no Monshō: Deep Dungeon",
     "year": "1987"
@@ -68077,7 +67777,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "October 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "zanac",
     "isRomhack": false,
     "moods": [
@@ -68112,7 +67812,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "November 28, 1986",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "zanac-famicom-disk-system-pony-canyon",
     "isRomhack": false,
     "moods": [
@@ -68120,9 +67820,9 @@ export const generatedNesGames: NesCatalogGame[] = [
       "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Zanac is a Famicom Disk System release from 1986, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Zanac is a Famicom Disk System release from 1986, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Pony Canyon"
     ],
@@ -68130,14 +67830,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "JP",
       "FDS"
     ],
-    "signalScore": 3,
+    "signalScore": 1,
     "sourceCategory": "famicom-disk-system",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "shooter"
     ],
     "title": "Zanac",
@@ -68147,17 +67846,17 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "19??",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "zatsugaku-olympic-part-ii",
     "isRomhack": false,
     "moods": [
-      "heroic",
-      "arcade"
+      "arcade",
+      "heroic"
     ],
     "obscurity": "strange",
-    "pitch": "Zatsugaku Olympic Part II is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, story-forward, and action adventure-leaning for the recommender.",
+    "pitch": "Zatsugaku Olympic Part II is an unlicensed Famicom Disk System release from Unknown, tagged as balanced, play-first, and side scroller-leaning for the recommender.",
     "platform": "nes",
-    "playStyle": "action-adventure",
+    "playStyle": "side-scroller",
     "publisher": [
       "Phoenix"
     ],
@@ -68166,14 +67865,13 @@ export const generatedNesGames: NesCatalogGame[] = [
       "FDS",
       "unlicensed"
     ],
-    "signalScore": 2,
+    "signalScore": 0,
     "sourceCategory": "famicom-disk-system-unlicensed",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games",
-    "story": "rich",
+    "story": "low",
     "tags": [
       "Famicom Disk System",
-      "adventure",
-      "rpg",
+      "action",
       "sports",
       "unlicensed"
     ],
@@ -68186,7 +67884,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 26, 1988",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "zelda-ii-the-adventure-of-link",
     "isRomhack": false,
     "moods": [
@@ -68218,7 +67916,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "2004",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "zelda-triforce-of-the-gods",
     "isRomhack": false,
     "moods": [
@@ -68254,7 +67952,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1993",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "zen-intergalactic-ninja",
     "isRomhack": false,
     "moods": [
@@ -68286,7 +67984,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     "developer": [],
     "difficulty": "fair",
     "firstReleased": "Unknown",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "zhong-guo-da-heng",
     "isRomhack": false,
     "moods": [
@@ -68321,7 +68019,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 18, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "zippy-race",
     "isRomhack": false,
     "moods": [
@@ -68355,7 +68053,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "March 1994",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "zoda-s-revenge-startropics-ii",
     "isRomhack": false,
     "moods": [
@@ -68389,7 +68087,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "January 27, 1989",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "zoids-2-zenebasu-no-gyakushu",
     "isRomhack": false,
     "moods": [
@@ -68423,7 +68121,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "September 5, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "zoids-chuo-tairiku-no-tatakai",
     "isRomhack": false,
     "moods": [
@@ -68457,7 +68155,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 21, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "zoids-mokushiroku",
     "isRomhack": false,
     "moods": [
@@ -68491,7 +68189,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "July 3, 1987",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "zombie-hunter",
     "isRomhack": false,
     "moods": [
@@ -68526,7 +68224,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 14, 1990",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "zombie-nation",
     "isRomhack": false,
     "moods": [
@@ -68561,7 +68259,7 @@ export const generatedNesGames: NesCatalogGame[] = [
     ],
     "difficulty": "fair",
     "firstReleased": "December 14, 1985",
-    "generatedAt": "2026-07-06T15:35:09.034Z",
+    "generatedAt": "2026-07-06T17:49:13.139Z",
     "id": "zuno-senkan-galg",
     "isRomhack": false,
     "moods": [
