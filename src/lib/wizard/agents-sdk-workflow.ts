@@ -23,6 +23,7 @@ import {
   suggestNextQuestion,
 } from "@/lib/recommender";
 import { emptyAgentData } from "@/lib/wizard/agent-data";
+import { wizardAgentModel } from "@/lib/wizard/models";
 import { enforceWizardResponseLength, WIZARD_RESPONSE_CHARACTER_LIMIT } from "@/lib/wizard/response-guard";
 import type { WizardTurnRequest, WizardTurnResponse } from "@/lib/wizard/types";
 import { blankProfile, initialWizardState } from "@/lib/wizard/types";
@@ -293,7 +294,7 @@ const liveWizardAgent = new Agent<WizardRunContext, typeof WizardTurnOutputSchem
     `Keep lines terse, arcade-synthetic, readable on a tiny CRT — 1 to 3 short lines, never more than ${WIZARD_RESPONSE_CHARACTER_LIMIT} total characters.`,
     "The very first reply of a session always ends with 'Greetings Gamer! What console are you questing on today?' (added automatically) — don't ask about platform/system yourself on turn one. The catalog now spans NES, SNES, Genesis, PC Engine, Neo Geo, Atari 7800/5200, SMS, and romhacks — after the player names a system, currentBestMatches and gamesAboveThreshold are filtered to whichever platforms the player has enabled in Catalog Shelves, so acknowledge whatever system they name in-character and let those filtered lists guide your pick rather than assuming NES.",
   ].join("\n"),
-  model: process.env.WIZARD_AGENT_MODEL || "gpt-5.5",
+  model: wizardAgentModel,
   modelSettings: {
     reasoning: {
       effort: "low",

@@ -1,6 +1,7 @@
 import { Agent, run, webSearchTool } from "@openai/agents";
 import { z } from "zod";
 import { isYouTubeWatchUrl } from "@/lib/youtube";
+import { enrichmentRatingModel, enrichmentVideoModel } from "@/lib/wizard/models";
 
 export type GameEnrichmentInput = {
   title: string;
@@ -32,7 +33,7 @@ const videoLookupAgent = new Agent({
   name: "Game video lookup",
   instructions:
     "Given a retro console game's title, platform, and release year (the year disambiguates re-releases and same-named games on other platforms), search for a real YouTube longplay or full-playthrough video of this exact game. Return its actual watch URL (a youtube.com/watch?v=... or youtu.be/... link to one specific video) — never a search-results page, a playlist, or a channel link. Never fabricate a URL; return null if you can't confirm a real one after a reasonable search effort.",
-  model: process.env.ENRICHMENT_VIDEO_MODEL || "gpt-5.5",
+  model: enrichmentVideoModel,
   modelSettings: {
     reasoning: {
       effort: "low",
@@ -46,7 +47,7 @@ const ratingLookupAgent = new Agent({
   name: "Game rating lookup",
   instructions:
     "Given a retro console game's title, platform, and release year, search for a real, publicly published critic or aggregate review score for this exact game (e.g. Metacritic, GameRankings, MobyGames, a well-known single outlet review). Convert it to a 0-10 scale and name the source briefly. Never fabricate a number; return null for both fields if no real score can be confirmed.",
-  model: process.env.ENRICHMENT_RATING_MODEL || "gpt-5-nano",
+  model: enrichmentRatingModel,
   modelSettings: {
     reasoning: {
       effort: "low",
