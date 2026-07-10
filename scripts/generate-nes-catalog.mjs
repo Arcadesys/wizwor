@@ -328,7 +328,7 @@ async function main() {
   const byId = new Map();
   for (const [id, { entry }] of parsedById) {
     const genre = genreByTitle.get(entry.title) ?? null;
-    byId.set(id, { id, ...deriveGameFields(entry, genre), ...entry, generatedAt });
+    byId.set(id, { id, ...deriveGameFields(entry, genre), ...entry });
   }
 
   const entries = [...byId.values()].sort((left, right) => left.title.localeCompare(right.title));
@@ -366,7 +366,6 @@ export type NesCatalogGame = GeneratedGameMetadata & {
   regions: string[];
   firstReleased: string;
   sourceUrl: string;
-  generatedAt: string;
   signalScore: number;
 };
 

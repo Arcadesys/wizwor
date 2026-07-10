@@ -70,7 +70,7 @@ export async function generateConsoleCatalog(config) {
   const byId = new Map();
   for (const [id, { entry }] of parsedById) {
     const genre = genreByTitle.get(entry.title) ?? null;
-    byId.set(id, { id, ...deriveGameFields(entry, config, genre), ...entry, generatedAt });
+    byId.set(id, { id, ...deriveGameFields(entry, config, genre), ...entry });
   }
 
   const entries = [...byId.values()].sort((left, right) => left.title.localeCompare(right.title));
@@ -100,7 +100,6 @@ export type ${config.typePrefix}CatalogGame = GeneratedGameMetadata & {
   firstReleased: string;
   format?: string;
   sourceUrl: string;
-  generatedAt: string;
   signalScore: number;
 };
 
