@@ -1,6 +1,6 @@
 "use client";
 
-import { CSSProperties, FormEvent, KeyboardEvent, useEffect, useMemo, useRef, useState } from "react";
+import { CSSProperties, FormEvent, KeyboardEvent, useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
 import type * as ToneNamespace from "tone";
 import { catalogPlatforms, platformLabels, sanitizeEnabledPlatforms, type Platform } from "@/data/games";
 import type { Recommendation, UserProfile } from "@/lib/recommender";
@@ -1027,7 +1027,9 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
 
   // A short Tone.js arpeggio loop that plays for exactly as long as the
   // wizard is thinking — started/stopped by the isStreaming effect above.
-  async function startThinkingSound() {
+  // Effect events: called from effects but deliberately non-reactive, so the
+  // effects' dependency arrays stay about what actually retriggers them.
+  const startThinkingSound = useEffectEvent(async () => {
     if (!soundOnRef.current) {
       return;
     }
@@ -1060,7 +1062,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     rig.tone.getTransport().start();
     rig.thinkingSynth = synth;
     rig.thinkingLoop = loop;
-  }
+  });
 
   function stopThinkingSound() {
     const rig = audioRef.current;
@@ -1120,12 +1122,12 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     return { audio };
   }
 
-  async function speakGreeting() {
+  const speakGreeting = useEffectEvent(async () => {
     const rendered = await renderSamLine(consoleGreeting);
     if (rendered) {
       playSamBuffer(rendered.audio);
     }
-  }
+  });
 
   function playSamBuffer(audio: Float32Array) {
     const rig = audioRef.current;
