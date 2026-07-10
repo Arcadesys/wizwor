@@ -8,7 +8,12 @@ import type {
   RomhackInterest,
   StoryPreference,
 } from "@/data/games";
-import { getAllGames, getGamesByExactTitle, getGamesByTitleKeyword } from "@/lib/game-repository";
+import {
+  getAllGames,
+  getGamesByExactTitle,
+  getGamesByTitleContainedIn,
+  getGamesByTitleKeyword,
+} from "@/lib/game-repository";
 
 export type UserProfile = {
   name?: string;
@@ -154,6 +159,30 @@ export function getRecommendations(profile: UserProfile, options: Recommendation
     );
 }
 
+// A single-word title (e.g. "Golf", "Chess", "Boxing") is indistinguishable
+// from someone naming the genre rather than the cartridge — "I want a golf
+// game" isn't a direct ask for the Golf cartridge. Only multi-word titles are
+// specific enough that finding them embedded in a sentence is a reliable
+// signal of an intentional, direct title mention.
+function isMultiWordTitle(game: Game): boolean {
+  return normalizeTitle(game.title).includes(" ");
+}
+
+// A shorter matched title that's wholly contained in another matched title's
+// text (e.g. "Mega Man" inside "Mega Man 2") is a false positive — naming the
+// longer, more specific cartridge shouldn't also surface its unrelated
+// prequel just because the words overlap.
+function mostSpecificTitleMatches(games: Game[]): Game[] {
+  return games.filter((game) => {
+    const titleKey = normalizeTitle(game.title);
+    const paddedTitleKey = ` ${titleKey} `;
+    return !games.some((other) => {
+      const otherTitleKey = normalizeTitle(other.title);
+      return other !== game && otherTitleKey !== titleKey && ` ${otherTitleKey} `.includes(paddedTitleKey);
+    });
+  });
+}
+
 export function exactTitleRecommendations(
   query: string,
   options: Pick<RecommendationGateOptions, "enabledPlatforms"> = {},
@@ -163,7 +192,13 @@ export function exactTitleRecommendations(
     return [];
   }
 
-  return getGamesByExactTitle(normalizedQuery, { enabledPlatforms: options.enabledPlatforms })
+  const enabledPlatforms = options.enabledPlatforms;
+  const exactMatches = getGamesByExactTitle(normalizedQuery, { enabledPlatforms });
+  const games = exactMatches.length
+    ? exactMatches
+    : mostSpecificTitleMatches(getGamesByTitleContainedIn(query, { enabledPlatforms }).filter(isMultiWordTitle));
+
+  return games
     .sort((left, right) => left.year.localeCompare(right.year) || left.title.localeCompare(right.title))
     .slice(0, maxQualifyingRecommendations)
     .map((game) => ({

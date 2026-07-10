@@ -108,6 +108,55 @@ describe("recommendation rubric", () => {
     });
   });
 
+  it("finds a named cartridge even when it's phrased inside a full sentence, not just as a bare command", () => {
+    // Regression: a direct ask like "I want to play Mega Man 2" was refused
+    // because exactTitleRecommendations only matched when the whole message
+    // equaled a catalog title verbatim.
+    const recommendations = exactTitleRecommendations("I want to play Mega Man 2 please", {
+      enabledPlatforms: ["nes"],
+    });
+
+    expect(recommendations).toHaveLength(1);
+    expect(recommendations[0]).toMatchObject({
+      game: { id: "mega-man-2", title: "Mega Man 2" },
+      score: 1,
+      reasons: ["exact title match"],
+    });
+  });
+
+  it("prefers the more specific title when a shorter title's words are a subset of a longer one", () => {
+    // "Mega Man" is itself a real, different cartridge, and its words are a
+    // strict subset of "Mega Man 2" — naming the sequel directly shouldn't
+    // also surface the unrelated original.
+    const recommendations = exactTitleRecommendations("mega man 2", { enabledPlatforms: ["nes"] });
+
+    expect(recommendations.map((recommendation) => recommendation.game.id)).toEqual(["mega-man-2"]);
+  });
+
+  it("does not treat a generic genre ask as a direct title mention just because a common word is also a title", () => {
+    // Regression: "Golf" is a real one-word NES title, but "I want a golf
+    // game" is naming the genre, not the cartridge — the contained-title
+    // bypass must not fire for single-word titles embedded in a sentence.
+    const recommendations = exactTitleRecommendations("I want a golf game", { enabledPlatforms: ["nes"] });
+
+    expect(recommendations).toHaveLength(0);
+  });
+
+  it("does not drop a title just because it's a raw text prefix of another matched title", () => {
+    // Regression: "golden axe ii" is a raw substring of "golden axe iii"
+    // (no word boundary — "ii" immediately continues into "iii"), so a naive
+    // unpadded containment check incorrectly treated "Golden Axe II" as
+    // subsumed by "Golden Axe III" even when both are independently named.
+    const recommendations = exactTitleRecommendations("I want Golden Axe II and Golden Axe III", {
+      enabledPlatforms: ["genesis"],
+    });
+
+    expect(recommendations.map((recommendation) => recommendation.game.id).sort()).toEqual([
+      "golden-axe-ii",
+      "golden-axe-iii",
+    ]);
+  });
+
   it("stays closed while the high-confidence set is still too broad", () => {
     const broad = {
       ...blankProfile,

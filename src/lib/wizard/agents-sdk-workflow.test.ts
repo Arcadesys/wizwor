@@ -320,4 +320,41 @@ describe("buildResponse showcase guard", () => {
     expect(response.showcase?.games[0]?.game.id).toBe("super-mario-bros");
     expect(response.state.revealed).toBe(true);
   });
+
+  it("opens the showcase for a directly named cartridge phrased as a sentence, not just a bare title", () => {
+    // Regression: "Mega Man 2" scores signalScore 2 (below the quality
+    // filter) and a blank profile has no signal for bestGuessRecommendations,
+    // so without the exact-title bypass this direct, unambiguous ask was
+    // silently refused.
+    const response = buildResponse(
+      output({
+        lines: ["A known cartridge glows."],
+        revealed: false,
+        recommendedGameIds: [],
+      }),
+      blankProfile,
+      ["nes"],
+      { command: "I want to play Mega Man 2" },
+    );
+
+    expect(response.recommendations[0]?.game.id).toBe("mega-man-2");
+    expect(response.showcase?.games[0]?.game.id).toBe("mega-man-2");
+    expect(response.state.revealed).toBe(true);
+  });
+
+  it("does not force a reveal for a generic genre ask that happens to contain a one-word title", () => {
+    // Regression: "Golf" is a real one-word NES title, but "I want a golf
+    // game" is a broad genre request, not a direct cartridge ask — it should
+    // stay in the normal interview/recommendation flow instead of
+    // auto-revealing off the exact-title bypass.
+    const response = buildResponse(
+      output({ lines: ["What kind of adventure calls to you?"], revealed: false, recommendedGameIds: [] }),
+      blankProfile,
+      ["nes"],
+      { command: "I want a golf game" },
+    );
+
+    expect(response.showcase).toBeNull();
+    expect(response.state.revealed).toBe(false);
+  });
 });
