@@ -7,7 +7,7 @@ const API_URL = "https://en.wikipedia.org/w/api.php";
 const BATCH_SIZE = 50;
 const USER_AGENT = "wizwor-catalog-generator/1.0 (local development script)";
 
-function extractGenreField(wikitext) {
+export function extractGenreField(wikitext) {
   const match = wikitext.match(/\|\s*genre\s*=\s*([^\n]+)/i);
   if (!match) {
     return null;
