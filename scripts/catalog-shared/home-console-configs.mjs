@@ -2,18 +2,29 @@
 // Keep vocabulary here, not in catalog-shared/heuristics.mjs; that module only
 // owns matching mechanics and stable output helpers.
 
-// Shared between the NES config's richStorySignals and its rpg tag rule,
-// which deliberately use the same franchise list.
-const nesRichStorySignals = ["ad&d", "advanced dungeons", "dragon quest", "dragon warrior", "final fantasy", "famicom tantei", "faria", "fire emblem", "mother", "ultima", "wizardry", "ys"];
+// Every console reuses one franchise vocabulary three ways: richStorySignals
+// is the shared RPG core plus console-specific extras, the action-adventure
+// playStyle rule is richStorySignals plus a fixed adventure suffix, and the
+// rpg tag rule is richStorySignals verbatim. Compose instead of repeating.
+const rpgFranchiseSignals = ["beyond oasis", "breath of fire", "chrono", "dragon", "earthbound", "fantasy star", "final fantasy", "fire emblem", "lunar", "mana", "miracle warriors", "monster world", "neutopia", "phantasy star", "shadowrun", "shining", "snatcher", "star ocean", "ultima", "ys"];
+const adventurePatternSuffix = ["adventure", "landstalker", "metroid", "quest", "rpg", "wonder boy", "zelda"];
 
-// Same sharing for the SNES config.
+const smsRichStorySignals = [...rpgFranchiseSignals, "golvellius", "spellcaster"];
+const atari7800RichStorySignals = [...rpgFranchiseSignals, "tower toppler"];
+const atari5200RichStorySignals = [...rpgFranchiseSignals, "star raiders"];
+const genesisRichStorySignals = [...rpgFranchiseSignals, "crusader of centy", "landstalker", "phantasy star", "shining force", "shining in the darkness", "soleil"];
+const pcEngineRichStorySignals = [...rpgFranchiseSignals, "cosmic fantasy", "dragon slayer", "legendary axe", "neutopia", "ys"];
+const neoGeoRichStorySignals = [...rpgFranchiseSignals, "samurai shodown", "last blade", "king of fighters"];
+
+// NES and SNES predate the shared core list and keep their own vocabulary.
+const nesRichStorySignals = ["ad&d", "advanced dungeons", "dragon quest", "dragon warrior", "final fantasy", "famicom tantei", "faria", "fire emblem", "mother", "ultima", "wizardry", "ys"];
 const snesRichStorySignals = ["breath of fire", "chrono", "dragon quest", "earthbound", "final fantasy", "fire emblem", "lufia", "ogre battle", "romancing saga", "secret of evermore", "secret of mana", "shin megami tensei", "star ocean", "tales of phantasia", "ultima"];
 
 export const catalogConfigs = {
   sms: {
     difficultSignals: ["alien soldier", "battletoads", "castlevania", "contra", "demon", "ghouls", "ghosts", "gradius", "last resort", "mega man", "metal slug", "ninja gaiden", "r-type", "shinobi", "splatterhouse", "thunder force", "zillion"],
     casualSignals: ["casino", "chess", "columns", "fishing", "golf", "jeopardy", "mahjong", "monopoly", "pac-man", "pachi", "pinball", "puzzle", "solitaire", "tetris", "wheel of fortune", "alex kidd"],
-    richStorySignals: ["beyond oasis", "breath of fire", "chrono", "dragon", "earthbound", "fantasy star", "final fantasy", "fire emblem", "lunar", "mana", "miracle warriors", "monster world", "neutopia", "phantasy star", "shadowrun", "shining", "snatcher", "star ocean", "ultima", "ys", "golvellius", "spellcaster"],
+    richStorySignals: smsRichStorySignals,
     someStorySignals: ["adventure", "alex kidd", "batman", "castlevania", "comix zone", "demon", "dragon ball", "gaiden", "golden axe", "indiana jones", "jurassic park", "legend", "metroid", "ninja", "quest", "robocop", "shinobi", "star wars", "wonder boy"],
     playStyleRules: [
       {
@@ -24,7 +35,7 @@ export const catalogConfigs = {
       {
         playStyle: "action-adventure",
         tags: ["adventure"],
-        patterns: ["beyond oasis", "breath of fire", "chrono", "dragon", "earthbound", "fantasy star", "final fantasy", "fire emblem", "lunar", "mana", "miracle warriors", "monster world", "neutopia", "phantasy star", "shadowrun", "shining", "snatcher", "star ocean", "ultima", "ys", "golvellius", "spellcaster", "adventure", "landstalker", "metroid", "quest", "rpg", "wonder boy", "zelda"],
+        patterns: [...smsRichStorySignals, ...adventurePatternSuffix],
       },
       {
         playStyle: "top-down",
@@ -60,7 +71,7 @@ export const catalogConfigs = {
       },
       {
         tag: "rpg",
-        patterns: ["beyond oasis", "breath of fire", "chrono", "dragon", "earthbound", "fantasy star", "final fantasy", "fire emblem", "lunar", "mana", "miracle warriors", "monster world", "neutopia", "phantasy star", "shadowrun", "shining", "snatcher", "star ocean", "ultima", "ys", "golvellius", "spellcaster"],
+        patterns: smsRichStorySignals,
       },
       {
         tag: "horror",
@@ -186,7 +197,7 @@ export const catalogConfigs = {
   "atari-7800": {
     difficultSignals: ["alien soldier", "battletoads", "castlevania", "contra", "demon", "ghouls", "ghosts", "gradius", "last resort", "mega man", "metal slug", "ninja gaiden", "r-type", "shinobi", "splatterhouse", "thunder force", "zillion", "ninja golf"],
     casualSignals: ["casino", "chess", "columns", "fishing", "golf", "jeopardy", "mahjong", "monopoly", "pac-man", "pachi", "pinball", "puzzle", "solitaire", "tetris", "wheel of fortune", "food fight"],
-    richStorySignals: ["beyond oasis", "breath of fire", "chrono", "dragon", "earthbound", "fantasy star", "final fantasy", "fire emblem", "lunar", "mana", "miracle warriors", "monster world", "neutopia", "phantasy star", "shadowrun", "shining", "snatcher", "star ocean", "ultima", "ys", "tower toppler"],
+    richStorySignals: atari7800RichStorySignals,
     someStorySignals: ["adventure", "alex kidd", "batman", "castlevania", "comix zone", "demon", "dragon ball", "gaiden", "golden axe", "indiana jones", "jurassic park", "legend", "metroid", "ninja", "quest", "robocop", "shinobi", "star wars", "wonder boy", "ninja golf"],
     playStyleRules: [
       {
@@ -197,7 +208,7 @@ export const catalogConfigs = {
       {
         playStyle: "action-adventure",
         tags: ["adventure"],
-        patterns: ["beyond oasis", "breath of fire", "chrono", "dragon", "earthbound", "fantasy star", "final fantasy", "fire emblem", "lunar", "mana", "miracle warriors", "monster world", "neutopia", "phantasy star", "shadowrun", "shining", "snatcher", "star ocean", "ultima", "ys", "tower toppler", "adventure", "landstalker", "metroid", "quest", "rpg", "wonder boy", "zelda"],
+        patterns: [...atari7800RichStorySignals, ...adventurePatternSuffix],
       },
       {
         playStyle: "top-down",
@@ -233,7 +244,7 @@ export const catalogConfigs = {
       },
       {
         tag: "rpg",
-        patterns: ["beyond oasis", "breath of fire", "chrono", "dragon", "earthbound", "fantasy star", "final fantasy", "fire emblem", "lunar", "mana", "miracle warriors", "monster world", "neutopia", "phantasy star", "shadowrun", "shining", "snatcher", "star ocean", "ultima", "ys", "tower toppler"],
+        patterns: atari7800RichStorySignals,
       },
       {
         tag: "horror",
@@ -374,7 +385,7 @@ export const catalogConfigs = {
   "atari-5200": {
     difficultSignals: ["alien soldier", "battletoads", "castlevania", "contra", "demon", "ghouls", "ghosts", "gradius", "last resort", "mega man", "metal slug", "ninja gaiden", "r-type", "shinobi", "splatterhouse", "thunder force", "zillion", "defender", "missile command", "star raiders"],
     casualSignals: ["casino", "chess", "columns", "fishing", "golf", "jeopardy", "mahjong", "monopoly", "pac-man", "pachi", "pinball", "puzzle", "solitaire", "tetris", "wheel of fortune", "pac-man", "qix"],
-    richStorySignals: ["beyond oasis", "breath of fire", "chrono", "dragon", "earthbound", "fantasy star", "final fantasy", "fire emblem", "lunar", "mana", "miracle warriors", "monster world", "neutopia", "phantasy star", "shadowrun", "shining", "snatcher", "star ocean", "ultima", "ys", "star raiders"],
+    richStorySignals: atari5200RichStorySignals,
     someStorySignals: ["adventure", "alex kidd", "batman", "castlevania", "comix zone", "demon", "dragon ball", "gaiden", "golden axe", "indiana jones", "jurassic park", "legend", "metroid", "ninja", "quest", "robocop", "shinobi", "star wars", "wonder boy"],
     playStyleRules: [
       {
@@ -385,7 +396,7 @@ export const catalogConfigs = {
       {
         playStyle: "action-adventure",
         tags: ["adventure"],
-        patterns: ["beyond oasis", "breath of fire", "chrono", "dragon", "earthbound", "fantasy star", "final fantasy", "fire emblem", "lunar", "mana", "miracle warriors", "monster world", "neutopia", "phantasy star", "shadowrun", "shining", "snatcher", "star ocean", "ultima", "ys", "star raiders", "adventure", "landstalker", "metroid", "quest", "rpg", "wonder boy", "zelda"],
+        patterns: [...atari5200RichStorySignals, ...adventurePatternSuffix],
       },
       {
         playStyle: "top-down",
@@ -421,7 +432,7 @@ export const catalogConfigs = {
       },
       {
         tag: "rpg",
-        patterns: ["beyond oasis", "breath of fire", "chrono", "dragon", "earthbound", "fantasy star", "final fantasy", "fire emblem", "lunar", "mana", "miracle warriors", "monster world", "neutopia", "phantasy star", "shadowrun", "shining", "snatcher", "star ocean", "ultima", "ys", "star raiders"],
+        patterns: atari5200RichStorySignals,
       },
       {
         tag: "horror",
@@ -516,7 +527,7 @@ export const catalogConfigs = {
   genesis: {
     difficultSignals: ["alien soldier", "battletoads", "castlevania", "contra", "demon", "ghouls", "ghosts", "gradius", "last resort", "mega man", "metal slug", "ninja gaiden", "r-type", "shinobi", "splatterhouse", "thunder force", "zillion", "gunstar heroes", "contra hard corps"],
     casualSignals: ["casino", "chess", "columns", "fishing", "golf", "jeopardy", "mahjong", "monopoly", "pac-man", "pachi", "pinball", "puzzle", "solitaire", "tetris", "wheel of fortune", "sonic"],
-    richStorySignals: ["beyond oasis", "breath of fire", "chrono", "dragon", "earthbound", "fantasy star", "final fantasy", "fire emblem", "lunar", "mana", "miracle warriors", "monster world", "neutopia", "phantasy star", "shadowrun", "shining", "snatcher", "star ocean", "ultima", "ys", "crusader of centy", "landstalker", "phantasy star", "shining force", "shining in the darkness", "soleil"],
+    richStorySignals: genesisRichStorySignals,
     someStorySignals: ["adventure", "alex kidd", "batman", "castlevania", "comix zone", "demon", "dragon ball", "gaiden", "golden axe", "indiana jones", "jurassic park", "legend", "metroid", "ninja", "quest", "robocop", "shinobi", "star wars", "wonder boy", "streets of rage", "gunstar heroes"],
     playStyleRules: [
       {
@@ -527,7 +538,7 @@ export const catalogConfigs = {
       {
         playStyle: "action-adventure",
         tags: ["adventure"],
-        patterns: ["beyond oasis", "breath of fire", "chrono", "dragon", "earthbound", "fantasy star", "final fantasy", "fire emblem", "lunar", "mana", "miracle warriors", "monster world", "neutopia", "phantasy star", "shadowrun", "shining", "snatcher", "star ocean", "ultima", "ys", "crusader of centy", "landstalker", "phantasy star", "shining force", "shining in the darkness", "soleil", "adventure", "landstalker", "metroid", "quest", "rpg", "wonder boy", "zelda"],
+        patterns: [...genesisRichStorySignals, ...adventurePatternSuffix],
       },
       {
         playStyle: "top-down",
@@ -563,7 +574,7 @@ export const catalogConfigs = {
       },
       {
         tag: "rpg",
-        patterns: ["beyond oasis", "breath of fire", "chrono", "dragon", "earthbound", "fantasy star", "final fantasy", "fire emblem", "lunar", "mana", "miracle warriors", "monster world", "neutopia", "phantasy star", "shadowrun", "shining", "snatcher", "star ocean", "ultima", "ys", "crusader of centy", "landstalker", "phantasy star", "shining force", "shining in the darkness", "soleil"],
+        patterns: genesisRichStorySignals,
       },
       {
         tag: "horror",
@@ -698,7 +709,7 @@ export const catalogConfigs = {
   "pc-engine": {
     difficultSignals: ["alien soldier", "battletoads", "castlevania", "contra", "demon", "ghouls", "ghosts", "gradius", "last resort", "mega man", "metal slug", "ninja gaiden", "r-type", "shinobi", "splatterhouse", "thunder force", "zillion", "splatterhouse", "r-type"],
     casualSignals: ["casino", "chess", "columns", "fishing", "golf", "jeopardy", "mahjong", "monopoly", "pac-man", "pachi", "pinball", "puzzle", "solitaire", "tetris", "wheel of fortune", "bomberman", "bonk"],
-    richStorySignals: ["beyond oasis", "breath of fire", "chrono", "dragon", "earthbound", "fantasy star", "final fantasy", "fire emblem", "lunar", "mana", "miracle warriors", "monster world", "neutopia", "phantasy star", "shadowrun", "shining", "snatcher", "star ocean", "ultima", "ys", "cosmic fantasy", "dragon slayer", "legendary axe", "neutopia", "ys"],
+    richStorySignals: pcEngineRichStorySignals,
     someStorySignals: ["adventure", "alex kidd", "batman", "castlevania", "comix zone", "demon", "dragon ball", "gaiden", "golden axe", "indiana jones", "jurassic park", "legend", "metroid", "ninja", "quest", "robocop", "shinobi", "star wars", "wonder boy", "bonk", "splatterhouse"],
     playStyleRules: [
       {
@@ -709,7 +720,7 @@ export const catalogConfigs = {
       {
         playStyle: "action-adventure",
         tags: ["adventure"],
-        patterns: ["beyond oasis", "breath of fire", "chrono", "dragon", "earthbound", "fantasy star", "final fantasy", "fire emblem", "lunar", "mana", "miracle warriors", "monster world", "neutopia", "phantasy star", "shadowrun", "shining", "snatcher", "star ocean", "ultima", "ys", "cosmic fantasy", "dragon slayer", "legendary axe", "neutopia", "ys", "adventure", "landstalker", "metroid", "quest", "rpg", "wonder boy", "zelda"],
+        patterns: [...pcEngineRichStorySignals, ...adventurePatternSuffix],
       },
       {
         playStyle: "top-down",
@@ -745,7 +756,7 @@ export const catalogConfigs = {
       },
       {
         tag: "rpg",
-        patterns: ["beyond oasis", "breath of fire", "chrono", "dragon", "earthbound", "fantasy star", "final fantasy", "fire emblem", "lunar", "mana", "miracle warriors", "monster world", "neutopia", "phantasy star", "shadowrun", "shining", "snatcher", "star ocean", "ultima", "ys", "cosmic fantasy", "dragon slayer", "legendary axe", "neutopia", "ys"],
+        patterns: pcEngineRichStorySignals,
       },
       {
         tag: "horror",
@@ -894,7 +905,7 @@ export const catalogConfigs = {
   "neo-geo": {
     difficultSignals: ["alien soldier", "battletoads", "castlevania", "contra", "demon", "ghouls", "ghosts", "gradius", "last resort", "mega man", "metal slug", "ninja gaiden", "r-type", "shinobi", "splatterhouse", "thunder force", "zillion", "metal slug", "last blade", "king of fighters"],
     casualSignals: ["casino", "chess", "columns", "fishing", "golf", "jeopardy", "mahjong", "monopoly", "pac-man", "pachi", "pinball", "puzzle", "solitaire", "tetris", "wheel of fortune", "neo turf masters"],
-    richStorySignals: ["beyond oasis", "breath of fire", "chrono", "dragon", "earthbound", "fantasy star", "final fantasy", "fire emblem", "lunar", "mana", "miracle warriors", "monster world", "neutopia", "phantasy star", "shadowrun", "shining", "snatcher", "star ocean", "ultima", "ys", "samurai shodown", "last blade", "king of fighters"],
+    richStorySignals: neoGeoRichStorySignals,
     someStorySignals: ["adventure", "alex kidd", "batman", "castlevania", "comix zone", "demon", "dragon ball", "gaiden", "golden axe", "indiana jones", "jurassic park", "legend", "metroid", "ninja", "quest", "robocop", "shinobi", "star wars", "wonder boy", "fatal fury", "metal slug", "samurai shodown"],
     playStyleRules: [
       {
@@ -905,7 +916,7 @@ export const catalogConfigs = {
       {
         playStyle: "action-adventure",
         tags: ["adventure"],
-        patterns: ["beyond oasis", "breath of fire", "chrono", "dragon", "earthbound", "fantasy star", "final fantasy", "fire emblem", "lunar", "mana", "miracle warriors", "monster world", "neutopia", "phantasy star", "shadowrun", "shining", "snatcher", "star ocean", "ultima", "ys", "samurai shodown", "last blade", "king of fighters", "adventure", "landstalker", "metroid", "quest", "rpg", "wonder boy", "zelda"],
+        patterns: [...neoGeoRichStorySignals, ...adventurePatternSuffix],
       },
       {
         playStyle: "top-down",
@@ -941,7 +952,7 @@ export const catalogConfigs = {
       },
       {
         tag: "rpg",
-        patterns: ["beyond oasis", "breath of fire", "chrono", "dragon", "earthbound", "fantasy star", "final fantasy", "fire emblem", "lunar", "mana", "miracle warriors", "monster world", "neutopia", "phantasy star", "shadowrun", "shining", "snatcher", "star ocean", "ultima", "ys", "samurai shodown", "last blade", "king of fighters"],
+        patterns: neoGeoRichStorySignals,
       },
       {
         tag: "horror",
