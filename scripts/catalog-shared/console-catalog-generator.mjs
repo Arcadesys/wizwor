@@ -4,23 +4,33 @@ import { collectMatchingTags, matchingRules, matchesAny, slugify, stableStringif
 import { fetchGenreMap } from "./wikipedia-genre.mjs";
 import { deriveSignalsFromGenre } from "./genre-taxonomy.mjs";
 
-export async function generateConsoleCatalog(config) {
+async function fetchSourceHtml(url) {
+  const response = await fetch(url, {
+    headers: {
+      "User-Agent": "wizwor-catalog-generator/1.0 (local development script)",
+    },
+  });
+  if (!response.ok) {
+    throw new Error(`Failed to fetch source ${url}: ${response.status} ${response.statusText}`);
+  }
+  return response.text();
+}
+
+// The options are injection seams for tests: fetchHtml(url) -> html string,
+// fetchGenres(titles, {onProgress}) -> Map(title -> genre text), and
+// writeOutput(path, contents). Production runs use the live defaults.
+export async function generateConsoleCatalog(config, options = {}) {
+  const fetchHtml = options.fetchHtml ?? fetchSourceHtml;
+  const fetchGenres = options.fetchGenres ?? fetchGenreMap;
+  const writeOutput = options.writeOutput ?? writeFile;
+
   const generatedAt = new Date().toISOString();
   const documents = new Map();
   const parsedById = new Map();
 
   for (const tableSource of config.sourceTables) {
     if (!documents.has(tableSource.url)) {
-      const html = await fetch(tableSource.url, {
-        headers: {
-          "User-Agent": "wizwor-catalog-generator/1.0 (local development script)",
-        },
-      }).then((response) => {
-        if (!response.ok) {
-          throw new Error(`Failed to fetch source ${tableSource.url}: ${response.status} ${response.statusText}`);
-        }
-        return response.text();
-      });
+      const html = await fetchHtml(tableSource.url);
       documents.set(tableSource.url, new JSDOM(html).window.document);
     }
 
@@ -56,7 +66,7 @@ export async function generateConsoleCatalog(config) {
   // so fetch it once for every title before scoring, rather than guessing
   // mood/playStyle/story from franchise names alone.
   console.log(`Fetching genre data for ${parsedById.size} ${config.platformLabel} titles...`);
-  const genreByTitle = await fetchGenreMap(
+  const genreByTitle = await fetchGenres(
     [...parsedById.values()].map(({ entry }) => entry.title),
     {
       onProgress: (done, total) => {
@@ -116,9 +126,10 @@ export const ${config.sourceExportName} = ${stableStringify({
 export const ${config.gamesExportName}: ${config.typePrefix}CatalogGame[] = ${stableStringify(entries)};
 `;
 
-  await writeFile(config.outputPath, output);
+  await writeOutput(config.outputPath, output);
   console.log(`Generated ${entries.length} ${config.platformLabel} catalog entries at ${config.outputPath.pathname}`);
   console.log(sourceCounts);
+  return { entries, sourceCounts };
 }
 
 function parseRow(row, tableSource, config) {
