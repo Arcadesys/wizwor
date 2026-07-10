@@ -3,19 +3,17 @@ import { POST } from "@/app/api/wizard/route";
 import { initialWizardState } from "@/lib/wizard/types";
 
 vi.mock("@/lib/wizard/runtime", () => ({
-  getWizardAgent: () => ({
-    runTurn: vi.fn(async () => ({
-      adapter: "chatgpt",
-      accepted: true,
-      lines: ["The live agent answers."],
-      recommendations: [],
-      suggestions: [],
-      state: {
-        ...initialWizardState,
-        started: true,
-      },
-    })),
-  }),
+  runWizardTurn: vi.fn(async () => ({
+    adapter: "chatgpt",
+    accepted: true,
+    lines: ["The live agent answers."],
+    recommendations: [],
+    suggestions: [],
+    state: {
+      ...initialWizardState,
+      started: true,
+    },
+  })),
 }));
 
 describe("POST /api/wizard", () => {

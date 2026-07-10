@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { sanitizeEnabledPlatforms } from "@/data/games";
-import { getWizardAgent } from "@/lib/wizard/runtime";
+import { runWizardTurn } from "@/lib/wizard/runtime";
 import type { WizardTurnRequest } from "@/lib/wizard/types";
 import { defaultMemoryMarkdown, initialWizardState } from "@/lib/wizard/types";
 
@@ -23,9 +23,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "command must be a string." }, { status: 400 });
   }
 
-  const agent = getWizardAgent();
   try {
-    const response = await agent.runTurn({
+    const response = await runWizardTurn({
       sessionId: payload.sessionId,
       command: payload.command,
       messages: Array.isArray(payload.messages) ? payload.messages : [],

@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { chatGptAgentAdapter, getChatGptAgentReadiness } from "../src/lib/wizard/chatgpt-agent";
+import { runWizardTurn, wizardAgentReadiness } from "../src/lib/wizard/runtime";
 import {
   initialWizardState,
   type WizardMessage,
@@ -46,16 +46,13 @@ type CaseResult = {
 
 loadEnvLocal();
 
-const readiness = getChatGptAgentReadiness();
-const agent = chatGptAgentAdapter;
-
 main().catch((error) => {
   console.error(error);
   process.exit(1);
 });
 
 async function main() {
-  if (!readiness.hasApiKey) {
+  if (!wizardAgentReadiness().hasApiKey) {
     console.error("OPENAI_API_KEY is required to run agent evals.");
     process.exit(1);
   }
@@ -133,7 +130,7 @@ async function runCase(testCase: EvalCase): Promise<CaseResult> {
   const messages: WizardMessage[] = [];
   let lastLines: string[] = [];
   let lastAccepted = true;
-  let lastRecommendations: Awaited<ReturnType<typeof agent.runTurn>>["recommendations"] = [];
+  let lastRecommendations: Awaited<ReturnType<typeof runWizardTurn>>["recommendations"] = [];
   let lastResponse: WizardTurnResponse | null = null;
 
   for (const command of testCase.turns) {
@@ -141,7 +138,7 @@ async function runCase(testCase: EvalCase): Promise<CaseResult> {
       messages.push({ speaker: "user", text: command });
     }
 
-    const response = await agent.runTurn({
+    const response = await runWizardTurn({
       sessionId: `eval-${testCase.id}`,
       command,
       state,
@@ -181,7 +178,7 @@ function checkExpectations(
   state: WizardState,
   lastAccepted: boolean,
   lastLines: string[],
-  recommendations: Awaited<ReturnType<typeof agent.runTurn>>["recommendations"],
+  recommendations: Awaited<ReturnType<typeof runWizardTurn>>["recommendations"],
   lastResponse: WizardTurnResponse | null,
   options: { checkExactLineText: boolean },
 ) {
