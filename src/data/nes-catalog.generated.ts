@@ -2,24 +2,14 @@
 // Sources:
 // - https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games
 // - https://en.wikipedia.org/wiki/List_of_Famicom_Disk_System_games
-// Retrieved: 2026-07-10T22:05:44.392Z
+// Retrieved: 2026-07-10T22:33:04.965Z
 
 import type { Game } from "./games";
 
 type GeneratedGameMetadata = Omit<Game, "playthroughUrl">;
 
 export type NesCatalogRegion = keyof typeof regionLabels;
-export type NesCatalogSourceCategory =
-  | "licensed"
-  | "compilation"
-  | "championship"
-  | "famicom-disk-system"
-  | "famicom-disk-system-unlicensed"
-  | "konami-qta-adaptor"
-  | "bandai-datach"
-  | "unlicensed-nes-lifespan"
-  | "unlicensed-famicom"
-  | "unlicensed-after-lifespan";
+export type NesCatalogSourceCategory = "licensed" | "compilation" | "championship" | "konami-qta-adaptor" | "bandai-datach" | "unlicensed-nes-lifespan" | "unlicensed-famicom" | "unlicensed-after-lifespan" | "famicom-disk-system" | "famicom-disk-system-unlicensed";
 
 export type NesCatalogGame = GeneratedGameMetadata & {
   sourceCategory: NesCatalogSourceCategory;
@@ -27,6 +17,7 @@ export type NesCatalogGame = GeneratedGameMetadata & {
   publisher: string[];
   regions: string[];
   firstReleased: string;
+  format?: string;
   sourceUrl: string;
   signalScore: number;
 };
@@ -48,7 +39,7 @@ export const regionLabels = {
 
 export const nesCatalogSource = {
   "name": "Wikipedia NES/Famicom catalog tables",
-  "retrievedAt": "2026-07-10T22:05:44.392Z",
+  "retrievedAt": "2026-07-10T22:33:04.965Z",
   "rowCount": 1989,
   "sourceCounts": {
     "bandai-datach": 7,
@@ -20748,14 +20739,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "Sachen"
     ],
     "regions": [
-      "Taiwan, Japan"
+      "Taiwan",
+      "Japan"
     ],
     "signalScore": 1,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
     "story": "low",
     "tags": [
-      "Taiwan, Japan exclusive",
       "action",
       "unlicensed"
     ],
@@ -34031,14 +34022,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "Hacker International"
     ],
     "regions": [
-      "Taiwan, Japan"
+      "Taiwan",
+      "Japan"
     ],
     "signalScore": 3,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
     "story": "low",
     "tags": [
-      "Taiwan, Japan exclusive",
       "board and card",
       "puzzle",
       "unlicensed"
@@ -34267,14 +34258,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "Hacker International"
     ],
     "regions": [
-      "Taiwan, Japan"
+      "Taiwan",
+      "Japan"
     ],
     "signalScore": 3,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
     "story": "low",
     "tags": [
-      "Taiwan, Japan exclusive",
       "board and card",
       "puzzle",
       "unlicensed"
@@ -35827,14 +35818,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "Sachen"
     ],
     "regions": [
-      "Taiwan, Japan"
+      "Taiwan",
+      "Japan"
     ],
     "signalScore": 0,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
     "story": "low",
     "tags": [
-      "Taiwan, Japan exclusive",
       "action",
       "unlicensed"
     ],
@@ -44584,14 +44575,14 @@ export const generatedNesGames: NesCatalogGame[] = [
       "Hacker International"
     ],
     "regions": [
-      "Taiwan, Japan"
+      "Taiwan",
+      "Japan"
     ],
     "signalScore": 0,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
     "story": "low",
     "tags": [
-      "Taiwan, Japan exclusive",
       "action",
       "unlicensed"
     ],
@@ -51312,14 +51303,15 @@ export const generatedNesGames: NesCatalogGame[] = [
       "Ge De Industry Co."
     ],
     "regions": [
-      "Taiwan, South Korea, Japan"
+      "Taiwan",
+      "South Korea",
+      "Japan"
     ],
     "signalScore": 2,
     "sourceCategory": "unlicensed-famicom",
     "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Nintendo_Entertainment_System_games",
     "story": "low",
     "tags": [
-      "Taiwan, South Korea, Japan exclusive",
       "action",
       "unlicensed"
     ],

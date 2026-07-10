@@ -166,7 +166,8 @@ function extractRegions(cells, tableSource) {
   if (regionIndex != null && cells[regionIndex]) {
     regions.push(...cleanCell(cells[regionIndex]).split(/\s*,\s*|\s*\/\s*/).map((value) => value.trim()));
   }
-  return unique(regions.filter(Boolean));
+  const found = unique(regions.filter(Boolean));
+  return found.length ? found : [...(tableSource.fallbackRegions ?? [])];
 }
 
 function normalizeEntry(entry, config) {
@@ -262,7 +263,10 @@ function deriveGameFields(entry, config, genreText) {
 }
 
 function buildPitch(entry, config, playStyle, difficulty, story) {
-  const category = config.categoryPhrases?.[entry.sourceCategory] ?? `a ${config.platformLabel} release`;
+  const category =
+    config.categoryPhrases?.[entry.sourceCategory] ??
+    config.defaultCategoryPhrase?.(entry) ??
+    `a ${config.platformLabel} release`;
   const feel = difficulty === "difficult" ? "demanding" : difficulty === "casual" ? "approachable" : "balanced";
   const narrative = story === "rich" ? "story-forward" : story === "some" ? "lightly narrative" : "play-first";
   return `${entry.title} is ${category} from ${entry.year}, tagged as ${feel}, ${narrative}, and ${playStyle.replace("-", " ")}-leaning for the recommender.`;
