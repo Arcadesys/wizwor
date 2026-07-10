@@ -6,6 +6,9 @@
 // which deliberately use the same franchise list.
 const nesRichStorySignals = ["ad&d", "advanced dungeons", "dragon quest", "dragon warrior", "final fantasy", "famicom tantei", "faria", "fire emblem", "mother", "ultima", "wizardry", "ys"];
 
+// Same sharing for the SNES config.
+const snesRichStorySignals = ["breath of fire", "chrono", "dragon quest", "earthbound", "final fantasy", "fire emblem", "lufia", "ogre battle", "romancing saga", "secret of evermore", "secret of mana", "shin megami tensei", "star ocean", "tales of phantasia", "ultima"];
+
 export const catalogConfigs = {
   sms: {
     difficultSignals: ["alien soldier", "battletoads", "castlevania", "contra", "demon", "ghouls", "ghosts", "gradius", "last resort", "mega man", "metal slug", "ninja gaiden", "r-type", "shinobi", "splatterhouse", "thunder force", "zillion"],
@@ -1318,5 +1321,183 @@ export const catalogConfigs = {
       "bandai-datach",
     ],
     outputPath: new URL("../../src/data/nes-catalog.generated.ts", import.meta.url),
+  },
+  snes: {
+    difficultSignals: ["actraiser", "battletoads", "castlevania", "contra", "demon's crest", "ghouls", "gradius", "hagane", "mega man", "ninja gaiden", "r-type", "super star wars", "un squadron"],
+    casualSignals: ["barbie", "casino", "chess", "fishing", "golf", "jeopardy", "kirby", "mahjong", "monopoly", "pachi", "pinball", "simcity", "solitaire", "tetris", "wheel of fortune", "yoshi"],
+    richStorySignals: snesRichStorySignals,
+    someStorySignals: ["adventure", "batman", "castlevania", "demon", "donkey kong country", "dragon ball", "gaiden", "godzilla", "gundam", "indiana jones", "jurassic park", "legend", "metroid", "ninja", "quest", "robocop", "shadowrun", "star wars", "zelda"],
+    playStyleRules: [
+      {
+        playStyle: "puzzle",
+        tags: ["puzzle"],
+        patterns: ["arkanoid", "bust-a-move", "chess", "lolo", "mahjong", "othello", "picross", "puyo", "puzzle", "shogi", "sokoban", "sudoku", "tetris"],
+      },
+      {
+        playStyle: "action-adventure",
+        tags: ["adventure"],
+        patterns: ["actraiser", "adventure", "breath of fire", "chrono", "dragon quest", "earthbound", "final fantasy", "illusion of gaia", "mana", "metroid", "quest", "rpg", "secret of evermore", "shadowrun", "ultima", "zelda"],
+      },
+      {
+        playStyle: "top-down",
+        tags: ["overhead"],
+        patterns: ["baseball", "basketball", "bomberman", "football", "golf", "hockey", "ogre battle", "soccer", "strategy", "tennis", "volleyball", "war"],
+      },
+      {
+        playStyle: "platformer",
+        tags: ["platformer"],
+        patterns: ["bonk", "bubsy", "castlevania", "donkey kong country", "earthworm jim", "kirby", "mega man", "mickey", "mario", "pac-in-time", "pitfall", "sonic", "sparkster", "wario", "yoshi"],
+      },
+    ],
+    tagRules: [
+      { tag: "sports", patterns: ["baseball", "basketball", "boxing", "football", "golf", "hockey", "olympic", "soccer", "tennis", "volleyball", "wrestl"] },
+      { tag: "racing", patterns: ["f-zero", "formula", "grand prix", "kart", "racer", "racing", "speedway"] },
+      { tag: "shooter", patterns: ["aero fighters", "contra", "gradius", "gun", "r-type", "shoot", "star fox", "strike gunner", "super scope", "u.n. squadron"] },
+      { tag: "licensed character", patterns: ["addams", "batman", "bugs bunny", "captain america", "disney", "dragon ball", "flintstones", "godzilla", "mickey", "ninja turtles", "robocop", "simpsons", "star wars", "superman", "x-men"] },
+      { tag: "board and card", patterns: ["blackjack", "casino", "chess", "mahjong", "monopoly", "poker", "shogi", "solitaire"] },
+      { tag: "rpg", patterns: snesRichStorySignals },
+      { tag: "horror", patterns: ["castlevania", "demon", "dracula", "ghost", "ghoul", "horror", "monster", "nightmare", "zombie"] },
+      { tag: "strategy", patterns: ["a-train", "civilization", "nobunaga", "ogre battle", "romance of the three kingdoms", "simcity", "strategy"] },
+      { tag: "arcade port", patterns: ["arkanoid", "bubble bobble", "final fight", "gradius", "mortal kombat", "pac-man", "street fighter", "turtles in time"] },
+    ],
+    moodRules: [
+      { mood: "ominous", patterns: ["alien", "castle", "castlevania", "dark", "dead", "demon", "devil", "doom", "dragon", "ghost", "ghoul", "horror", "monster", "nightmare", "shadow", "zombie"] },
+      { mood: "heroic", patterns: ["actraiser", "adventure", "batman", "captain", "chrono", "final fantasy", "gaiden", "hero", "legend", "mana", "ninja", "quest", "star wars", "warrior", "zelda"] },
+      { mood: "weird", patterns: ["bubsy", "clayfighter", "earthbound", "earthworm", "fantasy", "kirby", "magic", "mutant", "parodius", "ren and stimpy", "sparkster", "super bonk", "toe jam"] },
+      { mood: "arcade", patterns: ["arcade", "baseball", "battle", "bomberman", "contra", "donkey kong", "f-zero", "final fight", "kart", "pac-man", "pinball", "racing", "sports", "street fighter", "tetris"] },
+      { mood: "contemplative", patterns: ["a-train", "chess", "civilization", "mahjong", "mystery", "ogre battle", "othello", "picross", "puzzle", "shadowrun", "shogi", "simcity", "solitaire"] },
+    ],
+    scriptName: "scripts/generate-snes-catalog.mjs",
+    platform: "snes",
+    platformLabel: "SNES",
+    typePrefix: "Snes",
+    sourceExportName: "snesCatalogSource",
+    gamesExportName: "generatedSnesGames",
+    sourceName: "Wikipedia SNES/Super Famicom catalog tables",
+    sources: [
+      {
+        name: "Wikipedia: List of Super Nintendo Entertainment System games",
+        url: "https://en.wikipedia.org/wiki/List_of_Super_Nintendo_Entertainment_System_games",
+      },
+    ],
+    sourceTables: [
+      {
+        url: "https://en.wikipedia.org/wiki/List_of_Super_Nintendo_Entertainment_System_games",
+        index: 0,
+        category: "licensed",
+        minCells: 5,
+        columns: {
+          title: 0,
+          developer: 1,
+          publisher: 2,
+          dates: [
+            { region: "JP", index: 3 },
+            { region: "NA", index: 4 },
+            { region: "PAL", index: 5 },
+          ],
+        },
+      },
+      {
+        url: "https://en.wikipedia.org/wiki/List_of_Super_Nintendo_Entertainment_System_games",
+        index: 1,
+        category: "promotional",
+        minCells: 3,
+        constantRegions: ["promotional"],
+        columns: {
+          title: 0,
+          developer: 1,
+          publisher: 2,
+          date: 3,
+        },
+      },
+      {
+        url: "https://en.wikipedia.org/wiki/List_of_Super_Nintendo_Entertainment_System_games",
+        index: 2,
+        category: "competition",
+        minCells: 2,
+        constantRegions: ["promotional"],
+        columns: {
+          title: 0,
+          developer: 1,
+          date: 2,
+        },
+      },
+      {
+        url: "https://en.wikipedia.org/wiki/List_of_Super_Nintendo_Entertainment_System_games",
+        index: 5,
+        category: "homebrew",
+        minCells: 4,
+        columns: {
+          title: 0,
+          developer: 1,
+          publisher: 2,
+          date: 3,
+          regions: 4,
+        },
+      },
+      {
+        url: "https://en.wikipedia.org/wiki/List_of_Super_Nintendo_Entertainment_System_games",
+        index: 6,
+        category: "unlicensed",
+        minCells: 3,
+        constantRegions: ["JP", "unlicensed"],
+        columns: {
+          title: 0,
+          developer: 1,
+          publisher: 2,
+          date: 3,
+        },
+      },
+    ],
+    // The licensed table nests region sub-headers ("Japan", "North America")
+    // that read as row titles when parsed; drop them like the header row.
+    skipTitlePatterns: [/^japan$/i, /^north america$/i],
+    regionLabels: {
+      JP: "Japan",
+      NA: "North America",
+      PAL: "Europe/PAL",
+      homebrew: "Homebrew",
+      unlicensed: "Unlicensed",
+      promotional: "Promotional",
+    },
+    classicTitles: new Set([
+      "Chrono Trigger",
+      "Contra III: The Alien Wars",
+      "Donkey Kong Country",
+      "Donkey Kong Country 2: Diddy's Kong Quest",
+      "EarthBound",
+      "F-Zero",
+      "Final Fantasy II",
+      "Final Fantasy III",
+      "Kirby Super Star",
+      "Mega Man X",
+      "Secret of Mana",
+      "Star Fox",
+      "Street Fighter II",
+      "Super Castlevania IV",
+      "Super Mario All-Stars",
+      "Super Mario Kart",
+      "Super Mario RPG",
+      "Super Mario World",
+      "Super Metroid",
+      "The Legend of Zelda: A Link to the Past",
+      "Yoshi's Island",
+    ]),
+    categoryTags: {
+      homebrew: ["homebrew"],
+      unlicensed: ["unlicensed"],
+      competition: ["competition cartridge"],
+      promotional: ["promotional"],
+    },
+    categoryPhrases: {
+      homebrew: "a homebrew SNES-era release",
+      unlicensed: "an unlicensed Super Famicom release",
+      competition: "a competition cartridge",
+      promotional: "a promotional SNES release",
+    },
+    defaultCategoryPhrase: (entry) =>
+      entry.regions.includes("JP") && !entry.regions.includes("NA") ? "a Super Famicom release" : "an SNES release",
+    strangeCategories: ["homebrew", "unlicensed", "promotional"],
+    outputPath: new URL("../../src/data/snes-catalog.generated.ts", import.meta.url),
   },
 };
