@@ -57,6 +57,29 @@ type WizardRunContext = {
   showcaseRequest: { gameIds: string[] } | null;
 };
 
+// The one projection of a Recommendation the agent (and the client-facing
+// agentData payload) ever sees; call sites spread in extra fields as needed.
+function agentFacingMatch(recommendation: Recommendation) {
+  return {
+    id: recommendation.game.id,
+    title: recommendation.game.title,
+    matchPercent: Math.round(recommendation.score * 100),
+    reasons: recommendation.reasons,
+    pitch: recommendation.game.pitch,
+    tags: recommendation.game.tags,
+  };
+}
+
+// "Nothing clears the gate, but the profile has enough signal to commit to a
+// best guess" — the condition that lets the agent reveal instead of stalling.
+function bestGuessAvailable(
+  gate: { qualifyingCount: number },
+  profile: UserProfile,
+  options: RecommendationGateOptions,
+) {
+  return gate.qualifyingCount === 0 && bestGuessRecommendations(profile, options).length > 0;
+}
+
 // This tool is a capability the agent chooses to call. The fixed workflow is
 // gone; scoring is exposed so the agent can decide whether the recommendation
 // window is open and which real catalog entries to name. It must score against
@@ -78,17 +101,12 @@ const lookupRecommendationsTool = tool({
       maxQualifyingMatches: gate.maxQualifying,
       qualifyingMatchCount: gate.qualifyingCount,
       recommendationWindowOpen: gate.isOpen,
-      bestGuessAvailable: gate.qualifyingCount === 0 && bestGuessRecommendations(profile, options).length > 0,
+      bestGuessAvailable: bestGuessAvailable(gate, profile, options),
       matches: getRecommendations(profile, options)
         .slice(0, 8)
         .map((recommendation) => ({
-          id: recommendation.game.id,
-          title: recommendation.game.title,
-          matchPercent: Math.round(recommendation.score * 100),
+          ...agentFacingMatch(recommendation),
           clearsThreshold: recommendation.score >= gate.threshold,
-          reasons: recommendation.reasons,
-          pitch: recommendation.game.pitch,
-          tags: recommendation.game.tags,
         })),
     };
   },
@@ -303,13 +321,8 @@ function currentBestMatches(profile: UserProfile, options: RecommendationGateOpt
   return getRecommendations(profile, options)
     .slice(0, 5)
     .map((recommendation) => ({
-      id: recommendation.game.id,
-      title: recommendation.game.title,
-      matchPercent: Math.round(recommendation.score * 100),
+      ...agentFacingMatch(recommendation),
       clearsThreshold: recommendation.score >= recommendationThreshold,
-      reasons: recommendation.reasons,
-      pitch: recommendation.game.pitch,
-      tags: recommendation.game.tags,
     }));
 }
 
@@ -318,28 +331,14 @@ function gamesAboveThreshold(profile: UserProfile, options: RecommendationGateOp
   // .slice(0, 8) below), so a broad, single-dimension profile against the ~2000-game
   // catalog could otherwise serialize hundreds of matches into the agent's context
   // and the client-facing agentData payload on every turn.
-  return qualifyingRecommendations(profile, options)
-    .slice(0, 8)
-    .map((recommendation) => ({
-      id: recommendation.game.id,
-      title: recommendation.game.title,
-      matchPercent: Math.round(recommendation.score * 100),
-      reasons: recommendation.reasons,
-      pitch: recommendation.game.pitch,
-      tags: recommendation.game.tags,
-    }));
+  return qualifyingRecommendations(profile, options).slice(0, 8).map(agentFacingMatch);
 }
 
 function exactTitleMatchesForAgent(command: string, enabledPlatforms: readonly Platform[]) {
   return exactTitleRecommendations(command, { enabledPlatforms }).map((recommendation) => ({
-    id: recommendation.game.id,
-    title: recommendation.game.title,
+    ...agentFacingMatch(recommendation),
     platform: recommendation.game.platform,
     year: recommendation.game.year,
-    matchPercent: Math.round(recommendation.score * 100),
-    reasons: recommendation.reasons,
-    pitch: recommendation.game.pitch,
-    tags: recommendation.game.tags,
   }));
 }
 
@@ -431,7 +430,7 @@ export function buildConsumedTurnContext(request: WizardTurnRequest, knownProfil
       maxQualifyingMatches: maxQualifyingRecommendations,
       qualifyingMatchCount: gate.qualifyingCount,
       recommendationWindowOpen: gate.isOpen,
-      bestGuessAvailable: gate.qualifyingCount === 0 && bestGuessRecommendations(knownProfile, options).length > 0,
+      bestGuessAvailable: bestGuessAvailable(gate, knownProfile, options),
     },
     gamesAboveThreshold: gamesAboveThreshold(knownProfile, options),
     currentBestMatches: currentBestMatches(knownProfile, options),
@@ -572,8 +571,7 @@ export function buildResponse(
           maxQualifyingMatches: maxQualifyingRecommendations,
           qualifyingMatchCount: gate.qualifyingCount,
           recommendationWindowOpen: gate.isOpen,
-          bestGuessAvailable:
-            gate.qualifyingCount === 0 && bestGuessRecommendations(profile, options).length > 0,
+          bestGuessAvailable: bestGuessAvailable(gate, profile, options),
           gamesAboveThreshold: gamesAboveThreshold(profile, options),
           currentBestMatches: currentBestMatches(profile, options),
           consumed,
