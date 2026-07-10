@@ -16,9 +16,6 @@ const noRecommendationsResponse = {
   suggestions: [],
   state: {
     started: true,
-    needsName: false,
-    activeQuestionKey: "difficulty",
-    awaitingFocus: false,
     revealed: false,
     profile: { name: "Ada", mood: "ominous", playStyle: "side-scroller" },
   },
@@ -73,9 +70,6 @@ const recommendationResponse = {
   suggestions: [],
   state: {
     started: true,
-    needsName: false,
-    activeQuestionKey: null,
-    awaitingFocus: false,
     revealed: true,
     profile: {
       name: "Ada",

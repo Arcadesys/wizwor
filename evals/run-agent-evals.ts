@@ -19,7 +19,6 @@ type EvalCase = {
     profile?: Record<string, unknown>;
     profileUnset?: string[];
     revealed?: boolean;
-    activeQuestionKey?: string | null;
     lastAccepted?: boolean;
     minRecommendations?: number;
     maxRecommendations?: number;
@@ -203,10 +202,6 @@ function checkExpectations(
 
   if (expected.revealed !== undefined && state.revealed !== expected.revealed) {
     failures.push(`Expected revealed=${expected.revealed}, saw ${state.revealed}.`);
-  }
-
-  if (expected.activeQuestionKey !== undefined && state.activeQuestionKey !== expected.activeQuestionKey) {
-    failures.push(`Expected activeQuestionKey=${expected.activeQuestionKey}, saw ${state.activeQuestionKey}.`);
   }
 
   if (expected.lastAccepted !== undefined && lastAccepted !== expected.lastAccepted) {
