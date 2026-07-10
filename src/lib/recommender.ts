@@ -157,7 +157,7 @@ export function getRecommendations(profile: UserProfile, options: Recommendation
 // specific enough that finding them embedded in a sentence is a reliable
 // signal of an intentional, direct title mention.
 function isMultiWordTitle(game: Game): boolean {
-  return normalizeTitle(game.title).includes(" ");
+  return normalizeLooseTitle(game.title).includes(" ");
 }
 
 // A shorter matched title that's wholly contained in another matched title's
@@ -166,10 +166,10 @@ function isMultiWordTitle(game: Game): boolean {
 // prequel just because the words overlap.
 function mostSpecificTitleMatches(games: Game[]): Game[] {
   return games.filter((game) => {
-    const titleKey = normalizeTitle(game.title);
+    const titleKey = normalizeLooseTitle(game.title);
     const paddedTitleKey = ` ${titleKey} `;
     return !games.some((other) => {
-      const otherTitleKey = normalizeTitle(other.title);
+      const otherTitleKey = normalizeLooseTitle(other.title);
       return other !== game && otherTitleKey !== titleKey && ` ${otherTitleKey} `.includes(paddedTitleKey);
     });
   });
