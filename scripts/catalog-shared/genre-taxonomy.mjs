@@ -1,3 +1,5 @@
+import { matchesAny } from "./heuristics.mjs";
+
 // Maps a Wikipedia infobox "genre" string (e.g. "Role-playing, action-adventure")
 // onto the recommender's mood/playStyle/story/difficulty vocabulary. This is real
 // per-game signal, unlike the franchise-name keyword matching in
@@ -29,10 +31,6 @@ const someStoryPatterns = ["adventure", "action-adventure", "metroidvania"];
 
 const difficultPatterns = ["shoot 'em up", "bullet hell", "roguelike", "beat 'em up", "hack and slash"];
 const casualPatterns = ["party", "puzzle", "trivia", "board game", "card game", "educational"];
-
-function matchesAny(haystack, patterns) {
-  return patterns.some((pattern) => haystack.includes(pattern));
-}
 
 /**
  * Returns null if the genre text doesn't match anything we recognize, so

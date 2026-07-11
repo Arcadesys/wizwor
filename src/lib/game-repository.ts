@@ -64,7 +64,9 @@ function normalizeTitleKey(title: string) {
   return title.trim().toLowerCase();
 }
 
-function normalizeExactTitleKey(title: string) {
+// Canonical loose title key: also used by the recommender's keyword ranking,
+// so a user-typed keyword and a catalog title normalize identically.
+export function normalizeLooseTitle(title: string) {
   return title
     .toLowerCase()
     .replace(/&/g, "and")
@@ -111,16 +113,7 @@ const generatedCatalogs = [
 
 function buildCatalog(): Game[] {
   const seenTitles = new Set<string>();
-  return [
-    ...qualityFilterGeneratedCatalog(generatedNesGames, seenTitles),
-    ...qualityFilterGeneratedCatalog(generatedSmsGames, seenTitles),
-    ...qualityFilterGeneratedCatalog(generatedAtari7800Games, seenTitles),
-    ...qualityFilterGeneratedCatalog(generatedAtari5200Games, seenTitles),
-    ...qualityFilterGeneratedCatalog(generatedSnesGames, seenTitles),
-    ...qualityFilterGeneratedCatalog(generatedGenesisGames, seenTitles),
-    ...qualityFilterGeneratedCatalog(generatedPcEngineGames, seenTitles),
-    ...qualityFilterGeneratedCatalog(generatedNeoGeoGames, seenTitles),
-  ];
+  return generatedCatalogs.flatMap((catalog) => qualityFilterGeneratedCatalog(catalog, seenTitles));
 }
 
 function buildExactTitleCatalog(): Game[] {
@@ -155,7 +148,7 @@ export function getAllGames(options: GameRepositoryOptions = {}): Game[] {
 }
 
 export function getGamesByExactTitle(title: string, options: GameRepositoryOptions = {}): Game[] {
-  const titleKey = normalizeExactTitleKey(title);
+  const titleKey = normalizeLooseTitle(title);
   if (!titleKey) {
     return [];
   }
@@ -165,7 +158,7 @@ export function getGamesByExactTitle(title: string, options: GameRepositoryOptio
 
   const enabled = options.enabledPlatforms ? new Set(options.enabledPlatforms) : null;
   return cachedExactTitleCatalog.filter(
-    (game) => (!enabled || enabled.has(game.platform)) && normalizeExactTitleKey(game.title) === titleKey,
+    (game) => (!enabled || enabled.has(game.platform)) && normalizeLooseTitle(game.title) === titleKey,
   );
 }
 
@@ -178,7 +171,7 @@ export function getGamesByExactTitle(title: string, options: GameRepositoryOptio
 // matching games back into consideration regardless of signalScore, without
 // loosening the quality bar for open-ended browsing.
 export function getGamesByTitleKeyword(keyword: string, options: GameRepositoryOptions = {}): Game[] {
-  const normalizedKeyword = normalizeExactTitleKey(keyword);
+  const normalizedKeyword = normalizeLooseTitle(keyword);
   if (!normalizedKeyword) {
     return [];
   }
@@ -190,7 +183,7 @@ export function getGamesByTitleKeyword(keyword: string, options: GameRepositoryO
   return cachedExactTitleCatalog.filter(
     (game) =>
       (!enabled || enabled.has(game.platform)) &&
-      normalizeExactTitleKey(game.title).includes(normalizedKeyword),
+      normalizeLooseTitle(game.title).includes(normalizedKeyword),
   );
 }
 
@@ -202,7 +195,7 @@ export function getGamesByTitleKeyword(keyword: string, options: GameRepositoryO
 // word/phrase inside the message, the reverse direction of
 // getGamesByTitleKeyword's substring search.
 export function getGamesByTitleContainedIn(message: string, options: GameRepositoryOptions = {}): Game[] {
-  const normalizedMessage = normalizeExactTitleKey(message);
+  const normalizedMessage = normalizeLooseTitle(message);
   if (!normalizedMessage) {
     return [];
   }
@@ -216,7 +209,7 @@ export function getGamesByTitleContainedIn(message: string, options: GameReposit
     if (enabled && !enabled.has(game.platform)) {
       return false;
     }
-    const titleKey = normalizeExactTitleKey(game.title);
+    const titleKey = normalizeLooseTitle(game.title);
     return titleKey.length > 0 && paddedMessage.includes(` ${titleKey} `);
   });
 }

@@ -13,6 +13,7 @@ import {
   getGamesByExactTitle,
   getGamesByTitleContainedIn,
   getGamesByTitleKeyword,
+  normalizeLooseTitle,
 } from "@/lib/game-repository";
 
 export type UserProfile = {
@@ -85,18 +86,9 @@ function normalizeKeywords(value: unknown): string[] {
     .filter((entry) => entry.length > 0);
 }
 
-function normalizeTitle(value: string) {
-  return value
-    .toLowerCase()
-    .replace(/&/g, "and")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim()
-    .replace(/\s+/g, " ");
-}
-
 function titleKeywordRank(game: Game, profile: UserProfile) {
-  const title = normalizeTitle(game.title);
-  const keywords = normalizeKeywords(profile.keywords).map(normalizeTitle).filter(Boolean);
+  const title = normalizeLooseTitle(game.title);
+  const keywords = normalizeKeywords(profile.keywords).map(normalizeLooseTitle).filter(Boolean);
   if (keywords.some((keyword) => keyword === title)) {
     return 2;
   }
@@ -165,7 +157,7 @@ export function getRecommendations(profile: UserProfile, options: Recommendation
 // specific enough that finding them embedded in a sentence is a reliable
 // signal of an intentional, direct title mention.
 function isMultiWordTitle(game: Game): boolean {
-  return normalizeTitle(game.title).includes(" ");
+  return normalizeLooseTitle(game.title).includes(" ");
 }
 
 // A shorter matched title that's wholly contained in another matched title's
@@ -174,10 +166,10 @@ function isMultiWordTitle(game: Game): boolean {
 // prequel just because the words overlap.
 function mostSpecificTitleMatches(games: Game[]): Game[] {
   return games.filter((game) => {
-    const titleKey = normalizeTitle(game.title);
+    const titleKey = normalizeLooseTitle(game.title);
     const paddedTitleKey = ` ${titleKey} `;
     return !games.some((other) => {
-      const otherTitleKey = normalizeTitle(other.title);
+      const otherTitleKey = normalizeLooseTitle(other.title);
       return other !== game && otherTitleKey !== titleKey && ` ${otherTitleKey} `.includes(paddedTitleKey);
     });
   });
@@ -187,7 +179,7 @@ export function exactTitleRecommendations(
   query: string,
   options: Pick<RecommendationGateOptions, "enabledPlatforms"> = {},
 ): Recommendation[] {
-  const normalizedQuery = normalizeTitle(query);
+  const normalizedQuery = normalizeLooseTitle(query);
   if (!normalizedQuery) {
     return [];
   }

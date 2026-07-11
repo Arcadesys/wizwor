@@ -114,9 +114,6 @@ describe("wizard terminal UI", () => {
           suggestions: [{ value: "ominous", label: "Ominous", detail: "Dungeons, dread, haunted machinery." }],
           state: {
             started: true,
-            needsName: false,
-            activeQuestionKey: "mood",
-            awaitingFocus: false,
             revealed: false,
             profile: { name: "Ada" },
           },
@@ -131,9 +128,6 @@ describe("wizard terminal UI", () => {
           suggestions: [],
           state: {
             started: true,
-            needsName: false,
-            activeQuestionKey: "playStyle",
-            awaitingFocus: false,
             revealed: false,
             profile: { name: "Ada", mood: "weird" },
           },
@@ -173,9 +167,6 @@ describe("wizard terminal UI", () => {
           ],
           state: {
             started: true,
-            needsName: false,
-            activeQuestionKey: "mood",
-            awaitingFocus: false,
             revealed: false,
             profile: { name: "Ada" },
           },
@@ -190,9 +181,6 @@ describe("wizard terminal UI", () => {
           suggestions: [],
           state: {
             started: true,
-            needsName: false,
-            activeQuestionKey: "playStyle",
-            awaitingFocus: false,
             revealed: false,
             profile: { name: "Ada", mood: "heroic" },
           },
@@ -243,9 +231,6 @@ describe("wizard terminal UI", () => {
           ],
           state: {
             started: true,
-            needsName: false,
-            activeQuestionKey: "mood",
-            awaitingFocus: false,
             revealed: false,
             profile: { name: "Ada" },
           },
@@ -260,9 +245,6 @@ describe("wizard terminal UI", () => {
           suggestions: [],
           state: {
             started: true,
-            needsName: false,
-            activeQuestionKey: "playStyle",
-            awaitingFocus: false,
             revealed: false,
             profile: { name: "Ada", mood: "offbeat" },
           },
@@ -321,9 +303,6 @@ describe("wizard terminal UI", () => {
         suggestions: [],
         state: {
           started: true,
-          needsName: false,
-          activeQuestionKey: null,
-          awaitingFocus: false,
           revealed: false,
           profile: { name: "Joanne", playStyle: "puzzle" },
         },
@@ -356,9 +335,6 @@ describe("wizard terminal UI", () => {
         suggestions: [],
         state: {
           started: true,
-          needsName: false,
-          activeQuestionKey: null,
-          awaitingFocus: false,
           revealed: false,
           profile: { mood: "weird" },
           memoryMarkdown: "# MEMORY.md\n\n## Player\n- Name: Unknown\n\n## Preferences\n- Console colors: blue\n",
@@ -422,9 +398,6 @@ describe("wizard terminal UI", () => {
         suggestions: [],
         state: {
           started: true,
-          needsName: false,
-          activeQuestionKey: null,
-          awaitingFocus: false,
           revealed: true,
           profile: { name: "Ada", mood: "ominous" },
         },
@@ -504,9 +477,6 @@ describe("wizard terminal UI", () => {
         suggestions: [],
         state: {
           started: false,
-          needsName: false,
-          activeQuestionKey: null,
-          awaitingFocus: false,
           revealed: true,
           profile: { name: "Ada", mood: "ominous" },
         },
@@ -553,9 +523,6 @@ describe("wizard terminal UI", () => {
           suggestions: [],
           state: {
             started: true,
-            needsName: false,
-            activeQuestionKey: null,
-            awaitingFocus: false,
             revealed: false,
             profile: { name: "" },
           },
@@ -633,9 +600,6 @@ describe("wizard terminal UI", () => {
         suggestions: [{ value: "ominous", label: "Ominous", detail: "Dungeons, dread, haunted machinery." }],
         state: {
           started: true,
-          needsName: false,
-          activeQuestionKey: "mood",
-          awaitingFocus: false,
           revealed: false,
           profile: { name: "Ada" },
         },

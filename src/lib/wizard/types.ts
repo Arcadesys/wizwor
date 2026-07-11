@@ -56,9 +56,6 @@ export type AgentData = {
 
 export type WizardState = {
   started: boolean;
-  needsName: boolean;
-  activeQuestionKey: string | null;
-  awaitingFocus: boolean;
   revealed: boolean;
   profile: UserProfile;
   enabledPlatforms?: Platform[];
@@ -117,9 +114,6 @@ export const defaultMemoryMarkdown = `# MEMORY.md
 
 export const initialWizardState: WizardState = {
   started: false,
-  needsName: false,
-  activeQuestionKey: null,
-  awaitingFocus: false,
   revealed: false,
   profile: blankProfile,
   enabledPlatforms: [...catalogPlatforms],
