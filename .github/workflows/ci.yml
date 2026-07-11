@@ -31,7 +31,9 @@ jobs:
         run: npm run test
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
+        # webkit is required: the "mobile" Playwright project uses the
+        # iPhone 14 device descriptor, whose defaultBrowserType is webkit.
+        run: npx playwright install --with-deps chromium webkit
 
       - name: E2E tests
         run: npm run test:e2e
