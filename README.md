@@ -13,6 +13,13 @@ The app presents an arcade-CRT wizard interface that interviews the player throu
 - Expected-failure cases plus a regression workflow that promotes fixed bugs into the suite
 - Preference-extraction, conversation-policy, recommendation-quality, and UX-contract eval families
 
+### Architecture
+
+```text
+Player → Agent interview → Session preferences → Catalog scoring → Recommendation reveal
+                    ↘ Eval traces → Deterministic checks + rubric checks
+```
+
 
 ## Run Locally
 
