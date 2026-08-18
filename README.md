@@ -4,6 +4,16 @@ An 8-bit terminal recommender prototype built with Next.js and the OpenAI Agents
 
 The app presents an arcade-CRT wizard interface that interviews the player through a live agent, stores preferences in session storage, speaks with SAM-style synthesized speech, plays generated chiptune audio, and reveals NES or romhack recommendations from the local catalog.
 
+## Engineering highlights
+
+- Live recommendation agent built with the OpenAI Agents SDK and explicit session state
+- Eval cases generated from user and job stories, then expressed as turn-level traces
+- Deterministic checks for state, reveal behavior, recommendation count, and scoring
+- Rubric checks for persona, helpfulness, explanations, and typed-input handling
+- Expected-failure cases plus a regression workflow that promotes fixed bugs into the suite
+- Preference-extraction, conversation-policy, recommendation-quality, and UX-contract eval families
+
+
 ## Run Locally
 
 ```bash
