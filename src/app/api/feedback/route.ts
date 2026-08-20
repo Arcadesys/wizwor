@@ -1,48 +1,51 @@
-import { NextResponse } from "next/server";
-import type { FeedbackPayload, FeedbackRecommendation } from "@/lib/feedback";
-import { isFeedbackRating, logFeedback } from "@/lib/feedback";
-import { blankProfile } from "@/lib/wizard/types";
+import { z } from "zod";
+import {
+  apiJson,
+  boundedProfileSchema,
+  readJsonBody,
+  rejectCrossOriginRequest,
+  sessionIdSchema,
+} from "@/lib/api-security";
+import { logFeedback } from "@/lib/feedback";
 
 export const runtime = "nodejs";
 
 const maxNoteLength = 500;
+const maxFeedbackBodyBytes = 16 * 1024;
+const FeedbackPayloadSchema = z.object({
+  sessionId: sessionIdSchema,
+  rating: z.enum(["nailed", "sort_of", "not_even_haunted"]),
+  profile: boundedProfileSchema.default({}),
+  recommendations: z
+    .array(
+      z.object({
+        id: z.string().trim().min(1).max(180),
+        title: z.string().trim().min(1).max(240),
+        score: z.number().finite().min(0).max(1),
+      }),
+    )
+    .max(3)
+    .default([]),
+  note: z.string().trim().min(1).max(maxNoteLength).optional(),
+});
 
 export async function POST(request: Request) {
-  let payload: Partial<FeedbackPayload>;
-
-  try {
-    payload = (await request.json()) as Partial<FeedbackPayload>;
-  } catch {
-    return NextResponse.json({ error: "Invalid JSON body." }, { status: 400 });
+  const originRejection = rejectCrossOriginRequest(request);
+  if (originRejection) {
+    return originRejection;
   }
 
-  if (!payload.sessionId || typeof payload.sessionId !== "string") {
-    return NextResponse.json({ error: "sessionId is required." }, { status: 400 });
+  const body = await readJsonBody(request, maxFeedbackBodyBytes);
+  if (!body.ok) {
+    return body.response;
   }
 
-  if (!isFeedbackRating(payload.rating)) {
-    return NextResponse.json({ error: "rating must be nailed, sort_of, or not_even_haunted." }, { status: 400 });
+  const parsed = FeedbackPayloadSchema.safeParse(body.data);
+  if (!parsed.success) {
+    return apiJson({ error: "Invalid request body." }, { status: 400 });
   }
 
-  logFeedback({
-    sessionId: payload.sessionId,
-    rating: payload.rating,
-    profile: { ...blankProfile, ...payload.profile },
-    recommendations: Array.isArray(payload.recommendations)
-      ? (payload.recommendations.filter(isFeedbackRecommendation) as FeedbackRecommendation[])
-      : [],
-    note: typeof payload.note === "string" ? payload.note.trim().slice(0, maxNoteLength) || undefined : undefined,
-  });
+  logFeedback(parsed.data);
 
-  return NextResponse.json({ ok: true });
-}
-
-function isFeedbackRecommendation(value: unknown): value is FeedbackRecommendation {
-  return (
-    typeof value === "object" &&
-    value !== null &&
-    typeof (value as FeedbackRecommendation).id === "string" &&
-    typeof (value as FeedbackRecommendation).title === "string" &&
-    typeof (value as FeedbackRecommendation).score === "number"
-  );
+  return apiJson({ ok: true });
 }

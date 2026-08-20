@@ -1,4 +1,4 @@
-import { Agent, run, webSearchTool } from "@openai/agents";
+import { Agent, Runner, webSearchTool } from "@openai/agents";
 import { z } from "zod";
 import { isYouTubeWatchUrl } from "@/lib/youtube";
 import { enrichmentRatingModel, enrichmentVideoModel } from "@/lib/wizard/models";
@@ -38,6 +38,7 @@ const videoLookupAgent = new Agent({
     reasoning: {
       effort: "low",
     },
+    store: false,
   },
   tools: [webSearchTool()],
   outputType: VideoLookupSchema,
@@ -52,17 +53,20 @@ const ratingLookupAgent = new Agent({
     reasoning: {
       effort: "low",
     },
+    store: false,
   },
   tools: [webSearchTool()],
   outputType: RatingLookupSchema,
 });
 
+const enrichmentRunner = new Runner({ traceIncludeSensitiveData: false });
+
 export async function enrichGame(input: GameEnrichmentInput): Promise<GameEnrichmentResult> {
   const prompt = `Game: "${input.title}"\nPlatform: ${input.platform}\nYear: ${input.year}`;
 
   const [videoResult, ratingResult] = await Promise.all([
-    run(videoLookupAgent, prompt, { maxTurns: 10 }),
-    run(ratingLookupAgent, prompt, { maxTurns: 5 }),
+    enrichmentRunner.run(videoLookupAgent, prompt, { maxTurns: 10 }),
+    enrichmentRunner.run(ratingLookupAgent, prompt, { maxTurns: 5 }),
   ]);
 
   const video = videoResult.finalOutput as z.infer<typeof VideoLookupSchema> | undefined;

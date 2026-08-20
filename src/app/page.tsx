@@ -1265,9 +1265,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     setEnrichingIds((current) => ({ ...current, [game.id]: true }));
 
     void fetchEnrichment({
-      title: game.title,
-      platform: platformLabel(game.platform),
-      year: game.year,
+      id: game.id,
     }).then((result) => {
       setCachedEnrichment(game.id, result);
       enrichmentRef.current[game.id] = result;

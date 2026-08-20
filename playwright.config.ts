@@ -8,12 +8,12 @@ export default defineConfig({
     timeout: 8_000,
   },
   use: {
-    baseURL: "http://127.0.0.1:3100",
+    baseURL: "http://127.0.0.1:3217",
     trace: "on-first-retry",
   },
   webServer: {
-    command: "npm run build && npm run start -- --port 3100",
-    url: "http://127.0.0.1:3100",
+    command: "npm run build && npm run start -- --port 3217",
+    url: "http://127.0.0.1:3217",
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
   },

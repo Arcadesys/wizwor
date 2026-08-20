@@ -147,6 +147,13 @@ export function getAllGames(options: GameRepositoryOptions = {}): Game[] {
   return cachedCatalog.filter((game) => enabled.has(game.platform));
 }
 
+export function getGameById(id: string): Game | undefined {
+  if (!cachedExactTitleCatalog) {
+    cachedExactTitleCatalog = buildExactTitleCatalog();
+  }
+  return cachedExactTitleCatalog.find((game) => game.id === id);
+}
+
 export function getGamesByExactTitle(title: string, options: GameRepositoryOptions = {}): Game[] {
   const titleKey = normalizeLooseTitle(title);
   if (!titleKey) {
