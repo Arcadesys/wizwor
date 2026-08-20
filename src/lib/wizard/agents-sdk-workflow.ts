@@ -300,7 +300,7 @@ const liveWizardAgent = new Agent<WizardRunContext, typeof WizardTurnOutputSchem
       effort: "low",
       summary: "auto",
     },
-    store: true,
+    store: false,
   },
   tools: [lookupRecommendationsTool, openGameShowcaseTool, searchCatalogTool],
   outputType: WizardTurnOutputSchema,
@@ -455,6 +455,7 @@ async function runWizardConversationTurn(request: WizardTurnRequest, knownProfil
       },
     ];
     const runner = new Runner({
+      traceIncludeSensitiveData: false,
       traceMetadata: {
         __trace_source__: "agent-builder",
         app: "wizwor",

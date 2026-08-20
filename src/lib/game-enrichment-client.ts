@@ -49,7 +49,7 @@ export function setCachedEnrichment(id: string, result: GameEnrichmentResult): v
 // Never throws — a slow/hung search or a network error resolves to "nothing
 // found" so the caller can fall back to the existing search-link UI instead
 // of hanging on a spinner forever.
-export async function fetchEnrichment(input: { title: string; platform: string; year: string }): Promise<GameEnrichmentResult> {
+export async function fetchEnrichment(input: { id: string }): Promise<GameEnrichmentResult> {
   const controller = new AbortController();
   const timeout = window.setTimeout(() => controller.abort(), fetchTimeoutMs);
 

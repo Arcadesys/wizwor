@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import type { UserProfile } from "@/lib/recommender";
 
 export type FeedbackRating = "nailed" | "sort_of" | "not_even_haunted";
@@ -27,11 +28,18 @@ export function isFeedbackRating(value: unknown): value is FeedbackRating {
  * and turned into eval cases later; there's no durable store behind this yet.
  */
 export function logFeedback(payload: FeedbackPayload) {
+  const profile = { ...payload.profile };
+  delete profile.name;
+
   console.log(
     JSON.stringify({
       type: "wizwor.feedback",
       timestamp: new Date().toISOString(),
-      ...payload,
+      sessionHash: createHash("sha256").update(payload.sessionId).digest("hex").slice(0, 16),
+      rating: payload.rating,
+      profile,
+      recommendations: payload.recommendations,
+      note: payload.note,
     }),
   );
 }
