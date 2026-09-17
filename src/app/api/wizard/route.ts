@@ -8,6 +8,7 @@ import {
   rejectCrossOriginRequest,
   sessionIdSchema,
 } from "@/lib/api-security";
+import { defaultPersonaId, wizardPersonaIds } from "@/lib/wizard/personas";
 import { runWizardTurn } from "@/lib/wizard/runtime";
 import { WIZARD_RESPONSE_TOO_LONG_ERROR } from "@/lib/wizard/response-guard";
 import { defaultMemoryMarkdown, initialWizardState } from "@/lib/wizard/types";
@@ -18,6 +19,9 @@ const maxWizardBodyBytes = 64 * 1024;
 const WizardRequestSchema = z.object({
   sessionId: sessionIdSchema,
   command: z.string().max(1200),
+  // Closed enum indexing a server-side registry — the client picks a persona,
+  // never supplies prompt text.
+  persona: z.enum(wizardPersonaIds).default(defaultPersonaId),
   messages: z
     .array(
       z.object({
@@ -69,6 +73,7 @@ export async function POST(request: Request) {
     const response = await runWizardTurn({
       sessionId: payload.sessionId,
       command: payload.command,
+      persona: payload.persona,
       messages: Array.isArray(payload.messages) ? payload.messages : [],
       state: {
         ...initialWizardState,

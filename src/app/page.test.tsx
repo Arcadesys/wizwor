@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import Home from "@/app/page";
+import Home, { WizardTerminal } from "@/app/page";
+import { wizardPersonas } from "@/lib/wizard/personas";
 import { WIZARD_RESPONSE_TOO_LONG_ERROR } from "@/lib/wizard/response-guard";
 import type { WizardTurnResponse } from "@/lib/wizard/types";
 import { defaultMemoryMarkdown } from "@/lib/wizard/types";
@@ -624,6 +625,46 @@ describe("wizard terminal UI", () => {
 
     fireEvent.keyDown(chip, { key: "a" });
     expect(input).toHaveFocus();
+  });
+});
+
+describe("furry persona terminal", () => {
+  beforeEach(() => {
+    const storage = makeStorage();
+    Object.defineProperty(window, "localStorage", { configurable: true, value: storage });
+    Object.defineProperty(globalThis, "localStorage", { configurable: true, value: storage });
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+    sessionStorage.clear();
+    localStorage.clear();
+  });
+
+  it("greets in the furry persona's voice instead of the wizard's", async () => {
+    render(<WizardTerminal persona="furry" />);
+    const input = await screen.findByLabelText("Terminal command prompt");
+    await waitFor(() => expect(input).toBeEnabled());
+
+    expect(screen.getByText(wizardPersonas.furry.copy.greeting)).toBeInTheDocument();
+    expect(screen.getByText(wizardPersonas.furry.copy.soundCaution)).toBeInTheDocument();
+    expect(screen.getByText(wizardPersonas.furry.copy.speakerPrefix)).toBeInTheDocument();
+    expect(screen.queryByText(wizardPersonas.wizard.copy.speakerPrefix)).not.toBeInTheDocument();
+    expect(
+      screen.queryByText(wizardPersonas.wizard.copy.greeting),
+    ).not.toBeInTheDocument();
+  });
+
+  it("persists under its own storage namespace so it cannot bleed into the wizard route", async () => {
+    render(<WizardTerminal persona="furry" />);
+    const input = await screen.findByLabelText("Terminal command prompt");
+    await waitFor(() => expect(input).toBeEnabled());
+
+    fireEvent.click(await screen.findByRole("button", { name: /^Select NES$/i }));
+    fireEvent.click(await screen.findByRole("button", { name: /Begin Quest/i }));
+
+    await waitFor(() => expect(localStorage.getItem("wyrm-furry-platforms")).not.toBeNull());
+    expect(localStorage.getItem("wyrm-terminal-platforms")).toBeNull();
   });
 });
 

@@ -1,5 +1,8 @@
 import type { Recommendation, UserProfile } from "@/lib/recommender";
 import { catalogPlatforms, type Platform } from "@/data/games";
+// Type-only both ways (personas.ts imports WizardTerminalTheme from here), so
+// the cycle erases at compile time.
+import type { WizardPersonaId } from "@/lib/wizard/personas";
 
 export type WizardSpeaker = "system" | "wizard" | "user";
 
@@ -77,6 +80,10 @@ export type WizardTurnRequest = {
   command: string;
   state: WizardState;
   messages: WizardMessage[];
+  // Which persona answers this turn. Deliberately outside `state`, which is
+  // persisted client-side and echoed back through buildResponse — the persona
+  // belongs to the route, not to the conversation.
+  persona?: WizardPersonaId;
 };
 
 export type Showcase = {

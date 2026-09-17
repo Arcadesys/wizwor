@@ -7,6 +7,8 @@ import type { Recommendation, UserProfile } from "@/lib/recommender";
 import type { FeedbackRating } from "@/lib/feedback";
 import { fetchEnrichment, getCachedEnrichment, setCachedEnrichment } from "@/lib/game-enrichment-client";
 import { isResetCommand } from "@/lib/wizard/commands";
+import type { WizardPersona, WizardPersonaId } from "@/lib/wizard/personas";
+import { defaultPersonaId, personaStorageKeys, wizardPersonas } from "@/lib/wizard/personas";
 import { WIZARD_RESPONSE_TOO_LONG_ERROR } from "@/lib/wizard/response-guard";
 import { youTubeEmbedUrl } from "@/lib/youtube";
 import type { GameEnrichmentResult } from "@/lib/wizard/game-enrichment";
@@ -56,10 +58,6 @@ class WizardTurnError extends Error {
 }
 
 const samSampleRate = 22050;
-const storageKey = "wyrm-terminal-profile";
-const memoryStorageKey = "wyrm-terminal-MEMORY.md";
-const themeStorageKey = "wyrm-terminal-theme";
-const platformStorageKey = "wyrm-terminal-platforms";
 const arrowKeys = new Set(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]);
 const recommendationButtonSelector = "[data-recommendation-button='true']";
 
@@ -69,33 +67,32 @@ const feedbackOptions: Array<{ rating: FeedbackRating; label: string }> = [
   { rating: "not_even_haunted", label: "\u{1F44E} Not even haunted" },
 ];
 
-const consoleGreeting = "Greetings Gamer! What console are you questing on today?";
-const postConsolePrompt = "What plaything can I offer you today?";
-const soundOnCaution = "Best with sound on. Turn your speakers down first, then let WIZ speak.";
-
 type WizardTerminalProps = {
   fastMode?: boolean;
+  persona?: WizardPersonaId;
 };
 
-function initialConsoleMessages(): Message[] {
+function initialConsoleMessages(persona: WizardPersona): Message[] {
   return [
     {
       id: makeId("wiz"),
       speaker: "wizard",
-      text: consoleGreeting,
+      text: persona.copy.greeting,
     },
   ];
 }
 
-export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
+export function WizardTerminal({ fastMode = false, persona: personaId = defaultPersonaId }: WizardTerminalProps) {
+  const persona = wizardPersonas[personaId];
+  const storageKeys = useMemo(() => personaStorageKeys(persona), [persona]);
   const [profile, setProfile] = useState<UserProfile>(blankProfile);
   const [memoryMarkdown, setMemoryMarkdown] = useState(defaultMemoryMarkdown);
   const [enabledPlatforms, setEnabledPlatforms] = useState<Platform[]>([...catalogPlatforms]);
-  const [terminalTheme, setTerminalTheme] = useState<WizardTerminalTheme | undefined>();
+  const [terminalTheme, setTerminalTheme] = useState<WizardTerminalTheme | undefined>(persona.defaultTheme);
   const [hydrated, setHydrated] = useState(false);
   const [started, setStarted] = useState(false);
   const [selectedConsoles, setSelectedConsoles] = useState<Platform[]>([]);
-  const [messages, setMessages] = useState<Message[]>(() => initialConsoleMessages());
+  const [messages, setMessages] = useState<Message[]>(() => initialConsoleMessages(persona));
   const [command, setCommand] = useState("");
   const [suggestions, setSuggestions] = useState<WizardOption[]>([]);
   const [suggestionIndex, setSuggestionIndex] = useState(0);
@@ -150,39 +147,41 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   useEffect(() => {
     queueMicrotask(() => {
       try {
-        const saved = sessionStorage.getItem(storageKey);
+        const saved = sessionStorage.getItem(storageKeys.profile);
         if (saved) {
           const restored = { ...blankProfile, ...JSON.parse(saved) } as UserProfile;
           setProfile(restored);
           profileRef.current = restored;
         }
         const persistentStorage = getPersistentStorage();
-        const savedMemory = persistentStorage?.getItem(memoryStorageKey);
+        const savedMemory = persistentStorage?.getItem(storageKeys.memory);
         if (savedMemory?.trim()) {
           setMemoryMarkdown(savedMemory);
           memoryMarkdownRef.current = savedMemory;
         }
-        const savedTheme = persistentStorage?.getItem(themeStorageKey);
+        const savedTheme = persistentStorage?.getItem(storageKeys.theme);
         if (savedTheme) {
           const restoredTheme = sanitizeTheme(JSON.parse(savedTheme));
           setTerminalTheme(restoredTheme);
           terminalThemeRef.current = restoredTheme;
         }
-        const savedPlatforms = persistentStorage?.getItem(platformStorageKey);
+        const savedPlatforms = persistentStorage?.getItem(storageKeys.platforms);
         if (savedPlatforms) {
           const restoredPlatforms = sanitizeEnabledPlatforms(JSON.parse(savedPlatforms));
           setEnabledPlatforms(restoredPlatforms);
           enabledPlatformsRef.current = restoredPlatforms;
         }
       } catch {
-        sessionStorage.removeItem(storageKey);
-        getPersistentStorage()?.removeItem(themeStorageKey);
-        getPersistentStorage()?.removeItem(platformStorageKey);
+        sessionStorage.removeItem(storageKeys.profile);
+        getPersistentStorage()?.removeItem(storageKeys.theme);
+        getPersistentStorage()?.removeItem(storageKeys.platforms);
       } finally {
         setHydrated(true);
       }
     });
-  }, []);
+    // storageKeys is memoized on the persona, which is fixed for a mounted
+    // terminal — this still runs once per mount.
+  }, [storageKeys]);
 
   useEffect(() => {
     profileRef.current = profile;
@@ -255,7 +254,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     setProfile(nextProfile);
     profileRef.current = nextProfile;
     try {
-      sessionStorage.setItem(storageKey, JSON.stringify(nextProfile));
+      sessionStorage.setItem(storageKeys.profile, JSON.stringify(nextProfile));
     } catch (error) {
       console.warn("Failed to persist wizard profile:", error);
     }
@@ -270,11 +269,11 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     terminalThemeRef.current = safeTheme;
     try {
       const persistentStorage = getPersistentStorage();
-      persistentStorage?.setItem(memoryStorageKey, safeMemory);
+      persistentStorage?.setItem(storageKeys.memory, safeMemory);
       if (safeTheme) {
-        persistentStorage?.setItem(themeStorageKey, JSON.stringify(safeTheme));
+        persistentStorage?.setItem(storageKeys.theme, JSON.stringify(safeTheme));
       } else {
-        persistentStorage?.removeItem(themeStorageKey);
+        persistentStorage?.removeItem(storageKeys.theme);
       }
     } catch (error) {
       console.warn("Failed to persist wizard memory or theme:", error);
@@ -288,7 +287,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     setRecommendations([]);
     recommendationsRef.current = [];
     try {
-      getPersistentStorage()?.setItem(platformStorageKey, JSON.stringify(sanitized));
+      getPersistentStorage()?.setItem(storageKeys.platforms, JSON.stringify(sanitized));
     } catch (error) {
       console.warn("Failed to persist enabled platforms:", error);
     }
@@ -338,7 +337,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
     setSettingsOpen(false);
     setControlNavGroup(null);
     window.setTimeout(() => inputRef.current?.focus(), 0);
-    void streamWizard([postConsolePrompt], { instantWhenSilent: true, lockInput: false }).then(() => {
+    void streamWizard([persona.copy.postConsolePrompt], { instantWhenSilent: true, lockInput: false }).then(() => {
       window.setTimeout(() => inputRef.current?.focus(), 0);
     });
   }
@@ -403,6 +402,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
       body: JSON.stringify({
         sessionId: sessionIdRef.current,
         command: turnCommand,
+        persona: personaId,
         state: currentWizardState(),
         messages: messagesRef.current.map(({ speaker, text }) => ({ speaker, text })),
       }),
@@ -475,14 +475,14 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   function resetSession() {
     streamTokenRef.current += 1;
     streamChainRef.current = Promise.resolve();
-    sessionStorage.removeItem(storageKey);
+    sessionStorage.removeItem(storageKeys.profile);
     sessionIdRef.current = makeId("session");
     setProfile(blankProfile);
     profileRef.current = blankProfile;
     setStarted(false);
     startedRef.current = false;
     setSelectedConsoles([]);
-    const coldMessages = initialConsoleMessages();
+    const coldMessages = initialConsoleMessages(persona);
     setMessages(coldMessages);
     messagesRef.current = coldMessages;
     setCommand("");
@@ -1123,7 +1123,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
   }
 
   const speakGreeting = useEffectEvent(async () => {
-    const rendered = await renderSamLine(consoleGreeting);
+    const rendered = await renderSamLine(persona.copy.greeting);
     if (rendered) {
       playSamBuffer(rendered.audio);
     }
@@ -1321,7 +1321,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
                 <div className="message-stack">
                   {messages.map((message) => (
                     <div key={message.id} className={`message-${message.speaker}`}>
-                      <span className="speaker">{speakerLabel(message.speaker)}</span>
+                      <span className="speaker">{speakerLabel(message.speaker, persona)}</span>
                       <span>{message.text}</span>
                       {message.speaker === "wizard" && message.text === "" ? <span className="terminal-cursor" /> : null}
                     </div>
@@ -1510,7 +1510,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
             {!started ? (
               <section className="console-context-panel" aria-label="Choose console context">
                 <h2>Choose Console Context</h2>
-                <p className="sound-caution">{soundOnCaution}</p>
+                <p className="sound-caution">{persona.copy.soundCaution}</p>
                 <div className="console-context-grid">
                   {catalogPlatforms.map((platform) => {
                     const selected = selectedConsoles.includes(platform);
@@ -1614,7 +1614,7 @@ export function WizardTerminal({ fastMode = false }: WizardTerminalProps) {
           <div className="showcase-overlay" role="dialog" aria-modal="true" aria-label="Game showcase">
             <div className="showcase-modal">
               <div className="showcase-titlebar">
-                <span className="showcase-prompt">C:\WIZWOR&gt;</span>
+                <span className="showcase-prompt">{persona.copy.showcasePrompt}</span>
                 <span className="showcase-exe">SHOWCASE.EXE</span>
                 <span className="terminal-cursor" />
                 <button
@@ -1870,9 +1870,9 @@ function platformLabel(platform: Recommendation["game"]["platform"]) {
   return platformLabels[platform] ?? platform.toUpperCase();
 }
 
-function speakerLabel(speaker: Message["speaker"]) {
+function speakerLabel(speaker: Message["speaker"], persona: WizardPersona) {
   if (speaker === "wizard") {
-    return "WIZ>";
+    return persona.copy.speakerPrefix;
   }
 
   if (speaker === "user") {
