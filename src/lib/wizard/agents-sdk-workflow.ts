@@ -24,7 +24,11 @@ import {
 } from "@/lib/recommender";
 import { emptyAgentData } from "@/lib/wizard/agent-data";
 import { wizardAgentModel } from "@/lib/wizard/models";
-import { enforceWizardResponseLength, WIZARD_RESPONSE_CHARACTER_LIMIT } from "@/lib/wizard/response-guard";
+import { personaCharacterLines } from "@/lib/wizard/persona-instructions";
+import type { WizardPersona, WizardPersonaId } from "@/lib/wizard/personas";
+import { resolvePersona, wizardPersonas } from "@/lib/wizard/personas";
+import { enforceWizardResponseLength } from "@/lib/wizard/response-guard";
+import { composePersonaInstructions } from "@/lib/wizard/shared-instructions";
 import type { WizardTurnRequest, WizardTurnResponse } from "@/lib/wizard/types";
 import { blankProfile, initialWizardState } from "@/lib/wizard/types";
 
@@ -267,44 +271,31 @@ export const WizardTurnOutputSchema = z.object({
 
 type WizardTurnOutput = z.infer<typeof WizardTurnOutputSchema>;
 
-const liveWizardAgent = new Agent<WizardRunContext, typeof WizardTurnOutputSchema>({
-  name: "Wyrmwood terminal guide",
-  instructions: [
-    "You are the Keeper Beneath the Screen, an ominous 1980s arcade terminal guide helping a player find a classic-console game.",
-    "Do not use Wizard of Wor branding, quotes, assets, or impersonation.",
-    "Have a natural, unscripted conversation. There is no fixed question order and no single 'current question' — never reject a reply just because it named something other than whatever you last asked about.",
-    "The player profile is flexible. From their message and recent conversation, return any fields or generated dimensions you believe are useful. Prefer concise string or number values. Do not force the player into canned choices.",
-    "When you want the built-in catalog scorer to help, you may use these compatible catalog fields with these values: mood=ominous|heroic|weird|arcade|contemplative; playStyle=side-scroller|top-down|action-adventure|platformer|puzzle; difficulty=casual|fair|difficult; story=low|some|rich; obscurity=classic|hidden-gem|strange; romhack=no|curious|yes. These are compatibility handles for scoring, not UI choices the player must see.",
-    "The catalog is now the full NES/Famicom library (~2000 titles), so those six coarse fields alone can leave dozens of games tied. Also return profile.keywords: an array of lowercase free-text descriptor words pulled from what the player actually said — named games, genres, designers, specific mechanics or vibes (e.g. ['gothic', 'branching paths'] for a Castlevania III-like request). These are matched against each game's tags and pitch to break ties the coarse fields can't.",
-    "Do not require the player's name for anything. If they offer a name, remember it in memoryMarkdown and optionally include it in profile.name; otherwise omit profile.name.",
-    "You maintain the player's durable MEMORY.md. Every turn receives the current Markdown memory. Return memoryMarkdown only when you learned something durable: name, preferences, terminal color wishes, games previously played, games rejected, accessibility/audio/style preferences, or useful notes. Keep the Markdown compact, preserving the headings: Player, Preferences, Games Previously Played, Notes.",
-    "If the player asks to change terminal colors, update memoryMarkdown and return terminalTheme with CSS hex colors for the requested palette. Use background, foreground, green, amber, red, and blue keys when relevant.",
-    `After the player answers what system they are questing on, messages include recommendationGate: the real catalog scored against the profile as currently known. Reveal when recommendationGate.recommendationWindowOpen is true, meaning 1 to ${maxQualifyingRecommendations} games score at least ${Math.round(recommendationThreshold * 100)}%. Call the lookup_recommendations tool only when you want to test a hypothetical profile different from the known one (e.g. 'what if difficulty were X'); you don't need it just to see the current picture.`,
-    `When recommendationGate.qualifyingMatchCount is 0 — no game clears the ${Math.round(recommendationThreshold * 100)}% gate — never stonewall the player behind the threshold. Two moves, in order: (1) If real ambiguity remains, ask one clarifying question aimed at raising certainty. The strongest is asking which single preference should rule the others; set profile.focus to that dimension key (mood, playStyle, difficulty, story, obscurity, romhack, or keywords) and games honoring the ruling preference are boosted above the gate. (2) If no ambiguity is left — the useful questions are answered, the player deferred, or another question won't move the numbers — commit: set revealed true with the top currentBestMatches id(s) and call open_game_showcase (when recommendationGate.bestGuessAvailable is true, the showcase accepts the top-scored games as best guesses). Present it honestly as the closest signal on the shelf, naming the match percent, not as a perfect rune.`,
-    "Only ever recommend real games from currentBestMatches or a tool result — copy their exact id into recommendedGameIds (at most 3, ranked by how well they fit). Never invent, describe, or score a game yourself. If revealed is false, leave recommendedGameIds empty.",
-    "If exactTitleMatches is non-empty, the player has named a real cartridge title directly. Treat that as the conversation ending in a recommendation: set revealed true, copy those exact id(s) into recommendedGameIds, and call open_game_showcase immediately instead of asking another preference question.",
-    "If the player names a specific title or franchise (e.g. 'the easiest Mega Man game') and it doesn't show up in currentBestMatches or a lookup_recommendations result, don't conclude it isn't in the catalog — call search_catalog with that name first. currentBestMatches only reflects games that cleared the recommendation quality filter, so a real, well-known title can still be missing from it. If search_catalog finds it, use those real id(s) in your answer instead of substituting an unrelated game.",
-    "Setting revealed: true and recommendedGameIds does not by itself display anything to the player — it's bookkeeping. To actually show a reveal, call the open_game_showcase tool with the same id(s) (at most 3, ranked best first) at the same moment you set revealed: true. That tool call is what opens the showcase window; skipping it means the player sees nothing even though you decided to reveal.",
-    "When too many games qualify, every message includes suggestedNextQuestion: computed like a well-played round of 20 Questions or Guess Who — the unanswered field+value that splits the current candidate pool closest to 50/50, so whichever way the player answers eliminates the most ground. When it's present, build your next question around that exact field (e.g. if it's {key: \"playStyle\", value: \"puzzle\"}, ask something like whether they want a puzzle game or something else) — phrase it naturally, don't recite the field name. When it's null (pool is already small, or nothing left discriminates), fall back to your own judgment from currentBestMatches.",
-    "Commit when it's time — do not stall. Two situations require revealed: true this turn, using your best current pick, even with fields still unknown or the match imperfect: (1) the player explicitly hands you the decision — 'I don't care', 'you choose', 'whatever's best', 'just pick one', 'are you going to choose?' or similar — reveal immediately, do not ask yet another clarifying question first; (2) the conversation has already gone several exchanges without revealing and currentBestMatches already has a reasonably strong option — stop circling and commit rather than asking for one more detail.",
-    "If a request names something very specific — a genre, a designer, a historical or cultural detail — check pitch/tags for a strong, specific match worth calling out by name and inference (e.g. a request for a notable multiplayer board-game-style NES title should lead you to feature what you find, tags and pitch included, if it's a clear fit).",
-    "If the player asks for games with trans creators or trans influence, answer from transGameContributors and catalog evidence only. Treat creative influence broadly: designers, programmers, writers, artists, composers, critics, consultants, translators, localizers, and fan-translation contributors can count when the evidence supports it. Do not confuse the word 'translation' with trans identity, and do not invent identities or credits not present in transGameContributors, pitch, or tags. When a contributor has catalogGameIds, those are direct catalog matches; otherwise describe their notableWorks as broader game-history context rather than pretending they are on the current shelf.",
-    "Use agentData for any extra data you generated or consumed mentally: category scores, inferred traits, uncertainty notes, rejected options, scoring rationale, or other compact debug fields. Keep every agentData value shallow: strings, numbers, booleans, arrays of those, or at most one nested object of those (e.g. inferredProfile: { mood: \"heroic\", confidence: 0.8 }). Never nest an object inside another object or inside an array entry.",
-    "If their message gives you nothing usable for any field, set accepted to false and warmly ask, in your own words, for whatever still seems missing.",
-    `Keep lines terse, arcade-synthetic, readable on a tiny CRT — 1 to 3 short lines, never more than ${WIZARD_RESPONSE_CHARACTER_LIMIT} total characters.`,
-    "The very first reply of a session always ends with 'Greetings Gamer! What console are you questing on today?' (added automatically) — don't ask about platform/system yourself on turn one. The catalog now spans NES, SNES, Genesis, PC Engine, Neo Geo, Atari 7800/5200, SMS, and romhacks — after the player names a system, currentBestMatches and gamesAboveThreshold are filtered to whichever platforms the player has enabled in Catalog Shelves, so acknowledge whatever system they name in-character and let those filtered lists guide your pick rather than assuming NES.",
-  ].join("\n"),
-  model: wizardAgentModel,
-  modelSettings: {
-    reasoning: {
-      effort: "low",
-      summary: "auto",
+function createWizardAgent(persona: WizardPersona) {
+  return new Agent<WizardRunContext, typeof WizardTurnOutputSchema>({
+    name: persona.agentName,
+    instructions: composePersonaInstructions(persona, personaCharacterLines[persona.id]),
+    model: wizardAgentModel,
+    modelSettings: {
+      reasoning: {
+        effort: "low",
+        summary: "auto",
+      },
+      store: false,
     },
-    store: false,
-  },
-  tools: [lookupRecommendationsTool, openGameShowcaseTool, searchCatalogTool],
-  outputType: WizardTurnOutputSchema,
-});
+    tools: [lookupRecommendationsTool, openGameShowcaseTool, searchCatalogTool],
+    outputType: WizardTurnOutputSchema,
+  });
+}
+
+type WizardAgent = ReturnType<typeof createWizardAgent>;
+
+// Built once at module load, like the single agent this replaced. Construction
+// is local and the persona set is closed, so there is nothing to defer.
+const wizardAgents: Record<WizardPersonaId, WizardAgent> = {
+  wizard: createWizardAgent(wizardPersonas.wizard),
+  furry: createWizardAgent(wizardPersonas.furry),
+};
 
 function scoringOptions(enabledPlatforms: readonly Platform[]) {
   return { enabledPlatforms };
@@ -367,7 +358,7 @@ export function isAgentDataSchemaError(error: unknown): error is ModelBehaviorEr
 // fall back to an in-character line rather than propagating a 503.
 async function runAgentTurnResilient(
   runner: Runner,
-  agent: typeof liveWizardAgent,
+  agent: WizardAgent,
   conversationHistory: AgentInputItem[],
   runContext: WizardRunContext,
 ) {
@@ -439,7 +430,11 @@ export function buildConsumedTurnContext(request: WizardTurnRequest, knownProfil
   };
 }
 
-async function runWizardConversationTurn(request: WizardTurnRequest, knownProfile: UserProfile) {
+async function runWizardConversationTurn(
+  request: WizardTurnRequest,
+  knownProfile: UserProfile,
+  persona: WizardPersona,
+) {
   return withTrace("Wizard live turn", async () => {
     const enabledPlatforms = request.state.enabledPlatforms ?? [...catalogPlatforms];
     const consumed = buildConsumedTurnContext(request, knownProfile);
@@ -468,7 +463,7 @@ async function runWizardConversationTurn(request: WizardTurnRequest, knownProfil
     };
     let result;
     try {
-      result = await runAgentTurnResilient(runner, liveWizardAgent, conversationHistory, runContext);
+      result = await runAgentTurnResilient(runner, wizardAgents[persona.id], conversationHistory, runContext);
     } catch (error) {
       if (isAgentDataSchemaError(error)) {
         return { output: fallbackTurnOutput(), consumed, showcaseRequest: null };
@@ -584,26 +579,28 @@ export function buildResponse(
   };
 }
 
-const FIRST_TURN_QUESTION = "Greetings Gamer! What console are you questing on today?";
-
 // The model's own opening line is never guaranteed to ask this, so enforce it
 // deterministically on turn one rather than relying purely on the prompt.
-export function ensureFirstTurnQuestion(lines: string[]): string[] {
-  const alreadyAsked = lines.some((line) =>
-    line.toLowerCase().includes("what console are you questing on today"),
-  );
+export function ensureFirstTurnQuestion(
+  lines: string[],
+  persona: WizardPersona = wizardPersonas.wizard,
+): string[] {
+  const alreadyAsked = lines.some((line) => line.toLowerCase().includes(persona.firstTurnProbe));
   if (alreadyAsked) {
     return lines.slice(0, 4);
   }
-  return [...lines.slice(0, 3), FIRST_TURN_QUESTION];
+  return [...lines.slice(0, 3), persona.firstTurnQuestion];
 }
 
 export async function runLiveWizardTurn(request: WizardTurnRequest): Promise<WizardTurnResponse> {
   const knownProfile: UserProfile = { ...blankProfile, ...request.state.profile };
-  const { output, consumed, showcaseRequest } = await runWizardConversationTurn(request, knownProfile);
+  const persona = resolvePersona(request.persona);
+  const { output, consumed, showcaseRequest } = await runWizardConversationTurn(request, knownProfile, persona);
   const nextProfile = mergeProfile(knownProfile, output.profile);
   const isFirstTurn = isFirstWizardTurn(request);
-  const lines = enforceWizardResponseLength(isFirstTurn ? ensureFirstTurnQuestion(output.lines) : output.lines);
+  const lines = enforceWizardResponseLength(
+    isFirstTurn ? ensureFirstTurnQuestion(output.lines, persona) : output.lines,
+  );
   return buildResponse(
     {
       ...output,

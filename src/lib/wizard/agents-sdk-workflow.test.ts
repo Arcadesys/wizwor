@@ -12,6 +12,7 @@ import {
   WizardTurnOutputSchema,
 } from "@/lib/wizard/agents-sdk-workflow";
 import { catalogPlatforms } from "@/data/games";
+import { wizardPersonas } from "@/lib/wizard/personas";
 import { bestGuessRecommendations, maxQualifyingRecommendations, qualifyingRecommendations } from "@/lib/recommender";
 import { enforceWizardResponseLength, WIZARD_RESPONSE_TOO_LONG_ERROR } from "@/lib/wizard/response-guard";
 import { blankProfile, initialWizardState, type WizardTurnRequest } from "@/lib/wizard/types";
@@ -181,6 +182,17 @@ describe("first-turn recommendation context", () => {
     expect(ensureFirstTurnQuestion(["The screen warms."]).at(-1)).toBe(
       "Greetings Gamer! What console are you questing on today?",
     );
+  });
+
+  it("appends the persona's own first-turn question", () => {
+    expect(ensureFirstTurnQuestion(["A modem screams hello."], wizardPersonas.furry).at(-1)).toBe(
+      wizardPersonas.furry.firstTurnQuestion,
+    );
+  });
+
+  it("does not double-ask when the persona already asked", () => {
+    const lines = ["Welcome back.", wizardPersonas.furry.firstTurnQuestion];
+    expect(ensureFirstTurnQuestion(lines, wizardPersonas.furry)).toEqual(lines);
   });
 });
 
