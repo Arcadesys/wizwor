@@ -492,10 +492,16 @@ input:disabled {
   min-width: 0;
 }
 
+.terminal-transcript::before {
+  content: "";
+  float: right;
+  width: clamp(20rem, 25vw, 25rem);
+  height: clamp(6.5rem, 8vw, 7.5rem);
+  pointer-events: none;
+}
+
 .message-stack {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(0.78rem, 2vw, 1.25rem);
+  display: block;
   min-height: 100%;
   font-size: clamp(20px, 3.2vw, 32px);
   font-stretch: condensed;
@@ -506,6 +512,10 @@ input:disabled {
   text-shadow:
     1px 0 rgba(146, 249, 76, 0.28),
     0 0 0.45rem rgba(146, 249, 76, 0.18);
+}
+
+.message-stack > div:not(:last-child) {
+  margin-bottom: clamp(0.78rem, 2vw, 1.25rem);
 }
 
 .speaker {
@@ -1085,6 +1095,11 @@ input:disabled {
   .speaker {
     min-width: 3.25rem;
     margin-right: 0.5rem;
+  }
+
+  .terminal-transcript::before {
+    width: min(58vw, 19rem);
+    height: 6.2rem;
   }
 
   .message-stack {
