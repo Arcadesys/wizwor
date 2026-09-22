@@ -278,8 +278,10 @@ function createWizardAgent(persona: WizardPersona) {
     model: wizardAgentModel,
     modelSettings: {
       reasoning: {
-        effort: "low",
-        summary: "auto",
+        effort: "none",
+      },
+      text: {
+        verbosity: "low",
       },
       store: false,
     },
