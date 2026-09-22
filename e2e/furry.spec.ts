@@ -1,7 +1,7 @@
 import { expect, test, type Page, type TestInfo } from "@playwright/test";
 
 const wizardGreeting = "Greetings Gamer! What console are you questing on today?";
-const furryGreeting = "Greetings, fellow traveler! What console are you questing on today?";
+const furryGreeting = "n.n Greetings, friend. I am HOWL.NET, your guide to furry video games. What console are you questing on today?";
 const furryPostConsolePrompt = "What critter cart can I dig out of the crate?";
 const furrySoundCaution = "Best with sound on. Turn your speakers down first, then let HOWLNET speak.";
 
