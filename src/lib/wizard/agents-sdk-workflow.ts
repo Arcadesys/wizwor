@@ -10,7 +10,7 @@ import {
 import { z } from "zod";
 import { catalogPlatforms, type Platform } from "@/data/games";
 import { transGameContributorsForAgent } from "@/data/trans-game-contributors";
-import { getGamesByTitleKeyword } from "@/lib/game-repository";
+import { getGameById, getGamesByTitleKeyword } from "@/lib/game-repository";
 import type { Recommendation, RecommendationGateOptions, UserProfile } from "@/lib/recommender";
 import {
   bestGuessRecommendations,
@@ -218,6 +218,34 @@ export function normalizeOpenGameShowcaseInput(input: z.output<typeof OpenGameSh
   ].slice(0, maxQualifyingRecommendations);
 }
 
+export function resolveShowcaseRequestIds(
+  gameIds: string[],
+  enabledPlatforms: readonly Platform[],
+): string[] {
+  const enabled = new Set(enabledPlatforms);
+  const seen = new Set<string>();
+  const resolved: string[] = [];
+
+  for (const id of gameIds) {
+    if (seen.has(id)) {
+      continue;
+    }
+    seen.add(id);
+
+    const game = getGameById(id);
+    if (!game || !enabled.has(game.platform)) {
+      continue;
+    }
+
+    resolved.push(id);
+    if (resolved.length === maxQualifyingRecommendations) {
+      break;
+    }
+  }
+
+  return resolved;
+}
+
 // The literal reveal mechanism: setting revealed/recommendedGameIds on the
 // output is bookkeeping only. This tool is what the frontend actually reacts
 // to (via the showcaseRequest captured on the run context, read back out in
@@ -225,24 +253,22 @@ export function normalizeOpenGameShowcaseInput(input: z.output<typeof OpenGameSh
 const openGameShowcaseTool = tool({
   name: "open_game_showcase",
   description:
-    "Opens the showcase window that displays 1 to 3 games to the player, each with a gameplay video, name/year/console, and why it matched. This is the only thing that actually shows a reveal — setting revealed/recommendedGameIds alone displays nothing. Call it with the winning game id(s) from currentBestMatches or a lookup_recommendations result, ranked best first, at the same moment you decide to reveal — either recommendationGate.recommendationWindowOpen is true, or nothing clears the gate and you are committing to a best guess (recommendationGate.bestGuessAvailable is true). When games clear the threshold, ids below it are dropped; when none do, only the top-scored best guesses are accepted.",
+    "Requests the showcase window for 1 to 3 real catalog games. Pass exact game id(s) from currentBestMatches, exactTitleMatches, search_catalog, or lookup_recommendations, ranked best first. The tool validates that each id exists and belongs to an enabled platform; final reveal eligibility is checked after this turn's profile updates are merged, so the panel always renders from current server truth rather than stale pre-turn state.",
   parameters: OpenGameShowcaseSchema,
   execute: async (input, runContext?: RunContext<WizardRunContext>) => {
-    const profile = runContext?.context.profile ?? blankProfile;
     const enabledPlatforms = runContext?.context.enabledPlatforms ?? [...catalogPlatforms];
     const requestedGameIds = normalizeOpenGameShowcaseInput(input);
-    const gameIds = resolveShowcaseIds(profile, requestedGameIds, enabledPlatforms);
+    const gameIds = resolveShowcaseRequestIds(requestedGameIds, enabledPlatforms);
 
     if (runContext) {
       runContext.context.showcaseRequest = gameIds.length ? { gameIds } : null;
     }
 
     return gameIds.length
-      ? { opened: true, gameIds }
+      ? { requested: true, gameIds }
       : {
-          opened: false,
-          reason:
-            "the supplied ids are not current reveal candidates — either too many games still qualify (keep narrowing) or none of the ids are in the qualifying/best-guess set",
+          requested: false,
+          reason: "no supplied ids exist on the currently enabled catalog shelves",
         };
   },
 });
