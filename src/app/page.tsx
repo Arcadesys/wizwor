@@ -1313,7 +1313,7 @@ export function WizardTerminal({ fastMode = false, persona: personaId = defaultP
       }}
       tabIndex={-1}
     >
-      <div className="crt-shell relative flex min-h-screen w-screen flex-col p-2 sm:p-3">
+      <div className={`crt-shell relative flex min-h-screen w-screen flex-col p-2 sm:p-3 ${showcase && showcase.length ? "showcase-open" : ""}`}>
         <section className="terminal-stage z-10">
           <div className="terminal-top-panel">
             <div className="terminal-window min-h-0 overflow-y-auto">
