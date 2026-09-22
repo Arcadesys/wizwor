@@ -276,15 +276,16 @@ input:disabled {
 }
 
 .window-controls {
-  position: relative;
-  z-index: 2;
+  position: absolute;
+  top: clamp(0.45rem, 1vw, 0.7rem);
+  right: clamp(0.45rem, 1vw, 0.7rem);
+  z-index: 4;
   display: flex;
-  align-self: start;
   align-items: flex-start;
   justify-content: flex-end;
   gap: clamp(0.45rem, 1vw, 0.7rem);
   width: max-content;
-  max-width: 100%;
+  max-width: calc(100% - 1rem);
   padding: clamp(0.45rem, 1vw, 0.7rem);
   background: var(--background);
   border: 6px solid var(--foreground);
@@ -467,10 +468,7 @@ input:disabled {
 
 .terminal-top-panel {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: start;
-  gap: clamp(0.8rem, 2vw, 1.3rem);
+  display: block;
   min-height: 0;
 }
 
@@ -1066,7 +1064,6 @@ input:disabled {
   }
 
   .terminal-top-panel {
-    grid-template-columns: minmax(0, 1fr);
     overflow: hidden;
   }
 
@@ -1075,8 +1072,8 @@ input:disabled {
   }
 
   .window-controls {
-    justify-self: start;
-    order: -1;
+    top: 0.4rem;
+    right: 0.4rem;
   }
 
   .bottom-terminal {
