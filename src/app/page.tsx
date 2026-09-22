@@ -1620,7 +1620,7 @@ export function WizardTerminal({ fastMode = false, persona: personaId = defaultP
         </section>
 
         {showcase && showcase.length && activeShowcaseGame ? (
-          <div className="showcase-overlay" role="dialog" aria-modal="true" aria-label="Game showcase">
+          <aside className="showcase-drawer" role="dialog" aria-label="Game showcase">
             <div className="showcase-modal">
               <div className="showcase-titlebar">
                 <span className="showcase-prompt">{persona.copy.showcasePrompt}</span>
@@ -1698,7 +1698,7 @@ export function WizardTerminal({ fastMode = false, persona: personaId = defaultP
                 <p className="showcase-reasons">Why it&rsquo;s relevant: {activeShowcaseGame.reasons.join(" / ")}</p>
               </div>
             </div>
-          </div>
+          </aside>
         ) : null}
       </div>
     </main>
