@@ -1,6 +1,7 @@
 "use client";
 
 import { CSSProperties, FormEvent, KeyboardEvent, useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import type * as ToneNamespace from "tone";
 import { catalogPlatforms, platformLabels, sanitizeEnabledPlatforms, type Platform } from "@/data/games";
 import type { Recommendation, UserProfile } from "@/lib/recommender";
@@ -1342,6 +1343,14 @@ export function WizardTerminal({ fastMode = false, persona: personaId = defaultP
                 onKeyDown={(event) => event.stopPropagation()}
                 onClick={(event) => event.stopPropagation()}
               >
+                <Link
+                  href="/about"
+                  className="about-control-link"
+                  aria-label="About this experiment"
+                  title="About this experiment"
+                >
+                  ?
+                </Link>
                 <button
                   type="button"
                   className={`save-button ${isControlNavCursor("topbar", "save") ? "is-nav-cursor" : ""}`}
