@@ -9,6 +9,7 @@ import {
   normalizeOpenGameShowcaseInput,
   resolveAutomaticShowcaseIds,
   resolveShowcaseIds,
+  resolveShowcaseRequestIds,
   WizardTurnOutputSchema,
 } from "@/lib/wizard/agents-sdk-workflow";
 import { catalogPlatforms } from "@/data/games";
@@ -203,6 +204,28 @@ describe("resolveShowcaseIds", () => {
     expect(normalizeOpenGameShowcaseInput({ ids: ["castlevania", "metroid-mother"] })).toEqual([
       "castlevania",
       "metroid-mother",
+    ]);
+  });
+
+  it("validates showcase tool requests against catalog membership and enabled platforms, not stale profile state", () => {
+    expect(resolveShowcaseRequestIds(["super-mario-bros"], ["nes"])).toEqual(["super-mario-bros"]);
+    expect(resolveShowcaseRequestIds(["super-mario-bros"], ["snes"])).toEqual([]);
+    expect(resolveShowcaseRequestIds(["not-a-real-game-id"], ["nes"])).toEqual([]);
+  });
+
+  it("deduplicates and caps showcase tool requests before they reach UI state", () => {
+    const requested = [
+      "super-mario-bros",
+      "super-mario-bros",
+      "mega-man-2",
+      "castlevania",
+      "metroid",
+    ];
+
+    expect(resolveShowcaseRequestIds(requested, ["nes"])).toEqual([
+      "super-mario-bros",
+      "mega-man-2",
+      "castlevania",
     ]);
   });
 
