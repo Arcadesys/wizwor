@@ -46,11 +46,11 @@ export const wizardPersonas: Record<WizardPersonaId, WizardPersona> = {
   furry: {
     id: "furry",
     agentName: "FurryMUCK terminal oracle",
-    firstTurnQuestion: "Greetings, fellow traveler! What console are you questing on today?",
+    firstTurnQuestion: "n.n Greetings, friend. I am HOWL.NET, your guide to furry video games. What console are you questing on today?",
     firstTurnProbe: sharedFirstTurnProbe,
     storageNamespace: "wyrm-furry",
     copy: {
-      greeting: "Greetings, fellow traveler! What console are you questing on today?",
+      greeting: "n.n Greetings, friend. I am HOWL.NET, your guide to furry video games. What console are you questing on today?",
       postConsolePrompt: "What critter cart can I dig out of the crate?",
       soundCaution: "Best with sound on. Turn your speakers down first, then let HOWLNET speak.",
       showcasePrompt: "C:\\FURRYMUCK>",
