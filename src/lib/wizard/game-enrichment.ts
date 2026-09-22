@@ -25,10 +25,9 @@ const RatingLookupSchema = z.object({
 });
 
 // Split into two single-purpose agents rather than one that does both:
-// testing found gpt-5-nano finds real ratings reliably but is too
-// conservative to assert a specific YouTube URL from search snippets, even
-// for extremely well-known games. The video lookup needs the stronger model;
-// the rating lookup is cheap and works fine on nano. Both run in parallel.
+// Keep the exact-URL web search on the stronger model: confirming a specific
+// YouTube watch URL is materially harder than extracting a published rating.
+// Ratings stay on the cheapest model, and both lookups still run in parallel.
 const videoLookupAgent = new Agent({
   name: "Game video lookup",
   instructions:
@@ -37,6 +36,9 @@ const videoLookupAgent = new Agent({
   modelSettings: {
     reasoning: {
       effort: "low",
+    },
+    text: {
+      verbosity: "low",
     },
     store: false,
   },
@@ -51,7 +53,10 @@ const ratingLookupAgent = new Agent({
   model: enrichmentRatingModel,
   modelSettings: {
     reasoning: {
-      effort: "low",
+      effort: "none",
+    },
+    text: {
+      verbosity: "low",
     },
     store: false,
   },
