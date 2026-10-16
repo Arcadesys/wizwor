@@ -1,8 +1,14 @@
 # Wizwor
 
-An 8-bit terminal recommender prototype built with Next.js and the OpenAI Agents SDK.
+Choosing a retro game can mean sorting through a large catalog without knowing which preferences matter. Wizwor is an 8-bit terminal recommender prototype that interviews the player, turns their answers into preferences, and scores a local catalog to explain a recommendation.
+
+Built with Next.js, TypeScript, and the OpenAI Agents SDK.
 
 The app presents an arcade-CRT wizard interface that interviews the player through a live agent, stores preferences in session storage, speaks with SAM-style synthesized speech, plays generated chiptune audio, and reveals NES or romhack recommendations from the local catalog.
+
+**Try it:** follow [Run locally](#run-locally). Wizard turns require your own `OPENAI_API_KEY`; this is a prototype, not a hosted demo promise.
+
+**Collaborator starting point:** explore [recommendation logic](src/lib/), [catalog sources](game-catalog/), and [evals](evals/). Start with a reproducible preference or recommendation failure, then add a deterministic check or rubric case appropriate to that behavior.
 
 ## Engineering highlights
 
